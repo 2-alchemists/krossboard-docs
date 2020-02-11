@@ -1,0 +1,46 @@
+baseURL = "http://koamc.com/"
+languageCode = "en-us"
+title = "Krossboard"
+theme = "kube"
+description = "Kubernetes Usage Analytics for Cost and Capacity Management"
+Paginate = 4
+googleAnalytics = ""
+
+[Params]
+  RSSLink = "/index.xml"
+  author = "Company Name"
+  releaseYear = "2020"
+  github = ""
+  twitter = "koamc"
+  email = "contact@koamc.com"
+  logo = "/images/logo/company-website-logo.png"
+  favicon = "/favicon.ico"
+  contactRequestApiEndpoint = "https://demo.koamc.com/mx-gateway/sendmail"
+
+[params.seo.webmaster_verifications]
+  google = "" # Optionnel, Google verification code
+  bing = "" # Optionnel, Bing verification code
+  alexa = "" # Optionnel, Alexa verification code
+  yandex = "" # Optionnel, Yandex verification code  
+
+[[menu.main]]
+    name = "Product Overview"
+    weight = 10
+   url = "/product-overview/"  
+[[menu.main]]
+    name = "Documentation"
+    weight = 20
+    url = "/docs" 
+[[menu.main]]
+    name = "Support"
+    weight = 30
+    url = "/contact/support-and-contact/" 
+[[menu.main]]
+    name = "About Us"
+    weight = 100
+    url = "/company" 
+
+
+#[[menu.extra]]
+#    Name = "About Us"
+#    Permalink = "/company"         

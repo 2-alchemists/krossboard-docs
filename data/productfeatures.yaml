@@ -1,0 +1,24 @@
+- Feature:
+  Title: "Native integration with managed Kubernetes"
+  Image: "/images/icons/easy-integration.png"
+  Description: |
+    Deploy from your cloud provider's Marketplace (currently,
+    <a href="https://aws.amazon.com/eks/" target="_blank">Amazon EKS</a>, 
+    <a href="https://cloud.google.com/kubernetes-engine" target="_blank">Google GKE</a>, 
+    <a href="https://azure.microsoft.com/en-us/services/kubernetes-service/" target="_blank">Microsoft AKS</a>), 
+    Krossboard then seamlessly discovers and takes over existing and new clusters to let you track your spends.
+- Feature:
+  Title: "Track usage to anticipate and master costs"
+  Image: "/images/icons/forecast-bar.svg"
+  Description: |
+    For each hour, day, month, and up to a year ago, get factual insights on the usage of your clusters. Your organization's cost allocation and capacity planning decisions are so made easy.
+- Feature:
+  Title: "Original concepts built in powerful technology"
+  Image: "/images/icons/lightbulb-regular.svg"
+  Description: |
+    Our team leverages long experience and strong expertise on Kubernetes usage and capacity analytics, Krossboard leverages learned/best practices to help organizations understand and master their Kubernetes spends.
+- Feature:
+  Title: "User-extensible analytics"
+  Image: "/images/icons/user-extensible.svg"
+  Description: |
+    We know that organizations may need specific analytics that are not natively built in Krossboard. Hence it enables to export any data its generates in CSV format; those data can further be processed to extract additional insights.
