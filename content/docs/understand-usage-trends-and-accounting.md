@@ -1,7 +1,7 @@
 +++
 title = "Understand Usage Trends and Accounting"
 description = ""
-weight = 20
+weight = 25
 draft = false
 bref = ""
 toc = true 

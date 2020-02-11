@@ -1,7 +1,7 @@
 +++
 title = "How Does Krossboard Collect and Consolidate Data"
 description = ""
-weight = 20
+weight = 50
 draft = false
 bref = ""
 toc = true 
