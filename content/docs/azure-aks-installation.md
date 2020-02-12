@@ -1,5 +1,5 @@
 +++
-title = "Setup Krossboard for AKS Clusters"
+title = "Setup Krossboard for Azure AKS"
 description = ""
 weight = 2
 draft = false
@@ -7,26 +7,29 @@ bref = ""
 toc = true 
 +++
 
-Krossboard is designed to work as a standalone virtual machine on Azure cloud. 
-As of current version, it discovers and handles handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
+Krossboard is designed to work as a standalone virtual machine on Azure cloud.
+As of current version, it discovers and handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
 
-The below steps describe how to setup an instance of Krossboard within a Azure resource group. It's assumed you're using Azure Portal, but you can adapt the procedure for a scripted/automated deployment.
-
-To cover all the steps of this guide successfully, it's required that you have access to:
-* An active Azure subscription.
-* An admin access to that subscription
+This guide describes steps to setup an instance of Krossboard within a Azure resource group. 
 
 
-## Step 0: Summary of Steps
-The installation steps are straightforward and can be summarized as follows:
+## Before you begin
+To run this procedure successfully, it's assumed that:
+
+ * You have a basic level of practice with Azure concepts.
+ * You have access to an Azure subscription with sufficient permissions, to assigned managed identity, to assign managed roles, as well as to create virtual machines from Azure Marketplace.
+ * You have access to Azure Portal, though you can later adapt the steps for a scripted/automated deployment.
+ * You have `kubectl` with admin access to your EKS clusters; this level of access is notably required to configure RBAC settings that Krossboard needs to retrieve metrics from Kubernetes.
+
+## Summary of Steps
+The installation steps would be straightforward and can be summarized as follows:
 
 * Step 1: Select or create the resource group where Krossboard will be deployed.
 * Step 2: Deploy a Krossboard virtual machine from [Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
-* Step 3: Assign an managed identity to the created Krossboard virtual machine
+* Step 3: Assign a managed identity to the created Krossboard virtual machine
 * Step 4: Assign the Azure IAM roles `Managed Application Reader` and `Azure Kubernetes Service Cluster User Role` to the virtual machine. 
-* Step 5: On each AKS cluster, update Kubernetes RBAC settings to allow Krossboard to query metrics from Kubernetes API. 
+* Step 5: On your AKS cluster, update Kubernetes RBAC settings to allow Krossboard to query metrics from Kubernetes API. 
 * Step 6: Get access to Krossboard UI
-* Next Steps
 
 ## Step 1: Select or create the resource group
 TODO
@@ -41,7 +44,9 @@ TODO
 TODO
 
 ## Step 5: Update Kubernetes RBAC settings
-Run this command to apply the Kubernetes `RoleBinding` required by Krossboard..
+At this stage, we're almost done; Krossboard is able to discover AKS clusters, but is nt yet allowed to retrieve metrics from Kubernetes -- this due to default RBAC settings on AKS. 
+
+The next command allows to create a Kubernetes `ClusterRole` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). You can download the parameter file to review it. 
 
 ```
 kubectl apply -f https://krossboard.app/assets/k8s/clusterrolebinding-eks.yml
@@ -50,7 +55,7 @@ kubectl apply -f https://krossboard.app/assets/k8s/clusterrolebinding-eks.yml
 ## Step 6: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-instance-addr>/`.
 
-> You may need to wait a while (typically an hour) to have all the charts available. This is because by design, and with the intend to adhere to how modern clouds work, Krossboard is thought to provide consitent analytics on an hourly basis. [Learn more]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}).
+**Note:** You may need to wait a while (typically an hour) to have all the charts available. This is because by design, and with the intend to adhere to how modern clouds work, Krossboard is thought to provide consitent analytics with an hourly granularity. [Learn more]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}).
 
 The user interface features the following core analytics and reports:
  * **Current Usage**: displays piecharts, for each cluster discovered by Krossboard in GKE, showing the latest consolidated CPU and memory usage. Those reports actually highlight every 5 minutes, the share of used, available and non-allocatable resources.

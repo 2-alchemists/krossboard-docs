@@ -1,5 +1,5 @@
 +++
-title = "Setup Krossboard for GKE Clusters"
+title = "Setup Krossboard for Google GKE"
 description = ""
 weight = 3
 draft = false
@@ -10,17 +10,22 @@ toc = true
 Krossboard is designed to work as a standalone Compute Engine virtual machine on Google Compute Platform (GCP).
 As of current version, it discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. 
 
-The below steps describe how to setup an instance of Krossboard within a GCP project. It's assumed you're using GCP Cloud Console, but you can adapt the procedure for a scripted/automated deployment.
+The below steps describe how to setup an instance of Krossboard within a GCP project. 
 
-## Step 0: Summary of Steps
+## Before you begin
+To run this procedure successfully, it's assumed that:
+ * You have a basic level of practice with GCP concepts.
+ * You have access to a GCP project with sufficient permissions, to create GCP IAM service account and to assign GCP predefined roles
+ * You have access to GCP Cloud Console, though you can later adapt the steps for a scripted/automated deployment.
+
+## Summary of Steps
 The installation steps are straightforward and can be summarized as follows:
 
 * Step 1: Select a GCP project in which Krossboard will be deployed.
 * Step 2: Create a GCP service account to assign to the Krossboard instance. This service account needs to have the predefined role of `roles/container.viewer` assigned to it. 
   In short, this role gives read-only access to GKE resources. 
 * Step 3: Deploy an instance of Krossboard from [GCP Marketplace](https://cloud.google.com/marketplace)and, throughout the creation step, assign the created GCP service account to that instance.
-* Step 4: Get access to Krossboard UI 
-* Next Steps
+* Step 4: Get access to Krossboard UI
 
 > **Important:** it's worth nothing that [GCP service accounts](https://cloud.google.com/iam/docs/understanding-service-accounts) and [Kubernetes services accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) are two different concepts.
 
@@ -60,7 +65,7 @@ Proceed as follows to create an instance of Krossboard using Google Cloud Market
 ## Step 4: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-instance-addr>/`.
 
-> You may need to wait a while (typically an hour) to have all the charts available. This is because by design, and with the intend to adhere to how modern clouds work, Krossboard is thought to provide consitent analytics on an hourly basis. [Learn more]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}).
+**Note:** You may need to wait a while (typically an hour) to have all the charts available. This is because by design, and with the intend to adhere to how modern clouds work, Krossboard is thought to provide consitent analytics with an hourly granularity. [Learn more]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}).
 
 The user interface features the following core analytics and reports:
  * **Current Usage**: displays piecharts, for each cluster discovered by Krossboard in GKE, showing the latest consolidated CPU and memory usage. Those reports actually highlight every 5 minutes, the share of used, available and non-allocatable resources.
