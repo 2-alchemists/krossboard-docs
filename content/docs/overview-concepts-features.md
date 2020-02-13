@@ -22,13 +22,13 @@ Here is a non-exhautive list of these core principles:
 * **Daily and Monthly Usage:** 
     This provides for each, period (daily/monthly), namespace, and resource type (CPU/memory), consolidated cost indicators. These indicators are computed as accumulated hourly usage over that period of time.
 * **Efficient Visualization:** 
-    For analytics generate, Krossboard provides dashboards with various type of charts and reports, covering as well the last couple of hours than the last 12 months. This allows to organizations at each period of the year, to leverage relevant insights for accounting balance sheets.
+    This is meant to provide for analytics data generated, dashboards with various types of charts and reports, covering as well the last couple of hours than the last 12 months. This allows to organizations at each period of the year, to leverage relevant insights for accounting balance sheets.
 
 ## Unique benefits
 Krossboard is meant to be a leading cost allocation and capacity planning tool with unique benefits for organizations.
 
-* **Ease cost allocation decisions**: Krossboard provides detailed reports on resources consumed by each project/application during various accounting periods (hourly, daily, and monthly).
-* **Help anticipate costs**: Krossboard features dynamic analytics reports that show how resources are consumed over time. This helps organizations to forecast cluster scaling up/down, hence to anticipate the related costs.
+* **Ease cost allocation decisions**: Krossboard provides detailed reports on resources consumed by each project/application during various accounting periods (hourly, daily, monthly).
+* **Help anticipate costs**: Krossboard features dynamic analytics reports that show how resources are being consumed over time. This helps organizations to forecast cluster scaling up/down, hence to anticipate the related costs.
 * **Enabler for cloud-cost reduction strategy**: Krossboard helps make cluster consolidation decisions by giving factual insights that show how clusters are utilized. Organizations can so easily motivate and drive consolidation decisions for clusters that are underutilized or used in a non-efficient way. Hence they would reduce their infrastructure and operations costs.
 
 ## Simple integration yet effective tool
