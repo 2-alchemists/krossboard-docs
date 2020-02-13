@@ -11,7 +11,7 @@ toc = true
 Krossboard is an original centralized resource usage analytics tool for managed Kubernetes clusters. It's currently supported on Amazon EKS, Google GKE, Microsoft AKS, and is intended to be gradually extended to support other public clouds and on-premise clusters.
 
 ## Etablished core analytics paradigms
-Krossboard extends our breadth and depth expertises with [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics). It keeps the main core design principles of Kubernetes Opex Analytics that have been already adopted by a large community as an original approach of doing usage analytics on Kubernetes clusters.
+Krossboard extends our breadth and depth expertises with [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics). It keeps the main core design principles of Kubernetes Opex Analytics; that is already adopted by a established community as an original approach of doing usage analytics on Kubernetes clusters.
 
 Here is a non-exhautive list of these core principles:
 
