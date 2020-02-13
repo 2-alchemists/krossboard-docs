@@ -7,7 +7,7 @@ bref = ""
 toc = true 
 +++
 
-Krossboard is designed to work as a standalone EC2 virtual machine on AWS cloud.
+On Amazon Web Services (AWS) cloud, Krossboard is designed to work as a standalone EC2 virtual machine on AWS cloud.
 As of current version, it discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
 
 This guide describes steps to setup an instance of Krossboard within an AWS region. 
@@ -68,8 +68,12 @@ Log into the AWS Management Console:
 ```
 
 
-## Step 2: Deploy Krossboard from AWS Marketplace
-TODOD
+## Step 2: Deploy a Krossboard VM from AWS Marketplace
+Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
+
+* TODO
+* Ensure that the instance's security groups enable access on the VM on port 80 and 443, i.e. to provide access to Krossboard UI.
+* Once the deployment completed, note the IP address of the instance.
 
 ## Step 3: Install Kubernetes Metrics Server on EKS
 This step is based on the [official documentation of EKS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). Please refer to this link if you experienced any troubles.
@@ -128,22 +132,19 @@ At this stage, we're almost done; Krossboard is able to discover EKS clusters, b
 The next command allows to create a Kubernetes `ClusterRole` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). You can download the parameter file to review it.
 
 ```
-kubectl apply -f https://krossboard.app/assets/k8s/clusterrolebinding-eks.yml
+kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
-
 ## Step 5: Get Access to Krossboard UI
-Open a browser and point it to the address `http://<krossboard-instance-addr>/`.
+Open a browser and point it to the address `http://<krossboard-IP-addr>/`.
 
-**Note:** You may need to wait a while (typically an hour) to have all the charts available. This is because by design, and with the intend to adhere to how modern clouds work, Krossboard is thought to provide consitent analytics with an hourly granularity. [Learn more]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}).
+**Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}), which is thought with the intend to adhere to the accounting paradigm of public clouds, Krossboard is thought to provide consitent analytics with an hourly granularity.
 
 The user interface features the following core analytics and reports:
- * **Current Usage**: displays piecharts, for each cluster discovered by Krossboard in GKE, showing the latest consolidated CPU and memory usage. Those reports actually highlight every 5 minutes, the share of used, available and non-allocatable resources.
- * **Usage Trends & Accounting**: displays for each cluster selected by the user, its hourly, daily, and monthly usage analytics for CPU and memory resources. This page allows features the ability to export the data backed each displayed chart in CSV format.
- * **Consolidated Usage & History**: displays for all clusters, and specifically for CPU and memory resources, their consolidate usage over a user-defined period of time. This page also gives the ability to export data for the selected period of time in CSV format.
+ * **Current Usage**: For each cluster discovered and handled by Krossboard, this page displays piecharts showing the latest consolidated CPU and memory usage. Those reports -- updated every 5 minutes, highlight shares of resources, used, available and non-allocatable.
+ * **Usage Trends & Accounting**: For each cluster -- selected on-demand by the user, this page provides various reports showing, hourly, daily and monthly usage analytics for CPU and memory resources. For each type of report (i.e. hourly, daily, monthly), the user can export the raw analytics data in CSV format for custom processing and visualization.
+ * **Consolidated Usage & History**: This page provides a comprehensive usage reports covering all clusters for a user-defined period of time. The intend of those reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time, which always the ability to export the raw analytics data in CSV for custom processing and visualization.
 
 ## Next Steps
 
-* How does Krossboard consolidate Kubernetes metrics
-* Which data Krossboard used to create report charts
-* Export data in CSV format to create custom analytics
+* Checkout other [documentation resources]({{< relref "/docs" >}}).
