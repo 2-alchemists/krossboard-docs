@@ -7,7 +7,7 @@
     </div> 
     <div id="kube-component" class="content">
       {{ partial "toc" .}}
-      {{ .Content | safeHTML}}
+      {{ .Content | safeHTML }}
       {{if .Params.script}}
       {{ $script := (delimit (slice "scripts" .Params.script) "/")}}
       {{ partial (string $script) .}}
