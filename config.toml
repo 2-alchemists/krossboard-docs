@@ -26,7 +26,7 @@ googleAnalytics = ""
 [[menu.main]]
     name = "Overview & Features"
     weight = 10
-   url = "/overview-and-features/"  
+   url = "/docs/overview-concepts-features/"  
 [[menu.main]]
     name = "Documentation"
     weight = 20

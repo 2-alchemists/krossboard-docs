@@ -2,7 +2,7 @@
 title = "Krossboard Core Concepts"
 description = ""
 weight = 50
-draft = false
+draft = true
 bref = ""
 toc = true 
 aliases= ["/docs/how-data-are-collected-and-consolidated/"]

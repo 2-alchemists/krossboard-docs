@@ -1,7 +1,7 @@
 +++
 title = "Setup Krossboard for Amazon EKS"
 description = ""
-weight = 1
+weight = 10
 draft = false
 bref = ""
 toc = true 
