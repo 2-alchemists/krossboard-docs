@@ -24,9 +24,9 @@ googleAnalytics = ""
   yandex = "" # Optionnel, Yandex verification code  
 
 [[menu.main]]
-    name = "Product Overview"
+    name = "Overview & Features"
     weight = 10
-   url = "/product-overview/"  
+   url = "/overview-and-features/"  
 [[menu.main]]
     name = "Documentation"
     weight = 20
