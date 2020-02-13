@@ -59,7 +59,7 @@ kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ## Step 6: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-IP-addr>/`.
 
-**Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/how-data-are-collected-and-consolidated" >}}), which is thought with the intend to adhere to the accounting paradigm of public clouds, Krossboard is thought to provide consitent analytics with an hourly granularity.
+**Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), which is thought with the intend to adhere to the accounting paradigm of public clouds, Krossboard is thought to provide consitent analytics with an hourly granularity.
 
 The user interface features the following core analytics and reports:
  * **Current Usage**: For each cluster discovered and handled by Krossboard, this page displays piecharts showing the latest consolidated CPU and memory usage. Those reports -- updated every 5 minutes, highlight shares of resources, used, available and non-allocatable.
