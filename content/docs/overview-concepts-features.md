@@ -15,20 +15,20 @@ Key benefits of Krossboard include, without being limited to, the following:
 
 * **Ease cost allocation decisions**: Krossboard provides detailed reports on resources consumed by each project/application during various accounting periods (hourly, daily, monthly), thereby helping to share infrastructure and operations costs among your organization projects and/or business units.
 * **Help anticipate costs**: Krossboard features dynamic analytics reports that show how resources are being consumed over time. This helps organizations to forecast scaling up/down, hence to anticipate the related costs.
-* **Enabler for cloud-cost reduction strategy**: Krossboard helps make clusters consolidation decisions by giving factual insights that show how the clusters of your organization are utilized overview time. These insights can then be used to motivate and drive consolidation decisions for clusters that are used in a non-efficient way, leading to infrastructure and operations costs reduction.
+* **Enabler for cloud-cost reduction strategy**: Krossboard helps make clusters consolidation decisions by giving factual insights that show how the clusters of your organization are utilized over time. These insights can then be used to motivate and drive consolidation decisions for clusters that are used in a non-efficient way, leading to infrastructure and operations costs reduction.
 
 ## Simple integration yet robust tool
 Krossboard brings original concepts built in a robust and easy-to-integrate tool. Its core architecture can be described by the next key characteristics:
 
-* **Deploy in minutes, for all your clusters**: 
-    Krossboard is an integrated system easily deployable from any cloud provider's marketplace. It currently works on Amazon EKS, Google GKE, Microsoft AKS. Once installed, it automates the discovery of your Kubernetes clusters to centralize the analytics of their resource usage at a single place.
+* **Deploy in minutes, once for all your clusters**: 
+    Krossboard is an integrated system easily deployable from any cloud provider's marketplace. It's currently supported on Amazon EKS, Google GKE and Microsoft AKS. Once installed, it automates the discovery of your Kubernetes clusters to centralize the analytics of their resource usage at a single place.
 * **Consistent analytics**: 
     For each cluster, Krossboard regularly collects instantaneous usage metrics, aggregate and consolidate them over time, to produce, short-term (hourly), mid-term (daily) and long-term (monthly) analytics perspectives that cover periods up to a year.
 * **Efficient Visualization at a Central place**: 
-    For each and all of clusters, Krossboard produces friendly analytics dashboards with various charts and consolidated reports that help each organization to understand which share of resources each project/application is spending. Actually, at any point or period of time during the year, your organization can leverage relevant insights for accounting, cost allocation and capacity planning.
+    For each and all of your clusters, Krossboard produces friendly analytics dashboards with various charts and consolidated reports that help each organization to understand which share of resources each project/application is spending. Actually, at any point or period of time during the year, your organization can leverage relevant insights for accounting, cost allocation and capacity planning.
 
-## Etablished analytics paradigms
-Krossboard extends our breadth and depth expertises with [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics). The former keeps the main core design principles of the latter -- which is already broadly adopted by an established community, and extends them with capabilities that make it unique and effecive for public cloud platforms.
+## Established analytics paradigms
+Krossboard extends our breadth and depth expertises with [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics). The former keeps the main core design principles of the latter -- which is already broadly adopted by an established community, and add further capabilities that make it unique and effective for public clouds and multi-cluster environments.
 
 Here is a non-exhautive list of these core principles:
 
@@ -41,7 +41,7 @@ Here is a non-exhautive list of these core principles:
    
 
 ## Easy to Getting Started
-According to your cloud provide, consider one of these guides:
+According to your cloud provider, consider one of these guides:
 
 * [Installation for Amazon AKS]({{< relref "/docs/amazon-eks-installation" >}})
 * [Installation for Azure EKS]({{< relref "/docs/azure-aks-installation" >}})
