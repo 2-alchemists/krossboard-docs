@@ -2,7 +2,7 @@ This is the documentation site for Krossboard product.
 
 # Requirements
 
-[Hugo] static site generator.
+[Hugo](https://gohugo.io/) static site generator.
 
 ```
 sudo snap install hugo --classic
