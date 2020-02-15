@@ -26,7 +26,7 @@ Krossboard brings original concepts built in a robust and easy-to-integrate tool
     For each cluster, Krossboard regularly collects instantaneous usage metrics, aggregate and consolidate them over time, to produce, short-term (hourly), mid-term (daily) and long-term (monthly) analytics perspectives that cover periods up to a year.
 * **Efficient Visualization at a Central place**: 
     For each and all of your clusters, Krossboard produces friendly analytics dashboards with various charts and consolidated reports that help each organization to understand which share of resources each project/application is spending. Actually, at any point or period of time during the year, your organization can leverage relevant insights for accounting, cost allocation and capacity planning.
-* **User-extensible analytics**: Aware that organizations may need specific analytics that are not natively built in Krossboard, it's designed to enables to export any data its generates in CSV format; those data can further be processed to extract additional insights.
+* **User-extensible analytics**: Aware that organizations may need specific analytics that are not natively built in Krossboard, it's designed to feature the ability to export any data its generates in CSV format; those data can further be processed to extract additional insights.
 
 ## Established analytics paradigms
 Krossboard extends our breadth and depth expertises with [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics). The former keeps the main core design principles of the latter -- which is already broadly adopted by an established community, and add further capabilities that make it unique and effective for public clouds and multi-cluster environments.
