@@ -21,4 +21,4 @@
   Title: "User-extensible analytics"
   Image: "/images/icons/user-extensible.svg"
   Description: |
-    We know that organizations may need specific analytics that are not natively built in Krossboard. Hence it enables to export any data its generates in CSV format; those data can further be processed to extract additional insights.
+    Aware that organizations may need specific analytics that are not natively built in Krossboard, it enables to export any data its generates in CSV format; those data can further be processed to extract additional insights.
