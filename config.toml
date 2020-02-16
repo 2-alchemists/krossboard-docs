@@ -13,7 +13,7 @@ googleAnalytics = ""
   github = ""
   twitter = "koamc"
   email = "contact@koamc.com"
-  logo = "/images/logo/company-website-logo.png"
+  logo = "/images/logo/krossboard-logo.png"
   favicon = "/favicon.ico"
   contactRequestApiEndpoint = "https://demo.koamc.com/mx-gateway/sendmail"
 
