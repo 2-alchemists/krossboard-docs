@@ -50,12 +50,11 @@ TODO
 ## Step 5: Update Kubernetes RBAC settings
 At this stage, we're almost done; Krossboard is able to discover AKS clusters, but is nt yet allowed to retrieve metrics from Kubernetes -- this due to default RBAC settings on AKS. 
 
-The next command creates a `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
+The next command creates a `RoleBinding` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
+
 
 ```
-kubectl create clusterrolebinding krossboard-data-processor \
-    --clusterrole=view \
-    --user=clusterUser
+kubectl create https://krossboard.app/artifacts/deploy/k8s/clusterrolebinding-aks.yml
 ```
 
 ## Step 6: Get Access to Krossboard UI
