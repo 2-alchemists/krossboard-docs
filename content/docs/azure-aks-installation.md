@@ -52,8 +52,10 @@ At this stage, we're almost done; Krossboard is able to discover AKS clusters, b
 
 The next command creates a `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
 
-```sh
-kubectl create clusterrolebinding krossboard-data-processor --clusterrole=view --user=clusterUser
+```
+kubectl create clusterrolebinding krossboard-data-processor \
+    --clusterrole=view \
+    --user=clusterUser
 ```
 
 <!--
