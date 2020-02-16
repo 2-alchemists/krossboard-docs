@@ -58,14 +58,6 @@ kubectl create clusterrolebinding krossboard-data-processor \
     --user=clusterUser
 ```
 
-<!--
-The next command allows to create a Kubernetes `ClusterRole` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). You can download the parameter file to review it. 
-
-```
-kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
-```
--->
-
 ## Step 6: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-IP-addr>/`.
 

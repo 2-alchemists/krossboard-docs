@@ -127,7 +127,7 @@ Add the following under the `mapRoles` section, while **replacing** all instance
       username: {{ARN of Krossboard Role}}
 ```
 
-### ClusterRole and Binding to retrieve metrics from Kubernetes API 
+### RBAC settings to access metrics
 At this stage, we're almost done; Krossboard is able to discover EKS clusters, but is not yet allowed to retrieve metrics from Kubernetes -- this is due to default RBAC settings on EKS. 
 
 
@@ -138,14 +138,6 @@ kubectl create clusterrolebinding krossboard-data-processor \
     --clusterrole=view \
     --group=krossboard-data-processor
 ```
-
-<!--
-The next command allows to create a Kubernetes `ClusterRole` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). You can download the parameter file to review it.
-
-```
-kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
-```
--->
 
 ## Step 5: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-IP-addr>/`.
