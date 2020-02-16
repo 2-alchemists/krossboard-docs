@@ -51,7 +51,7 @@ Log into the AWS Management Console:
 * Click on `Create role` to apply the changes and complete the role creation.
 * **Copy the ARN of the role created**, it'll be needed later in this guide.
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -80,13 +80,13 @@ This step is based on the [official documentation of EKS](https://docs.aws.amazo
 
 It's required to first install [jq](https://stedolan.github.io/jq/):
 
-```
+```sh
 sudo snap install jq --classic`
 ```
 
 Once jq installed, run the following commands to download and deploy an instance of Kubernetes Metric Server in `kube-system` namespace.
 
-```
+```sh
 DOWNLOAD_URL=$(curl -Ls "https://api.github.com/repos/kubernetes-sigs/metrics-server/releases/latest" | jq -r .tarball_url)
 DOWNLOAD_VERSION=$(grep -o '[^/v]*$' <<< $DOWNLOAD_URL)
 curl -Ls $DOWNLOAD_URL -o metrics-server-$DOWNLOAD_VERSION.tar.gz
@@ -97,7 +97,7 @@ kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 
 Verify that installation has been successfull.
 
-```
+```sh
 kubectl -nkube-system get deploy metrics-serve
 ```
 ## Step 4: Update Kubernetes RBAC settings
@@ -108,18 +108,18 @@ We need to edit the `aws-auth` ConfigMap of EKS cluster to enable access to the 
 
 First backup the current `aws-auth` ConfigMap.
 
-```
+```sh
 kubectl -n kube-system get configmap aws-auth -o yaml > aws-auth-backup-$(date +%F).yaml
 ```
 
 Then edit the ConfigMap to update cluster authorization settings.
 
-```
+```sh
 kubectl -n kube-system edit configmap aws-auth
 ```
 
 Add the following under the `mapRoles` section, while **replacing** `{{AccountID}}` with the id of your AWS account.
-```
+```yaml
     - groups:
       - krossboard-data-processor
       rolearn: arn:aws:iam::{{AccountID}}:role/krossboard-data-processor
@@ -129,11 +129,20 @@ Add the following under the `mapRoles` section, while **replacing** `{{AccountID
 ### ClusterRole and Binding to retrieve metrics from Kubernetes API 
 At this stage, we're almost done; Krossboard is able to discover EKS clusters, but is not yet allowed to retrieve metrics from Kubernetes -- this is due to default RBAC settings on EKS. 
 
+
+The next command creates a `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
+
+```sh
+kubectl create clusterrolebinding krossboard-data-processor --clusterrole=view --group=krossboard-data-processor
+```
+
+<!--
 The next command allows to create a Kubernetes `ClusterRole` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). You can download the parameter file to review it.
 
 ```
 kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
+-->
 
 ## Step 5: Get Access to Krossboard UI
 Open a browser and point it to the address `http://<krossboard-IP-addr>/`.

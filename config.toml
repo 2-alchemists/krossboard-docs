@@ -34,7 +34,7 @@ googleAnalytics = ""
 [[menu.main]]
     name = "Support"
     weight = 30
-    url = "/contact/support-and-contact/" 
+    url = "/support"
 [[menu.main]]
     name = "About Us"
     weight = 100
