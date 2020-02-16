@@ -1,21 +1,21 @@
-baseURL = "http://koamc.com/"
+baseURL = "https://krossboard.app/"
 languageCode = "en-us"
 title = "Krossboard"
 theme = "kube"
 description = "Kubernetes Usage Analytics for Cost and Capacity Management"
 Paginate = 4
-googleAnalytics = ""
+googleAnalytics = "UA-158612003-1"
 
 [Params]
   RSSLink = "/index.xml"
   author = "Company Name"
   releaseYear = "2020"
-  github = ""
-  twitter = "koamc"
-  email = "contact@koamc.com"
+  github = "https://github.com/krossboard"
+  twitter = "https://twitter.com/krossboard"
+  email = "contact@krossboard.app"
   logo = "/images/logo/krossboard-logo.png"
-  favicon = "/favicon.ico"
-  contactRequestApiEndpoint = "https://demo.koamc.com/mx-gateway/sendmail"
+  favicon = "/images/favicon.ico"
+  contactRequestApiEndpoint = "https://demo.krossboard.app/mx-gateway/sendmail"
 
 [params.seo.webmaster_verifications]
   google = "" # Optionnel, Google verification code
