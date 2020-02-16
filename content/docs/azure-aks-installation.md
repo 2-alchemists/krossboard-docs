@@ -54,7 +54,7 @@ The next command creates a `RoleBinding` and an associated `ClusterRoleBinding` 
 
 
 ```
-kubectl create https://krossboard.app/artifacts/deploy/k8s/clusterrolebinding-aks.yml
+kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
 ```
 
 ## Step 6: Get Access to Krossboard UI

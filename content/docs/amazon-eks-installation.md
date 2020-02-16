@@ -134,7 +134,7 @@ At this stage, we're almost done; Krossboard is able to discover EKS clusters, b
 The next command creates a `RoleBinding` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
 
 ```
-kubectl create https://krossboard.app/artifacts/deploy/k8s/clusterrolebinding-eks.yml
+kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
 ## Step 5: Get Access to Krossboard UI
