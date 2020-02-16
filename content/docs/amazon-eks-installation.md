@@ -37,13 +37,14 @@ Log into the AWS Management Console:
 * Select IAM service
 * Go to `Roles` section
 * Click on `Create role`
-* Select `EC2` for type of trusted entity and click `Next`
+* Select `EC2` for type of trusted entity and click `Next:Permissions`
 * Click on `Create policy`, this will open a new tab to create a policy.
 * In the policy tab, click on `JSON` section and then copy and paste the policy provided below.
+  **Important:** Replace the existing policy content.
 * Click on `Review policy`
 * Set a name and possibly a description for the policy.
 * Click on `Create policy` to apply the changes.
-* Go back to the first tab (role creation) and click on the refresh icon at the right corner of the policy list.
+* Go back to the initial role creation tab, and click on the refresh icon at the right corner of the policy list.
 * Search for the created policy and select it.
 * Click on `Next:Tabs` and fill in tags if applicable.
 * Click on `Next:Review` and check that all the information provided are fine.
@@ -81,7 +82,7 @@ This step is based on the [official documentation of EKS](https://docs.aws.amazo
 It's required to first install [jq](https://stedolan.github.io/jq/):
 
 ```
-sudo snap install jq --classic`
+sudo snap install jq --classic
 ```
 
 Once jq installed, run the following commands to download and deploy an instance of Kubernetes Metric Server in `kube-system` namespace.
@@ -98,7 +99,7 @@ kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 Verify that installation has been successfull.
 
 ```
-kubectl -nkube-system get deploy metrics-serve
+kubectl -nkube-system get deploy metrics-server
 ```
 ## Step 4: Update Kubernetes RBAC settings
 
@@ -118,12 +119,12 @@ Then edit the ConfigMap to update cluster authorization settings.
 kubectl -n kube-system edit configmap aws-auth
 ```
 
-Add the following under the `mapRoles` section, while **replacing** `{{AccountID}}` with the id of your AWS account.
+Add the following under the `mapRoles` section, while **replacing** all instances `{{ARN of Krossboard Role}}` with the ARN of the role created previously.
 ```
     - groups:
       - krossboard-data-processor
-      rolearn: arn:aws:iam::{{AccountID}}:role/krossboard-data-processor
-      username: arn:aws:iam::{{AccountID}}:role/krossboard-data-processor
+      rolearn: {{ARN of Krossboard Role}}
+      username: {{ARN of Krossboard Role}}
 ```
 
 ### ClusterRole and Binding to retrieve metrics from Kubernetes API 
