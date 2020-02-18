@@ -190,9 +190,14 @@
   margin-top: 18px;
 }
 
+.article aside ul {
+  margin-top: 2px;
+  margin-bottom: 10px
+}
+
 .article aside ul > li {
-    margin-top: 18px;
-    list-style: none
+  margin: 5px;
+  list-style: none
 }
 
   
