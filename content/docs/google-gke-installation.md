@@ -54,9 +54,10 @@ Proceed as decribed below to create an instance of Krossboard from GCP Marketpla
 * Click on `Launch on Compute Engine`. If you see a project selection window, choose the project in which to create the instance.
 * On the `New Krossboard VM deployment` page, first enter a `Deployment name`. This will be the root of your virtual machine name. Compute Engine appends `-vm` to this name when naming your instance.
 * Choose a `Zone` and `Machine type`. You can leave the other settings as they are or change them as needed.
-* On the `Service account` field, search the service account created previously and select it.  
-* Maje sure to enable to port ports 80 and 443 on the instance, i.e. to provide access to Krossboard UI.
+* Under the section `Identity and API access > Service account`, select the service account created previously and select it.  
+* Under the section `Identity and API access > Firewall`, select `Allow HTTP traffic` to enable access to Krossboard UI.
 * Scroll to the bottom of the page, read the GCP Marketplace Terms of Service, and if you accept the terms, select the checkbox.
+* Expand the section `Management, security, disks, networking, sole tenancy`, 
 * Click `Deploy` to validate the deployment.
 * Once the deployment completed, note the IP address of the instance.
 
