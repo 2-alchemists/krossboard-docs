@@ -6,11 +6,11 @@ toc = false
 +++
 
 NOTICE: Krossboard is a fast moving product, developed using agile and continuous delivery methodology.
-Make sure that you're always using the latest recommended version of the product. 
+Make sure to always use a recommended version of the product. 
 
-Either way, we treat  any feedback or issue with a special care and with high priority.
-Accoring to your need, please checkout one of the following resources to submit requests:
+Either way, we treat any feedback or issues with a special care and the priority it deserves.
+Accoring to your need, get through one of the below resources to submit your request:
 
-* You're experiencing an issue, please submit the issue with sufficient details [here](#). 
-  Please provide as much detail as possible, and don't miss to indicate your version of Krossboard.
-* You're needing some information not available on this website, please fill in our contact form and we'll be happy to answer your question. 
+* You're experiencing an issue, please submit it with sufficient details [here](#). 
+  Provide as much detail as possible, and don't miss to indicate the version of Krossboard.
+* You're looking for information not available on this website, please fill in [this contact form](#) and we'll be happy to answer your question. 
