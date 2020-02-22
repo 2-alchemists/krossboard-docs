@@ -1,9 +1,12 @@
 +++
 title = "About Us"
-description = "We're experts of business intelligence aiming to help company reduce their operations costs."
+description = ""
 draft = false
 toc = false 
 +++
+
+We are cloud experts, we have breadth and depth experience building cloud platforms and applications.
+We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard. 
 
 ## About Krossboard
 Krossboard is edited by XYZ COMPANY. Founded in 2020 by Rodrigue Chakode and Christophe Camel, XYZ COMPANY has been created to be a leading company to leverage efficient analytics to help organizations undertsand their today and tomorrow cloud-native computing platforms.
