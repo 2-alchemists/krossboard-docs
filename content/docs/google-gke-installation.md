@@ -47,7 +47,7 @@ The installation steps are straightforward and can be summarized as follows:
 * Click `Continue` and then on `Done` to complete the creation.
 
 
-## Step 3: Deploy a Krossboard VM from GCP Marketplace
+## Step 3: Deploy Krossboard from GCP Marketplace
 Proceed as decribed below to create an instance of Krossboard from GCP Marketplace:
 
 * Go to the Krossboard Marketplace page.

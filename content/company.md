@@ -9,7 +9,7 @@ We are cloud experts, we have breadth and depth experience building cloud platfo
 We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard. 
 
 ## About Krossboard
-Krossboard is edited by XYZ COMPANY. Founded in 2020 by Rodrigue Chakode and Christophe Camel, XYZ COMPANY has been created to be a leading company to leverage efficient analytics to help organizations undertsand their today and tomorrow cloud-native computing platforms.
+Krossboard is edited and supported by XYZ COMPANY. Founded in 2020 by Rodrigue Chakode and Christophe Camel, XYZ COMPANY has been created to be a leading company to provide efficient analytics to help organizations undertsand their today and tomorrow cloud-native computing platforms.
 
 ## Contact Us
 Please fill our [contact form]({{<relref "contact/contact">}}) and we'll be happy to answer your question. 

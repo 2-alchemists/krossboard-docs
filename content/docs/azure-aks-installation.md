@@ -34,7 +34,7 @@ The installation steps would be straightforward and can be summarized as follows
 ## Step 1: Select or create the resource group
 TODO
 
-## Step 2: Deploy a Krossboard VM from Azure Marketplace
+## Step 2: Deploy Krossboard from Azure Marketplace
 Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
 
 * TODO

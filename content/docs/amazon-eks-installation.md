@@ -27,7 +27,7 @@ The installation steps would be straightforward and can be summarized as follows
 * Step 2: Deploy an EC2 instance of Krossboard from [AWS Marketplace](https://aws.amazon.com/marketplace). During this step, we should pay attention to:
   * Select the region in which the instance will be deployed
   * Assign the aforecreated AWS IAM role to the instance.
-* Step 3: On EKS cluster, deploy an instance of [Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html), which exposes metrics that Krossboard consumes to produce its advanced analytics.
+* Step 3: On EKS cluster, deploy an instance of [Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). It exposes metrics consumed by Krossboard to produce its advanced analytics.
 * Step 4: On EKS cluster, update Kubernetes RBAC settings to allow Krossboard to query data from Kubernetes API. 
 * Step 5: Get access to Krossboard UI
 
@@ -69,7 +69,7 @@ Log into the AWS Management Console:
 ```
 
 
-## Step 2: Deploy a Krossboard VM from AWS Marketplace
+## Step 2: Deploy Krossboard from AWS Marketplace
 Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
 
 * TODO
@@ -119,12 +119,12 @@ Then edit the ConfigMap to update cluster authorization settings.
 kubectl -n kube-system edit configmap aws-auth
 ```
 
-Add the following under the `mapRoles` section, while **replacing** all instances `{{ARN of Krossboard Role}}` with the ARN of the role created previously.
+Add the following under the `mapRoles` section, while **replacing** all instances of the `<ARN of Krossboard Role>` snippet with the ARN of the role created previously.
 ```
     - groups:
       - krossboard-data-processor
-      rolearn: {{ARN of Krossboard Role}}
-      username: {{ARN of Krossboard Role}}
+      rolearn: <ARN of Krossboard Role>
+      username: <ARN of Krossboard Role>
 ```
 
 ### RBAC settings to access metrics
