@@ -5,7 +5,7 @@ draft = false
 toc = false 
 +++
 
-We are cloud experts, we have breadth and depth experience building cloud platforms and applications.
+We are cloud professionals, we have breadth and depth experience building cloud platforms and applications.
 We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard. 
 
 ## About Krossboard
@@ -25,13 +25,3 @@ TODO: add avatar and add a short bio
 TODO: add avatar and add a short bio
 
 ![](/images/company/avatar-ccamel.png)
-
-
-## About this website
-TODO
-
-### Hosting information
-TODO
-
-### Terms of use
-TODO
