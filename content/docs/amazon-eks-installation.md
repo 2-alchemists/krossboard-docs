@@ -18,7 +18,8 @@ To run this procedure successfully, it's assumed that:
  * You have a basic level of practice with AWS concepts.
  * You have access to an AWS account with sufficient permissions, to create and assign AWS IAM roles, and to create EC2 instances from AWS Marketplace.
  * You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
- * You have `kubectl` with admin access to your EKS clusters; this level of access is notably required to configure RBAC settings that Krossboard needs to retrieve metrics from Kubernetes.
+ * You're using a Linux-based station with [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed.
+ * You have admin-level access to your EKS clusters through `kubectl`; this level of access is notably required to configure components and RBAC settings that Krossboard needs to retrieve metrics from Kubernetes.
 
 ## Summary of Steps
 The installation steps would be straightforward and can be summarized as follows:
@@ -28,7 +29,7 @@ The installation steps would be straightforward and can be summarized as follows
   * Select the region in which the instance will be deployed
   * Assign the aforecreated AWS IAM role to the instance.
 * Step 3: On EKS cluster, deploy an instance of [Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). It exposes metrics consumed by Krossboard to produce its advanced analytics.
-* Step 4: On EKS cluster, update Kubernetes RBAC settings to allow Krossboard to query data from Kubernetes API. 
+* Step 4: On EKS cluster, update Kubernetes RBAC settings to allow Krossboard to query data from Kubernetes. 
 * Step 5: Get access to Krossboard UI
 
 ## Step 1: Create an AWS IAM role for Kroassboard
@@ -69,7 +70,7 @@ Log into the AWS Management Console:
 ```
 
 
-## Step 2: Deploy Krossboard from AWS Marketplace
+## Step 2: Deploy Krossboard from the AWS Marketplace
 Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
 
 * TODO
