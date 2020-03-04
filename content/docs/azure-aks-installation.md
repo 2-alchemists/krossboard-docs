@@ -8,7 +8,7 @@ toc = true
 +++
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine within a [resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview).
-Within a resource group, it automatically discovers and handles AKS clusters according to Azure IAM roles assigned to it. 
+Within this resource group, it automatically discovers and handles AKS clusters according to Azure IAM roles assigned to it. 
 
 This guide describes step-by-step how to setup an instance of Krossboard within an Azure resource group. 
 
