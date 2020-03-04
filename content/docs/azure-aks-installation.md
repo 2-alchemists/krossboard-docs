@@ -7,10 +7,10 @@ bref = ""
 toc = true 
 +++
 
-On Microsoft Azure cloud, Krossboard is designed to work as a standalone virtual machine within a [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview).
-In that resource group, it can discover and take over any AKS clusters. 
+On Microsoft Azure, Krossboard works as a standalone virtual machine within a [resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview).
+Within a resource group, it automatically discovers and handles AKS clusters according to Azure IAM roles assigned to it. 
 
-This guide describes steps to setup an instance of Krossboard within an Azure resource group. 
+This guide describes step-by-step how to setup an instance of Krossboard within an Azure resource group. 
 
 
 ## Before you begin
@@ -20,24 +20,23 @@ To run this procedure successfully, it's assumed that:
  * You have access to an Azure subscription with sufficient permissions to:
    * Assign managed identity;
    * Assign managed roles;
-   * Create virtual machines from Azure Marketplace.
- * You have access to Azure Portal, though the steps can be easily adapted for a scripted/automated deployment.
- * You're using a Linux-based station with [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed.
- * You have admin-level access to your AKS clusters through `kubectl`; this level of access is notably required to configure RBAC settings that Krossboard needs to retrieve metrics from Kubernetes.
+   * Create virtual machines from [the Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
+   * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
+ * You're using a Linux-based workstation with [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed.
+ * You have admin-level access to your AKS clusters through `kubectl` (this level of access is required to configure RBAC settings that Krossboard needs).
 
 ## Summary of Steps
 The installation steps would be straightforward and can be summarized as follows:
 
 * Step 1: Select or create the resource group where Krossboard will be deployed.
-* Step 2: Deploy a Krossboard virtual machine from [Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
+* Step 2: Deploy a Krossboard virtual machine from the Azure Marketplace.
 * Step 3: Assign a managed identity to the created Krossboard virtual machine
-* Step 4: Assign the Azure IAM roles `Managed Application Reader` and `Azure Kubernetes Service Cluster User Role` to the Krossboard virtual machine. 
-* Step 5: On each AKS cluster, update RBAC settings to allow Krossboard to query metrics from Kubernetes. 
+* Step 4: Assign the Azure IAM roles to the Krossboard virtual machine. A basic setup requires the role of `Managed Application Reader` and the role of `Azure Kubernetes Service Cluster User Role`. 
+* Step 5: On each AKS cluster, update RBAC settings to allow Krossboard to query Kubernetes metrics. 
 * Step 6: Get access to Krossboard UI
 
 ## Step 1: Select or create the resource group
-Krossboard discovers and handles AKS clusters as a per resource group basics. The clusters can be spread accross different regions/zones in the resource group. 
-In contrary, for clusters located in different resource groups, you'll need an instance of Krossboard per resource group. 
+Krossboard discovers and handles AKS clusters as a per resource group basics. Those clusters can be spread accross different regions and zones in that resource group. 
 
 So let's consider that we've selected a resource group and move forward.
 
@@ -48,22 +47,23 @@ Proceed as decribed below to create an instance of Krossboard from the Azure Mar
 * Once the deployment completed, note the IP address of the instance.
 
 
-## Step 3: Assign a managed identity to the virtual machine
-The Krossboard instance needs to have an Azure managed identity. This is a prerequisite to assign Azure IAM roles to the instance. 
+## Step 3: Assign a managed identity to the Krossboard instance
+This is a prerequisite to assign Azure IAM roles to an instance. 
 
-Connect to Azure portal as a subscription administrator and perform the below steps:
+Connect to Azure portal as a subscription administrator and perform these steps:
 
-* Select `Home -> Virtual machines` to show the list of virtual machines.
-* Select the Krossboard instance in the list of virtual machines; this will open the instance's properties window.
+* Select `Home -> Virtual machines` to list virtual machine instances.
+* Click on the Krossboard instance in the list of virtual machines to display the instance's properties window.
 * Select `Identity` from the left pane of the properties window.
-* Under `System assigned` tab, switch the `Status` to `On`.
+* Under `System assigned` tab, switch `Status` to `On`.
 * Click on `Save` and, when prompted, click on `Yes` to confirm the change. 
 
 
-## Step 4: Assign required roles to the virtual machine
-This step allows to set sufficient Azure IAM roles to the Krossboard instance. These roles give read-only permissions to discover AKS clusters. 
+## Step 4: Assign Azure IAM roles to the Krossboard instance
+A basic setup of Krossboard requires the role of `Managed Application Reader` and the role of `Azure Kubernetes Service Cluster User Role`.
+These roles give read-only permissions to discover AKS clusters. 
 
-Connect to Azure portal as a subscription administrator and perform the below steps:
+Connect to Azure portal as a subscription administrator and perform these steps:
 
 * Select `Home -> Subscriptions` and, in the list of subscriptions, select the target subscription.
 * Select `Access control (IAM)` .
