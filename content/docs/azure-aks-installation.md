@@ -7,10 +7,10 @@ bref = ""
 toc = true 
 +++
 
-On Microsoft Azure, Krossboard works as a standalone virtual machine within a [resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview).
-Within this resource group, it automatically discovers and handles AKS clusters according to Azure IAM roles assigned to it. 
+On Microsoft Azure, Krossboard works as a standalone virtual machine.
+As of current version each instance of Krossboard automatically discovers and handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
 
-This guide describes step-by-step how to setup an instance of Krossboard within an Azure resource group. 
+This guide describes step-by-step how to setup an instance of Krossboard for an Azure resource group. 
 
 
 ## Before you begin
@@ -22,8 +22,7 @@ To run this procedure successfully, it's assumed that:
    * Assign managed roles;
    * Create virtual machines from [the Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
    * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
- * You're using a Linux-based workstation with [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed.
- * You have admin-level access to your AKS clusters through `kubectl` (this level of access is required to configure RBAC settings that Krossboard needs).
+ * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
 ## Summary of Steps
 The installation steps would be straightforward and can be summarized as follows:

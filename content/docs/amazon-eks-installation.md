@@ -7,10 +7,10 @@ bref = ""
 toc = true 
 +++
 
-On Amazon Web Services (AWS) cloud, Krossboard is designed to work as a standalone EC2 virtual machine on AWS cloud.
-As of current version, it discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
+On Amazon Web Services (AWS), Krossboard works as a standalone EC2 virtual machine.
+As of current version each instance of Krossboard automatically discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
 
-This guide describes steps to setup an instance of Krossboard within an AWS region. 
+This guide describes step-by-step how to setup an instance of Krossboard for an AWS region. 
 
 ## Before you begin
 To run this procedure successfully, it's assumed that:
@@ -18,8 +18,7 @@ To run this procedure successfully, it's assumed that:
  * You have a basic level of practice with AWS concepts.
  * You have access to an AWS account with sufficient permissions, to create and assign AWS IAM roles, and to create EC2 instances from AWS Marketplace.
  * You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
- * You're using a Linux-based station with [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed.
- * You have admin-level access to your EKS clusters through `kubectl`; this level of access is notably required to configure components and RBAC settings that Krossboard needs to retrieve metrics from Kubernetes.
+ * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
 ## Summary of Steps
 The installation steps would be straightforward and can be summarized as follows:
