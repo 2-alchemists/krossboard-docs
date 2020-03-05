@@ -5,23 +5,38 @@ draft = false
 toc = false 
 +++
 
-We are cloud professionals, we have breadth and depth experience building cloud platforms and applications.
-We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard. 
+## The company
+Krossboard is edited and supported by 2Alchimists SAS, a French company co-founded in 2020 by Rodrigue Chakode and Christophe Camel.
 
-## About Krossboard
-Krossboard is edited and supported by XYZ COMPANY. Founded in 2020 by Rodrigue Chakode and Christophe Camel, XYZ COMPANY has been created to be a leading company to provide efficient analytics to help organizations undertsand their today and tomorrow cloud-native computing platforms.
+2Alchimists SAS is headquartered at:
 
-## Contact Us
-Please fill our [contact form]({{<relref "contact/contact">}}) and we'll be happy to answer your question. 
+TODO: company address
 
-## About Krossboard authors
-### Rodrigue Chakode
+## Who are we ?
+We are cloud professionals; we have breadth and depth experience building cloud and cloud-native platforms and applications.
+We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard!
 
-TODO: add avatar and add a short bio
+We're there to help organizations undertsand and master their today and tomorrow cloud computing platforms. 
 
-![](/images/company/avatar-ccamel.png)
+TODO: add avatar of cofounders
 
-### Christophe Camel
-TODO: add avatar and add a short bio
+![](/images/company/avatar-cofounders.png)
 
-![](/images/company/avatar-ccamel.png)
+Rodrigue Chakode is (position on pic) is... TODO: add short bio
+
+Christophe Camel is (position on pic) is... TODO: add short bio
+
+## Legal company information
+This section provides legal information about the 2Alchimists SAS company.
+
+### Registration Number (KBIS)
+XXXXXXXXXXXXX RCS TOULOUSE FRANCE
+
+### Capital
+1000 Euros
+
+ ### SIRET
+XXXXXXXXXXXXX
+
+### VAT ID / Sale tax ID
+XXXXXXXXXXXXX

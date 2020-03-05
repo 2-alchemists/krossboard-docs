@@ -8,7 +8,7 @@ googleAnalytics = "UA-158612003-1"
 
 [Params]
   RSSLink = "/index.xml"
-  author = "Company Name"
+  author = "2Alchimists SAS"
   releaseYear = "2020"
   github = "https://github.com/krossboard"
   twitter = "https://twitter.com/krossboard"
