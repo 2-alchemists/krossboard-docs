@@ -14,24 +14,15 @@ This guide describes step-by-step how to setup an instance of Krossboard for an 
 
 
 ## Before you begin
-To run this procedure successfully, it's assumed that:
+This guide should be straightforward to follow, assuming that:
 
- * You have a basic level of practice with Azure concepts.
- * You have access to an Azure subscription with sufficient permissions to:
-   * Assign managed identity;
-   * Assign managed roles;
-   * Create virtual machines from [the Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
-   * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
- * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
-
-## Summary of Steps
-The installation steps would be straightforward and can be summarized as follows:
-
-* Step 1: Select or create the resource group where Krossboard will be deployed.
-* Step 2: Deploy a Krossboard virtual machine from the Azure Marketplace.
-* Step 3: Configure Azure IAM permissions to discover AKS clusters
-* Step 4: Configure each AKS cluster's RBAC settings to enable access (read-only) to metrics. 
-* Step 5: Get access to Krossboard UI
+* You have a basic level of practice with Azure concepts.
+* You have access to an Azure subscription with sufficient permissions to:
+  * Assign managed identity;
+  * Assign managed roles;
+  * Create virtual machines from [the Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
+  * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
+* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
 ## Step 1: Select or create the resource group
 Krossboard discovers and handles AKS clusters as a per resource group basics. Those clusters can be spread accross different regions and zones in that resource group. 

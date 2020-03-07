@@ -13,20 +13,13 @@ As of current version each Krossboard instance discovers and handles GKE cluster
 This guide describes step-by-step how to setup an instance of Krossboard for a GCP project. 
 
 ## Before you begin
-To run this procedure successfully, it's assumed that:
- * You have a basic level of practice with GCP concepts.
- * You have access to a GCP project with sufficient permissions, to create GCP IAM service account and to assign GCP predefined roles to a service account.
- * You have access to GCP Cloud Console, though you can later adapt the steps for a scripted/automated deployment.
+This guide should be straightforward to follow, assuming that:
+
+* You have a basic level of practice with GCP concepts.
+* You have access to a GCP project with sufficient permissions, to create GCP IAM service account and to assign GCP predefined roles to a service account.
+* You have access to GCP Cloud Console, though you can later adapt the steps for a scripted/automated deployment.
 
 > **Important:** Don't be confused, it's worth nothing that [GCP service accounts](https://cloud.google.com/iam/docs/understanding-service-accounts) and [Kubernetes services accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) are two different concepts.
-
-## Summary of Steps
-The installation steps are straightforward and can be summarized as follows:
-
-* Step 1: Select a GCP project for which Krossboard will be deployed.
-* Step 2: Deploy an instance of Krossboard from the [GCP Marketplace](https://cloud.google.com/marketplace).
-* Step 3: Configure GCP IAM permissions to access (read-only) GKE clusters.
-* Step 4: Get access to Krossboard UI
 
 ## Step 1: Select a GCP project
  From GCP Cloud Console, select (or create if not yet the case) a project.

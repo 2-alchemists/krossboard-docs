@@ -13,22 +13,12 @@ As of current version each instance of Krossboard automatically discovers and ha
 This guide describes step-by-step how to setup an instance of Krossboard for an AWS region. 
 
 ## Before you begin
-To run this procedure successfully, it's assumed that:
+This guide should be straightforward to follow, assuming that:
 
- * You have a basic level of practice with AWS concepts.
- * You have access to an AWS account with sufficient permissions, to create and assign AWS IAM roles, and to create EC2 instances from AWS Marketplace.
- * You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
- * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
-
-## Summary of Steps
-The installation steps would be straightforward and can be summarized as follows:
-
-* Step 1: Choose the target AWS region.
-* Step 2: Deploy an EC2 instance of Krossboard from the [AWS Marketplace](https://aws.amazon.com/marketplace).
-* Step 3: Configure AWS IAM permissions to discover EKS clusters.
-* Step 4: On EKS cluster, deploy an instance of [Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). It exposes metrics consumed by Krossboard to produce its advanced analytics.
-* Step 5: On EKS cluster, update Kubernetes RBAC settings to allow Krossboard to query data from Kubernetes. 
-* Step 6: Get access to Krossboard UI
+* You have a basic level of practice with AWS concepts.
+* You have access to an AWS account with sufficient permissions, to create and assign AWS IAM roles, and to create EC2 instances from AWS Marketplace.
+* You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
+* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
 ## Step 1: Deploy Krossboard from the AWS Marketplace
 Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
