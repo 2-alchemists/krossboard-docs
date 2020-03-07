@@ -24,8 +24,8 @@ To run this procedure successfully, it's assumed that:
 The installation steps are straightforward and can be summarized as follows:
 
 * Step 1: Select a GCP project for which Krossboard will be deployed.
-* Step 2: Create a GCP service account and assign it to the Krossboard instance. This service account actually needs to have the predefined role of `Kubernetes Engine Viewer` (i.e. read-only access to GKE resources). 
-* Step 3: Deploy an instance of Krossboard from the [GCP Marketplace](https://cloud.google.com/marketplace). During this step, you will assign the aforementioned GCP service account to the Krossboard instance being created.
+* Step 2: Deploy an instance of Krossboard from the [GCP Marketplace](https://cloud.google.com/marketplace).
+* Step 3: Configure GCP IAM permissions to access (read-only) GKE clusters.
 * Step 4: Get access to Krossboard UI
 
 ## Step 1: Select a GCP project
@@ -33,12 +33,26 @@ The installation steps are straightforward and can be summarized as follows:
 
  ![](/images/docs/gcp-select-project.png)
 
- ## Step 2: Create a GCP service account
- Follow the next steps to create a GCP service account.
- 
-* In the top-left corner of the GCP console, click Menu ![](/images/docs/gcp-menu.png).
-* Click `IAM & Admin` and then `Service accounts`.
-* Click `Create Service Account` and in the `Service account name` field, enter a name for the service account. 
+## Step 2: Deploy Krossboard from the GCP Marketplace
+Proceed as decribed below:
+
+* Go to the Krossboard page on GCP Marketplace.
+* Click on `Launch on Compute Engine`. If you're prompted, select the project in which to create the instance.
+* On the `New Krossboard VM deployment` page, first enter a `Deployment name`. This will be the root of your virtual machine name. Compute Engine appends `-vm` to this name when naming your instance.
+* Choose a `Zone` and `Machine type`. You can leave the other settings as they are or change them as needed.
+* Under the section `Identity and API access > Firewall`, select `Allow HTTP traffic` to enable access to Krossboard UI.
+* Scroll to the bottom of the page, read the GCP Marketplace Terms of Service, and if you accept the terms, select the checkbox.
+* Expand the section `Management, security, disks, networking, sole tenancy`, 
+* Click `Deploy` to validate the deployment.
+* Once the deployment completed, note the IP address of the instance.
+
+## Step 3: Configure GCP IAM permissions to access GKE clusters
+This step consists in creating a GCP service account with the predefined role of `Kubernetes Engine Viewer` (read-only access to GKE resources), and assign it to the krossboard instance.
+
+First create the GCP service account with the aforementioned role.
+
+* Go to the menu ![](/images/docs/gcp-menu.png), then select `IAM & Admin -> Service accounts`.
+* Click on `Create Service Account` and in the `Service account name` field, enter a name for the service account. 
 * (Optional) Enter a description of the service account.
 * Click `Create`.
 * Click the `Select a role` field and type `Kubernetes Viewer` in the filter field.
@@ -46,19 +60,16 @@ The installation steps are straightforward and can be summarized as follows:
 * Click `Continue` and then on `Done` to complete the creation.
 
 
-## Step 3: Deploy Krossboard from the GCP Marketplace
-Proceed as decribed below:
+Then assign the service account to the Krossboard instance.
 
-* Go to the Krossboard page on GCP Marketplace.
-* Click on `Launch on Compute Engine`. If you're prompted, select the project in which to create the instance.
-* On the `New Krossboard VM deployment` page, first enter a `Deployment name`. This will be the root of your virtual machine name. Compute Engine appends `-vm` to this name when naming your instance.
-* Choose a `Zone` and `Machine type`. You can leave the other settings as they are or change them as needed.
-* Under the section `Identity and API access > Service account`, select the service account created previously and select it.  
-* Under the section `Identity and API access > Firewall`, select `Allow HTTP traffic` to enable access to Krossboard UI.
-* Scroll to the bottom of the page, read the GCP Marketplace Terms of Service, and if you accept the terms, select the checkbox.
-* Expand the section `Management, security, disks, networking, sole tenancy`, 
-* Click `Deploy` to validate the deployment.
-* Once the deployment completed, note the IP address of the instance.
+* Go to the menu ![](/images/docs/gcp-menu.png), then select ` -> Compute Engine -> VM Instances`.
+* Select the Krossboard instance from the list of virtual machines by clicking on its name.
+* Click on `Edit`.
+* Scroll down to the `Service account` section and click on the field.
+* Go through the displayed list of service accounts and select the one created above.
+* Click on `Save` to apply the change.
+  
+The Krossboard instance is now ready for operations.
 
 ## Step 4: Get Access to Krossboard UI
 Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.

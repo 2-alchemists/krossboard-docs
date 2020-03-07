@@ -29,10 +29,9 @@ The installation steps would be straightforward and can be summarized as follows
 
 * Step 1: Select or create the resource group where Krossboard will be deployed.
 * Step 2: Deploy a Krossboard virtual machine from the Azure Marketplace.
-* Step 3: Assign a managed identity to the created Krossboard virtual machine
-* Step 4: Assign the Azure IAM roles to the Krossboard virtual machine. A basic setup requires the role of `Managed Application Reader` and the role of `Azure Kubernetes Service Cluster User Role`. 
-* Step 5: On each AKS cluster, update RBAC settings to allow Krossboard to query Kubernetes metrics. 
-* Step 6: Get access to Krossboard UI
+* Step 3: Configure Azure IAM permissions to discover AKS clusters
+* Step 4: Configure each AKS cluster's RBAC settings to enable access (read-only) to metrics. 
+* Step 5: Get access to Krossboard UI
 
 ## Step 1: Select or create the resource group
 Krossboard discovers and handles AKS clusters as a per resource group basics. Those clusters can be spread accross different regions and zones in that resource group. 
@@ -46,24 +45,21 @@ Proceed as decribed below to create an instance of Krossboard from the Azure Mar
 * Once the deployment completed, note the IP address of the instance.
 
 
-## Step 3: Assign a managed identity to the Krossboard instance
-This is a prerequisite to assign Azure IAM roles to an instance. 
+## Step 3: Configure Azure IAM permissions to discover AKS clusters
+A standard setup of Krossboard requires the role of `Managed Application Reader` and the role of `Azure Kubernetes Service Cluster User Role`. 
 
-Connect to Azure portal as a subscription administrator and perform these steps:
+As a prerequisite, the instance must enable an Azure managed identity. 
 
+* Connect to Azure portal as a subscription administrator.
 * Select `Home -> Virtual machines` to list virtual machine instances.
 * Click on the Krossboard instance in the list of virtual machines to display the instance's properties window.
 * Select `Identity` from the left pane of the properties window.
 * Under `System assigned` tab, switch `Status` to `On`.
 * Click on `Save` and, when prompted, click on `Yes` to confirm the change. 
 
+Once the instance has its managed identity enabled, we can assign the required Azure IAM roles . 
 
-## Step 4: Assign Azure IAM roles to the Krossboard instance
-A basic setup of Krossboard requires the role of `Managed Application Reader` and the role of `Azure Kubernetes Service Cluster User Role`.
-These roles give read-only permissions to discover AKS clusters. 
-
-Connect to Azure portal as a subscription administrator and perform these steps:
-
+* Connect to Azure portal as a subscription administrator.
 * Select `Home -> Subscriptions` and, in the list of subscriptions, select the target subscription.
 * Select `Access control (IAM)` .
 * From the top of the right pane, select `Add -> Add role assignment`; this will open a role assignment pane.
@@ -74,17 +70,17 @@ Connect to Azure portal as a subscription administrator and perform these steps:
 * In the field `Select`, search for the Krossboard instance created in step 2 above and select it.
 * Click on `Save` to validate the assignement.
 
-## Step 5: Update Kubernetes RBAC settings
-At this stage, we're almost done; Krossboard is able to discover AKS clusters, but is nt yet allowed to retrieve metrics from Kubernetes -- this due to default RBAC settings on AKS. 
+## Step 4: Configure RBAC to access AKS cluster's metrics
+At this stage we're almost done, but Krossboard is not yet allowed to retrieve metrics from discovered AKS clusters. The last step is to configure RBAC settings on each AKS cluster to enable the required permissions.
 
-The next command creates a `RoleBinding` and an associated `ClusterRoleBinding` to permit Krossboard to retrieve metrics from Kubernetes (read-only access). 
+To ease that, Krossboard is released with a ready-to-use configuration file that can be applied as follows on your AKS clusters as below. This create a `ClusterRole` and an associated `ClusterRoleBinding` giving access to the target AKS cluster metrics.
 
 
 ```
 kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
 ```
 
-## Step 6: Get Access to Krossboard UI
+## Step 5: Get Access to Krossboard UI
 Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.
 
 Replace `krossboard-IP-addr` with the address of the Krossboard instance.
