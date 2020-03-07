@@ -55,6 +55,10 @@
   margin: auto;
 }
 
+#components .item {
+  background: #E3F2FD;
+}
+
 #action-buttons {
   margin-top: 32px;
   margin-bottom: auto;
