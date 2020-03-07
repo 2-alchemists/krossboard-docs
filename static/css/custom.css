@@ -58,6 +58,9 @@
 #components .item {
   background: #E3F2FD;
 }
+#contents {
+  background: #E3F2FD;
+}
 
 #action-buttons {
   margin-top: 32px;
