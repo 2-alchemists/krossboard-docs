@@ -20,7 +20,12 @@ This guide should be straightforward to follow, assuming that:
 * You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
-## Step 1: Deploy Krossboard from the AWS Marketplace
+## Step 1: Select an AWS region
+Krossboard discovers and handles EKS clusters as a per region basics. 
+
+ From AWS Management Console, select a region and move forward.
+
+## Step 2: Deploy Krossboard from the AWS Marketplace
 Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
 
 * TODO
@@ -28,7 +33,7 @@ Proceed as decribed below to create an instance of Krossboard from Azure Marketp
 * Once the deployment completed, note the IP address of the instance.
 
 
-## Step 2: Configure AWS IAM permissions to discover EKS clusters
+## Step 3: Configure AWS IAM permissions to discover EKS clusters
 A standard setup of Krossboard requires to assume an AWS IAM role with the action of `eks:ListClusters` and the action of `eks:DescribeCluster` associated to it.
 
 Follow this procedure to create such a role with the required actions: 
@@ -78,7 +83,7 @@ The next procedure associates the role to the Krossboard instance.
 * In the `IAM role` field, select the role created above.
 * Click on `Apply` to save the change.
 
-## Step 3: Install Kubernetes Metrics Server on each EKS cluster
+## Step 4: Install Kubernetes Metrics Server on each EKS cluster
 This step is based on the [official documentation of EKS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). Please refer to this link if you experienced any troubles.
 
 It's required to first install [jq](https://stedolan.github.io/jq/):
@@ -103,7 +108,7 @@ Verify that installation has been successfull.
 ```
 kubectl -nkube-system get deploy metrics-server
 ```
-## Step 4: Configure RBAC to access EKS cluster's metrics
+## Step 5: Configure RBAC to access EKS cluster's metrics
 First we need to edit the `aws-auth` ConfigMap of the EKS cluster to enable access to the cluster by the AWS IAM role assigned to the Krossboard instance.
 
 Before any changes, we recommend to backup the current `aws-auth` ConfigMap.
@@ -134,7 +139,7 @@ To ease that, Krossboard is released with a ready-to-use configuration file that
 kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
-## Step 5: Get Access to Krossboard UI
+## Step 6: Get Access to Krossboard UI
 Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.
 
 Replace `krossboard-IP-addr` with the address of the Krossboard instance.

@@ -22,6 +22,9 @@ This guide should be straightforward to follow, assuming that:
 > **Important:** Don't be confused, it's worth nothing that [GCP service accounts](https://cloud.google.com/iam/docs/understanding-service-accounts) and [Kubernetes services accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) are two different concepts.
 
 ## Step 1: Select a GCP project
+Krossboard discovers and handles GKE clusters as a project basics. 
+The clusters can be spread accross different regions and zones in that project. 
+
  From GCP Cloud Console, select (or create if not yet the case) a project.
 
  ![](/images/docs/gcp-select-project.png)

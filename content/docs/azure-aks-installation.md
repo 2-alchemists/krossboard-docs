@@ -24,10 +24,11 @@ This guide should be straightforward to follow, assuming that:
   * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
 
-## Step 1: Select or create the resource group
-Krossboard discovers and handles AKS clusters as a per resource group basics. Those clusters can be spread accross different regions and zones in that resource group. 
+## Step 1:  Select an Azure resource group
+Krossboard discovers and handles AKS clusters as a per resource group basics. 
+The clusters can be spread accross different regions and zones in that resource group. 
 
-So let's consider that we've selected a resource group and move forward.
+So let's consider that we've selected a resource group for the deployment and move forward.
 
 ## Step 2: Deploy Krossboard from the Azure Marketplace
 Proceed as decribed below to create an instance of Krossboard from the Azure Marketplace:
