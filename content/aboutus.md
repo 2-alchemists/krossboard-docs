@@ -13,8 +13,8 @@ Krossboard is edited and supported by 2Alchimists SAS, a French company co-found
 TODO: company address
 
 ## Who are we ?
-We are cloud professionals; we have breadth and depth experience building cloud and cloud-native platforms and applications.
-We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard!
+We are cloud professionals. We have breadth and depth experience building cloud and cloud-native platforms and applications.
+We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard.
 
 We're there to help organizations undertsand and master their today and tomorrow cloud computing platforms. 
 
