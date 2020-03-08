@@ -8,17 +8,19 @@ toc = true
 +++
 
 On Amazon Web Services (AWS), Krossboard works as a standalone EC2 virtual machine.
-As of current version each instance of Krossboard automatically discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
+Each instance of Krossboard automatically discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
 
-This guide describes step-by-step how to setup an instance of Krossboard for an AWS region. 
+This guide describes step-by-step how to deploy and configure an instance of Krossboard for an AWS region. 
 
 ## Before you begin
 This guide should be straightforward to follow, assuming that:
 
 * You have a basic level of practice with AWS concepts.
-* You have access to an AWS account with sufficient permissions, to create and assign AWS IAM roles, and to create EC2 instances from AWS Marketplace.
-* You have access to AWS Management Console, though you can later adapt the steps for a scripted/automated deployment.
-* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
+* You have access to an AWS account with sufficient permissions to:
+  * Create and assign AWS IAM roles;
+  * Create EC2 instances from AWS Marketplace.
+  * Use AWS Management Console, though the steps can be adapted for a scripted/automated deployment.
+* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters.
 
 ## Step 1: Select an AWS region
 Krossboard discovers and handles EKS clusters as a per region basics. 
@@ -140,9 +142,7 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.ym
 ```
 
 ## Step 6: Get Access to Krossboard UI
-Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.
-
-Replace `krossboard-IP-addr` with the address of the Krossboard instance.
+Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`, while replacing `krossboard-IP-addr` with the address of the Krossboard.
 
 **Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 

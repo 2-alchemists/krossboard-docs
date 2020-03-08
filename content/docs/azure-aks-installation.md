@@ -8,9 +8,9 @@ toc = true
 +++
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine.
-As of current version each instance of Krossboard automatically discovers and handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
+Each instance of Krossboard automatically discovers and handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
 
-This guide describes step-by-step how to setup an instance of Krossboard for an Azure resource group. 
+This guide describes step-by-step how to deploy and configure an instance of Krossboard for an Azure resource group. 
 
 
 ## Before you begin
@@ -21,8 +21,8 @@ This guide should be straightforward to follow, assuming that:
   * Assign managed identity;
   * Assign managed roles;
   * Create virtual machines from [the Azure Marketplace](https://portal.azure.com/#blade/Microsoft_Azure_Marketplace).
-  * Use Azure Portal (though the steps can be later adapted for a scripted/automated deployment).
-* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters; this level of access is required to configure RBAC settings that Krossboard needs.
+  * Use Azure Portal, though the steps can be adapted for a scripted/automated deployment.
+* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters.
 
 ## Step 1:  Select an Azure resource group
 Krossboard discovers and handles AKS clusters as a per resource group basics. 
@@ -73,9 +73,7 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.ym
 ```
 
 ## Step 5: Get Access to Krossboard UI
-Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.
-
-Replace `krossboard-IP-addr` with the address of the Krossboard instance.
+Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`, while replacing `krossboard-IP-addr` with the address of the Krossboard.
 
 **Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 

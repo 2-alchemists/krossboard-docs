@@ -8,24 +8,25 @@ toc = true
 +++
 
 On Google Compute Platform (GCP), Krossboard works as a standalone compute virtual machine.
-As of current version each Krossboard instance discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. 
+Each Krossboard instance discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. 
 
-This guide describes step-by-step how to setup an instance of Krossboard for a GCP project. 
+This guide describes step-by-step how to deploy and configure an instance of Krossboard for a GCP project. 
 
 ## Before you begin
 This guide should be straightforward to follow, assuming that:
 
 * You have a basic level of practice with GCP concepts.
-* You have access to a GCP project with sufficient permissions, to create GCP IAM service account and to assign GCP predefined roles to a service account.
-* You have access to GCP Cloud Console, though you can later adapt the steps for a scripted/automated deployment.
+* You have access to a GCP project with sufficient permissions to:
+  * Create GCP IAM service accounts.
+  * Assign GCP predefined roles to a GCP IAM service account.
+  * Use GCP Cloud Console, though the steps can be adapted for a scripted/automated deployment.
 
 > **Important:** Don't be confused, it's worth nothing that [GCP service accounts](https://cloud.google.com/iam/docs/understanding-service-accounts) and [Kubernetes services accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) are two different concepts.
 
 ## Step 1: Select a GCP project
-Krossboard discovers and handles GKE clusters as a project basics. 
-The clusters can be spread accross different regions and zones in that project. 
+Krossboard discovers and handles GKE clusters as a project basics. The clusters can be spread accross different regions and zones in that project. 
 
- From GCP Cloud Console, select (or create if not yet the case) a project.
+ From GCP Cloud Console, select a project as below.
 
  ![](/images/docs/gcp-select-project.png)
 
@@ -68,9 +69,7 @@ Then assign the service account to the Krossboard instance.
 The Krossboard instance is now ready for operations.
 
 ## Step 4: Get Access to Krossboard UI
-Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`.
-
-Replace `krossboard-IP-addr` with the address of the Krossboard instance.
+Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`, while replacing `krossboard-IP-addr` with the address of the Krossboard instance.
 
 **Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 
