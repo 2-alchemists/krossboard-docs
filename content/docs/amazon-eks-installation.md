@@ -83,8 +83,8 @@ The next procedure associates the role to the Krossboard instance.
 * In the `IAM role` field, select the role created above.
 * Click on `Apply` to save the change.
 
-## Step 4: Install Kubernetes Metrics Server on each EKS cluster
-This step is based on the [official documentation of EKS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html). Please refer to this link if you experienced any troubles.
+## Step 4: Install Kubernetes Metrics Server (on each EKS cluster)
+This step is based on the [official documentation of EKS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
 
 It's required to first install [jq](https://stedolan.github.io/jq/):
 
