@@ -10,7 +10,7 @@
   Title: "Track usage, anticipate and master costs."
   Image: "/images/icons/forecast-bar.svg"
   Description: |
-    For each hour, day, month, and up to a year ago, get factual insights on the usage of your clusters. Make cost allocation and capacity planning decisions easier than ever.
+    Get factual insights on the usage of your clusters given configurable accounting periods that cover, hours, days, months, and even a year. Make cost allocation and capacity planning decisions easier than ever.
 - Feature:
   Title: "Original concepts built in robust tool."
   Image: "/images/icons/easy-integration.png"
@@ -20,4 +20,4 @@
   Title: "User-extensible analytics."
   Image: "/images/icons/user-extensible.svg"
   Description: |
-    We're aware that your organizations may need specific insights that are not natively built in Krossboard. That's why the tool enables to export any analytics data it generates (e.g. in CSV format) for further custom processing.
+    We're aware that your organizations may need specific insights that are not natively built in Krossboard. That's why the tool enables to export any analytics data it generates for further custom processing.
