@@ -24,6 +24,10 @@ googleAnalytics = "UA-158612003-1"
   yandex = "" # Optionnel, Yandex verification code  
 
 [[menu.main]]
+    name = "Home"
+    weight = 10
+   url = "/"  
+[[menu.main]]
     name = "Overview & Features"
     weight = 10
    url = "/docs/overview-concepts-features/"  

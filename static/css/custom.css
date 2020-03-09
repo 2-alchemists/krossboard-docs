@@ -18,17 +18,18 @@
 #hero {
   /*background-color: #9DC6DD;*/
   background-color: #E3F2FD;
-  padding-top: 32px;
   padding-bottom: 32px;
   margin-bottom: 32px;
 }
 
-
-#hero #home-buttons {
-  margin-top: 16px;
-  margin-bottom: auto;
+#hero.primary {
+  padding-top: 120px;
 }
 
+#hero #home-buttons {
+  margin-top: 24px;
+  margin-bottom: auto;
+}
 
 #kube-features {
   margin-top: 32px;
@@ -67,16 +68,65 @@
   margin-bottom: auto;
 }
 
-#hero p {
-  font-size: 18px;
-  line-height: 24px; 
+#home-buttons .button {
+  min-width: 24ch;
+  margin: 5px;
+}
+
+#hero p::before {
+  background: #FF8D00;
+}
+
+.row .col {
+  padding: 15px;
 }
 
 #hero h1 {
-  font-size: 48px;
-  line-height: 48px;
-  font-weight: 400; 
-  /*color: #fff;*/
+  font-size: 3.75em;
+  line-height: 112%;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#hero.primary p {
+  font-size: 18pt;
+  line-height: 30px;
+  font-style: normal;
+  font-weight: 400;
+  margin-top: 23px;
+}
+
+.button.primary {
+  background-color: #868686;
+}
+
+h1,
+address,
+blockquote,
+dl,
+fieldset,
+figure,
+form,
+hr,
+ol,
+p,
+pre,
+table,
+ul {
+ margin-bottom:24px
+}
+
+@media screen and (min-width: 601px) {
+  #hero h1 {
+    font-size:60px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #hero h1 {
+    font-size:40px;
+  }
+ 
 }
 
 h2 {
@@ -101,6 +151,22 @@ h5 {
   font-size:16px;
   line-height:36px;
   font-weight: 250;
+}
+
+#top img {
+  width: 170px;
+}
+
+#top ul {
+  justify-content: space-evenly;
+}
+
+#top-nav-main {
+  width: 100%;
+}
+
+#product-overview h3 {
+  font-weight: 600;
 }
 
 /* 
