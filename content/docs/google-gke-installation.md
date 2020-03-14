@@ -52,9 +52,9 @@ First create the GCP service account with the aforementioned role.
 * Click on `Create Service Account` and in the `Service account name` field, enter a name for the service account. 
 * (Optional) Enter a description of the service account.
 * Click `Create`.
-* Click the `Select a role` field and type `Kubernetes Viewer` in the filter field.
-* In the list of suggestions and select `Kubernetes Engine Viewer`.
-* Click `Continue` and then on `Done` to complete the creation.
+* Click on `Select a role` field and in the filter field, type `Kubernetes Viewer`.
+* In the list of suggestions, select `Kubernetes Engine Viewer`.
+* Click on `Continue` and then on `Done` to complete the creation.
 
 
 Then assign the service account to the Krossboard instance.
