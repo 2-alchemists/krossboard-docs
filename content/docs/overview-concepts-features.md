@@ -8,12 +8,12 @@ toc = true
 
 
 ## What is Krossboard
-Krossboard is an original centralized resource usage analytics tool for managed Kubernetes clusters. Currently supported on Amazon EKS, Google GKE and Microsoft AKS, it's intended to be gradually extended to support other public clouds and on-premise clusters. Krossboard is meant to help organizations to tackle cost allocation and capacity planning decisions with unique benefits.
 
 ![](/images/docs/krossboard-architecture-overview.png)
+Krossboard is an original centralized resource usage analytics tool for managed Kubernetes clusters. Currently supported on Amazon EKS, Google GKE and Microsoft AKS, it's intended to be gradually extended to support other public clouds and on-premise clusters. Krossboard is meant to help organizations to tackle cost allocation and capacity planning decisions with unique benefits.
 
 ## Unique benefits
-Without being exhaustive, key benefits of Krossboard include the next ones:
+Without being exhaustive here are some key benefits of Krossboard:
 
 * **Ease cost allocation decisions**: Krossboard provides detailed reports on resources consumed by each project/application during various accounting periods (hourly, daily, monthly), thereby helping organizations to share infrastructure and operations costs among their projects and/or business units.
 * **Help anticipate costs**: Krossboard features dynamic analytics reports that show how resources are being consumed over time. This helps organizations to forecast scaling up/down, hence to anticipate the related costs.
