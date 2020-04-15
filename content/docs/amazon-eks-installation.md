@@ -18,7 +18,7 @@ This guide should be straightforward to follow, assuming that:
 * You have a basic level of practice with AWS concepts.
 * You have access to an AWS account with sufficient permissions to:
   * Create and assign AWS IAM roles;
-  * Create EC2 instances from AWS Marketplace.
+  * Create EC2 instances.
   * Use AWS Management Console, though the steps can be adapted for a scripted/automated deployment.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your EKS clusters.
 
@@ -27,8 +27,8 @@ Krossboard discovers and handles EKS clusters as a per region basics.
 
  From AWS Management Console, select a region and move forward.
 
-## Step 2: Deploy Krossboard from the AWS Marketplace
-Proceed as decribed below to create an instance of Krossboard from Azure Marketplace:
+## Step 2: Deploy a Krossboard instance
+Proceed as decribed below to create an instance of Krossboard from AWS Management Console
 
 * TODO
 * Ensure that the instance's security groups enable access on the VM on port 80 and 443, i.e. to provide access to Krossboard UI.
@@ -36,27 +36,27 @@ Proceed as decribed below to create an instance of Krossboard from Azure Marketp
 
 
 ## Step 3: Configure AWS IAM permissions to discover EKS clusters
-A standard setup of Krossboard requires to assume an AWS IAM role with the action of `eks:ListClusters` and the action of `eks:DescribeCluster` associated to it.
+A standard setup of Krossboard requires to assume an AWS IAM role with the action of **eks:ListClusters** and the action of **eks:DescribeCluster** associated to it.
 
 Follow this procedure to create such a role with the required actions: 
 
 * Go to AWS Management Console.
-* Select the `IAM` service.
-* Go to `Roles` section.
-* Click on `Create role`.
-* Select `EC2` for type of trusted entity and click `Next:Permissions`.
-* Click on `Create policy`, this will open a new tab to create a policy.
-* In the policy tab, click on `JSON` section and then copy and paste the policy provided below.
+* Select the **IAM** service.
+* Go to **Roles** section.
+* Click **Create role**.
+* Select **EC2** for type of trusted entity and Click **Next:Permissions**.
+* Click **Create policy**, this will open a new tab to create a policy.
+* In the policy tab, click on the **JSON** section and then copy and paste the policy provided below.
   **Important:** Replace the existing policy content.
-* Click on `Review policy`.
+* Click **Review policy**.
 * Set a name and possibly a description for the policy.
-* Click on `Create policy` to apply the changes.
+* Click **Create policy** to apply the changes.
 * Go back to the initial role creation tab, and click on the refresh icon at the right corner of the policy list.
 * Search for the created policy and select it.
-* Click on `Next:Tabs` and fill in tags if applicable.
-* Click on `Next:Review` and check that all the information provided are fine.
+* Click **Next:Tabs** and fill in tags if applicable.
+* Click **Next:Review** and check that all the information provided are fine.
 * Set a name and possibly a description for the role.
-* Click on `Create role` to apply the changes and complete the role creation.
+* Click **Create role** to apply the changes and complete the role creation.
 * **Copy the ARN of the role created**, it'll be needed later in this guide.
 
 ```
@@ -78,12 +78,12 @@ Follow this procedure to create such a role with the required actions:
 The next procedure associates the role to the Krossboard instance.
 
 * Go to AWS Management Console.
-* Select the `EC2` service.
-* Go to the `Instances` section and then select `instances`.
+* Select the **EC2** service.
+* Go to the **Instances** section and then select **instances**.
 * Navigate through the displayed list of instances to select the Krossboard instance.
-* Go to the menu `Actions -> Instance Settings -> Attach/Replace IAM Role`.
-* In the `IAM role` field, select the role created above.
-* Click on `Apply` to save the change.
+* Go to the menu **Actions -> Instance Settings -> Attach/Replace IAM Role**.
+* In the **IAM role** field, select the role created above.
+* Click **Apply** to save the change.
 
 ## Step 4: Install Kubernetes Metrics Server (on each EKS cluster)
 This step is based on the [official documentation of EKS](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
@@ -94,7 +94,7 @@ It's required to first install [jq](https://stedolan.github.io/jq/):
 sudo snap install jq --classic
 ```
 
-Once jq installed, run the following commands to download and deploy an instance of Kubernetes Metric Server in `kube-system` namespace.
+Once jq installed, run the following commands to download and deploy an instance of Kubernetes Metric Server in **kube-system** namespace.
 
 ```
 DOWNLOAD_URL=$(curl -Ls "https://api.github.com/repos/kubernetes-sigs/metrics-server/releases/latest" | jq -r .tarball_url)
@@ -111,9 +111,9 @@ Verify that installation has been successfull.
 kubectl -nkube-system get deploy metrics-server
 ```
 ## Step 5: Configure RBAC to access EKS cluster's metrics
-First we need to edit the `aws-auth` ConfigMap of the EKS cluster to enable access to the cluster by the AWS IAM role assigned to the Krossboard instance.
+First we need to edit the **aws-auth** ConfigMap of the EKS cluster to enable access to the cluster by the AWS IAM role assigned to the Krossboard instance.
 
-Before any changes, we recommend to backup the current `aws-auth` ConfigMap.
+Before any changes, we recommend to backup the current **aws-auth** ConfigMap.
 
 ```
 kubectl -n kube-system get configmap aws-auth -o yaml > aws-auth-backup-$(date +%F).yaml
@@ -125,7 +125,7 @@ Once the backup done, edit the ConfigMap.
 kubectl -n kube-system edit configmap aws-auth
 ```
 
-Add the following lines under the `mapRoles` section, while **replacing** each instance of the snippet `<ARN of Krossboard Role>` with the ARN of the role created previously.
+Add the following lines under the **mapRoles** section, while **replacing** each instance of the snippet **<ARN of Krossboard Role>** with the ARN of the role created previously.
 ```
     - groups:
       - krossboard-data-processor
@@ -135,14 +135,14 @@ Add the following lines under the `mapRoles` section, while **replacing** each i
 
 At this stage we're almost done, but Krossboard is not yet allowed to retrieve metrics from discovered EKS clusters. The last step is to configure RBAC settings on each EKS cluster to enable the required permissions.
 
-To ease that, Krossboard is released with a ready-to-use configuration file that can be applied as follows on your EKS clusters as below. This create a `ClusterRole` and an associated `ClusterRoleBinding` giving access to the target EKS cluster metrics.
+To ease that, Krossboard is released with a ready-to-use configuration file that can be applied as follows on your EKS clusters as below. This create a **ClusterRole** and an associated **ClusterRoleBinding** giving access to the target EKS cluster metrics.
 
 ```
 kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
 ## Step 6: Get Access to Krossboard UI
-Open a browser tab and point it to this URL: `http://krossboard-IP-addr/`, while replacing `krossboard-IP-addr` with the address of the Krossboard.
+Open a browser tab and point it to this URL: **http://krossboard-IP-addr/**, while replacing **krossboard-IP-addr** with the address of the Krossboard.
 
 **Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 
