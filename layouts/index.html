@@ -4,7 +4,7 @@
 
 <div id="main">
   <div id="hero" class="primary">
-    <h1>{{.Title}}{{ if isset .Params "subtitle" }}<br/>{{.Params.Subtitle}}{{end}}</h1>
+    <h1>{{.Title}}{{ if isset .Params "subtitle" }}<br/>{{ .Params.Subtitle }}{{end}}</h1>
     <p>{{.Description}}</p>
     <div id="home-buttons">
       <a class="button primary big" href="/docs/google-gke-installation/">Deploy for Google GKE</a>
