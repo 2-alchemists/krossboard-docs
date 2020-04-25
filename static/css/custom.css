@@ -169,7 +169,6 @@ h5 {
   font-weight: 600;
 }
 
-/* 
-#top #top-nav-main {
-  align-content: center;
-} */
+li {
+  margin:0 0 .5rem 0;   
+}

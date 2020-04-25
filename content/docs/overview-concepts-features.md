@@ -22,8 +22,8 @@ Without being exhaustive here are some key benefits of Krossboard:
 ## Simple integration yet robust tool
 Krossboard brings original concepts built in a *robust tool with an easy-to-integrate architecture*:
 
-* **Deploy in minutes, once for multiple clusters**: 
-    Krossboard is an integrated tool easily deployable. Currently deployed from cloud providers' marketplaces, it's supported on Amazon EKS, Google GKE and Microsoft AKS. Once installed, Krossboard automates the discovery of your Kubernetes clusters and centralizes the analytics of their usage at a single place.
+* **Deploy in minutes, for multiple clusters**: 
+    Krossboard is an integrated and easily deployable tool. It's specifically tailored to run against managed Kubernetes on Amazon EKS, Google GKE and Microsoft AKS. It's currently released through cloud images for the supported cloud provider. Once installed, Krossboard automates the discovery of your Kubernetes clusters and centralizes the analytics of their usage at a single place.
 * **Consistent analytics**: 
     For each cluster, Krossboard regularly collects instantaneous usage metrics. Those metrics are then aggregated and consolidated over time, to produce, short-term (hourly), mid-term (daily) and long-term (monthly) analytics perspectives that cover periods up to a year.
 * **Efficient Visualization at a central place**: 
