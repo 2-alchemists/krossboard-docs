@@ -23,4 +23,4 @@
   Image: "/images/icons/user-extensible.svg"
   Description: |
     Aware that organizations may need specific insights that are not natively built in Krossboard, the system enables to export in CSV any data it generates for further custom processing.
-    Use your favorite BI/analytics tool to retrieve further insights.
+    Use your favorite data engineering tool to retrieve further insights.
