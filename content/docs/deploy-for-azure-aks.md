@@ -20,7 +20,7 @@ This guide should be straightforward to follow, assuming that:
 * You have access to an Azure subscription with sufficient permissions to:
   * Assign managed identity;
   * Assign managed roles;
-  * Use Azure Portal, though the steps can be adapted for a scripted/automated deployment.
+  * Use Azure portal, though the steps can be adapted for a scripted/automated deployment.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed with admin-level access to your AKS clusters.
 
 ## Step 1:  Select an Azure resource group
@@ -31,14 +31,31 @@ So let's consider that we've selected a resource group for the deployment and mo
 
 ## Step 2: Deploy a Krossboard instance
 
-* TODO
-* Once the deployment completed, note the IP address of the instance.
+From the Azure portal:
 
+* Type **virtual machines** in the search.
+* Under **Services**, select **Virtual machines**.
+* In the **Virtual machines** page, select **Add**.
+* In the **Basics** tab, under **Project details**, select a target subscription.
+* For **Resource group**, search and select the target resource group for the Krossboard instance.
+* Name the virtual machine and select a region.
+* For **Image**, click **Browse all public and private images**.
+* In the search field, type **krossboard**, and select the latest stable version of Krossboard.
+* For instance **Size**, if you do have a maximum of 3 clusters, a `Standard B1ms` instance would be sufficient.
+  Otherwise we do recommend to start with a `Standard B2s` instance.
+* Set information for the **Administrator account** (username, SSH public key) according to your organization policies.
+* For **Inbound port rules** section, check **Allow selected ports** and enable **HTTP** under the field **Select inbound ports**.
+* Click **Networking** tab.
+* Select a **Virtual network** and a **subnet** according to your organization policies.
+* Set **Public IP** to `None`.
+  > Krossboard does not currently require authentication to get access to its web UI, hence it's important to not make it available on the internet. As consequence, you shall review the instance's networking settings to ensure that its private IP address will be reachable from your target users' network.
+* You can leave the other settings as is, click **Review + Create**.
+* Review the settings and click **Create** to start the instance. 
 
 ## Step 3: Configure Azure IAM permissions to discover AKS clusters
 A standard setup of Krossboard requires the role of **Managed Application Reader** and the role of **Azure Kubernetes Service Cluster User Role**. 
 
-As a prerequisite, the instance must enable an Azure managed identity. 
+### Enable an Azure managed identity for the instance
 
 * Connect to Azure portal as a subscription administrator.
 * Select **Home -> Virtual machines** to list virtual machine instances.
@@ -47,7 +64,7 @@ As a prerequisite, the instance must enable an Azure managed identity.
 * Under **System assigned** tab, switch **Status** to **On**.
 * Click **Save** and, when prompted, click **Yes** to confirm the change. 
 
-Once the instance has its managed identity enabled, we can assign the required Azure IAM roles . 
+### Assign required Azure IAM roles
 
 * Connect to Azure portal as a subscription administrator.
 * Select **Home -> Subscriptions** and, in the list of subscriptions, select the target subscription.
@@ -71,15 +88,8 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.ym
 ```
 
 ## Step 5: Get Access to Krossboard UI
-Open a browser tab and point it to this URL: **http://krossboard-IP-addr/**, while replacing **krossboard-IP-addr** with the address of the Krossboard.
-
-**Note:** You may need to wait a while (typically an hour) to have all charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
-
-The user interface features the following core analytics and reports:
- * **Current Usage**: For each cluster discovered and handled by Krossboard, this page displays piecharts showing the latest consolidated CPU and memory usage. Those reports -- updated every 5 minutes, highlight shares of resources, used, available and non-allocatable.
- * **Usage Trends & Accounting**: For each cluster -- selected on-demand by the user, this page provides various reports showing, hourly, daily and monthly usage analytics for CPU and memory resources. For each type of report (i.e. hourly, daily, monthly), the user can export the raw analytics data in CSV format for custom processing and visualization.
- * **Consolidated Usage & History**: This page provides a comprehensive usage reports covering all clusters for a user-defined period of time. The intend of those reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time, which always the ability to export the raw analytics data in CSV for custom processing and visualization.
+Open a browser tab and point it to this URL `http://krossboard-ip/`. Replace **krossboard-ip** with the IP address of the created Krossboard instance.
 
 ## Next Steps
-
-* Checkout other [documentation resources]({{< relref "/docs" >}}).
+* Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})
+* Other [documentation resources]({{< relref "/docs" >}}).

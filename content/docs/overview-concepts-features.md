@@ -2,7 +2,7 @@
 title = "Overview, Concepts & Features"
 description = ""
 draft = false
-weight = 40
+weight = 50
 toc = true 
 +++
 
@@ -10,6 +10,7 @@ toc = true
 ## What is Krossboard
 
 ![](/images/docs/krossboard-architecture-overview.png)
+
 Krossboard is an original centralized resource usage analytics tool for managed Kubernetes clusters. Currently supported on Amazon EKS, Google GKE and Microsoft AKS, it's intended to be gradually extended to support other public clouds and on-premise clusters. Krossboard is meant to help organizations to tackle cost allocation and capacity planning decisions with unique benefits.
 
 ## Unique benefits
@@ -31,7 +32,7 @@ Krossboard brings original concepts built in a *robust tool with an easy-to-inte
 * **User-extensible analytics**: Aware that organizations may need specific analytics that are not natively built in Krossboard, it's designed to feature the ability to export any data its generates in CSV format; those data those data can then be further processed to extract additional insights.
 
 ## Established analytics paradigms
-With its foundation in [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics), Krossboard incorporates the main core design principles of the former as the base analytics engine. 
+With its foundation in [kube-opex-analytics](https://github.com/rchakode/kube-opex-analytics)--which is already adopted by an established community, Krossboard incorporates the main analytics principles of kube-opex-analytics at its core. Leveraging also our depth and breadth experience developing and managing applications on Kubernetes, Krossboard enables further capabilities that make it unique and effective for environments with multiple Kubernetes clusters.
 
 * **Namespace-focused:**
     Means that consolidated resource usage metrics consider individual namespaces as fundamental units for resource sharing. A special care is taken to also account and highlight *non-allocatable* resources.
@@ -40,13 +41,10 @@ With its foundation in [Kubernetes Opex Analytics](https://github.com/rchakode/k
 * **Daily and Monthly Usage:** 
     This provides for each, period (daily/monthly), namespace, and resource type (CPU/memory), consolidated cost indicators. These indicators are computed as accumulated hourly usage over that period of time.
 
-Leveraging our depth experience and lessons learned from Kubernetes Opex Analytics, which is now adopted by an established community, Krossboard enables further capabilities that make it unique and effective for environments with multiple Kubernetes clusters.
+## Getting Started
+Consider one of the following resources to deploy Krossboard for your managed Kubernetes.
 
-
-## Easy to Get Started
-Please consider one of these resources to getting started now:
-
-* [Installation for Amazon AKS]({{< relref "/docs/amazon-eks-installation" >}})
-* [Installation for Azure EKS]({{< relref "/docs/azure-aks-installation" >}})
-* [Installation for Google GKE]({{< relref "google-gke-installation" >}})
+* [Installation for Amazon AKS]({{< relref "/docs/deploy-for-amazon-eks" >}})
+* [Installation for Azure EKS]({{< relref "/docs/deploy-for-azure-aks" >}})
+* [Installation for Google GKE]({{< relref "deploy-for-google-gke" >}})
 
