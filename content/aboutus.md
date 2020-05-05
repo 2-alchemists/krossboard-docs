@@ -18,13 +18,19 @@ We defend a cost-centric approach of designing, building, and operating cloud se
 
 We're there to help organizations undertsand and master their today and tomorrow cloud computing platforms. 
 
-TODO: add avatar of cofounders
-
+### Rodrigue Chakode
 ![](/images/company/avatar-cofounders.png)
 
 Rodrigue Chakode is (position on pic) is... TODO: add short bio
 
-Christophe Camel is (position on pic) is... TODO: add short bio
+### Christophe Camel
+![](/images/company/avatar-cofounders.png)
+
+> Christophe is the Co-Founder of 2Alchimists.
+>
+> Christophe has over 15 years of experience in the software industry. His career in technology has included the roles of Software Architect, Lead Developer, API evangelist in several companies in a wide variety of fields (avionics, space, video production, industrial maintenance).
+>
+> Christophe has recently designed an industrial-grade SaaS Cloud solution for a French fast-paced tech company around the Kubernetes technology and significantly contributed to develop the company’s technology strategy.
 
 ## Legal company information
 This section provides legal information about the 2Alchimists SAS company.
