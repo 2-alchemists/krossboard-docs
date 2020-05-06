@@ -18,10 +18,11 @@ We defend a cost-centric approach of designing, building, and operating cloud se
 
 We're there to help organizations undertsand and master their today and tomorrow cloud computing platforms. 
 
-### Rodrigue Chakode
+### Rodrigue Chakode, PhD
 ![](/images/company/avatar-cofounders.png)
 
-Rodrigue Chakode is (position on pic) is... TODO: add short bio
+> I'm not a computer veteran, though before co-founding 2Alchimists I spent some time coding and tinkering with computing systems. I wrote my first lines of code in Pascal (2001), then C, C++, Python, Go, etc. In short, I'm now a polyglot coder trying to find the right tools for each project I spend time on. I have being always curious about how software are deployed and operated in production. My first position in the industry (2006) was being a system engineering designing monitoring systems. From proprietary to open source tools, with historical than modern ones, I designed monitoring with tools like MRTG, RRDtool, HP OpenView, Nagios/alike, Zabbix, and more. Early in 2008 I started my journey in cloud computing during my PhD, focusing on cloud infrastructure management (virtualization, resource allocation and provisioning). Since then I held several cloud positions in the industry as cloud engineer (then architect) working with AWS, GCP and Azure technologies. Cloud-native systems with Docker containers and Kubernetes as orchestrator was just another step of this long journey in the cloud :). In parallel of that, I'm contributor of several [open source projects](https://github.com/rchakode) around monitoring and infrastructures management. 
+
 
 ### Christophe Camel
 ![](/images/company/avatar-cofounders.png)
