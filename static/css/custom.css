@@ -170,5 +170,11 @@ h5 {
 }
 
 li {
-  margin:0 0 .5rem 0;   
+  margin: 0 0 0.5rem 0;   
+}
+
+blockquote {
+  background: #E3F2FD;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }

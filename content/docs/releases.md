@@ -1,8 +1,8 @@
 +++
-title = "Releases Highlights"
+title = "Releases Notes"
 description = ""
 draft = false
-weight = 41
+weight = 51
 toc = true 
 +++
 
