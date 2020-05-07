@@ -144,11 +144,10 @@ Open a browser tab and point it to this URL `http://krossboard-ip/`.  Replace **
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
 
-It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
-
-```
-sudo /opt/krossboard/bin/krossboard-change-passwd
-```
+> It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+> ```
+> sudo /opt/krossboard/bin/krossboard-change-passwd
+> ```
 
 ## Next Steps
 * Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})
