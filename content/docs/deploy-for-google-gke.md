@@ -58,16 +58,20 @@ From the Google Cloud Console:
 * On **Boot disk**, click **Change**.
 * For **Service account**, select the service account created previously.
 * Check **Allow HTTP traffic**.
-* Click **Management, security, disks, networking, sole tenancy** to expand the section.
-* Click **Networking**.
-* Under **Network interfaces**, click the pencil on the **default** to edit it.
-* On **Exernal IP**, select **None**. 
-  > Krossboard does not currently require authentication to get access to its web UI, hence it's important to not make it available on the internet. As consequence, you shall review the instance's networking settings to ensure that its private IP address will be reachable from your target users' network.
 * Click **Done**.
 * Click **Create** to start the instance.
 
-## Step 4: Get Access to Krossboard 
+## Step 4: Get Access to Krossboard UI
 Open a browser tab and point it to this URL `http://krossboard-ip/`.  Replace **krossboard-ip** with the IP address of the created Krossboard instance.
+
+* **Username:** krossboard
+* **Password (default):** Kr0sSB8qrdAdm
+
+It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+
+```
+sudo /opt/krossboard/bin/krossboard-change-passwd
+```
 
 ## Next Steps
 * Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})

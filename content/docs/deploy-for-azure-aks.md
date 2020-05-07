@@ -37,12 +37,10 @@ From the Azure portal:
 * In the search field, type **krossboard**, and select the latest stable version of Krossboard.
 * For instance **Size**, if you do have a maximum of 3 clusters, a `Standard B1ms` instance would be sufficient.
   Otherwise we do recommend to start with a `Standard B2s` instance.
-* Set information for the **Administrator account** (username, SSH public key) according to your organization policies.
-* For **Inbound port rules** section, check **Allow selected ports** and enable **HTTP** under the field **Select inbound ports**.
-* Click **Networking** tab.
-* Select a **Virtual network** and a **subnet** according to your organization policies.
-* Set **Public IP** to `None`.
-  > Krossboard does not currently require authentication to get access to its web UI, hence it's important to not make it available on the internet. As consequence, you shall review the instance's networking settings to ensure that its private IP address will be reachable from your target users' network.
+* Set information for the **Administrator account** (Linux username, an SSH public key), according to your organization policies.
+  > Make sure to enable SSH and set a valid **public key** to be able to access the instance for maintenance.
+* For **Inbound port rules** section, check **Allow selected ports**.
+* Click the **Select inbound ports** field to enable **HTTP** and **SSH** (optional) traffic.
 * You can leave the other settings as is, click **Review + Create**.
 * Review the settings and click **Create** to start the instance. 
 
@@ -83,6 +81,15 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.ym
 
 ## Step 5: Get Access to Krossboard UI
 Open a browser tab and point it to this URL `http://krossboard-ip/`. Replace **krossboard-ip** with the IP address of the created Krossboard instance.
+
+* **Username:** krossboard
+* **Password (default):** Kr0sSB8qrdAdm
+
+It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+
+```
+sudo /opt/krossboard/bin/krossboard-change-passwd
+```
 
 ## Next Steps
 * Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})

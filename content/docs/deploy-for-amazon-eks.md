@@ -80,12 +80,11 @@ From the AWS Management Console:
   Otherwise we do recommend to start with a `t2.medium` instance.
 * Click **Next: Configure Instance Details**.
 * For **IAM role**, select the role created previously.
-* Set **Auto-assign Public IP** to `disable`. 
-  > Krossboard does not currently require authentication to get access to its web UI, hence it's important to not make it available on the internet. As consequence, you shall review the instance's networking settings (VPC, subnets...) to ensure that its private IP address will be reachable from your target users' network.
-* Click the tab **Configure Security Group**.
+* Click the **Configure Security Group** tab.
 * Click **Add Rule** to enable HTTP access on port 80 from the target users' network.
 * Click **Review and Launch** and verify the information provided.
-* Click **Launch** to start the instance.
+* Click **Launch**, then make sure to set a **SSH Key Pair** to be able to access the instance for maintenance.
+* Confirm the instance creation.
 
 ## Step 4: Install Kubernetes Metrics Server
 > This step must be achieved on each cluster.
@@ -141,6 +140,15 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.ym
 
 ## Step 6: Get Access to Krossboard UI
 Open a browser tab and point it to this URL `http://krossboard-ip/`.  Replace **krossboard-ip** with the IP address of the created Krossboard instance.
+
+* **Username:** krossboard
+* **Password (default):** Kr0sSB8qrdAdm
+
+It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+
+```
+sudo /opt/krossboard/bin/krossboard-change-passwd
+```
 
 ## Next Steps
 * Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})
