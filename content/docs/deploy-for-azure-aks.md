@@ -8,9 +8,10 @@ toc = true
 +++
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine.
-Each instance of Krossboard automatically discovers and handles AKS clusters on a per [Azure resource group](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview) basis. 
 
-This guide describes step-by-step how to deploy and configure an instance of Krossboard for an Azure resource group. 
+> Each instance of Krossboard automatically discovers and handles AKS clusters according to permissions assigned to it through Azure IAM roles. In order words, given an appropriate permission level, an instance of Krossboard can even discover and handle all the AKS clusters within a subscription.
+
+This guide describes step-by-step how to deploy and configure a Krossboard instance. 
 
 
 ## Before you begin
@@ -30,15 +31,15 @@ From the Azure portal:
 * Under **Services**, select **Virtual machines**.
 * In the **Virtual machines** page, select **Add**.
 * In the **Basics** tab, under **Project details**, select a target subscription.
-* For **Resource group**, search and select the target resource group for the Krossboard instance.
-  > Recall that Krossboard discovers and handles AKS clusters as a per resource group basis. The clusters can be spread accross different regions and zones in that resource group.
+* For **Resource group**, search and select the resource group where the Krossboard instance will be deployed.
+  > It's worth to recall that this does not limit the scope of AKS clusters that Krossboard can handle automatically. Only the role(s) assigned to the instance limit(s) its scope within a subscription. See later in this page for required roles.
 * Name the virtual machine and select a region.
 * For **Image**, click **Browse all public and private images**.
 * In the search field, type **krossboard**, and select the latest stable version of Krossboard.
 * For instance **Size**, if you do have a maximum of 3 clusters, a `Standard B1ms` instance would be sufficient.
   Otherwise we do recommend to start with a `Standard B2s` instance.
-* Set information for the **Administrator account** (Linux username, an SSH public key), according to your organization policies.
-  > Make sure to enable SSH and set a valid **public key** to be able to access the instance for maintenance.
+* Set information for the **Administrator account** (SSH username and public key).
+  > According to your organization policies, make sure to enable SSH and set a valid **public key** to be able to access the instance for maintenance.
 * For **Inbound port rules** section, check **Allow selected ports**.
 * Click the **Select inbound ports** field to enable **HTTP** and **SSH** (optional) traffic.
 * You can leave the other settings as is, click **Review + Create**.

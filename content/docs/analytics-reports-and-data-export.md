@@ -25,7 +25,7 @@ For each cluster discovered and handled by Krossboard, this page displays piecha
 ## Usage Trends & Accounting
 For each cluster -- selected on-demand by the user, this page provides various reports showing, hourly, daily and monthly usage analytics for CPU and memory resources. 
 
-To export the backing data in CSV, click the appropriated link next to the selected cluster (hourly, daily, monthly).
+To export the backing data in CSV, click the related link next to the selected cluster (hourly, daily, monthly).
  
 ## Consolidated Usage & History
 This page provides a comprehensive usage reports covering all clusters for a user-defined period of time. The intend of those reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time.
