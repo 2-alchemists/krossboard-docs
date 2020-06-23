@@ -2,48 +2,41 @@
 title = "About Us"
 description = ""
 draft = false
-toc = false 
+toc = true 
 +++
 
-## The company
-Krossboard is edited and supported by 2Alchimists SAS, a French company co-founded in 2020 by Rodrigue Chakode and Christophe Camel.
+## Legal information
+The Krossboard software and this website are edited by 2Alchemists SAS, a French company registered in Toulouse.
 
-2Alchimists SAS is headquartered at:
-
-TODO: company address
-
-## Who are we ?
-We are cloud professionals. We have breadth and depth experience building cloud and cloud-native platforms and applications.
-We defend a cost-centric approach of designing, building, and operating cloud services. That's the spirit of Krossboard.
-
-We're there to help organizations undertsand and master their today and tomorrow cloud computing platforms. 
-
-### Rodrigue Chakode, PhD
-![](/images/company/avatar-cofounders.png)
-
-> I'm not a computer veteran, though before co-founding 2Alchimists I spent some time coding and tinkering with computing systems. I wrote my first lines of code in Pascal (2001), then C, C++, Python, Go, etc. In short, I'm now a polyglot coder trying to find the right tools for each project I spend time on. I have being always curious about how software are deployed and operated in production. My first position in the industry (2006) was being a system engineering designing monitoring systems. From proprietary to open source tools, with historical than modern ones, I designed monitoring with tools like MRTG, RRDtool, HP OpenView, Nagios/alike, Zabbix, and more. Early in 2008 I started my journey in cloud computing during my PhD, focusing on cloud infrastructure management (virtualization, resource allocation and provisioning). Since then I held several cloud positions in the industry as cloud engineer (then architect) working with AWS, GCP and Azure technologies. Cloud-native systems with Docker containers and Kubernetes as orchestrator was just another step of this long journey in the cloud :). In parallel of that, I'm contributor of several [open source projects](https://github.com/rchakode) around monitoring and infrastructures management. 
-
-
-### Christophe Camel
-![](/images/company/avatar-cofounders.png)
-
-> Christophe is the Co-Founder of 2Alchimists.
+> 2Alchemists SAS
+> 
+> **Registration ID:** 84 429 341 RCS TOULOUSE
 >
-> Christophe has over 15 years of experience in the software industry. His career in technology has included the roles of Software Architect, Lead Developer, API evangelist in several companies in a wide variety of fields (avionics, space, video production, industrial maintenance).
->
-> Christophe has recently designed an industrial-grade SaaS Cloud solution for a French fast-paced tech company around the Kubernetes technology and significantly contributed to develop the company’s technology strategy.
+> **Headquarter:** 25 Rue Jacqueline Auriol, 31400 Toulouse
+> 
+> **Capital:** €1 000
+> 
+> **VAT ID:** TODO
+> 
+> **Publication Director:** Rodrigue Chakode
+> 
+> **Managing Director:** Christophe Camel
+> 
+> **Hosting Provider:** OVH, 2 rue Kellermann - 59100 Roubaix - France.
 
-## Legal company information
-This section provides legal information about the 2Alchimists SAS company.
+The information listed above are given for information only, and therefore do not have any legal value. A copy of the original act may be requested.
 
-### Registration Number (KBIS)
-XXXXXXXXXXXXX RCS TOULOUSE FRANCE
+## About the company
+2Alchemists SAS has been co-founded by [Rodrigue Chakode, PhD](https://www.linkedin.com/in/rodriguechakode/) and [Christophe Camel](https://www.linkedin.com/in/christophe-camel/). 
 
-### Capital
-1000 Euros
+We are cloud professionals, with breadth and depth experience building cloud and cloud-native platforms and applications.
+**We defend a cost-centric approach of designing, building, and operating cloud services**. That's the spirit of Krossboard.
 
- ### SIRET
-XXXXXXXXXXXXX
+**Our mission is thus to help organizations understand and master the costs of their cloud platforms.**
 
-### VAT ID / Sale tax ID
-XXXXXXXXXXXXX
+### The founders
+**[Rodrigue Chakode, PhD](https://www.linkedin.com/in/rodriguechakode/)** is not a computer veteran, though I already spent significant time coding and tinkering computing systems. I wrote my first lines of code in Pascal (2001), then moved to C, C++, Python, Go, etc. In short I’m now a polyglot coder. I always try to find the right tools for each situation. Beyond coding I’m also happy doing things for operations. With a sustained experience in monitoring, I’m “fluent” in designing monitoring with tools like MRTG/RRDtool (yes, it's old but still working ;)), Nagios/alike, Zabbix, Prometheus, Grafana, to list a few. Early in 2008 I started my journey in cloud during my PhD, focusing on cloud infrastructure management (virtualization, resource allocation and provisioning). I held several cloud positions in the industry as cloud engineer (then architect) working with AWS, GCP and Azure technologies. Cloud-native systems with Docker containers and Kubernetes as orchestrator was just another step of my still long journey in the cloud. I’m also author of several [open source projects](https://github.com/rchakode).
+
+
+**[Christophe Camel](https://www.linkedin.com/in/christophe-camel/)** has over 15 years of experience in the software industry. His career in technology has included the roles of Software Architect, Lead Developer, API evangelist in several companies in a wide variety of fields (avionics, space, video production, industrial maintenance).
+Christophe has recently designed an industrial-grade SaaS Cloud solution for a French fast-paced tech company around the Kubernetes technology and significantly contributed to develop the company’s technology strategy.
