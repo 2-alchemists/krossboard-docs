@@ -18,7 +18,8 @@ We are cloud professionals, with breadth and depth experience building cloud and
 Early in 2008, Rodrigue started his journey in cloud during its PhD, focusing on cloud infrastructure management (virtualization, resource allocation and provisioning). He held several cloud positions in the industry as cloud engineer (then architect) working with AWS, GCP and Azure technologies. Cloud-native systems with Docker containers and Kubernetes as orchestrator was just another step in this still long journey in the cloud. Rodrigue is also author of several [open source projects](https://github.com/rchakode).
 
 **[Christophe Camel](https://www.linkedin.com/in/christophe-camel/)** has over 15 years of experience in the software industry. His career in technology has included the roles of Software Architect, Lead Developer, API evangelist in several companies in a wide variety of fields (avionics, space, video production, industrial maintenance).
-Christophe has recently designed an industrial-grade SaaS Cloud solution for a French fast-paced tech company around the Kubernetes technology and significantly contributed to develop the company’s technology strategy.
+Christophe is now working primarily on distributed architectures ranging from Cloud-native systems to Big Data systems and has recently designed an industrial-grade SaaS Cloud solution for a French fast-paced tech company around the Kubernetes technology and significantly contributed to develop the company’s technology strategy.
+Christophe is a passionate coder, in love with functional programming (scala, erlang), disciple of Egoless Programming. He is also author of several [open source projects](https://github.com/ccamel).
 
 ## Legal information
 2Alchemists SAS is a French company registered in Toulouse.
