@@ -5,7 +5,7 @@ draft = false
 toc = true 
 +++
 
-The Krossboard software and this website are edited by 2Alchemists SAS, a french company co-founded by [Rodrigue Chakode, PhD](https://www.linkedin.com/in/rodriguechakode/) and [Christophe Camel](https://www.linkedin.com/in/christophe-camel/).
+The Krossboard software and this website are edited by 2Alchemists SAS, a french company co-founded by [Rodrigue Chakode](https://www.linkedin.com/in/rodriguechakode/) and [Christophe Camel](https://www.linkedin.com/in/christophe-camel/).
 
 ## Our motivation
 We are cloud professionals, with breadth and depth experience building cloud and cloud-native platforms and applications.
