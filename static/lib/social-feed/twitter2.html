@@ -1,0 +1,11 @@
+<div class="{{=it.tpl_class}}{{? !it.moderation_passed}}hidden{{?}}" dt-create="{{=it.dt_create}}" social-feed-id="{{=it.id}}">
+    <div class="info-obj img-t g10 small">
+        <div class="info">
+            {{? it.user_name}}
+            <h3 class="title mr-b-5 {{=it.tpl_class1}}"><a href="{{=it.user_url}}" target="_blank">{{=it.user_name}}</a></h3>
+            {{?}}
+            <p class="fs12">{{=it.time_ago}}</p>
+            <p class="{{=it.tpl_class2}}">{{=it.text}}</p>
+        </div>
+    </div>
+</div>
