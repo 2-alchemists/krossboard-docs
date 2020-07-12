@@ -1,6 +1,6 @@
 - Feature:
-  Title: "Deploy in minutes, for multiple Kubernetes."
-  Image: "/images/icons/fan-solid.svg"
+  Title: "Deploy in minutes, for multiple Kubernetes"
+  Image: "pe-7s-rocket"
   Description: |
     With cloud images for various providers (<a href="https://aws.amazon.com/eks/" target="_blank">Amazon EKS</a>, 
     <a href="https://cloud.google.com/kubernetes-engine" target="_blank">Google GKE</a>, 
@@ -8,19 +8,19 @@
     deploy Krossboard in a couple of minutes, manually or by automation. 
     Let the instance seamlessly discovers and track the usage of existing and new clusters.
 - Feature:
-  Title: "Track usage, anticipate and master costs."
-  Image: "/images/icons/forecast-bar.svg"
+  Title: "Track usage, anticipate and master costs"
+  Image: "pe-7s-graph1"
   Description: |
     Get cluster-scoped and overall insights, on configurable accounting periods (hours, days, months, and even a year). 
     Understand the spends per cluster, per project, and globally. Make cost allocation and capacity planning decisions easier than ever.
 - Feature:
-  Title: "Original concepts, built in robust tool."
-  Image: "/images/icons/easy-integration.png"
+  Title: "Original concepts, built in robust tool"
+  Image: "pe-7s-medal"
   Description: |
     We have long and strong experience and expertises in deploying and operating Kubernetes. Krossboard is designed leveraging lessons learned when organizations face the needs to understand and master their Kubernetes spends.
 - Feature:
-  Title: "User-extensible analytics."
-  Image: "/images/icons/user-extensible.svg"
+  Title: "User-extensible analytics"
+  Image: "pe-7s-cloud-download"
   Description: |
     Aware that organizations may need specific insights that are not natively built in Krossboard, the system enables to export in CSV any data it generates for further custom processing.
     Use your favorite data engineering tool to retrieve further insights.
