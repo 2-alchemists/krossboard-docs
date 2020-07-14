@@ -5,11 +5,16 @@
 
 <body>
 
+<div id="page" data-linkscroll='y'>
+
+{{ partial "nav.html" . }}
+
 {{ block "main" . }}{{ end }}
 
 {{ partial "script.html" . }}
-
 {{ partial "footer.html" . }}
+
+</div>
 
 </body>
 </html>
