@@ -45,3 +45,8 @@
 @media (min-width: 200px) and (max-width: 479px) {
 
 }
+
+
+.light.nav-wrp:not(.nav-sticky) {
+  background-color: #47506A
+}
