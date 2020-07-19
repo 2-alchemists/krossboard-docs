@@ -46,7 +46,10 @@
 
 }
 
-
 .light.nav-wrp:not(.nav-sticky) {
   background-color: #47506A
+}
+
+div.container a {
+    color: #47506A;
 }
