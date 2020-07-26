@@ -81,7 +81,9 @@ kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.ym
 ```
 
 ## Step 5: Get Access to Krossboard UI
-Open a browser tab and point it to this URL `http://krossboard-ip/`. Replace **krossboard-ip** with the IP address of the created Krossboard instance.
+Open a browser tab and point it to this URL `http://instance-addr/` while replacing **instance-addr** with the IP address of the Krossboard instance.
+
+Here are credentials to log in:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm

@@ -38,31 +38,67 @@ This role is assigned to it through a service account created as below on the Go
 
 * On the Navigation menu (![GCP Navigation Menu](/images/docs/gcp-nagivation-menu.png)), select **IAM & Admin -> Service accounts**.
 * Click **Create Service Account**.
-* Name the **Service account name** and, optionally, provide a description.
-* Click **Create**.
-* Click **Select a role**.
-* In the filter, type **Kubernetes Engine Viewer**.
-* Select the matched entry.
-* Click **Continue** and then **Done** to complete the creation.
+* Name the **Service account** and (optionally) provide a description.
+* Click **Create** to move forward.
+* In the **permissions** section, assign to the service account the role of **Kubernetes Engine Viewer**.
+* Click **Continue**.
+* Click **Done** to complete the service account creation.
+
+> Copy the email address of the service account just created, it'll be needed in the next section.
 
 ## Step 3: Deploy a Krossboard instance
 
-From the Google Cloud Console:
+This section requires to have access to Cloud Shell or a terminal with gcloud installed and configured with sufficiant credentials to create a compute instance.
 
-* On the Navigation menu (![GCP Navigation Menu](/images/docs/gcp-nagivation-menu.png)), click **Compute Engine > VM instances**.
-* Click **Create**.
-* Name the instance (e.g. `krossboard`).
-* Select a **Region** and a **Zone** if needed.
-* For **Machine Type**, if you do have a maximum of 3 clusters, a `g1-small` instance would be sufficient.
-  Otherwise we do recommend to start with a `n1-standard-1` instance.
-* On **Boot disk**, click **Change**.
-* For **Service account**, select the service account created previously.
-* Check **Allow HTTP traffic**.
-* Click **Done**.
-* Click **Create** to start the instance.
+First review and set the following variables in your terminal: 
+  * Set the variable `KROSSBOARD_IMAGE` with a valid Krossboard image.
+  * Variables starting `GCP_`  to ensure that it corresponds your target environments. In particular, the variable `GCP_SERVICE_ACCOUNT_EMAIL` shall match the email of the service account created above.
+
+
+```
+KROSSBOARD_IMAGE="krossboard-beta-v20200726t1595767620"
+GCP_PROJECT="my-gke-project"
+GCP_ZONE="us-central1-a"
+GCP_INSTANCE_TYPE="g1-small"
+GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
+```
+
+Then start your instance of Krossboard.
+
+```
+gcloud compute instances create ${KROSSBOARD_IMAGE} \
+      --scopes=https://www.googleapis.com/auth/cloud-platform \
+      --project=${GCP_PROJECT} \
+      --zone=${GCP_ZONE} \
+      --machine-type=${GCP_INSTANCE_TYPE} \
+      --service-account=${GCP_SERVICE_ACCOUNT_EMAIL} \
+      --image=${KROSSBOARD_IMAGE} \
+      --image-project=krossboard-factory \
+      --tags=krossboard-server
+```
+
+> if prompted, answer `y`es to enable Compute Engine API.
+
+Enable the acces to the Krossbord web interface
+
+```
+gcloud compute firewall-rules create krossboard-allow-http \
+    --project=${GCP_PROJECT} \
+    --direction=INGRESS \
+    --priority=1000 --network=default \
+    --action=ALLOW \
+    --rules=tcp:80 \
+    --source-ranges=0.0.0.0/0 \
+    --target-tags=krossboard-server
+```
+
 
 ## Step 4: Get Access to Krossboard UI
-Open a browser tab and point it to this URL `http://krossboard-ip/`.  Replace **krossboard-ip** with the IP address of the created Krossboard instance.
+Go to the GCP console to get the IP address of the instance. 
+
+Then open a browser tab and point it to this URL `http://instance-addr/`.
+
+Here are credentials to log in:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
