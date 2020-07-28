@@ -89,7 +89,7 @@ Here are credentials to log in:
 * **Password (default):** Kr0sSB8qrdAdm
 
 > It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
-> ```
+> ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
 

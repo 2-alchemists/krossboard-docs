@@ -43,7 +43,7 @@ Here is the procedure to achieve that:
 * Click **Create policy**. This will bring you to a new tab to create a policy.
 * Click on the **JSON** tab.
 * **Copy and paste** the below policy. You must REPLACE the existing policy.
-  ```
+  ```json
   {
       "Version": "2012-10-17",
       "Statement": [
@@ -91,7 +91,7 @@ From the AWS Management Console:
 
 The following commands shall download and deploy the specified version of Kubernetes Metric Server in the namespace **kube-system**.
 
-```
+```bash
 DOWNLOAD_VERSION=v0.3.6
 DOWNLOAD_URL=https://api.github.com/repos/kubernetes-sigs/metrics-server/tarball/${DOWNLOAD_VERSION}
 curl -Ls $DOWNLOAD_URL -o metrics-server-$DOWNLOAD_VERSION.tar.gz
@@ -104,26 +104,28 @@ kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 
 Verify that installation has been successful.
 
-```
+```bash
 kubectl -nkube-system get deploy metrics-server
 ```
+
 ## Step 5: Configure RBAC to access EKS cluster's metrics
 First we need to edit the **aws-auth** ConfigMap of the EKS cluster to enable access to the cluster by the AWS IAM role assigned to the Krossboard instance.
 
 Before any changes, we do recommend to backup the current **aws-auth** ConfigMap.
 
-```
+```bash
 kubectl -n kube-system get configmap aws-auth -o yaml > aws-auth-backup-$(date +%F).yaml
 ```
 
 Once the backup done, edit the ConfigMap.
 
-```
+```bash
 kubectl -n kube-system edit configmap aws-auth
 ```
 
 Add the following lines under the **mapRoles** section, while **replacing** each instance of the snippet **<ARN of Krossboard Role>** with the ARN of the role created previously.
-```
+
+```yaml
     - groups:
       - krossboard-data-processor
       rolearn: <ARN of Krossboard Role>
@@ -134,7 +136,7 @@ At this stage we're almost done, but Krossboard is not yet allowed to retrieve m
 
 To ease that, Krossboard is released with a ready-to-use configuration file that can be applied as follows on your EKS clusters as below. This create a **ClusterRole** and an associated **ClusterRoleBinding** giving access to the target EKS cluster metrics.
 
-```
+```bash
 kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
@@ -147,7 +149,7 @@ Here are credentials to log in:
 * **Password (default):** Kr0sSB8qrdAdm
 
 > It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
-> ```
+> ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
 
