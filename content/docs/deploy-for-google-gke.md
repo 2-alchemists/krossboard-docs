@@ -54,14 +54,16 @@ First review and set the following variables in your terminal:
   * Set the variable `KROSSBOARD_IMAGE` with a valid Krossboard image.
   * Variables starting `GCP_`  to ensure that it corresponds your target environments. In particular, the variable `GCP_SERVICE_ACCOUNT_EMAIL` shall match the email of the service account created above.
 
-
 ```bash
 KROSSBOARD_IMAGE="krossboard-beta-v20200726t1595767620"
 GCP_PROJECT="my-gke-project"
 GCP_ZONE="us-central1-a"
-GCP_INSTANCE_TYPE="g1-small"  
+GCP_INSTANCE_TYPE="n1-standard-1"  
 GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
 ```
+
+> **Note:** For a max of 3 clusters you can even opt for a `g1-small` instance.
+
 
 Then start your instance of Krossboard.
 
