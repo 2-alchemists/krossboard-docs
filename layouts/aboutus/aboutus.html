@@ -31,7 +31,7 @@
 			<div class="flex-row gt100 mb20">
 				{{ range .Site.Data.aboutus.Founders }}
 				<div class="flex-col-md-6">
-					<div class="flex flex-cc mr-b-10"><img src="{{ .Photo }}" alt="image"></div>
+					<div class="flex flex-cc mr-b-10"><img class="px-w300" src="{{ .Photo }}" alt="image"></div>
 					<div class="flex-bc typo-light bg-dark1 mr-auto px-w300">
 						<div class="content mr-tb-20">
 							<h3 class="title tiny mr-0 bold-1 txt-upper">{{ .Name }}</h3>
@@ -43,7 +43,7 @@
 							</div>
 						</div>					
 					</div>
-					<div class="align-l mr-t-30 mr-lr-50">
+					<div class="align-l mr-t-30 mr-lr-40">
 						{{ .Bio | markdownify }}					
 					</div>
 				</div>		
