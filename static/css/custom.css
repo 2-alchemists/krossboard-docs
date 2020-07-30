@@ -46,6 +46,10 @@
 
 }
 
+#page {
+  opacity: 1;
+}
+
 .light.nav-wrp:not(.nav-sticky) {
   background-color: #47506A
 }
