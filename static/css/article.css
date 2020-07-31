@@ -180,7 +180,7 @@
 }
 
 .article li img {
-  display: auto;
+  display: inline;
 }
 
 .article aside {
