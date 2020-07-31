@@ -1,0 +1,196 @@
+.article {
+  color: black;
+}
+  
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 300
+}
+
+.article h1 {
+  font-size: 46.4px
+}
+
+.article h2 {
+  font-size: 35.2px
+}
+
+.article h3 {
+  font-size: 27.2px
+}
+
+.article h4 {
+  font-size: 20.8px
+}
+
+.article h5 {
+  font-size: 16px
+}
+
+.article h6 {
+  font-size: 13.6px
+}
+
+.article p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22.4px;
+  margin-top: 0;
+  margin-bottom: 15px
+}
+
+.article a {
+  text-decoration: none;
+  color: #0179b5;
+  cursor: pointer
+}
+
+.article a:hover {
+  text-decoration: underline
+}
+
+.article a:visited {
+  color: #003550
+}
+
+.article a img {
+  border: none
+}
+
+.article hr {
+  height: 1px;
+  margin-bottom: 20px;
+  background: #dedede;
+  border: none
+}
+
+.article th {
+  font-weight: 700
+}
+
+.article td,
+.article th {
+  padding: 10px 20px;
+  text-align: left;
+  line-height: 22.4px
+}
+
+.article td {
+  font-weight: 300
+}
+
+.article ol,
+.article ul {
+  line-height: 22.4px;
+  font-weight: 300
+}
+
+.article ul {
+  list-style: square;
+  margin: 0 0 21px 2.5em
+}
+
+.article ol {
+  list-style-type: decimal;
+  margin: 0 0 21px 3em
+}
+
+.article ol ol {
+  list-style: upper-roman
+}
+
+.article ol ol ol {
+  list-style: lower-roman
+}
+
+.article ol ol ol ol {
+  list-style: upper-alpha
+}
+
+.article ol ol ol ol ol {
+  list-style: lower-alpha
+}
+
+.article ol ol,
+.article ol ul,
+.article ul ol,
+.article ul ul {
+  margin-top: 13px;
+  margin-bottom: 0
+}
+
+.article li {
+  line-height: 22.4px;
+  margin-bottom: 10px
+}
+
+.article sup {
+  vertical-align: baseline;
+  position: relative;
+  bottom: .3em
+}
+
+.article sub {
+  vertical-align: baseline;
+  position: relative;
+  top: .3em
+}
+
+.article blockquote {
+  margin: 30px;
+  font-style: normal;
+  border-left: 5px solid #c6c6c6;
+  padding-left: 15px
+}
+
+.article blockquote cite,
+.article blockquote em {
+  font-style: italic
+}
+
+.article blockquote,
+.article q {
+  quotes: none
+}
+
+.article blockquote:after,
+.article blockquote:before,
+.article q:after,
+.article q:before {
+  content: '';
+  content: none
+}
+
+.article caption {
+  font-size: .9em;
+  font-style: italic;
+  text-align: right
+}
+
+.article del,
+.article s,
+.article strike {
+  text-decoration: line-through
+}
+
+.article li img {
+  display: auto;
+}
+
+.article aside {
+  margin-top: 18px;
+}
+
+.article aside ul > li {
+    margin-top: 18px;
+    list-style: none
+}
+
+  
+  
