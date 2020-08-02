@@ -14,7 +14,7 @@
 	<link href="/minify/rgen_min.css" rel="stylesheet">
 	<link href="/css/custom.css" rel="stylesheet">
 	<link href="/css/form.css" rel="stylesheet">
-	{{if eq .Type "docs"}}
+	{{if or (eq .Type "docs") (eq .Type "legal") }}
 	<link href="/css/article.css" rel="stylesheet">
     {{end}}
 
