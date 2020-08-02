@@ -22,13 +22,19 @@ The backing data of each report can be exported in CSV format. Doing so, we add 
 ## Global View of Current Usage
 For each cluster discovered and handled by Krossboard, this page displays piecharts showing the latest consolidated CPU and memory usage. Those reports -- updated every 5 minutes, highlight shares of resources, used, available and non-allocatable.
 
+![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
+
 ## Usage Trends & Accounting
 For each cluster -- selected on-demand by the user, this page provides various reports showing, hourly, daily and monthly usage analytics for CPU and memory resources. 
 
 To export the backing data in CSV, click the related link next to the selected cluster (hourly, daily, monthly).
+
+![](/images/docs/screenshorts/krossboard-cluster-usage-trends.png)
  
 ## Consolidated Usage & History
 This page provides a comprehensive usage reports covering all clusters for a user-defined period of time. The intend of those reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time.
 
 To export the backing data in CSV, click the export link next to the selected period.
+
+![](/images/docs/screenshorts/krossboard-consolidated-clusters-usage.png)
 

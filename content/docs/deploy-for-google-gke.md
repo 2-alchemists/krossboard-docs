@@ -58,11 +58,11 @@ First review and set the following variables in your terminal:
 KROSSBOARD_IMAGE="krossboard-beta-v20200726t1595767620"
 GCP_PROJECT="my-gke-project"
 GCP_ZONE="us-central1-a"
-GCP_INSTANCE_TYPE="n1-standard-1"  
+GCP_INSTANCE_TYPE="g1-small"  
 GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
 ```
 
-> **Note:** For a max of 3 clusters you can even opt for a `g1-small` instance.
+> **Note:** For a large number of clusters you may think to switch from a `g1-small` instance to `n1-standard-1`. Check the metrics of the instance to decide.
 
 
 Then start your instance of Krossboard.

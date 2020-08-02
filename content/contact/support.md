@@ -19,4 +19,4 @@ You're experiencing a problem, please open an issue with sufficient details thro
 ## Contact us
 You're looking for information not available on this website, please fill in the form below. 
 
-Our typical response time is 48 hours on working days. 
+Our typical response time is 48 hours on working days.
