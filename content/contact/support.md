@@ -13,8 +13,9 @@ That said, we treat any feedback or issues with a special care and with the prio
 Go through one of the below resources to submit your request.
 
 ## Submit an issue
-You're experiencing a problem, please open an issue with sufficient details through our [issue tracker](https://github.com/krossboard). 
-  Provide as much detail as possible, and don't miss to indicate the version of Krossboard.
+You're experiencing a problem, please open an issue through our [issue tracker](https://github.com/2-alchemists/krossboard). 
+
+Provide as much detail as possible, and don't miss to indicate the version of Krossboard.
 
 ## Contact us
 You're looking for information not available on this website, please fill in the form below. 
