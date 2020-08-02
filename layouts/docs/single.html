@@ -1,18 +1,5 @@
 {{ define "main" -}}
 
-<section class="pos-rel pd-tb-medium mr-lr-100 article" data-rgen-sm="pd-tb-small">  
-  <div class="flex-row gt50">
-    <div class="flex-col-md-3">
-      <aside>
-        {{ .TableOfContents }}
-      </aside>
-    </div>  
-    <div class="flex-col-md-8">
-      <header><h1 class="title large"> {{ .Title}} </h1></header>
-    
-      {{ .Content}}    
-    </div>
-  </div>
+{{ partial "article.html" . }}
 
-</section>
 {{ end }}
