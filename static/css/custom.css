@@ -57,3 +57,7 @@
 div.container a {
     color: #47506A;
 }
+
+p > img {
+  display: inline;
+}
