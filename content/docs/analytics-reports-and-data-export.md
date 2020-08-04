@@ -9,13 +9,16 @@ toc = true
 
 > After a first installation, you may need to wait a while (typically an hour) to have all built-in charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 
-Krossboard currently features the following analytics and reports, they are described in details in the next sections.
+
+![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
+
+Krossboard currently features the following analytics and reports. They are introduced in details in the next sections.
 
 * Overview of the recent consolidated usage.
 * Per-cluster Usage Trends & Accounting.
 * Global Usage Trends & History.
-* The backing data of each report can be exported in CSV format. Doing so, Krossboard adds freedom to users to unlock additional analytics capabilities using your favorite data analysis tools (Google BigQuery, AWS Athena, Azure Synapse, Tableau, Excel, to list a few).
-
+  
+> **Data Export.** The data backing each of report can be exported in CSV format. Doing so, Krossboard adds freedom to users to unlock additional analytics capabilities using your favorite data analysis tools (Google BigQuery, AWS Athena, Azure Synapse, Tableau, Excel, to list a few).
 
 
 ## Overview of Recent Consolidated Usage
