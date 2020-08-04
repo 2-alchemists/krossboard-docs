@@ -7,7 +7,7 @@ bref = ""
 toc = true 
 +++
 
-On Amazon Web Services (AWS), Krossboard works as a standalone EC2 virtual machine.
+On Amazon Web Services (AWS), Krossboard works as a standalone EC2 virtual machine. 
 Each instance of Krossboard automatically discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. 
 
 This guide describes step-by-step how to deploy and configure an instance of Krossboard for an AWS region. 
@@ -148,7 +148,7 @@ Here are credentials to log in:
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
 
-> It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+> It's highly recommended to change this default password as soon as possible. 
 > ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```

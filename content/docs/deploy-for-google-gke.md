@@ -51,11 +51,11 @@ This role is assigned to it through a service account created as below on the Go
 This section requires to have access to Cloud Shell or a terminal with gcloud installed and configured with sufficiant credentials to create a compute instance.
 
 First review and set the following variables in your terminal: 
-  * Set the variable `KROSSBOARD_IMAGE` with a valid Krossboard image.
+  * Set the variable `KB_IMAGE` with a valid Krossboard image.
   * Variables starting `GCP_`  to ensure that it corresponds your target environments. In particular, the variable `GCP_SERVICE_ACCOUNT_EMAIL` shall match the email of the service account created above.
 
 ```bash
-KROSSBOARD_IMAGE="krossboard-beta-v20200726t1595767620"
+KB_IMAGE="krossboard-beta-v20200726t1595767620"
 GCP_PROJECT="my-gke-project"
 GCP_ZONE="us-central1-a"
 GCP_INSTANCE_TYPE="g1-small"  
@@ -68,13 +68,13 @@ GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
 Then start your instance of Krossboard.
 
 ```bash
-gcloud compute instances create ${KROSSBOARD_IMAGE} \
+gcloud compute instances create ${KB_IMAGE} \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
       --project=${GCP_PROJECT} \
       --zone=${GCP_ZONE} \
       --machine-type=${GCP_INSTANCE_TYPE} \
       --service-account=${GCP_SERVICE_ACCOUNT_EMAIL} \
-      --image=${KROSSBOARD_IMAGE} \
+      --image=${KB_IMAGE} \
       --image-project=krossboard-factory \
       --tags=krossboard-server
 ```
@@ -105,7 +105,7 @@ Here are credentials to log in:
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
 
-> It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+> It's highly recommended to change this default password as soon as possible. 
 > ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```

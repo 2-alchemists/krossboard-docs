@@ -7,8 +7,6 @@ bref = ""
 toc = true 
 +++
 
-## Before you begin
-
 > After a first installation, you may need to wait a while (typically an hour) to have all built-in charts available. This is because [by design]({{< relref "/docs/overview-concepts-features" >}}), Krossboard is thought to provide consitent analytics with an hourly granularity.
 
 Krossboard currently features the following analytics and reports, they are described in details in the next sections.

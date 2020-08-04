@@ -7,114 +7,126 @@ bref = ""
 toc = true 
 +++
 
-On Microsoft Azure, Krossboard works as a standalone virtual machine.
+On Microsoft Azure, Krossboard works as a standalone virtual machine. 
 
-> Each instance of Krossboard automatically discovers and handles AKS clusters according to permissions assigned to it through Azure IAM roles. In order words, given an appropriate permission level, an instance of Krossboard can even discover and handle all the AKS clusters within a subscription.
+Each instance can automatically discovers and handles all AKS clusters located in the same resource group. 
 
 This guide describes step-by-step how to deploy and configure a Krossboard instance. 
 
 
 ## Before you begin
-Krossboard is published on Azure through a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries). 
+First note that Krossboard is published through an [Azure Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries). 
 
-This guide should be straightforward to follow, assuming that:
+This installation guide assumes that:
 
-* You have a basic level of practice with Azure concepts.
-* You have access via the Azure portal to an active subscription
-* To setup a Krossboard instance it's required that your account have, at a minimum, permissions (1) to create and assign a managed identity to an Azure virtual machine; and (2) to assign Azure roles to a managed identity; (3) to deploy virtual machine via [Azure Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries).
-* You a terminal access (or a Cloud Shell access) to the Azure subscription.
-* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed on your terminal with an admin-level access to your AKS clusters.
+* You have at least a basic level of practice with Azure concepts.
+* You have at a least a **Contributor** access to your Azure subscription
+* You have access to a Linux terminal (or Cloud Shell) where you can use Azure CLI.
+* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal (or Cloud Shell).
 
 
-### Enable Access to Krossboard Image Gallery
-Open a browser and point it to the following URL: https://login.microsoftonline.com/YOUR_TENANT_ID/oauth2/authorize?client_id=72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F. 
-  
-Make sure to replace `YOUR_TENANT_ID` in the URL with the tenant ID of your Azure account. You can retrieve the tenant ID of your account using this command: `az account show --query "tenantId"`
-
-Then sign in the Azure portal and give the app registration access to the resource group where you want to create your Krossboard instance.
-
-* Select the resource group and then select **Access control (IAM)**. 
-* Under **Add role assignment** select **Add**.
-* Under **Role**, type **Contributor**.
-* Under **Assign access to:**, leave this as **Azure AD user, group, or service principal**.
-* Under **Select** type `KrossboardRelease` then select it when it shows up in the list. When you are done, select Save.
-
-### Configure access to the Image gallery
-This step requires to be performed via a terminal or via Azure Cloud Shell. 
-
-First make sure that you're logged with your mainAzure account. Otherwise run the following command to login (this step is not needed with Cloud Shell).
+### Sign in Azure via a Terminal
+Open a terminal and sign in to Azure; this step is not necessary if you're using Azure Cloud Shell.
 
 ```sh
 az login
 ```
 
-The next command activates your credentials to access the Krossboard's Image gallery.
-
-Replace `YOUR_TENANT_ID` with your main account Azure tenant ID.
+Next run the following commands, and check that each of them completes successfully.
 
 ```sh
-az login --service-principal --tenant "YOUR_TENANT_ID" \
-  -u "72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0" \
-  -p "3R5Cn7CZB5wiVY-2-T2S.G3RLTfJ_cE.15"
+TENANT_ID=$(az account show --query "tenantId" | cut -d'"' -f2)
+SUBSCRIPTION_ID=$(az account show --query id | cut -d'"' -f2)
+echo -e "TENANT_ID: $TENANT_ID\nSUBSCRIPTION_ID: $SUBSCRIPTION_ID"
 ```
 
-## Start and configure a Krossboard instance
+### Configure access to the Krossboard's Image Gallery
+During this step, you would confirm that you want to access to resources located in the Krossboard's Shared Image Gallery in Azure.
 
-Replace the value of `YOUR_RESOURCE_GROUP` in the next commands with the name of the target resource group for Krossboard (i.e. group where your AKS clusters are located). You can also set another name.
+
+Open a browser and point it to the following URL, while making sure to replace `TENANT_ID` with the value retrieved in the previous step. 
+
+> https://login.microsoftonline.com/**TENANT_ID**/oauth2/authorize?client_id=72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F
+
+The following commands actually enable activate your access to the gallery. 
+
+Replace `YOUR_AKS_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
 
 ```sh
-RG_NAME="YOUR_RESOURCE_GROUP"
+AKS_GROUP="YOUR_AKS_GROUP"
+KB_PROVIDER='9c88e487-60e8-43e5-983b-71133e91669a'
+KB_PROVIDER_SUB='89cdfb38-415e-4612-9260-6d095914713d'
+KB_CONSUMER='72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0'
+KB_CONSUMER_PASS='3R5Cn7CZB5wiVY-2-T2S.G3RLTfJ_cE.15'
+az role assignment create -g $AKS_GROUP --assignee $KB_CONSUMER --role "Contributor" 
+az login --service-principal -t"$KB_PROVIDER" -u"$KB_CONSUMER"  -p"$KB_CONSUMER_PASS"
+az login --service-principal -t"$TENANT_ID" -u"$KB_CONSUMER"  -p"$KB_CONSUMER_PASS"
+```
+
+## Start a Krossboard instance
+> Before proceeding with next steps, make sure that the active Azure session is your main account (and not the service principal activated in the previous step).
+> ```sh
+> az login --tenant $TENANT_ID
+> ```
+
+Once logged in again with your Azure account, start an instance of Krossboard as below.
+  * You can set another name for the instance if wished (see the value of `VM_NAME`). 
+  * The option `--generate-ssh-keys` indicates to use your local ssh keys for the instance. 
+  * If no key does exist, the Azure CLI does generate one. The ssh user would be `azureuser` (see option `--admin-username`)
+
+```sh
 VM_NAME="krossboard-`date +%F-%s`"
 az vm create \
-  --resource-group $RG_NAME \
-  --name $VM_NAME \
-  --image '/subscriptions/89cdfb38-415e-4612-9260-6d095914713d/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard' \
+  -g $AKS_GROUP \
+  -n $VM_NAME \
+  --image "/subscriptions/$KB_PROVIDER_SUB/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard" \
   --location centralus \
-  --generate-ssh-keys
+  --admin-username azureuser \
+  --generate-ssh-keys \
+  --assign-identity
 ```
 
-Logout to all sessions and sign in again with only your main Azure account.
+## Configure permissions
+
+Set required permissions (Azure RBAC) enabling Krossboard to discover AKS clusters in the given resource group.
 
 ```sh
-az account clear
-az login
+VM_PID=$(az vm get-instance-view -g $AKS_GROUP -n $VM_NAME --query 'identity.principalId' | cut -d'"' -f2)
+az role assignment create -g $AKS_GROUP --assignee $VM_PID --role "Managed Applications Reader" 
+az role assignment create -g $AKS_GROUP --assignee $VM_PID --role "Azure Kubernetes Service Cluster User Role" 
 ```
 
-Assign a managed identity to the instance
+Finally, set required permissions (AKS RBAC) to retrieve metrics from AKS clusters:
+  * [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) must be installed and accessible from the current terminal.
+  * This step is required for each AKS cluster.
+    ```sh
+    kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
+    ```
+  * The following example lists all existing AKS clusters in the given resource group and applies the required settings on them.
 
-```sh
-az vm identity assign -g $RG_NAME -n $VM_NAME
-```
-
-Assign IAM roles required for AKS clusters discovery.
-
-```sh
-VMPID=$(az vm get-instance-view -g $RG_NAME -n $VM_NAME --query 'identity.principalId' | cut -d'"' -f2)
-az role assignment create -g $RG_NAME --assignee $VMPID \
-  --role "Managed Applications Reader" 
-az role assignment create -g $RG_NAME --assignee $VMPID \
-  --role "Azure Kubernetes Service Cluster User Role" 
-```
-
-## Configure AKS RBAC to enable access to cluster metrics
-At this stage we're almost done, but Krossboard is not yet allowed to retrieve metrics from discovered AKS clusters. The last step is to configure RBAC settings on each AKS cluster to enable the required permissions.
-
-To ease that, Krossboard is released with a ready-to-use configuration file that can be applied as follows on your AKS clusters as below. This create a **ClusterRole** and an associated **ClusterRoleBinding** giving access to the target AKS cluster metrics.
-
-
-```
-kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
-```
+    ```sh
+    AKS_CLUSTERS=$(az aks list -g $AKS_GROUP --query "[].name"  -otsv)
+    for cluster in $AKS_CLUSTERS; do
+      az aks get-credentials -g $AKS_GROUP -n $cluster
+      kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
+    done
+    ```
 
 ## Get Access to Krossboard UI
-Open a browser tab and point it to this URL `http://instance-addr/` while replacing **instance-addr** with the IP address of the Krossboard instance.
+Get the IP address of the instance via the Azure portal or via the command line.
 
-Here are credentials to log in:
+```sh
+KROSSBOARD_IP=$(az vm list-ip-addresses -g $AKS_GROUP -n $VM_NAME --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv)
+echo $KROSSBOARD_IP
+```
+Open a browser tab and point it to `http://$KROSSBOARD_IP/`, while replacing **$KROSSBOARD_IP** accordingly.
+
+Here are the default credentials to sign in:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
 
-> It's highly recommended to change this default password as soon as possible. To do so, log into the instance through SSH and run this command:
+> It's highly recommended to change this default password as soon as possible.
 > ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
