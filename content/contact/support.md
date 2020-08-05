@@ -1,5 +1,5 @@
 ---
-title: "Issues & Support"
+title: "Contact & Support"
 description: ""
 date: 2020-03-07T00:20:27+02:00
 draft: false
@@ -9,8 +9,6 @@ Krossboard is a fast moving product, developed using agile and continuous delive
 Make sure to always use a recommended version of the product. 
 
 That said, we treat any feedback or issues with a special care and with the priority it deserves.
-
-Go through one of the below resources to submit your request.
 
 ## Submit an issue
 You're experiencing a problem, please open an issue through our [issue tracker](https://github.com/2-alchemists/krossboard). 

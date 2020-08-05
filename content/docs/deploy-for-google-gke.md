@@ -62,7 +62,7 @@ GCP_INSTANCE_TYPE="g1-small"
 GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
 ```
 
-> **Note:** For a large number of clusters you may think to switch from a `g1-small` instance to `n1-standard-1`. Check the metrics of the instance to decide.
+> **Note:** A `g1-small` instance is a good starting point, unless you have 10+ GKE clusters with many namespaces in the same project. Either way, think to regularly check the metrics of the instance to adapt your choice if applicable.
 
 
 Then start your instance of Krossboard.
@@ -98,7 +98,7 @@ gcloud compute firewall-rules create krossboard-allow-http \
 ## Step 4: Get Access to Krossboard UI
 Go to the GCP console to get the IP address of the instance. 
 
-Then open a browser tab and point it to this URL `http://instance-addr/`.
+Then open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance.
 
 Here are credentials to log in:
 

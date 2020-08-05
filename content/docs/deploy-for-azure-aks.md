@@ -9,7 +9,7 @@ toc = true
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine. 
 
-Each instance can automatically discovers and handles all AKS clusters located in the same resource group. 
+Each instance can automatically discover and handle all AKS clusters located in the same resource group. 
 
 This guide describes step-by-step how to deploy and configure a Krossboard instance. 
 
@@ -54,26 +54,26 @@ Replace `YOUR_AKS_GROUP` with the name of the resource group in which your AKS c
 
 ```sh
 AKS_GROUP="YOUR_AKS_GROUP"
-KB_PROVIDER='9c88e487-60e8-43e5-983b-71133e91669a'
+KB_PROVIDER_ID='9c88e487-60e8-43e5-983b-71133e91669a'
 KB_PROVIDER_SUB='89cdfb38-415e-4612-9260-6d095914713d'
-KB_CONSUMER='72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0'
+KB_CONSUMER_ID='72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0'
 KB_CONSUMER_PASS='3R5Cn7CZB5wiVY-2-T2S.G3RLTfJ_cE.15'
-az role assignment create -g $AKS_GROUP --assignee $KB_CONSUMER --role "Contributor" 
-az login --service-principal -t"$KB_PROVIDER" -u"$KB_CONSUMER"  -p"$KB_CONSUMER_PASS"
-az login --service-principal -t"$TENANT_ID" -u"$KB_CONSUMER"  -p"$KB_CONSUMER_PASS"
+az role assignment create -g $AKS_GROUP --assignee $KB_CONSUMER_ID --role "Contributor" 
+az login --service-principal -t"$KB_PROVIDER_ID" -u"$KB_CONSUMER_ID"  -p"$KB_CONSUMER_PASS"
+az login --service-principal -t"$TENANT_ID" -u"$KB_CONSUMER_ID"  -p"$KB_CONSUMER_PASS"
 KB_ACCOUNT_USERNAME=$(az account show --query "user.name" | cut -d'"' -f2)
 ```
 
 ## Start a Krossboard instance
 An instance of Krossboard can be started as below.
-  * You can set other values for `VM_NAME` and `VM_SIZE`. A `Standard_B1ms`size VM is a good starting unless you have a huge number of AKS in the resource groups. 
+  * You can set other values for `VM_NAME` and `VM_SIZE`. A `Standard_B1ms`size VM is a good starting unless you have 10+ AKS clusters with many namespaces in the same resource group. Either way, think to regularly check the metrics of the instance to adapt your choice if applicable.
   * The option `--generate-ssh-keys` indicates to generate (if missing locally) a SSH key pair for the instance. The ssh user would be `azureuser` (see `--admin-username`).
 
 ```sh
 VM_NAME="krossboard-`date +%F-%s`"
 VM_SIZE='Standard_B1ms'
-az vm create \
-  -g $AKS_GROUP \
+
+az vm create -g $AKS_GROUP \
   -n $VM_NAME \
   -- $VM_SIZE \
   --image "/subscriptions/$KB_PROVIDER_SUB/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard" \
@@ -122,8 +122,7 @@ The Krossboard web interface listens on port `80` by default. To access it we ne
 KB_SG=krossboard-sg
 VM_NICS=$(az vm nic list -g $AKS_GROUP --vm-name=$VM_NAME --query "[0].id" -otsv | cut -d'"' -f2)
 az network nsg create --resource-group $AKS_GROUP -l centralus -n $KB_SG
-az network nsg rule create -g $AKS_GROUP -n ${KB_SG}-rule \
-  --nsg-name $KB_SG --protocol tcp --priority 1000 --destination-port-range 80    
+az network nsg rule create -g $AKS_GROUP -n ${KB_SG}-rule --nsg-name $KB_SG --protocol tcp --priority 1000 --destination-port-range 80    
 az network nic update --network-security-group $KB_SG --ids $VM_NICS
 ```
 
@@ -134,7 +133,7 @@ Get the IP address of the instance (it's also visible on the Azure portal).
 KROSSBOARD_IP=$(az vm list-ip-addresses -g $AKS_GROUP -n $VM_NAME --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv)
 echo $KROSSBOARD_IP
 ```
-Open a browser tab and point it to `http://$KROSSBOARD_IP/`, while replacing `$KROSSBOARD_IP` accordingly.
+Open a browser tab and point it to `http://$KROSSBOARD_IP/`, changing `$KROSSBOARD_IP` to the IP address of the Krossboard instance.
 
 Sign in using the following default credentials:
 
