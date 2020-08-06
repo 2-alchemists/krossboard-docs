@@ -40,20 +40,30 @@ SUBSCRIPTION_ID=$(az account show --query id | cut -d'"' -f2)
 echo -e "TENANT_ID: $TENANT_ID\nSUBSCRIPTION_ID: $SUBSCRIPTION_ID"
 ```
 
-### Configure access to the Krossboard's Image Gallery
-During this step, you would confirm that you want to access to resources located in the Krossboard's Shared Image Gallery in Azure.
+### Consent to use the Krossboard's Image Gallery
+Azure requires that you consent to use a Image gallery from a third party.
 
-
-Open a browser and point it to the following URL, while making sure to replace `$TENANT_ID` with the value retrieved in the previous step. 
+To do so for Krossboard, open a web browser and point it to the following URL. Be careful to replace `$TENANT_ID` your tenant ID (see previous step). 
 
 > https://login.microsoftonline.com/**$TENANT_ID**/oauth2/authorize?client_id=72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F
 
-The following commands actually enable activate your access to the gallery. 
 
-Replace `YOUR_AKS_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
+## Setup a Krossboard instance
+The set of commands below shall deploy, in a couple of minutes, an instance of Krossboard for a given resource group.
+
+Before running the commands, it's important to review and set the following variables appropriately:
+  * Replace `YOUR_AKS_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
+  * The variable `VM_NAME` sets the name of the instance. You're free to set any other valid name. 
+  * A `Standard_B1ms` VM size (see variable `VM_SIZE`) is a good starting unless you have 10+ AKS clusters with many namespaces in the target resource group. Either way, think to regularly check the metrics of the instance to adapt your choice if needed.
+  * The option `--generate-ssh-keys` when creating the instance indicates to generate locally (if missing) a SSH key pair for the instance. The ssh user would be `azureuser` (see `--admin-username`).
 
 ```sh
+# deployment parameters
 AKS_GROUP="YOUR_AKS_GROUP"
+VM_NAME="krossboard-`date +%F-%s`"
+VM_SIZE='Standard_B1ms'
+
+# Activate permission to access to the Krossboard Image gallery on Azure
 KB_PROVIDER_ID='9c88e487-60e8-43e5-983b-71133e91669a'
 KB_PROVIDER_SUB='89cdfb38-415e-4612-9260-6d095914713d'
 KB_CONSUMER_ID='72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0'
@@ -62,17 +72,8 @@ az role assignment create -g $AKS_GROUP --assignee $KB_CONSUMER_ID --role "Contr
 az login --service-principal -t"$KB_PROVIDER_ID" -u"$KB_CONSUMER_ID"  -p"$KB_CONSUMER_PASS"
 az login --service-principal -t"$TENANT_ID" -u"$KB_CONSUMER_ID"  -p"$KB_CONSUMER_PASS"
 KB_ACCOUNT_USERNAME=$(az account show --query "user.name" | cut -d'"' -f2)
-```
 
-## Start a Krossboard instance
-An instance of Krossboard can be started as below.
-  * You can set other values for `VM_NAME` and `VM_SIZE`. A `Standard_B1ms`size VM is a good starting unless you have 10+ AKS clusters with many namespaces in the same resource group. Either way, think to regularly check the metrics of the instance to adapt your choice if applicable.
-  * The option `--generate-ssh-keys` indicates to generate (if missing locally) a SSH key pair for the instance. The ssh user would be `azureuser` (see `--admin-username`).
-
-```sh
-VM_NAME="krossboard-`date +%F-%s`"
-VM_SIZE='Standard_B1ms'
-
+# create the instance
 az vm create -g $AKS_GROUP \
   -n $VM_NAME \
   -- $VM_SIZE \

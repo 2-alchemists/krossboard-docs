@@ -27,8 +27,9 @@ This installation guide assumes that:
 ## Start a Krossboard instance
 Run the enclosed command to create your instance of Krossboard, beforehand review the parameters and adapt them if applicable.
   * Set a proper key pair (variable `AWS_EC2_KEY_PAIR` accordingly). If you want to create a new key pair, read [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
-  * The deployment region (variable `AWS_EKS_REGION`) should be where your target EKS clusters are located.
-  * A `t2.small` instance type is a good starting point, unless you have 10+ EKS clusters with many namespaces in the same region.
+  * The variable `KB_IMAGE` shall be set with a valid Krossboard image (see the [list of available images]({{< relref "/docs/releases" >}})).
+  * The variable `AWS_EKS_REGION` sets the region where your target EKS clusters are located.
+  * A `t2.small` instance type is a good starting point, unless you have 10+ EKS clusters with many namespaces in the target region.
 
 ```sh
 AWS_EC2_TYPE='t2.small'
@@ -42,7 +43,7 @@ KB_INSTANCES_INFO=$(aws ec2 run-instances --region "$AWS_REGION" --image-id "$KB
 The following steps would download our policy and the trust relationship policy files for Krossboard, then create the IAM role and associated it to the instance.
 
 ```bash
-ROLE_NAME='krossboard-role'
+ROLE_NAME="krossboard-role-`date +%F-%s`"
 wget -O /tmp/${ROLE_NAME}-policy.json https://krossboard.app/artifacts/aws/krossboard-role-policy.json
 wget -O /tmp/${ROLE_NAME}-trust-policy.json https://krossboard.app/artifacts/aws/krossboard-role-trust-policy.json
 KB_POLICY=$(aws iam create-policy --policy-name krossboard-policy --policy-document file:///tmp/${ROLE_NAME}-policy.json)
