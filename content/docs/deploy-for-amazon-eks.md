@@ -17,8 +17,7 @@ This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
 * You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to AKS clusters in the selected region.
-* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
-* You have **[jq](https://stedolan.github.io/jq/)** installed on your terminal. 
+* You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `wget` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 > All the next steps are achieved from a terminal.
 
@@ -36,54 +35,21 @@ KB_IMAGE='ami-0fa8675e6d205da2b'
 KB_INSTANCES_INFO=$(aws ec2 run-instances --region "$AWS_REGION" --image-id "$KB_IMAGE" --instance-type "$AWS_EC2_TYPE" --key-name "$AWS_EC2_KEY_PAIR" --count 1)
 ```
 
-### Configure IAM permissions for Krossboard
-
-Create the policy and the trust relationship policy files
-
-```bash
-cat <<EOF > /tmp/kb-policy.json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "eks:ListClusters",
-        "eks:DescribeCluster"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-EOF
-
-cat <<EOF > /tmp/kb-rtp.json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-```
-
-Create the IAM role and associated it to the instance.
+### Configure AWS IAM permissions for Krossboard
+The following steps would download our policy and the trust relationship policy files for Krossboard, then create the IAM role and associated it to the instance.
 
 ```bash
 ROLE_NAME='krossboard-role'
-KB_POLICY=$(aws iam create-policy --policy-name krossboard-policy --policy-document file:///tmp/kb-policy.json)
-KB_ROLE=$(aws iam create-role --role-name "$ROLE_NAME" --assume-role-policy-document file:///tmp/kb-rtp.json)
+wget -O /tmp/${ROLE_NAME}-policy.json https://krossboard.app/artifacts/aws/krossboard-role-policy.json
+wget -O /tmp/${ROLE_NAME}-trust-policy.json https://krossboard.app/artifacts/aws/krossboard-role-trust-policy.json
+KB_POLICY=$(aws iam create-policy --policy-name krossboard-policy --policy-document file:///tmp/${ROLE_NAME}-policy.json)
+KB_ROLE=$(aws iam create-role --role-name "$ROLE_NAME" --assume-role-policy-document file:///tmp/${ROLE_NAME}-trust-policy.json)
 aws iam attach-role-policy --role-name "$ROLE_NAME" --policy-arn "$(echo $KB_POLICY | jq -r '.Policy.Arn')"
 aws iam create-instance-profile --instance-profile-name "${ROLE_NAME}-profile"
 aws iam add-role-to-instance-profile --role-name "$ROLE_NAME" --instance-profile-name "${ROLE_NAME}-profile"
-# The role profile or the instance may not be ready immediately
-# That's why the next command is retried a couple of times
+# The role profile or the instance may not be ready immediately.
+# That's why the next command that assigned the profile to the instance
+# is retried a couple of times.
 n=0
 until [ "$n" -ge 15 ]
 do
@@ -93,10 +59,20 @@ do
 done
 ```
 
-### Configure metrics retrieval from EKS clusters
-> This step must be achieved on each cluster.
+Get the ARN of the instance and note it, it'll be needed later in this guide.
 
-**Deploy Kubernetes Metric Server**
+```sh
+echo $KB_ROLE | jq -r '.Role.Arn'
+```
+
+
+### Configure EKS RBAC to enable metrics retrieval
+> This step must be achieved on each cluster.
+> 
+> All the needed permissions are read-only permissions on nodes and pods metrics.
+
+
+#### Deploy Kubernetes Metric Server
 
 ```bash
 DOWNLOAD_VERSION=v0.3.6
@@ -107,29 +83,31 @@ tar -xzf metrics-server-$DOWNLOAD_VERSION.tar.gz --directory metrics-server-$DOW
 kubectl apply -f metrics-server-$DOWNLOAD_VERSION/deploy/1.8+/
 ```
 
-Verify that installation has been successful.
+Verify that the installation has been successful.
 
 ```bash
 kubectl -nkube-system get deploy metrics-server
 ```
 
-**Configure permissions (EKS RBAC) to enable access to metrics**
 
-This step implies to edit the **aws-auth** ConfigMap of the EKS cluster.
+#### Configure EKS RBAC to access metrics
 
-Before any changes, we do recommend to backup the current **aws-auth** ConfigMap.
+This step implies to edit the **aws-auth ConfigMap** of the EKS cluster.
+
+Before any changes, we highly recommend to backup the current ConfigMap.
 
 ```bash
 kubectl -n kube-system get configmap aws-auth -o yaml > aws-auth-backup-$(date +%F).yaml
+ls -l aws-auth-backup-*.yaml
 ```
 
-Once the backup done, edit the **aws-auth** ConfigMap.
+Once the backup done, edit the **aws-auth ConfigMap**.
 
 ```bash
 kubectl -n kube-system edit configmap aws-auth
 ```
 
-Add the following lines under the **mapRoles** section, while **replacing** each instance of the snippet **<ARN of Krossboard Role>** with the ARN of the role created previously.
+Add the following snippet under the **mapRoles** section, while changing `<ARN of Krossboard Role>` to the ARN of the Krossboard role (it should have been retrieved at the previous section).
 
 ```yaml
     - groups:
@@ -138,18 +116,18 @@ Add the following lines under the **mapRoles** section, while **replacing** each
       username: <ARN of Krossboard Role>
 ```
 
-At this stage we're almost done, but Krossboard is not yet allowed to retrieve metrics from discovered EKS clusters. The last step is to configure RBAC settings on each EKS cluster to enable the required permissions.
-
-Enable access to metrics
+Finally apply the RBAC settings on Kubernetes.
 
 ```bash
 kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 ```
 
 ## Get Access to Krossboard UI
-Open a browser tab and point it to this URL `http://instance-addr/` while replacing **instance-addr** with the IP address of the Krossboard instance.
+The Krossboard web interface is available port `80` by default. To access it you would first edit the instance's security group rules to enable HTTP access on that port.
 
-Here are credentials to log in:
+Once the security group rules properly configured, open a browser tab and point it to this URL `http://instance-addr/`. Change **instance-addr** to the IP address of the Krossboard instance.
+
+The default username and password to sign in are:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm

@@ -24,7 +24,7 @@ This guide should be straightforward to follow, assuming that:
 
 > Note that all the below steps are achieved from the Google Cloud Console.
 
-## Step 1: Select a GCP project
+## Select a GCP project
 Krossboard discovers and handles GKE clusters as a project basics. The clusters can be spread accross different regions and zones in that project.
 
  On the Cloud Console, select a project as follows.
@@ -32,7 +32,7 @@ Krossboard discovers and handles GKE clusters as a project basics. The clusters 
  ![](/images/docs/gcp-select-project.png)
 
 
-## Step 2: Create an IAM service account for Krossboard
+## Create a GCP service account for Krossboard
 Each Krossboard instance needs to have a the role of **Kubernetes Engine Viewer** (i.e. read-only access to GKE resources).
 This role is assigned to it through a service account created as below on the Google Cloud Console.
 
@@ -46,7 +46,7 @@ This role is assigned to it through a service account created as below on the Go
 
 > Copy the email address of the service account just created, it'll be needed in the next section.
 
-## Step 3: Deploy a Krossboard instance
+## Deploy a Krossboard instance
 
 This section requires to have access to Cloud Shell or a terminal with gcloud installed and configured with sufficiant credentials to create a compute instance.
 
@@ -95,12 +95,12 @@ gcloud compute firewall-rules create krossboard-allow-http \
 ```
 
 
-## Step 4: Get Access to Krossboard UI
+## Get Access to Krossboard UI
 Go to the GCP console to get the IP address of the instance. 
 
 Then open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance.
 
-Here are credentials to log in:
+The default username and password to sign in are:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm

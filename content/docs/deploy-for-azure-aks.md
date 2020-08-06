@@ -101,7 +101,7 @@ az role assignment create -g $AKS_GROUP --assignee $VM_SP --role "Azure Kubernet
 
 Finally, set required permissions (AKS RBAC) to retrieve metrics from AKS clusters:
   * [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) must be installed and accessible from the current terminal.
-  * This step is required for each AKS cluster.
+  * This step is required for each AKS cluster. All the needed permissions are read-only permissions on nodes and pods metrics.
     ```sh
     kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
     ```
@@ -116,7 +116,7 @@ Finally, set required permissions (AKS RBAC) to retrieve metrics from AKS cluste
     ```
 
 ## Get Access to Krossboard UI
-The Krossboard web interface listens on port `80` by default. To access it we need to a set security group to the VM to enable access to this port.
+The Krossboard web interface is available port `80` by default. To access it we need to a set security group to the VM to enable access to this port.
 
 ```sh
 KB_SG=krossboard-sg
@@ -126,7 +126,6 @@ az network nsg rule create -g $AKS_GROUP -n ${KB_SG}-rule --nsg-name $KB_SG --pr
 az network nic update --network-security-group $KB_SG --ids $VM_NICS
 ```
 
-
 Get the IP address of the instance (it's also visible on the Azure portal).
 
 ```sh
@@ -135,7 +134,7 @@ echo $KROSSBOARD_IP
 ```
 Open a browser tab and point it to `http://$KROSSBOARD_IP/`, changing `$KROSSBOARD_IP` to the IP address of the Krossboard instance.
 
-Sign in using the following default credentials:
+The default username and password to sign in are:
 
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm

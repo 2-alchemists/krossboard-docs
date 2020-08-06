@@ -65,4 +65,5 @@ p > img {
 pre code {
   white-space: pre;
   overflow-x: auto;
+  line-height: 2rem;
 }
