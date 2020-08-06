@@ -30,4 +30,3 @@ echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
 echo -e "Instance ID => `echo $KB_ROLE | jq -r '.Role.Arn'`"
 echo -e "ARN => => `echo $KB_ROLE | jq -r '.Role.Arn'`"
 echo -e "===========================================\e[0m"
-

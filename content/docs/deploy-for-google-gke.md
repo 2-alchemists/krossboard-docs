@@ -50,9 +50,10 @@ This role is assigned to it through a service account created as below on the Go
 
 This section requires to have access to Cloud Shell or a terminal with gcloud installed and configured with sufficiant credentials to create a compute instance.
 
-First review and set the following variables in your terminal: 
+Before submitting the below commands, first review and set the following variables appropriately: 
   * Set the variable `KB_IMAGE` with a valid Krossboard image.
   * Variables starting `GCP_`  to ensure that it corresponds your target environments. In particular, the variable `GCP_SERVICE_ACCOUNT_EMAIL` shall match the email of the service account created above.
+  * A `g1-small` instance is a good starting point, unless you have 10+ GKE clusters with many namespaces in the same project. Either way, think to regularly check the metrics of the instance to adapt your choice if applicable.
 
 ```bash
 KB_IMAGE="krossboard-beta-v20200726t1595767620"
@@ -60,14 +61,6 @@ GCP_PROJECT="my-gke-project"
 GCP_ZONE="us-central1-a"
 GCP_INSTANCE_TYPE="g1-small"  
 GCP_SERVICE_ACCOUNT_EMAIL="krossboard@krossboard-test.iam.gserviceaccount.com"
-```
-
-> **Note:** A `g1-small` instance is a good starting point, unless you have 10+ GKE clusters with many namespaces in the same project. Either way, think to regularly check the metrics of the instance to adapt your choice if applicable.
-
-
-Then start your instance of Krossboard.
-
-```bash
 gcloud compute instances create ${KB_IMAGE} \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
       --project=${GCP_PROJECT} \
@@ -81,7 +74,9 @@ gcloud compute instances create ${KB_IMAGE} \
 
 > if prompted, answer `y`es to enable Compute Engine API.
 
-Enable the acces to the Krossbord web interface
+## Get Access to Krossboard UI
+
+First enable the access to the Krossbord web interface, it's available on port `80` by default.
 
 ```bash
 gcloud compute firewall-rules create krossboard-allow-http \
@@ -95,10 +90,7 @@ gcloud compute firewall-rules create krossboard-allow-http \
 ```
 
 
-## Get Access to Krossboard UI
-Go to the GCP console to get the IP address of the instance. 
-
-Then open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance.
+Then open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance (can be get from the GCP console). 
 
 The default username and password to sign in are:
 
