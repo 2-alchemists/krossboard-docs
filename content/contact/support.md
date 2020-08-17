@@ -1,5 +1,5 @@
 ---
-title: "Contact & Support"
+title: "Information & support"
 description: ""
 date: 2020-03-07T00:20:27+02:00
 draft: false
@@ -8,7 +8,7 @@ tags: [contact]
 Krossboard is a fast moving product, developed using agile and continuous delivery methodology.
 Make sure to always use a recommended version of the product. 
 
-That said, we treat any feedback or issues with a special care and with the priority it deserves.
+We treat any feedback or issues with a special care and with the priority it deserves.
 
 ## Submit an issue
 You're experiencing a problem, please open an issue through our [issue tracker](https://github.com/2-alchemists/krossboard). 
