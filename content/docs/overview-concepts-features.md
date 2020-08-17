@@ -1,13 +1,10 @@
 +++
-title = "Overview, Concepts & Features"
+title = "Krossboard Concepts & Features"
 description = ""
 draft = false
 weight = 50
 toc = true 
 +++
-
-
-## What is Krossboard
 
 ![](/images/docs/krossboard-architecture-overview.png)
 
