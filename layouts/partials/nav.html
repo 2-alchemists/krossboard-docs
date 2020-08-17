@@ -1,0 +1,64 @@
+<!--
+	************************************************************
+	* Navigation
+	************************************************************ -->
+	<nav class="nav-wrp nav-1 light bg-dark1" data-glass="n" data-sticky="y">
+		<div class="container pd-0 bdr-b min-px-h100 flex-cc" data-rgen-sm="pd-lr-20 h-reset">
+			<div class="flex-row gt0 middle-md">
+				
+				<!--=================================
+				= Logo section
+				==================================-->
+				<div class="flex-col-md-3">
+					<div class="nav-header">
+						<a class="navbar-brand" href="/"><img src="/images/logo/krossboard-logo.png" alt="Krossboard logo"></a>
+						<a class="nav-handle" data-nav=".nav" data-navopen="pe-7s-more" data-navclose="pe-7s-close"><i class="pe-7s-more"></i></a>	
+					</div>
+				</div><!-- // END : Column //  -->
+				
+				<!--=================================
+				= Navigation links
+				==================================-->			
+				<div class="flex-col-md-9 align-r">
+					<div class="nav">
+						
+						<ul class="nav-links sf-menu">
+							<li><a href="/">Home</a></li>
+							<li><a href="/#features">Key Features</a></li>
+							<li><a href="/#overview">Concepts</a></li>
+							<li><a href="#">Resources</a>
+								<ul class="dropdown-menu">								
+									<li class="dropdown-header"><b>Setup</b></li>
+									<li><a href="/docs/deploy-for-azure-aks/">🚀 for Azure AKS</a></li>
+									<li><a href="/docs/deploy-for-google-gke/">🚀 for Google GKE</a></li>
+									<li><a href="/docs/deploy-for-amazon-eks/">🚀 for Amazon EKS</a></li>
+									<li class="divider"></li>
+									<li class="dropdown-header"><b>Concepts & Usage</b></li>
+									<li><a href="/docs/analytics-reports-and-data-export/">Understand Analytics Reports & Data Export</a></li>
+									<li><a href="/docs/overview-concepts-features/">Overview, Concepts & Features</a></li>
+									<li><a href="/docs/releases/">Releases Notes</a></li>
+								</ul>
+							</li>
+							<li><a href="/aboutus">About Us</a></li>
+						</ul><!-- // END : Navigation links //  -->
+						
+						<div class="nav-social mr-lr-10" data-rgen-md="hide">
+                            {{ with .Site.Params }}
+							{{ if isset . "twitter" }}<a href="{{ .twitter }}"><i class="fa fa-twitter"></i></a>{{ end }}
+                            {{ if isset . "github" }}<a href="{{ .github }}"><i class="fa fa-github"></i></a>{{ end }}                           
+                            {{ end }}
+						</div><!-- // END : Social icons //  -->
+						
+						<div class="nav-other">
+							<a href="/contact/support" class="btn btn-default light mini"><i class="fa fa-envelope-o mr-r-5"></i> CONTACT US</a>
+						</div><!-- // END : Contact button //  -->
+						
+					</div><!-- // END : Nav //  -->
+
+				</div><!-- // END : Column //  -->
+
+			</div><!-- // END : row //  -->
+
+		</div><!-- // END : container //  -->
+	</nav>
+	<!-- ************** END : Navigation **************  -->

@@ -1,0 +1,17 @@
+
+<div class="container">
+    <div class="{{ if .Params.Toc }}flex-row gt70{{ else }}w75 mr-auto{{ end }}">
+    {{ if .Params.Toc }}
+    <div class="flex-col-md-3">
+        <aside>
+        {{ .TableOfContents }}
+        </aside>
+    </div>
+    {{ end }}
+    <div class="{{ if .Params.Toc }}flex-col-md-8{{ end }}">
+        <header><h1 class="title large"> {{ .Title}} </h1></header>
+    
+        {{ .Content}}    
+    </div>
+    </div>
+</div>

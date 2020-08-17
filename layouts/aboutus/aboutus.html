@@ -1,0 +1,57 @@
+{{ define "main" -}}
+	<section class="pd-tb-large pos-rel" data-rgen-sm="pd-tb-small">
+		<div class="container pos-rel z2">
+			<div class="w75 mr-auto typo-light mr-b-60  align-c">
+				<h2 class="title large" data-rgen-sm="large" data-rgen-md="mr-t-40">{{ .Title | safeHTML }}</h1>
+				<p class="title-sub mr-b-40">{{ .Description }}</p>
+			</div>
+			<div class="flex-row middle-md" data-rgen-sm="">
+				<div class="flex-col-md-6 flex-cc">
+					<div class="pos-rel " data-rgen-sm="ml-b-40">
+						<img src="/images/logo/2alchemists-logo.png" class="img-responsive" alt="image">
+					</div>
+				</div>
+				<div class="flex-col-md-6">
+					<div class="content typo-light">						
+						<p>{{ index .Site.Data.aboutus "Motivation" | markdownify }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<b class="full-wh z1 bg-rb bg-repeat-x" data-rgen-sm="hide" data-bg="images/intro-graph.svg"></b>
+		<b class="full-wh" data-gradient="y" data-g-colors="rgba(74, 83, 110,1)|rgba(45, 51, 69, 1)"></b>
+	</section>	
+
+	<section class="pos-rel pd-tb-small" data-rgen-sm="pd-tb-small">
+		<div class="container pos-rel w75">
+			<div class="w-50 mr-b-70 align-c">
+				<h2 class="title txt-upper" data-rgen-sm="medium">Meet Our <span class="txt-color1">Leadership</span></h2>				
+			</div>
+			
+			<div class="flex-row gt100 mb20">
+				{{ range .Site.Data.aboutus.Founders }}
+				<div class="flex-col-md-6">
+					<div class="flex flex-cc mr-b-10"><img class="px-w300" src="{{ .Photo }}" alt="image"></div>
+					<div class="flex-bc typo-light bg-dark1 mr-auto px-w300">
+						<div class="content mr-tb-20">
+							<h3 class="title tiny mr-0 bold-1 txt-upper">{{ .Name }}</h3>
+							<p><em class="fs12 op-08">{{ .Title }}</em></p>
+							<hr class="light">
+							<div class="align-c">
+							<a href="{{ .Links.LinkedIn }}" target="_blank" class="inline-flex sq30 flex-cc fs18"><i class="fa fa-linkedin"></i></a>
+							<a href="{{ .Links.Github }}" target="_blank" class="inline-flex sq30 flex-cc fs18"><i class="fa fa-github"></i></a>		
+							</div>
+						</div>					
+					</div>
+					<div class="align-l mr-t-30 mr-lr-40">
+						{{ .Bio | markdownify }}					
+					</div>
+				</div>		
+				{{ end }}	
+			</div>			
+		</div>
+	</section>
+
+</div>
+
+{{- end }}

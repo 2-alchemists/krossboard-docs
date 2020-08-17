@@ -1,0 +1,11 @@
+<div class="item {{? !it.moderation_passed}}hidden{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}">
+	<div class="img-box1">
+		<div class="overlay anim flex-cc">
+			<span>
+				<a href="{{=it.link}}" target="_blank"><i class="fa fa-link"></i></a><br>
+				<b class="fs13 bold-2"><i class="fa fa-heart"></i> {{=it.likes}}  &nbsp; &nbsp; <i class="fa fa-comment"></i> {{=it.comment}}</b>
+			</span>
+		</div>
+		<a href="{{=it.link}}" target="_blank">{{=it.attachment}}</a>
+	</div>
+</div>

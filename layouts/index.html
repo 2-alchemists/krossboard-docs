@@ -1,61 +1,91 @@
-{{ define "title"}} {{ .Site.Title}} {{end}}
-{{ define "header"}} {{ partial "header" .}} {{end}}
-{{ define "main"}}
+{{ define "main" -}}
+	
+	<!-- 
+	****************************************************************************
+	*                               Intro section                              *
+	**************************************************************************** -->
+	<section class="pd-tb-large pos-rel" data-rgen-sm="pd-tb-small">
+		<div class="container pos-rel z2 align-c">
+			<div class="w75 mr-auto typo-light mr-b-60">
+				<h1 class="title large" data-rgen-sm="large" data-rgen-md="mr-t-40">{{ .Site.Params.title }}</h1>
+				<p class="title-sub mr-b-40">{{ .Site.Params.subtitle }}</p>
 
-<div id="main">
-  <div id="hero" class="primary">
-    <h1>{{.Title}}{{ if isset .Params "subtitle" }}<br/>{{ .Params.Subtitle }}{{end}}</h1>
-    <p>{{.Description}}</p>
-    <div id="home-buttons">
-      <a class="button primary big" href="/docs/deploy-for-google-gke/">Deploy for Google GKE</a>
-      <a class="button secondary big" href="/docs/deploy-for-azure-aks/">Deploy for Azure AKS</a>
-      <a class="button inverted big" href="/docs/deploy-for-amazon-eks/">Deploy for Amazon EKS</a>
-    </div>
-  </div>
-  <!-- This section helps to highlight a news published as Content in _index.md -->
-  <div id="action-buttons">
-    <legend>{{.Content}}</legend>
-  </div>
- 
-  <div id="product-overview">
-    <div class="row gutters">
-      {{ range .Site.Data.productfeatures }}
-        <div class="col col-6 item">
-          <figure style="text-align: center;">
-            <img alt="{{ .Title }}" height="48" width=48 src="{{ .Image | relURL }}">
-          </figure>
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Description  | safeHTML }}</p>
-        </div>
-      {{ end }}
-    </div class="row gutters">
-  </div>
+				<a href="/docs/deploy-for-google-gke/" class="mr-10 btn solid btn-white" data-rgen-sm="medium bold-n">
+					<span class="btn-txt">Deploy for Google GKE</span>
+				</a>
+				<a href="/docs/deploy-for-azure-aks/" class="mr-10 btn solid btn-color1" data-rgen-sm="medium bold-n">
+					<span class="btn-txt">Deploy for Azure AKS</span>
+				</a>
+				<a href="/docs/deploy-for-amazon-eks/" class="mr-10 btn solid btn-color3" data-rgen-sm="medium bold-n">
+					<span class="btn-txt">Deploy for Amazon EKS</span>
+				</a>
+			</div>
+			
+			<img src="images/docs/krossboard-architecture-overview.png" class="mr-auto" alt="intro image">
+		</div><!-- // END : container //  -->
+		
+		<b class="full-wh z1 bg-rb bg-repeat-x" data-rgen-sm="hide" data-bg="images/intro-graph.svg"></b>
+		<b class="full-wh" data-gradient="y" data-g-colors="rgba(74, 83, 110,1)|rgba(45, 51, 69, 1)"></b>
+	</section>
+	<!-- ************** END : Intro section **************  -->
 
-  <div id="product-mediahighlight">
-    <div class="row">
-      <div class="col col-12">
-        <h1>Krossboard in a nutshell</h1>
-        <p>
-          Krossboard comes to help organizations owning Kubernetes clusters to tackle the challenges to make cost management and capacity planning decisions. This is achieved by introducing a global and consistent approach of resource usage analysis where the usage of all Kubernetes clusters are collected, processed, aggregated, and visualized at a single place. 
-        </p>
-        <p>
-          <a class="button outline big" href="/docs/overview-concepts-features">Read more</a>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-12">
-        <figure style="text-align: center;">
-          <img alt="krossboard-architecture-overview" src="/images/docs/krossboard-architecture-overview.png"/>
-        </figure>
-        <!--
-        <video width="640" height="480" controls>
-          <source src="/video/krossboard-overview.mp4" type="video/mp4" />
-        </video>
-        -->
-      </div>
-    </div>
-  </div class="row">
-  </div>
-{{ end }}
-{{ define "footer"}} {{ partial "footer" .}} {{end}}
+
+
+	<!--
+	************************************************************
+	* Features section
+	************************************************************ -->
+	<section class="pos-rel pd-tb-medium bg-color3 pd-t-0" data-rgen-sm="pd-tb-small" id="features">
+		<div class="container pos-rel z1 typo-light">
+			<div class="w75 mr-auto align-c mr-b-60">
+				<h3 class="title large" data-rgen-sm="large">Krossboard Key Features</h3>
+				<p class="title-sub">Without being exhaustive, here are some key tenets that make Krossboard unique:</p>
+			</div>
+			
+			<div class="flex-row gt40 mb20">
+				{{ range .Site.Data.productfeatures }}
+				<div class="flex-col-md-6">
+					<div class="info-obj img-t g20 medium align-c pd-lr-30">
+						<div class="img txt-color3"><span class="iconwrp rd bg-dark1"><i class="{{ .Image }}"></i></span></div>
+						<div class="info">
+							<h2 class="title mini bold-n">{{ .Title }}</h2>
+							<p class="title-sub mini">{{ .Description  | safeHTML }}</p>
+						</div>
+					</div><!-- // END : Info object //  -->
+				</div><!-- // END : column //  -->
+				{{ end }}
+			</div><!-- // END : row //  -->
+		</div>
+		<b class="full-wh" data-gradient="y" data-g-colors="rgba(74, 83, 110,0)|rgba(45, 51, 69, 0.25)"></b>
+	</section>
+	<!-- ************** END : Features section **************  -->
+
+
+	<!--
+	************************************************************
+	* Content section
+	************************************************************ -->
+	<section class="pos-rel pd-tb-large" data-rgen-sm="pd-tb-small align-c" id="overview">
+		<div class="container pos-rel z1">
+			<div class="align-c w75 mr-auto mr-b-70">
+				<h2 class="title" data-rgen-sm="medium">Efficient visualization at a central place</h2>
+				<h4 class="f-1 title mini bold-2">
+					Krossboard comes to help organizations to tackle the challenges to make cost management and capacity planning decisions on Kubernetes clusters. 
+					It does so by enabling a global and consistent approach of collecting, processing, aggregating, and visualizing resource usage analytics at a single central place.
+				</h4>
+
+				<a href="/docs/overview-concepts-features" class="btn btn-color3 bold-n solid">READ MORE...</a>
+			</div>
+
+			<div class="flex-row gt20 mb20 middle-md">
+				<div class="flex-col-md-12">
+					<img src="images/krossboard-animated-screencast.gif" alt="image">
+				</div><!-- // END : column //  -->
+			</div><!-- // END : row //  -->
+		</div><!-- // END : container //  -->
+	</section>
+	<!-- ************** END : Content section **************  -->			
+</div>
+<!-- /#page --> 
+
+{{- end }}

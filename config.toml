@@ -1,50 +1,21 @@
+min_version = 0.73
 baseURL = "https://krossboard.app/"
 languageCode = "en-us"
 title = "Krossboard"
-theme = "kube"
-description = "Kubernetes Usage Analytics for Cost and Capacity Management"
-Paginate = 4
 googleAnalytics = "UA-158612003-1"
 
-[Params]
-  RSSLink = "/index.xml"
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[params]
   author = "2Alchimists SAS"
+  title = "Converged Kubernetes usage analytics"
+  subtitle = "All in one single place, Krossboard tracks the usage of all your clusters over time, it helps forecast capacity scale up/down, thereby enabling you to easily anticipate and master operations costs."
+  description = "Kubernetes Usage Analytics for Cost and Capacity Management"
   releaseYear = "2020"
-  github = "https://github.com/krossboard"
+  github = "https://github.com/2-alchemists/krossboard"
   twitter = "https://twitter.com/krossboard"
   email = "contact@krossboard.app"
   logo = "/images/logo/krossboard-logo.png"
   favicon = "/images/favicon.ico"
   contactRequestApiEndpoint = "https://demo.krossboard.app/mx-gateway/sendmail"
 
-[params.seo.webmaster_verifications]
-  google = "" # Optionnel, Google verification code
-  bing = "" # Optionnel, Bing verification code
-  alexa = "" # Optionnel, Alexa verification code
-  yandex = "" # Optionnel, Yandex verification code  
-
-[[menu.main]]
-    name = "Home"
-    weight = 10
-   url = "/"  
-[[menu.main]]
-    name = "Overview & Features"
-    weight = 10
-   url = "/docs/overview-concepts-features/"  
-[[menu.main]]
-    name = "Documentation"
-    weight = 20
-    url = "/docs" 
-[[menu.main]]
-    name = "Support"
-    weight = 30
-    url = "/contact/support"
-[[menu.main]]
-    name = "About Us"
-    weight = 100
-    url = "/aboutus" 
-
-
-#[[menu.extra]]
-#    Name = "About Us"
-#    Permalink = "/company"         
