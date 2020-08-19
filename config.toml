@@ -2,8 +2,6 @@ min_version = 0.73
 baseURL = "https://krossboard.app/"
 languageCode = "en-us"
 title = "Krossboard"
-googleAnalytics = "UA-158612003-1"
-
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
@@ -19,4 +17,5 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
   favicon = "/images/favicon.ico"
   contactRequestApiEndpoint = "https://krossboard-mx.ey.r.appspot.com/sendmail"
   reCaptchaSiteKey = "6Lc8J8AZAAAAAL0sB7htNmIyc9lxUZd6yJOhsihA"
+  googleAnalytics = "UA-175802326-1"
 
