@@ -11,11 +11,11 @@ Make sure to always use a recommended version of the product.
 We treat any feedback or issues with a special care and with the priority it deserves.
 
 ## Submit an issue
-You're experiencing a problem, please open an issue through our [issue tracker](https://github.com/2-alchemists/krossboard). 
+If you're experiencing a problem with Krossboard, please open an issue through our [issue tracker](https://github.com/2-alchemists/krossboard). 
 
 Provide as much detail as possible, and don't miss to indicate the version of Krossboard.
 
 ## Contact us
-You're looking for information not available on this website, please fill in the form below. 
+If you're looking for information not available on this website, please fill in the form below. 
 
 Our typical response time is 48 hours on working days.
