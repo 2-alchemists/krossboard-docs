@@ -1,0 +1,29 @@
+name: deploy site
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2.1.0
+ 
+      - name: setup Hugo
+        uses: peaceiris/actions-hugo@v2.4.10
+        with:
+          hugo-version: '0.69.0'
+
+      - name: build
+        run: hugo --minify
+
+      - name: deploy
+        env:
+          HOSTING_FTP_HOST: ${{ secrets.HOSTING_FTP_HOST }}
+          HOSTING_FTP_USERNAME: ${{ secrets.HOSTING_FTP_USERNAME }}
+          HOSTING_FTP_PASSWORD: ${{ secrets.HOSTING_FTP_PASSWORD }}
+        run: |
+          sudo apt-get install -y ncftp
+          ncftpput -R -v -u ${HOSTING_FTP_USERNAME} -p ${HOSTING_FTP_PASSWORD} ${HOSTING_FTP_HOST} www/ public/*
