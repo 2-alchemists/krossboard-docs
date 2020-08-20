@@ -3,6 +3,7 @@ baseURL = "https://krossboard.app/"
 languageCode = "en-us"
 title = "Krossboard"
 disableKinds = ["taxonomy", "taxonomyTerm"]
+enableGitInfo = true
 
 [params]
   author = "2Alchimists SAS"
