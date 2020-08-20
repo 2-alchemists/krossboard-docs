@@ -25,5 +25,5 @@ jobs:
           HOSTING_FTP_USERNAME: ${{ secrets.HOSTING_FTP_USERNAME }}
           HOSTING_FTP_PASSWORD: ${{ secrets.HOSTING_FTP_PASSWORD }}
         run: |
-          apt-get install -y ncftp
+          sudo apt-get install -y ncftp
           ncftpput -R -v -u ${HOSTING_FTP_USERNAME} -p ${HOSTING_FTP_PASSWORD} ${HOSTING_FTP_HOST} www/ public/*
