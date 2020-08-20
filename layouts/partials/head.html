@@ -2,6 +2,13 @@
     {{ hugo.Generator }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="release" content="{{ .GitInfo.AuthorDate.Format "2006-01-02" }}" />
+    
+    <meta name="DC.Publisher" content="{{ .Site.Params.Author }}" />
+    <meta name="DC.Date.Issued" content="2020-08-25" />
+    <meta name="DC.Date.Modified" content="{{ .GitInfo.AuthorDate.Format "2006-01-02" }}" />
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 	<title>{{ .Site.Title }}</title>
