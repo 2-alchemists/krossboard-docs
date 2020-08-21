@@ -142,5 +142,6 @@ The default username and password to sign in are:
 > ```
 
 ## Next Steps
-* Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})
-* Other [documentation resources]({{< relref "/docs" >}}).
+* [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
+* [Setup Krossboard for Azure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})
+* [Setup Krossboard for Google GKE]({{< relref "deploy-for-google-gke" >}})
