@@ -19,7 +19,7 @@ This guide describes step-by-step how to deploy and configure Krossboard for an 
 This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
-* You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to AKS clusters in the selected region.
+* You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to EKS clusters in the selected region.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `wget` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 > All the next steps are achieved from a terminal.
