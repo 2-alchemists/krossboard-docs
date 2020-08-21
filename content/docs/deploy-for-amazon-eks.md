@@ -19,7 +19,7 @@ This guide describes step-by-step how to deploy and configure Krossboard for an 
 This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
-* You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to AKS clusters in the selected region.
+* You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to EKS clusters in the selected region.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `wget` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 > All the next steps are achieved from a terminal.
@@ -142,5 +142,6 @@ The default username and password to sign in are:
 > ```
 
 ## Next Steps
-* Exploring the [Analytics User Interface]({{< relref "/docs/analytics-reports-and-data-export" >}})
-* Other [documentation resources]({{< relref "/docs" >}}).
+* [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
+* [Setup Krossboard for Azure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})
+* [Setup Krossboard for Google GKE]({{< relref "deploy-for-google-gke" >}})
