@@ -1,8 +1,8 @@
 +++
-title = "Krossboard Concepts & Features"
+title = "Krossboard Concepts & Key Features"
 description = ""
 draft = false
-weight = 50
+weight = 1
 toc = true 
 +++
 

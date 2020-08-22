@@ -1,7 +1,7 @@
 +++
 title = "Setup Krossboard for Google GKE"
 description = ""
-weight = 30
+weight = 20
 draft = false
 bref = ""
 toc = true 

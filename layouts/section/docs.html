@@ -1,0 +1,24 @@
+{{ define "main" -}}
+
+<section class="pos-rel pd-tb-medium article" data-rgen-sm="pd-tb-small">
+    <div class="container">
+        <div class="flex-row gt70">
+            <div class="flex-col-md-3">
+                <aside>
+                    &nbsp;
+                </aside>
+            </div>
+            <div class="flex-col-md-8">
+                <header>
+                    <h1 class="title large">Documentation Resources</h1>
+                </header>
+                <ul>
+                    {{ range .Data.Pages.ByWeight }}
+                    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{{- end }}

@@ -1,7 +1,7 @@
 +++
 title = "Deploy Krossboard for Azure AKS"
 description = ""
-weight = 20
+weight = 30
 draft = false
 bref = ""
 toc = true 
