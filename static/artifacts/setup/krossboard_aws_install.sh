@@ -67,7 +67,7 @@ KB_INSTANCES_INFO=$(aws ec2 run-instances \
    --instance-type "$KB_AWS_INSTANCE_TYPE" \
    --key-name "$KB_AWS_KEY_PAIR" \
    --count 1)
-
+KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
 
 echo "==> Configure IAM permissions for the Krossboard instance..."
 KB_TIMESTAMP=`date +%F-%s`
@@ -85,7 +85,9 @@ aws iam add-role-to-instance-profile --role-name "$KB_ROLE_NAME" --instance-prof
 n=0
 until [ "$n" -ge 15 ]
 do
-   aws ec2 associate-iam-instance-profile --instance-id "$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')" --iam-instance-profile Name="${KB_ROLE_NAME}-profile" && break
+   KB_ASSOCIATED_PROFILE=$(aws ec2 associate-iam-instance-profile \
+    --instance-id $KB_INSTANCE_ID \
+    --iam-instance-profile Name=${KB_ROLE_NAME}-profile) && break
    n=$((n+1))
    echo -e "\e[35mRetrying to associate instance profile...\e[0m"
    sleep 1
@@ -130,8 +132,10 @@ for cluster in $CURRENT_CLUSTERS; do
       kubectl apply -f https://krossboard.app/artifacts/k8s/clusterrolebinding-eks.yml
 done
 
+echo "==> Tagging the instance..."
+aws ec2 create-tags --resources $KB_INSTANCE_ID --tags Key=Name,Value=krossboard-$KB_TIMESTAMP --region "$KB_AWS_REGION"
 echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
-echo -e "Instance ID => `echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId'`"
+echo -e "Instance ID => $KB_INSTANCE_ID"
 echo -e "Region => $KB_AWS_REGION"
 echo -e "Key Pair => $KB_AWS_KEY_PAIR"
 echo -e "===========================================\e[0m"
