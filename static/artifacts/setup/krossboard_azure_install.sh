@@ -79,7 +79,7 @@ echo "==> Discovery and taking over existing AKS clusters..."
 CURRENT_CLUSTERS=$(az aks list -g $KB_AZURE_GROUP --query "[].name"  -otsv)
 for cluster in $CURRENT_CLUSTERS; do
     az aks get-credentials -g $KB_AZURE_GROUP -n $cluster
-    kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
+    kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-aks.yml
 done
 
 echo "==> Enable HTTP access to the Krossboard web interface..."

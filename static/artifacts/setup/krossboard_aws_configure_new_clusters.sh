@@ -1,0 +1,61 @@
+#!/bin/bash
+# ------------------------------------------------------------------------ #
+# File: krossboard_aws_add_new_clusters.sh                                 #
+# Creation: August 22, 2020                                                #
+# Copyright (c) 2020 2Alchemists SAS                                       #
+#                                                                          #
+# This file is part of Krossboard (https://krossboard.app/).               #
+#                                                                          #
+# The tool is distributed in the hope that it will be useful,              #
+# but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #
+# Krossboard terms of use: https://krossboard.app/legal/terms-of-use/      #
+#--------------------------------------------------------------------------#
+
+set -e
+set -u
+
+if [ $# -ne 1 ]; then
+  echo "usage: "
+  echo "`basename $0` <krossbboard-role-arn>"
+  exit 1
+fi
+
+KB_ROLE_ARN=$1
+
+echo "==> Generating RBAC permissions to enable access to metrics..."
+cat << EOF > /tmp/kb-aws-rbac-settings.yml
+      - krossboard-data-processor
+      rolearn: KB_ROLE_ARN
+      username: KB_ROLE_ARN
+EOF
+sed -i 's!KB_ROLE_ARN!'$KB_ROLE_ARN'!' /tmp/kb-aws-rbac-settings.yml
+
+CURRENT_CLUSTERS=$(aws eks list-clusters --region eu-central-1 | jq  -r '.clusters[]')
+for cluster in $CURRENT_CLUSTERS; do
+    aws eks update-kubeconfig --name $cluster --region $KB_AWS_REGION
+    echo "==> Check if metrics server is installed..."
+    METRIC_SERVER_FOUND=$(kubectl -nkube-system get deploy metrics-server || echo "NO_METRIC_SERVER")
+    if [ "$METRIC_SERVER_FOUND" == "NO_METRIC_SERVER" ]; then
+      echo -e "\e[35mA installing metrics server on cluster $cluster...\e[0m"
+      METRIC_SERVER_VERSION=v0.3.6
+      DOWNLOAD_URL=https://api.github.com/repos/kubernetes-sigs/metrics-server/tarball/${METRIC_SERVER_VERSION}
+      curl -Ls $DOWNLOAD_URL -o metrics-server-$METRIC_SERVER_VERSION.tar.gz
+      mkdir -p metrics-server-$METRIC_SERVER_VERSION
+      tar -xzf metrics-server-$METRIC_SERVER_VERSION.tar.gz --directory metrics-server-$METRIC_SERVER_VERSION --strip-components 1
+      kubectl apply -f metrics-server-$METRIC_SERVER_VERSION/deploy/1.8+/
+      kubectl -nkube-system get deploy metrics-server*
+    else
+      echo -e "\e[35mA metrics server is already deployed in kube-system namespace\e[0m"
+    fi
+
+    echo "==> Updating EKS RBAC settings to enable read access to metrics..."
+    echo -e "\e[35mBacking up AWS existing RBAC settings...\e[0m"
+    AWS_AUTH_CM_BACKUP=aws-auth-backup-${cluster}-$(date +%F-%s).yaml
+    kubectl -n kube-system get configmap aws-auth -o yaml > $AWS_AUTH_CM_BACKUP
+    ls -l $AWS_AUTH_CM_BACKUP
+    echo -e "\e[35mApplying RBAC settings...\e[0m"
+    sed '/- groups:/r /tmp/kb-aws-rbac-settings.yml' $AWS_AUTH_CM_BACKUP | kubectl apply -f -
+    kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-eks.yml || \
+      kubectl apply -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-eks.yml
+done

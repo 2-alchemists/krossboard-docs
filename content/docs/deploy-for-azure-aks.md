@@ -64,7 +64,7 @@ curl -so krossboard_azure_install.sh \
 
 > **Note for new AKS clusters:** During the installation, the Krossboard deployment script discovers and takes over existing AKS clusters (in the same resource group). After the installation, you need apply the following change to enable RBAC access (read-only) to each new AKS cluster. 
 > ```sh
-> kubectl create -f https://krossboard.app/artifacts/k8s/clusterrolebinding-aks.yml
+> kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-aks.yml
 > ```
 
 ## Get Access to Krossboard UI
