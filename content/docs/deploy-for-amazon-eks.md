@@ -45,9 +45,10 @@ curl -so krossboard_aws_install.sh \
 ```
 
 ## Handle New EKS clusters
- During the installation, the Krossboard deployment script discovers and takes over existing EKS clusters (in the same region). After the installation, you need apply the following change to enable RBAC access (read-only) to each new EKS cluster. Replace `<ARN_OF_KROSSBOARD_ROLE>` with the ARN of the role bound to your instance of Krossboard.
+ During the installation, the Krossboard deployment script discovers and takes over existing EKS clusters (in the same region). After the installation, you need apply the following change to enable RBAC access (read-only) to each new EKS cluster. Replace `<ARN_OF_KROSSBOARD_ROLE>` with the ARN of the role bound to your instance of Krossboard, and `YOUR_TARGET_REGION` with your target AWS region.
 ```sh
 KB_ROLE_ARN='<ARN_OF_KROSSBOARD_ROLE>'
+KB_AWS_REGION='YOUR_TARGET_REGION'
 curl -so krossboard_aws_configure_new_clusters.sh https://krossboard.app/artifacts/setup/krossboard_aws_configure_new_clusters.sh
 bash ./krossboard_aws_configure_new_clusters.sh $KB_ROLE_ARN
 ```

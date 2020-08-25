@@ -15,13 +15,14 @@
 set -e
 set -u
 
-if [ $# -ne 1 ]; then
+if [ $# -ne 2 ]; then
   echo "usage: "
-  echo "`basename $0` <krossbboard-role-arn>"
+  echo "`basename $0` <krossbboard-role-arn> <aws-region>"
   exit 1
 fi
 
 KB_ROLE_ARN=$1
+KB_AWS_REGION=$2
 
 echo "==> Generating RBAC permissions to enable access to metrics..."
 cat << EOF > /tmp/kb-aws-rbac-settings.yml
@@ -31,9 +32,9 @@ cat << EOF > /tmp/kb-aws-rbac-settings.yml
 EOF
 sed -i 's!KB_ROLE_ARN!'$KB_ROLE_ARN'!' /tmp/kb-aws-rbac-settings.yml
 
-CURRENT_CLUSTERS=$(aws eks list-clusters --region eu-central-1 | jq  -r '.clusters[]')
+CURRENT_CLUSTERS=$(aws eks list-clusters --region $KB_AWS_REGION | jq  -r '.clusters[]')
 for cluster in $CURRENT_CLUSTERS; do
-    aws eks update-kubeconfig --name $cluster --region $KB_AWS_REGION
+    # aws eks update-kubeconfig --name $cluster --region $KB_AWS_REGION
     echo "==> Check if metrics server is installed..."
     METRIC_SERVER_FOUND=$(kubectl -nkube-system get deploy metrics-server || echo "NO_METRIC_SERVER")
     if [ "$METRIC_SERVER_FOUND" == "NO_METRIC_SERVER" ]; then
@@ -44,7 +45,7 @@ for cluster in $CURRENT_CLUSTERS; do
       mkdir -p metrics-server-$METRIC_SERVER_VERSION
       tar -xzf metrics-server-$METRIC_SERVER_VERSION.tar.gz --directory metrics-server-$METRIC_SERVER_VERSION --strip-components 1
       kubectl apply -f metrics-server-$METRIC_SERVER_VERSION/deploy/1.8+/
-      kubectl -nkube-system get deploy metrics-server*
+      kubectl -nkube-system get deploy metrics-server
     else
       echo -e "\e[35mA metrics server is already deployed in kube-system namespace\e[0m"
     fi

@@ -97,7 +97,7 @@ KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
 echo "==> Configuring required RBAC permissions to retrieve EKS metrics..."
 KB_ROLE_ARN=$(echo $KB_ROLE | jq -r '.Role.Arn')
 curl -so krossboard_aws_configure_new_clusters.sh https://krossboard.app/artifacts/setup/krossboard_aws_configure_new_clusters.sh && \
-  source ./krossboard_aws_configure_new_clusters.sh $KB_ROLE_ARN
+  source ./krossboard_aws_configure_new_clusters.sh $KB_ROLE_ARN $KB_AWS_REGION
 
 echo "==> Tagging the instance..."
 aws ec2 create-tags --resources $KB_INSTANCE_ID --tags Key=Name,Value=krossboard-$KB_TIMESTAMP --region "$KB_AWS_REGION"
