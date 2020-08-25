@@ -47,7 +47,7 @@ curl -so krossboard_gcp_install.sh \
 
 > if prompted, answer `y`es to enable Compute Engine API.
 
-## Get Access to Krossboard UI
+## Get access to Krossboard UI
 Open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance (can be get from the GCP console). 
 
 The default username and password to sign in are:
