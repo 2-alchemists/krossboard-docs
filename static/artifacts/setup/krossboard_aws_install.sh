@@ -70,6 +70,17 @@ aws iam put-role-policy --role-name "$KB_ROLE_NAME" --policy-name "${KB_ROLE_NAM
 
 KB_ROLE_PROFILE=$(aws iam create-instance-profile --instance-profile-name "${KB_ROLE_NAME}")
 aws iam add-role-to-instance-profile --role-name "$KB_ROLE_NAME" --instance-profile-name "${KB_ROLE_NAME}"
+
+echo "==> Start a Krossboard instance..."
+KB_INSTANCES_INFO=$(aws ec2 run-instances \
+   --region "$KB_AWS_REGION" \
+   --image-id "$KB_AWS_AMI" \
+   --instance-type "$KB_AWS_INSTANCE_TYPE" \
+   --key-name "$KB_AWS_KEY_PAIR" \
+   --iam-instance-profile Name="$KB_ROLE_NAME" \
+   --count 1)
+KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
+
 # The role profile or the instance may not be ready immediately.
 # That's why the next command that assigned the profile to the instance
 # is retried a couple of times.
@@ -83,16 +94,6 @@ do
    echo -e "\e[35mRetrying to associate instance profile...\e[0m"
    sleep 1
 done
-
-echo "==> Start a Krossboard instance..."
-KB_INSTANCES_INFO=$(aws ec2 run-instances \
-   --region "$KB_AWS_REGION" \
-   --image-id "$KB_AWS_AMI" \
-   --instance-type "$KB_AWS_INSTANCE_TYPE" \
-   --key-name "$KB_AWS_KEY_PAIR" \
-   --iam-instance-profile Name="$KB_ROLE_NAME" \
-   --count 1)
-KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
 
 echo "==> Configuring required RBAC permissions to retrieve EKS metrics..."
 KB_ROLE_ARN=$(echo $KB_ROLE | jq -r '.Role.Arn')
