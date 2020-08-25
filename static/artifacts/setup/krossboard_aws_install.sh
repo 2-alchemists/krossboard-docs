@@ -65,9 +65,7 @@ KB_TIMESTAMP=`date +%F-%s`
 KB_ROLE_NAME="krossboard-role-$KB_TIMESTAMP"
 wget -O /tmp/${KB_ROLE_NAME}-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-policy.json
 wget -O /tmp/${KB_ROLE_NAME}-trust-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-trust-policy.json
-# KB_POLICY=$(aws iam create-policy --policy-name ${KB_ROLE_NAME}-policy --policy-document file:///tmp/${KB_ROLE_NAME}-policy.json)
 KB_ROLE=$(aws iam create-role --role-name "$KB_ROLE_NAME" --assume-role-policy-document file:///tmp/${KB_ROLE_NAME}-trust-policy.json)
-# aws iam attach-role-policy --role-name "$KB_ROLE_NAME" --policy-arn "$(echo $KB_POLICY | jq -r '.Policy.Arn')"
 aws iam put-role-policy --role-name "$KB_ROLE_NAME" --policy-name "${KB_ROLE_NAME}-policy" --policy-document file:///tmp/${KB_ROLE_NAME}-policy.json
 
 KB_ROLE_PROFILE=$(aws iam create-instance-profile --instance-profile-name "${KB_ROLE_NAME}")
