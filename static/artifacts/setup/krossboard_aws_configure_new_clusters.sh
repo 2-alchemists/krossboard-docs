@@ -4,12 +4,12 @@
 # Creation: August 22, 2020                                                #
 # Copyright (c) 2020 2Alchemists SAS                                       #
 #                                                                          #
-# This file is part of Krossboard (http://localhost:1313/).               #
+# This file is part of Krossboard (https://krossboard.app/).               #
 #                                                                          #
 # The tool is distributed in the hope that it will be useful,              #
 # but WITHOUT ANY WARRANTY; without even the implied warranty of           #
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            #
-# Krossboard terms of use: http://localhost:1313/legal/terms-of-use/      #
+# Krossboard terms of use: https://krossboard.app/legal/terms-of-use/      #
 #--------------------------------------------------------------------------#
 
 set -e
@@ -57,8 +57,8 @@ for cluster in $CURRENT_CLUSTERS; do
     fi
 
     echo "==> Updating EKS RBAC settings to enable read access to metrics..."
-    kubectl create -f http://localhost:1313/artifacts/setup/k8s/clusterrolebinding-eks.yml || \
-      kubectl apply -f http://localhost:1313/artifacts/setup/k8s/clusterrolebinding-eks.yml
+    kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-eks.yml || \
+      kubectl apply -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-eks.yml
       
     echo -e "\e[35mBacking up aws-auth and updating it to set RBAC group...\e[0m"
     AWS_AUTH_CM_BACKUP=aws-auth-backup-${cluster}-$(date +%F-%s).yaml
