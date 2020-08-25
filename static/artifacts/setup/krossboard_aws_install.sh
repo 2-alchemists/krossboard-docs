@@ -77,7 +77,6 @@ KB_INSTANCES_INFO=$(aws ec2 run-instances \
    --image-id "$KB_AWS_AMI" \
    --instance-type "$KB_AWS_INSTANCE_TYPE" \
    --key-name "$KB_AWS_KEY_PAIR" \
-   --iam-instance-profile Name="$KB_ROLE_NAME" \
    --count 1)
 KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
 
