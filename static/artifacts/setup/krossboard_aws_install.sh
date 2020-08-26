@@ -42,7 +42,7 @@ if [ -z "$KB_AWS_REGION" ]; then
   echo -e "\e[35mKB_REGION not set, using => $KB_AWS_REGION (AWS_DEFAULT_REGION)\e[0m"
 fi
 
-echo -e "\e[32m==> Summary of installation settings:\e[0m"
+echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_AWS_KEY_PAIR => $KB_AWS_KEY_PAIR"
 echo "    KB_AWS_INSTANCE_TYPE => $KB_AWS_INSTANCE_TYPE"
 echo "    KB_AWS_REGION => $KB_AWS_REGION"
@@ -62,6 +62,7 @@ set -u
 
 echo "==> Configure IAM permissions for the Krossboard instance..."
 KB_TIMESTAMP=`date +%F-%s`
+KB_INSTANCE_NAME="krossboard-$KB_TIMESTAMP"
 KB_ROLE_NAME="krossboard-role-$KB_TIMESTAMP"
 wget -O /tmp/${KB_ROLE_NAME}-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-policy.json
 wget -O /tmp/${KB_ROLE_NAME}-trust-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-trust-policy.json
@@ -71,12 +72,18 @@ aws iam put-role-policy --role-name "$KB_ROLE_NAME" --policy-name "${KB_ROLE_NAM
 KB_ROLE_PROFILE=$(aws iam create-instance-profile --instance-profile-name "${KB_ROLE_NAME}")
 aws iam add-role-to-instance-profile --role-name "$KB_ROLE_NAME" --instance-profile-name "${KB_ROLE_NAME}"
 
+echo "==> Creating security group with HTTP ingress enabled..."
+KB_SG_NAME="krossboard-sg-$KB_TIMESTAMP"
+KB_SG_INFO=$(aws ec2 create-security-group --group-name "$KB_SG_NAME" --description "Security group for instance $KB_INSTANCE_NAME")
+aws ec2 authorize-security-group-ingress --group-name $KB_SG_NAME --protocol tcp --port 80 --cidr '0.0.0.0/0'
+
 echo "==> Start a Krossboard instance..."
 KB_INSTANCES_INFO=$(aws ec2 run-instances \
    --region "$KB_AWS_REGION" \
    --image-id "$KB_AWS_AMI" \
    --instance-type "$KB_AWS_INSTANCE_TYPE" \
    --key-name "$KB_AWS_KEY_PAIR" \
+   --security-group-ids $(echo $KB_SG_INFO | jq -r '.GroupId') \
    --count 1)
 KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
 
@@ -90,7 +97,7 @@ do
     --instance-id $KB_INSTANCE_ID \
     --iam-instance-profile Name=${KB_ROLE_NAME}) && break
    n=$((n+1))
-   echo -e "\e[35mRetrying to associate instance profile...\e[0m"
+   echo -e "\e[35mRetrying to associate role profile...\e[0m"
    sleep 1
 done
 
@@ -100,10 +107,15 @@ curl -so krossboard_aws_configure_new_clusters.sh https://krossboard.app/artifac
   source ./krossboard_aws_configure_new_clusters.sh $KB_ROLE_ARN $KB_AWS_REGION
 
 echo "==> Tagging the instance..."
-aws ec2 create-tags --resources $KB_INSTANCE_ID --tags Key=Name,Value=krossboard-$KB_TIMESTAMP --region "$KB_AWS_REGION"
+aws ec2 create-tags --resources "$KB_INSTANCE_ID" --tags Key=Name,Value="$KB_INSTANCE_NAME" --region "$KB_AWS_REGION"
+
+echo "==> Retrieving instance public IP..."
+KB_IP=$(aws ec2 describe-instances --instance-ids $KB_INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
 
 echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
+echo -e "Instance Name => $KB_INSTANCE_NAME"
 echo -e "Instance ID => $KB_INSTANCE_ID"
 echo -e "Region => $KB_AWS_REGION"
 echo -e "Key Pair => $KB_AWS_KEY_PAIR"
-echo -e "===========================================\e[0m"
+echo -e "Krossboard UI => http://$KB_IP/"
+echo -e "\e[0m"

@@ -33,7 +33,7 @@ if [ -z "$KB_AZURE_VM_SIZE" ]; then
   echo -e "\e[35mKB_AZURE_VM_SIZE not set, using => $KB_AZURE_VM_SIZE\e[0m"
 fi
 
-echo -e "\e[32m==> Summary of installation settings:\e[0m"
+echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_AZURE_VM_NAME => $KB_AZURE_VM_NAME"
 echo "    KB_AZURE_VM_SIZE => $KB_AZURE_VM_SIZE"
 echo "    KB_AZURE_GROUP => $KB_AZURE_GROUP"
@@ -90,5 +90,11 @@ az network nsg rule create -g $KB_AZURE_GROUP -n ${KB_SG}-rule --nsg-name $KB_SG
 az network nic update --network-security-group $KB_SG --ids $VM_NICS
 
 echo "==> Getting the IP address of the Krossboard install..."
-KB_HOSTIP=$(az vm list-ip-addresses -g $KB_AZURE_GROUP -n $KB_AZURE_VM_NAME --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv)
-echo $KB_HOSTIP
+KB_IP=$(az vm list-ip-addresses -g $KB_AZURE_GROUP -n $KB_AZURE_VM_NAME --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv)
+echo $KB_IP
+
+echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
+echo -e "Instance Name => $KB_AZURE_VM_NAME"
+echo -e "Resource Group => $KB_AZURE_GROUP"
+echo -e "Krossboard UI => http://$KB_IP/"
+echo -e "\e[0m"

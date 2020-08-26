@@ -38,7 +38,7 @@ if [ -z "$GCP_INSTANCE_TYPE" ]; then
   echo -e "\e[35mGCP_INSTANCE_TYPE not set, using => $GCP_INSTANCE_TYPE\e[0m"
 fi
 
-echo -e "\e[32m==> Summary of installation settings:\e[0m"
+echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_GCP_IMAGE => $KB_GCP_IMAGE"
 echo "    GCP_PROJECT => $GCP_PROJECT"
 echo "    GCP_ZONE => $GCP_ZONE"
@@ -64,7 +64,8 @@ sa_email=$(gcloud iam service-accounts list --filter="NAME:$sa_name" --format="v
 gcloud projects add-iam-policy-binding "$GCP_PROJECT" --member="serviceAccount:$sa_email" --role='roles/container.viewer'
 
 echo "==> Start a Krossboard instance..."
-gcloud compute instances create ${KB_GCP_IMAGE} \
+KB_INSTANCE_NAME="${KB_GCP_IMAGE}"
+gcloud compute instances create "$KB_INSTANCE_NAME" \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
       --project=${GCP_PROJECT} \
       --zone=${GCP_ZONE} \
@@ -74,12 +75,26 @@ gcloud compute instances create ${KB_GCP_IMAGE} \
       --image-project=krossboard-factory \
       --tags=krossboard-server
 
-echo "==> enable access to the Krossboard UI (HTTP, port 80)..."
-gcloud compute firewall-rules create krossboard-allow-http \
-    --project=${GCP_PROJECT} \
-    --direction=INGRESS \
-    --priority=1000 --network=default \
-    --action=ALLOW \
-    --rules=tcp:80 \
-    --source-ranges=0.0.0.0/0 \
-    --target-tags=krossboard-server   
+echo "==> Enable HTTP access to the Krossboard UI (HTTP, port 80)..."
+KB_FW_RULE='krossboard-allow-http'
+KB_FW_RULE_FOUND=$(gcloud compute firewall-rules list --filter="name:$KB_FW_RULE"  --format="value(Name)")
+if [ "$KB_FW_RULE_FOUND" != "$KB_FW_RULE" ]; then
+  gcloud compute firewall-rules create krossboard-allow-http \
+      --project=${GCP_PROJECT} \
+      --direction=INGRESS \
+      --priority=1000 --network=default \
+      --action=ALLOW \
+      --rules=tcp:80 \
+      --source-ranges=0.0.0.0/0 \
+      --target-tags=krossboard-server
+fi
+
+KB_IP=$(gcloud compute instances list --filter="name:$KB_INSTANCE_NAME" --format="value(EXTERNAL_IP)")
+
+echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
+echo -e "Instance Name => $KB_INSTANCE_NAME"
+echo -e "Project => ${GCP_PROJECT}"
+echo -e "Krossboard UI => http://$KB_IP/"
+echo -e "\e[0m"
+
+   

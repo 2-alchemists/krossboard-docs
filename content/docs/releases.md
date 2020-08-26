@@ -25,9 +25,13 @@ This section lists images currently available for the different cloud providers.
 Review the list to select a version for your Krossboard deployment.
 
 ### Images for Google GCP
+You can deploy Krossboard using a specific image by setting the variable `KB_GCP_IMAGE` with the ID of the image during the [installation process]({{< relref "/docs/deploy-for-google-gke" >}}).
+
   * krossboard-beta-v20200726t1595767620 (July 27, 2020)
 
 ### Images for Amazon AWS
+You can deploy Krossboard using a specific image by setting the variable `KB_AWS_AMI` with the ID of the image during the [installation process]({{< relref "/docs/deploy-for-amazon-eks" >}}).
+
   * ami-0fa8675e6d205da2b (August 05, 2020)
 
 ### Images for Microsoft Azure

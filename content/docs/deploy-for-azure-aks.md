@@ -56,10 +56,17 @@ Before running the commands to deploy your instance of Krossboard, it's importan
 export KB_AZURE_GROUP="YOUR_AKS_GROUP"
 export KB_AZURE_VM_NAME="krossboard-`date +%F-%s`"
 export KB_AZURE_VM_SIZE='Standard_B1ms'
-
 curl -so krossboard_azure_install.sh \
-  https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
-  bash ./krossboard_azure_install.sh
+    https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
+    bash ./krossboard_azure_install.sh
+```
+
+On success a summary of the installation shall be displayed as below:
+```
+=== Summary the Krossboard instance ===
+Instance Name => krossboard-2020-08-18-1595880565
+Resource Group => prod
+Krossboard UI => http://1.2.3.4/
 ```
 
 ## Handle new AKS clusters
@@ -69,7 +76,7 @@ kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-
 ```
 
 ## Get access to Krossboard UI
-Open a browser tab and point it to `http://$KROSSBOARD_IP/`, changing `$KROSSBOARD_IP` to the IP address of the Krossboard instance.
+Open a browser tab and point it to the Krossboard URL displayed at the end of the installation script. **Note:** It may take a few seconds before the instance finishes its initialization, during this time you may experience a loading error in the browser.
 
 The IP address of the instance is displayed at the end of the installation script. You can also get it on the Azure portal.
 
