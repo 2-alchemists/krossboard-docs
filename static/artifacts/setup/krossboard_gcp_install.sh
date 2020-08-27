@@ -38,8 +38,13 @@ if [ -z "$GCP_INSTANCE_TYPE" ]; then
   echo -e "\e[35mGCP_INSTANCE_TYPE not set, using => $GCP_INSTANCE_TYPE\e[0m"
 fi
 
+if [ "$KB_INSTANCE_NAME" == "" ]; then
+  KB_INSTANCE_NAME="krossboard-`date +%F-%s`"
+fi
+
 echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_GCP_IMAGE => $KB_GCP_IMAGE"
+echo "    KB_INSTANCE_NAME => $KB_INSTANCE_NAME"
 echo "    GCP_PROJECT => $GCP_PROJECT"
 echo "    GCP_ZONE => $GCP_ZONE"
 echo "    GCP_INSTANCE_TYPE => $GCP_INSTANCE_TYPE"
@@ -57,21 +62,27 @@ done
 # now only accept bound variables
 set -u
 
-echo "==> Creating a GCP service account for Krossboard..."
-sa_name="krossboard-sa-$(date +%Y%m%d%H%M%S)"
-gcloud iam service-accounts create $sa_name --display-name $sa_name
-sa_email=$(gcloud iam service-accounts list --filter="NAME:$sa_name" --format="value(email)")
-gcloud projects add-iam-policy-binding "$GCP_PROJECT" --member="serviceAccount:$sa_email" --role='roles/container.viewer'
+echo "==> Configuring IAM permissions for Krossboard..."
+KB_SA_NAME='krossboard-sa'
+KB_SA_EMAIL=$(gcloud iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
+if [ "$KB_SA_EMAIL" == "" ]; then
+  echo -e "\e[35mCreating a GCP service account ${KB_SA_NAME}...\e[0m"
+  gcloud iam service-accounts create $KB_SA_NAME --display-name $KB_SA_NAME
+  KB_SA_EMAIL=$(gcloud iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
+  echo "KB_SA_EMAIL => $KB_SA_EMAIL"
+  gcloud projects add-iam-policy-binding "$GCP_PROJECT" --member="serviceAccount:$KB_SA_EMAIL" --role='roles/container.viewer'
+else
+  echo -e "\e[35mUsing service account ${KB_SA_NAME} ==> $KB_SA_EMAIL\e[0m"
+fi
 
 echo "==> Start a Krossboard instance..."
-KB_INSTANCE_NAME="${KB_GCP_IMAGE}"
 gcloud compute instances create "$KB_INSTANCE_NAME" \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
-      --project=${GCP_PROJECT} \
-      --zone=${GCP_ZONE} \
-      --machine-type=${GCP_INSTANCE_TYPE} \
-      --service-account="$sa_email" \
-      --image=${KB_GCP_IMAGE} \
+      --project="$GCP_PROJECT" \
+      --zone="$GCP_ZONE" \
+      --machine-type="$GCP_INSTANCE_TYPE" \
+      --service-account="$KB_SA_EMAIL" \
+      --image="$KB_GCP_IMAGE" \
       --image-project=krossboard-factory \
       --tags=krossboard-server
 
