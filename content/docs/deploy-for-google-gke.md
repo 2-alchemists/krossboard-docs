@@ -1,5 +1,5 @@
 +++
-title = "Setup Krossboard for Google GKE"
+title = "Setup Krossboard for Google GKE clusters"
 description = ""
 weight = 20
 draft = false

@@ -1,5 +1,5 @@
 +++
-title = "Setup Krossboard for Amazon EKS"
+title = "Setup Krossboard for Amazon EKS clusters"
 description = ""
 weight = 50
 draft = false

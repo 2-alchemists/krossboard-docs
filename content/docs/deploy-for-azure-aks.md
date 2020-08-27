@@ -1,5 +1,5 @@
 +++
-title = "Deploy Krossboard for Azure AKS"
+title = "Deploy Krossboard for Azure AKS clusters"
 description = ""
 weight = 30
 draft = false
