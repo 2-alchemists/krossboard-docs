@@ -51,7 +51,7 @@ Key Pair => krossboard-test
 Krossboard UI => http://1.2.3.4/
 ```
 
-## Handle New EKS clusters
+### Handle New EKS clusters
  During the installation, the Krossboard deployment script discovers and takes over existing EKS clusters (in the same region). After the installation, you need apply the following change to enable RBAC access (read-only) to each new EKS cluster. 
 ```sh
 KB_ROLE_ARN='ARN_OF_KROSSBOARD_ROLE'
