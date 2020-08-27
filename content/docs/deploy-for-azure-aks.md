@@ -49,7 +49,7 @@ Before running the commands to deploy your instance of Krossboard, it's importan
   * Set the variable `KB_AZURE_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
   * (Optional) Set the variable `KB_AZURE_VM_NAME` with the name of the instance. Otherwise the default value defined below will be used. 
   * (Optional) Set the variable `KB_AZURE_VM_SIZE` with the needed VM size. By default it's `Standard_B1ms` , which is a good starting unless you have 10+ AKS clusters with many namespaces in the target resource group. 
-  * The installation use the option `--generate-ssh-keys` of Azure CLI to use the local SSH key pair for the instance. The associated SSH username would be `azureuser`.
+  * The installation uses the option `--generate-ssh-keys` of Azure CLI to use the local SSH key pair for the instance. The associated SSH username would be `azureuser`.
 
 ```sh
 # deployment parameters
