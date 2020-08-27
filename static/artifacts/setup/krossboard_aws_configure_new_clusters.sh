@@ -31,11 +31,6 @@ cat << EOF > /tmp/kb-aws-rbac-settings.yml
       rolearn: KB_ROLE_ARN
       username: KB_ROLE_ARN
 EOF
-cat << EOF > /tmp/kb-aws-rbac-settings-no-group.yml
-      rolearn: KB_ROLE_ARN
-      username: KB_ROLE_ARN
-EOF
-sed -i 's!KB_ROLE_ARN!'$KB_ROLE_ARN'!' /tmp/kb-aws-rbac-settings-no-group.yml
 sed -i 's!KB_ROLE_ARN!'$KB_ROLE_ARN'!' /tmp/kb-aws-rbac-settings.yml
 
 CURRENT_CLUSTERS=$(aws eks list-clusters --region $KB_AWS_REGION | jq  -r '.clusters[]')
@@ -69,13 +64,5 @@ for cluster in $CURRENT_CLUSTERS; do
     if [ $KB_GROUP_FOUND -eq 0 ]; then
       echo -e "\e[35mApplying RBAC settings...\e[0m"
       sed '/mapRoles: |/r /tmp/kb-aws-rbac-settings.yml' $AWS_AUTH_CM_BACKUP | kubectl apply -f -
-    else
-      KB_ROLE_FOUND=$(grep "$KB_ROLE_ARN" $AWS_AUTH_CM_BACKUP | wc -l)
-      if [ $KB_ROLE_FOUND -eq 0 ]; then
-        echo -e "\e[35mApplying RBAC settings...\e[0m"
-        sed '/- krossboard-data-processor/r /tmp/kb-aws-rbac-settings-no-group.yml' $AWS_AUTH_CM_BACKUP | kubectl apply -f -
-      else
-        echo -e "\e[35mThe role $KB_ROLE_ARN seems to be already bound.\e[0m"
-      fi
     fi
 done
