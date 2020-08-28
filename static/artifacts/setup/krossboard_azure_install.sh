@@ -76,7 +76,6 @@ az vm create -g $AZURE_GROUP \
 echo "==> Configure IAM permissions for the instance..."
 # restore the main session before continuing
 cp -pr /tmp/kb/.azure/* $HOME/.azure/ && rm -rf /tmp/kb/.azure/
-az role assignment delete -g $AZURE_GROUP --assignee $KB_AZURE_CONSUMER_ID --role "Contributor" || true
 az vm identity assign -n $KB_AZURE_VM_NAME -g $AZURE_GROUP --scope /subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$AZURE_GROUP
 KB_PRINCIPAL_ID=$(az vm show -g $AZURE_GROUP -n $KB_AZURE_VM_NAME --query "identity.principalId" -otsv)
 az role assignment create -g $AZURE_GROUP --assignee $KB_PRINCIPAL_ID --role "Managed Applications Reader" 
