@@ -1,5 +1,5 @@
 +++
-title = "Deploy Krossboard for Azure AKS"
+title = "Deploy Krossboard for Azure AKS clusters"
 description = ""
 weight = 30
 draft = false
@@ -49,27 +49,34 @@ Before running the commands to deploy your instance of Krossboard, it's importan
   * Set the variable `KB_AZURE_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
   * (Optional) Set the variable `KB_AZURE_VM_NAME` with the name of the instance. Otherwise the default value defined below will be used. 
   * (Optional) Set the variable `KB_AZURE_VM_SIZE` with the needed VM size. By default it's `Standard_B1ms` , which is a good starting unless you have 10+ AKS clusters with many namespaces in the target resource group. 
-  * The installation use the option `--generate-ssh-keys` of Azure CLI to use the local SSH key pair for the instance. The associated SSH username would be `azureuser`.
+  * The installation uses the option `--generate-ssh-keys` of Azure CLI to use the local SSH key pair for the instance. The associated SSH username would be `azureuser`.
 
 ```sh
 # deployment parameters
 export KB_AZURE_GROUP="YOUR_AKS_GROUP"
 export KB_AZURE_VM_NAME="krossboard-`date +%F-%s`"
 export KB_AZURE_VM_SIZE='Standard_B1ms'
-
 curl -so krossboard_azure_install.sh \
-  https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
-  bash ./krossboard_azure_install.sh
+    https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
+    bash ./krossboard_azure_install.sh
 ```
 
-## Handle new AKS clusters
+On success a summary of the installation shall be displayed as below:
+```
+=== Summary the Krossboard instance ===
+Instance Name => krossboard-2020-08-18-1595880565
+Resource Group => prod
+Krossboard UI => http://1.2.3.4/
+```
+
+### Handle new AKS clusters
 During the installation, the Krossboard deployment script discovers and takes over existing AKS clusters (in the same resource group). After the installation, you need apply the following change to enable RBAC access (read-only) to each new AKS cluster. 
 ```sh
 kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-aks.yml
 ```
 
 ## Get access to Krossboard UI
-Open a browser tab and point it to `http://$KROSSBOARD_IP/`, changing `$KROSSBOARD_IP` to the IP address of the Krossboard instance.
+Open a browser tab and point it to the Krossboard URL displayed at the end of the installation script. **Note:** It may take a few seconds before the instance finishes its initialization, during this time you may experience a loading error in the browser.
 
 The IP address of the instance is displayed at the end of the installation script. You can also get it on the Azure portal.
 

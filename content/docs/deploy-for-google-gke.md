@@ -1,5 +1,5 @@
 +++
-title = "Setup Krossboard for Google GKE"
+title = "Setup Krossboard for Google GKE clusters"
 description = ""
 weight = 20
 draft = false
@@ -26,29 +26,32 @@ This installation guide assumes that:
 > All the below steps are achieved from a terminal. Open a terminal to get ready.
 
 ## Deploy a Krossboard instance
-The set of commands below shall deploy, in a couple of minutes, an instance of Krossboard for a given project.
+The set of commands below shall deploy, in a couple of minutes, an instance of Krossboard.
 
-Before running the commands, it's important to review and set the following variables appropriately: 
-  * The variable `KB_GCP_IMAGE` shall be set with a valid Krossboard image (see the [list of available images]({{< relref "/docs/releases" >}})).
-  * Variables starting `GCP_` to ensure that it corresponds your target environments.
-  * A `g1-small` instance is a good starting point, unless you have 10+ GKE clusters with many namespaces in the same project. Either way, think to regularly check the metrics of the instance to adapt your choice if needed.
+Before running the commands, it's important to review and set the variables starting `GCP_` to ensure that it corresponds your target environments. Note that a `g1-small` instance would be sufficient for a first installation, unless you have 10+ GKE clusters with many namespaces in the same project.
 
 ```bash
 # user-provided parameters
-export KB_GCP_IMAGE="krossboard-v20200818t1597750044-preview"
 export GCP_PROJECT="my-gke-project"
 export GCP_ZONE="us-central1-a"
 export GCP_INSTANCE_TYPE="g1-small" 
-
 curl -so krossboard_gcp_install.sh \
-  https://krossboard.app/artifacts/setup/krossboard_gcp_install.sh && \
-  bash ./krossboard_gcp_install.sh
+    https://krossboard.app/artifacts/setup/krossboard_gcp_install.sh && \
+    bash ./krossboard_gcp_install.sh
 ```
 
 > if prompted, answer `y`es to enable Compute Engine API.
 
+On success a summary of the installation shall be displayed as below:
+```
+=== Summary the Krossboard instance ===
+Instance Name => krossboard-v20200818t1597750044-preview
+Project => krossboard-demo
+Krossboard UI => http://1.2.3.4/
+```
+
 ## Get access to Krossboard UI
-Open a browser tab and point it to this URL `http://KROSSBOARD_IP/`, changing `KROSSBOARD_IP` to the IP address of the Krossboard instance (can be get from the GCP console). 
+Open a browser tab and point it to the Krossboard URL displayed at the end of the installation script. **Note:** It may take a few seconds before the instance finishes its initialization, during this time you may experience a loading error in the browser.
 
 The default username and password to sign in are:
 
