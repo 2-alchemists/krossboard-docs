@@ -23,6 +23,11 @@ if [ -z "$AZURE_GROUP" ]; then
   exit 1
 fi
 
+if [ -z "$KB_AZURE_LOCATION" ]; then
+  KB_AZURE_LOCATION="$KB_AZURE_LOCATION_DEFAULT"
+  echo -e "\e[35mKB_AZURE_LOCATION not set, using => $KB_AZURE_LOCATION\e[0m"
+fi
+
 if [ -z "$KB_AZURE_VM_NAME" ]; then
   KB_AZURE_VM_NAME="krossboard-`date +%F-%s`"
   echo -e "\e[35mVM_NAME not set, using => $KB_AZURE_VM_NAME\e[0m"
@@ -37,6 +42,7 @@ echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_AZURE_VM_NAME => $KB_AZURE_VM_NAME"
 echo "    KB_AZURE_VM_SIZE => $KB_AZURE_VM_SIZE"
 echo "    AZURE_GROUP => $AZURE_GROUP"
+echo "    KB_AZURE_LOCATION => $KB_AZURE_LOCATION"
 
 while true; do
     echo -e '\e[32mProceed with the installation? y/n\e[0m'
