@@ -15,8 +15,8 @@
 set -e
 
 echo "==> Checking deployment parameters..."
-curl -so krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
-  source ./krossboard_default.sh
+curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
+  source /tmp/krossboard_default.sh
 
 if [ -z "$KB_AWS_KEY_PAIR" ]; then
   echo -e "\e[31mPlease set the KB_AWS_KEY_PAIR variable with the EC2 key pair to use\e[0m"
@@ -87,7 +87,7 @@ if [ "$KB_SG_ID" == "KB_SG_NOT_FOUND" ]; then
   aws ec2 authorize-security-group-ingress --group-name $KB_SG_NAME --protocol tcp --port 80 --cidr '0.0.0.0/0'
 fi
 
-echo "==> Start a Krossboard instance..."
+echo "==> Starting a Krossboard instance..."
 KB_INSTANCE_NAME="krossboard-$KB_TIMESTAMP"
 
 KB_INSTANCES_INFO=$(aws ec2 run-instances \
