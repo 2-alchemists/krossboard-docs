@@ -28,7 +28,7 @@ This installation guide assumes that:
 ## Deploy a Krossboard instance
 The set of commands below shall deploy, in a couple of minutes, an instance of Krossboard.
 
-Before running the commands, it's important to review and set the variables starting `GCP_` to ensure that it corresponds your target environments. Note that a `g1-small` instance would be sufficient for a first installation, unless you have 10+ GKE clusters with many namespaces in the same project.
+Before running the commands, it's important to review and set the variables starting `GCP_` to ensure that it corresponds your target environments. Note that a `g1-small` instance should be sufficient, unless you have a big number of GKE clusters along with many namespaces in the target region in the same project.
 
 ```bash
 # user-provided parameters

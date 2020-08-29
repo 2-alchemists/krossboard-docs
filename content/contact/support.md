@@ -1,5 +1,5 @@
 ---
-title: "Information & support"
+title: "Contact & support"
 description: ""
 date: 2020-03-07T00:20:27+02:00
 draft: false

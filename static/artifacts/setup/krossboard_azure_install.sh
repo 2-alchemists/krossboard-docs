@@ -15,12 +15,17 @@
 set -e
 
 echo "==> Checking deployment parameters..."
-curl -so krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
-  source ./krossboard_default.sh
+curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
+  source /tmp/krossboard_default.sh
 
-if [ -z "$KB_AZURE_GROUP" ]; then
-  echo -e "\e[31mPlease set the KB_AZURE_GROUP variable with the target Azure resource group\e[0m"
+if [ -z "$AZURE_GROUP" ]; then
+  echo -e "\e[31mPlease set the AZURE_GROUP variable with the target Azure resource group\e[0m"
   exit 1
+fi
+
+if [ -z "$KB_AZURE_LOCATION" ]; then
+  KB_AZURE_LOCATION="$KB_AZURE_LOCATION_DEFAULT"
+  echo -e "\e[35mKB_AZURE_LOCATION not set, using => $KB_AZURE_LOCATION\e[0m"
 fi
 
 if [ -z "$KB_AZURE_VM_NAME" ]; then
@@ -36,7 +41,8 @@ fi
 echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_AZURE_VM_NAME => $KB_AZURE_VM_NAME"
 echo "    KB_AZURE_VM_SIZE => $KB_AZURE_VM_SIZE"
-echo "    KB_AZURE_GROUP => $KB_AZURE_GROUP"
+echo "    AZURE_GROUP => $AZURE_GROUP"
+echo "    KB_AZURE_LOCATION => $KB_AZURE_LOCATION"
 
 while true; do
     echo -e '\e[32mProceed with the installation? y/n\e[0m'
@@ -50,51 +56,59 @@ done
 
 # now only accept bound variables
 set -u
+echo "==> Activating permissions to connect to Krossboard Image gallery on Azure..."
+az role assignment create -g $AZURE_GROUP --assignee $KB_AZURE_CONSUMER_ID --role "Contributor"
+# first backing off the main session before changing the logged user
+mkdir -p /tmp/kb/.azure && cp -pr $HOME/.azure/* /tmp/kb/.azure/
+az login --service-principal -t"$KB_AZURE_PROVIDER_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID" -p"$KB_AZURE_CONSUMER_PASS"
+az login --service-principal -t"$AZURE_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID" -p"$KB_AZURE_CONSUMER_PASS"
 
-echo "==> Activating permissions to access to the Krossboard Image gallery on Azure..."
-az role assignment create -g $KB_AZURE_GROUP --assignee $KB_AZURE_CONSUMER_ID --role "Contributor" 
-az login --service-principal -t"$KB_AZURE_PROVIDER_ID" -u"$KB_AZURE_CONSUMER_ID"  -p"$KB_AZURE_CONSUMER_PASS"
-az login --service-principal -t"$AZURE_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID"  -p"$KB_AZURE_CONSUMER_PASS"
-KB_ACCOUNT_USERNAME=$(az account show --query "user.name" | cut -d'"' -f2)
-
-echo "==> Start a Krossboard instance..."
-az vm create -g $KB_AZURE_GROUP \
+echo "==> Starting a Krossboard instance..."
+az vm create -g $AZURE_GROUP \
   -n $KB_AZURE_VM_NAME \
-  -- $KB_AZURE_VM_SIZE \
+  --size $KB_AZURE_VM_SIZE \
   --image "/subscriptions/$KB_AZURE_PROVIDER_SUB/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard" \
-  --location centralus \
+  --location $KB_AZURE_LOCATION \
   --admin-username azureuser \
-  --generate-ssh-keys \
-  --assign-identity
+  --generate-ssh-keys
+  
 
-echo "==> Configure IAM permissions for the Krossboard instance..."
-az logout --username $KB_ACCOUNT_USERNAME
-az account set --subscription $AZURE_SUBSCRIPTION_ID
-az account list -otable
-VM_SP=$(az vm get-instance-view -g $KB_AZURE_GROUP -n $KB_AZURE_VM_NAME --query 'identity.principalId' | cut -d'"' -f2)
-az role assignment create -g $KB_AZURE_GROUP --assignee $VM_SP --role "Managed Applications Reader" 
-az role assignment create -g $KB_AZURE_GROUP --assignee $VM_SP --role "Azure Kubernetes Service Cluster User Role"
+echo "==> Configure IAM permissions for the instance..."
+# restore the main session before continuing
+cp -pr /tmp/kb/.azure/* $HOME/.azure/ && rm -rf /tmp/kb/.azure/
+az vm identity assign -n $KB_AZURE_VM_NAME -g $AZURE_GROUP --scope /subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$AZURE_GROUP
+KB_PRINCIPAL_ID=$(az vm show -g $AZURE_GROUP -n $KB_AZURE_VM_NAME --query "identity.principalId" -otsv)
+az role assignment create -g $AZURE_GROUP --assignee $KB_PRINCIPAL_ID --role "Managed Applications Reader" 
+az role assignment create -g $AZURE_GROUP --assignee $KB_PRINCIPAL_ID --role "Azure Kubernetes Service Cluster User Role"
 
-echo "==> Discovery and taking over existing AKS clusters..."
-CURRENT_CLUSTERS=$(az aks list -g $KB_AZURE_GROUP --query "[].name"  -otsv)
+echo "==> Discovery existing AKS clusters..."
+CURRENT_CLUSTERS=$(az aks list -g $AZURE_GROUP --query "[].name" -otsv)
 for cluster in $CURRENT_CLUSTERS; do
-    az aks get-credentials -g $KB_AZURE_GROUP -n $cluster
+    az aks get-credentials -g $AZURE_GROUP -n $cluster
     kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-aks.yml
 done
 
-echo "==> Enable HTTP access to the Krossboard web interface..."
-KB_SG=krossboard-sg
-VM_NICS=$(az vm nic list -g $KB_AZURE_GROUP --vm-name=$KB_AZURE_VM_NAME --query "[0].id" -otsv | cut -d'"' -f2)
-az network nsg create --resource-group $KB_AZURE_GROUP -l centralus -n $KB_SG
-az network nsg rule create -g $KB_AZURE_GROUP -n ${KB_SG}-rule --nsg-name $KB_SG --protocol tcp --priority 1000 --destination-port-range 80    
-az network nic update --network-security-group $KB_SG --ids $VM_NICS
+echo "==> Enable HTTP access to Krossboard UI..."
+KB_NSG_NAME="krossboard-nsg-$KB_AZURE_LOCATION"
+KB_NSG_FOUND=$(az network nsg show -n "$KB_NSG_NAME" -g "$AZURE_GROUP" --query="name" -otsv || echo "KB_NSG_NOT_FOUND")
+if [ "$KB_NSG_FOUND" != "$KB_NSG_NAME" ]; then
+  echo -e "\e[35mCreating network security group for Krossboard ==> $KB_NSG_NAME\e[0m"
+  az network nsg create -g $AZURE_GROUP -n $KB_NSG_NAME --location $KB_AZURE_LOCATION
+  az network nsg rule create -g $AZURE_GROUP -n ${KB_NSG_NAME}-rule --nsg-name $KB_NSG_NAME --protocol tcp --priority 1000 --destination-port-range 80    
+else
+  echo -e "\e[35mUsing network security group ==> $KB_NSG_NAME\e[0m"
+fi
 
-echo "==> Getting the IP address of the Krossboard install..."
-KB_IP=$(az vm list-ip-addresses -g $KB_AZURE_GROUP -n $KB_AZURE_VM_NAME --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv)
+echo -e "\e[35mAttaching the network security group to the instance...\e[0m"
+KB_INSTANCE_NICS=$(az vm nic list -g "$AZURE_GROUP" --vm-name="$KB_AZURE_VM_NAME" --query "[0].id" -otsv | cut -d'"' -f2)
+az network nic update --network-security-group "$KB_NSG_NAME" --ids "$KB_INSTANCE_NICS"
+
+echo "==> Getting the IP address of the instance..."
+KB_IP=$(az vm list-ip-addresses -g $AZURE_GROUP -n $KB_AZURE_VM_NAME --query='[0].virtualMachine.network.publicIpAddresses[0].ipAddress' -o tsv)
 echo $KB_IP
 
-echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
+echo -e "\e[1m\e[32m=== Summary the installation ==="
 echo -e "Instance Name => $KB_AZURE_VM_NAME"
-echo -e "Resource Group => $KB_AZURE_GROUP"
+echo -e "Resource Group => $AZURE_GROUP"
 echo -e "Krossboard UI => http://$KB_IP/"
 echo -e "\e[0m"

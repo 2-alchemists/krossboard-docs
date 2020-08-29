@@ -15,8 +15,8 @@
 set -e
 
 echo "==> Checking deployment parameters..."
-curl -so krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
-  source ./krossboard_default.sh
+curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
+  source /tmp/krossboard_default.sh
 
 if [ -z "$KB_GCP_IMAGE" ]; then
   KB_GCP_IMAGE="$KB_GCP_IMAGE_DEFAULT" 
@@ -75,7 +75,7 @@ else
   echo -e "\e[35mUsing service account ${KB_SA_NAME} ==> $KB_SA_EMAIL\e[0m"
 fi
 
-echo "==> Start a Krossboard instance..."
+echo "==> Starting a Krossboard instance..."
 gcloud compute instances create "$KB_INSTANCE_NAME" \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
       --project="$GCP_PROJECT" \

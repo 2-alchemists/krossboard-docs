@@ -31,7 +31,7 @@ Beforehand review the following parameters and adapt them if applicable.
   * Set the variable `KB_AWS_AMI` with a valid Krossboard image according to your region (see the [list of available images]({{< relref "/docs/releases" >}})).
   * Set the variable `KB_AWS_KEY_PAIR` with a valid key pair in EC2. If you want to create a new key pair, you can read [this documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
   * Set the variable `KB_AWS_REGION` with the region where your EKS are (will be) located.  Krossboard will be deployed in the same region (it defaults to  `AWS_DEFAULT_REGION` -- if set).
-  * (Optional) Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small`). The default value would be sufficient for a first deployment, unless you have 10+ clusters along with many namespaces in the target region.
+  * (Optional) Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
 
 ```sh
 export KB_AWS_AMI='ami-0aea8e4fa412757fa'

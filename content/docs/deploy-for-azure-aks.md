@@ -9,25 +9,23 @@ toc = true
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine. 
 
-Each instance works on a per [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) basis. This means that, once deployed within a resource group, it can discover and handle all your AKS clusters belonging to that group. 
-
-To ease its deployment, Krossboard is published through an [Azure Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries). 
+Each instance works on a per [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) basis. This means that, once deployed within a resource group, it can discover and handle all your AKS clusters belonging to that group.
 
 This guide describes step-by-step how to deploy and configure a Krossboard instance. 
 
 
 ## Before you begin
+It's important to note that Krossboard is published through an [Azure Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries). 
+
 This installation guide assumes that:
 
 * You have at least a basic level of practice with Azure concepts.
 * You have at a least a **Contributor** access to your Azure subscription
-* You have access to a Linux terminal (or Azure Cloud Shell) where you can use Azure CLI.
+* You have access to a Linux terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
-> All the next steps are assumed to be achieved from a terminal or through Cloud Shell.
-
 ### Sign in to Azure
-Sign in to Azure and export required account variables.
+Open a terminal and perform the following commands to sign in to Azure and export variables required during the installation.
 
 ```sh
 az login
@@ -46,16 +44,18 @@ Open a web browser and point it to the following URL. Change `$AZURE_TENANT_ID` 
 
 ## Deploy a Krossboard instance
 Before running the commands to deploy your instance of Krossboard, it's important to review the following:
-  * Set the variable `KB_AZURE_GROUP` with the name of the resource group in which your AKS clusters are (will be) located.
-  * (Optional) Set the variable `KB_AZURE_VM_NAME` with the name of the instance. Otherwise the default value defined below will be used. 
-  * (Optional) Set the variable `KB_AZURE_VM_SIZE` with the needed VM size. By default it's `Standard_B1ms` , which is a good starting unless you have 10+ AKS clusters with many namespaces in the target resource group. 
-  * The installation uses the option `--generate-ssh-keys` of Azure CLI to use the local SSH key pair for the instance. The associated SSH username would be `azureuser`.
+  * The variable `AZURE_GROUP` sets the name of the resource group in which your AKS clusters are located.
+  * The variable `KB_AZURE_VM_NAME` sets the name of the instance (default is automatically generated).
+  * The variable `KB_AZURE_LOCATION` sets the deployment location (default is `centralus` -- see the [list of regions with available images]({{< relref "/docs/releases" >}})).
+  * The variable `KB_AZURE_VM_SIZE` sets the VM size (default is `Standard_B1ms` -- what should be sufficient unless you have a big number of AKS clusters along with many namespaces in the target resource group). 
+  * The installation uses the option `--generate-ssh-keys` of Azure CLI, meaning that it uses the local SSH key pair for the instance. The associated SSH username is `azureuser`.
 
 ```sh
 # deployment parameters
-export KB_AZURE_GROUP="YOUR_AKS_GROUP"
+export AZURE_GROUP="YOUR_AZURE_GROUP_WITH_AKS"
 export KB_AZURE_VM_NAME="krossboard-`date +%F-%s`"
 export KB_AZURE_VM_SIZE='Standard_B1ms'
+export KB_AZURE_LOCATION='centralus'
 curl -so krossboard_azure_install.sh \
     https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
     bash ./krossboard_azure_install.sh
