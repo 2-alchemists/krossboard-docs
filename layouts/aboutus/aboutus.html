@@ -14,10 +14,7 @@
 				<div class="flex-col-md-6">
 					<div class="content typo-light">						
 						<p>{{ index .Site.Data.aboutus "Motivation" | markdownify }}</p>
-					</div>
-					<div class="content typo-light">						
-						<p>{{ index .Site.Data.aboutus "Legal" | markdownify }}</p>
-					</div>					
+					</div>				
 				</div>
 			</div>
 		</div>
@@ -54,7 +51,19 @@
 			</div>			
 		</div>
 	</section>
-
+	
+	<section class="pd-tb-small pos-rel" data-rgen-sm="pd-tb-small">
+		<div class="container pos-rel z2">
+			<div class="w-50 mr-b-70 align-c">
+				<h2 class="title txt-upper" data-rgen-sm="medium">Legal Information</h2>
+			</div>
+			<div class="flex-row gt100 mb20">
+				<div class="flex-col-md-12">
+				 <div>{{ index .Site.Data.aboutus "Legal" | markdownify }}</div>
+				 </div>		
+			</div>			
+		</div>
+	</section>	
 </div>
 
 {{- end }}
