@@ -5,7 +5,6 @@ description = ""
 draft = false
 +++
 
-
 This privacy policy expresses the standards of 2Alchemists (SAS) for maintenance of private data.
 
 2Alchemists complies with the General Data Protection Regulation (GDPR), the European Data Protection Law Enforcement Directive.
