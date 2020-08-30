@@ -19,7 +19,7 @@ curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/kross
   source /tmp/krossboard_default.sh
 
 if [ -z "$AZURE_GROUP" ]; then
-  echo -e "\e[31mPlease set the AZURE_GROUP variable with the target Azure resource group\e[0m"
+  echo -e "\e[31m[ERROR] Please set the AZURE_GROUP variable with the target Azure resource group\e[0m"
   exit 1
 fi
 
