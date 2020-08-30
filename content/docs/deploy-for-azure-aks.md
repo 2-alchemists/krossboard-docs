@@ -8,8 +8,7 @@ toc = true
 +++
 
 On Microsoft Azure, Krossboard works as a standalone virtual machine. 
-
-Each instance works on a per [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) basis. This means that, once deployed within a resource group, it can discover and handle all your AKS clusters belonging to that group.
+Each instance discovers and handles AKS clusters on a per [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) basis. This means that, once deployed within a resource group, it can discover and handle all your AKS clusters belonging to that group.
 
 This guide describes step-by-step how to deploy and configure a Krossboard instance. 
 
@@ -20,7 +19,7 @@ It's important to note that Krossboard is published through an [Azure Shared Ima
 This installation guide assumes that:
 
 * You have at least a basic level of practice with Azure concepts.
-* You have at a least a **Contributor** access to your Azure subscription
+* You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your AKS clusters.
 * You have access to a Linux terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 

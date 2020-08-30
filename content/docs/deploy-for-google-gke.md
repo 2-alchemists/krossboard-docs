@@ -7,19 +7,17 @@ bref = ""
 toc = true 
 +++
 
-On Google Compute Platform (GCP), Krossboard works as a standalone Compute Engine instance.
-
-Each instance works on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. This means that, once deployed within a project, it can discover and handle all your GKE clusters belonging to that project. 
-
-To ease its deployment, Krossboard is published as public GCP images ready to use.
+On Google Compute Platform (GCP), Krossboard works as a standalone Compute Engine instance. Each instance discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. This means that, once deployed within a project, it can discover and handle all your GKE clusters belonging to that project. 
 
 This document does walk you through a step-by-step procedure to deploy and configure an instance of Krossboard for a GCP project. It would require you a couple of minutes. Promises.
 
 ## Before you begin
+First note that Krossboard is published as ready-to-use GCP images. This release approach aims to make its deployment as simple than creating a GCP virtual machine.
+
 This installation guide assumes that:
 
 * You have a basic level of practice with GCP.
-* You have a GCP account with at least an editor level of access to a project.
+* You have a GCP account with at least an editor level of access to a project. The editor role is needed to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your GKE clusters.
 * You have access to a Linux terminal with [gcloud](https://cloud.google.com/sdk) installed and configured to get access o your GCP project. Or, alternatively, you may use [Google Cloud Shell](https://cloud.google.com/shell).
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
