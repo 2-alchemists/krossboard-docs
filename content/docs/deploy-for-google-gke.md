@@ -9,7 +9,7 @@ toc = true
 
 On Google Compute Platform (GCP), Krossboard works as a standalone Compute Engine instance. Each instance discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. This means that, once deployed within a project, it can discover and handle all your GKE clusters belonging to that project. 
 
-This document does walk you through a step-by-step procedure to deploy and configure an instance of Krossboard for a GCP project. It would require you a couple of minutes. Promises.
+This document does walk you through a step-by-step procedure to deploy and configure an instance of Krossboard for a GCP project in a couple of minutes.
 
 ## Before you begin
 First note that Krossboard is published as ready-to-use GCP images. This release approach aims to make its deployment as simple than creating a GCP virtual machine.

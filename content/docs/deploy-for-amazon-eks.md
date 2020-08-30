@@ -10,7 +10,7 @@ toc = true
 On Amazon AWS, Krossboard works as a standalone EC2 virtual machine. 
 Each instance discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, it can automatically discover and handle all your EKS clusters in that region. 
 
-This guide describes step-by-step how to deploy and configure Krossboard for an AWS region. 
+This guide describes step-by-step how to deploy and configure Krossboard for an AWS region in a couple of minutes.
 
 ## Before you begin
 First note that Krossboard is published as ready-to-use public AWS images. This release approach aims to make its deployment as simple than creating an AWS virtual machine.
