@@ -18,14 +18,21 @@ echo "==> Checking deployment parameters..."
 curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
   source /tmp/krossboard_default.sh
 
-if [ -z "$KB_AWS_KEY_PAIR" ]; then
-  echo -e "\e[31mPlease set the KB_AWS_KEY_PAIR variable with the EC2 key pair to use\e[0m"
+if [ -z "$KB_AWS_REGION" ]; then
+  KB_AWS_REGION="eu-central-1" 
+  echo -e "\e[35mKB_AWS_REGION not set, using => $KB_AWS_REGION\e[0m"
+fi
+
+KB_AWS_AMI=${KB_AWS_AMIS[$KB_AWS_REGION]}
+if [ -z "$KB_AWS_AMI" ]; then
+  echo -e "\e[31m[ERROR] Krossboard AMI is not yet provided in the AWS region selected => $KB_AWS_REGION\e[0m"
   exit 1
 fi
 
-if [ -z "$KB_AWS_AMI" ]; then
-  KB_AWS_AMI="$KB_AWS_AMI_DEFAULT" 
-  echo -e "\e[35mKB_AWS_AMI not set, using => $KB_AWS_AMI\e[0m"
+
+if [ -z "$KB_AWS_KEY_PAIR" ]; then
+  echo -e "\e[31m[ERROR] Please set the KB_AWS_KEY_PAIR variable with the EC2 key pair to use\e[0m"
+  exit 1
 fi
 
 if [ -z "$KB_AWS_INSTANCE_TYPE" ]; then
@@ -33,19 +40,11 @@ if [ -z "$KB_AWS_INSTANCE_TYPE" ]; then
   echo -e "\e[35mAWS_EC2_TYPE not set, using => $KB_AWS_INSTANCE_TYPE\e[0m"
 fi
 
-if [ -z "$KB_AWS_REGION" ]; then
-  if [ -z "$AWS_DEFAULT_REGION" ]; then
-      echo -e "\e[31mPlease set either KB_AWS_REGION or AWS_DEFAULT_REGION variable\e[0m"
-    exit 1
-  fi
-  KB_AWS_REGION="$AWS_DEFAULT_REGION" 
-  echo -e "\e[35mKB_REGION not set, using => $KB_AWS_REGION (AWS_DEFAULT_REGION)\e[0m"
-fi
-
 echo -e "\e[32m==> Installation settings:\e[0m"
 echo "    KB_AWS_KEY_PAIR => $KB_AWS_KEY_PAIR"
 echo "    KB_AWS_INSTANCE_TYPE => $KB_AWS_INSTANCE_TYPE"
 echo "    KB_AWS_REGION => $KB_AWS_REGION"
+echo "    KB_AWS_AMI => $KB_AWS_AMI"
 
 while true; do
     echo -e '\e[32mProceed with the installation? y/n\e[0m'
