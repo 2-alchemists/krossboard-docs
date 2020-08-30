@@ -25,7 +25,8 @@ fi
 
 KB_AWS_AMI=${KB_AWS_AMIS[$KB_AWS_REGION]}
 if [ -z "$KB_AWS_AMI" ]; then
-  echo -e "\e[31m[ERROR] Krossboard AMI is not yet provided in the AWS region selected => $KB_AWS_REGION\e[0m"
+  echo -e "\e[31m[ERROR] Krossboard AMI is not currently available in the selected AWS region => $KB_AWS_REGION\e[0m"
+  echo -e "\e[31m :: available regions => ${!KB_AWS_AMIS[@]}\e[0m"
   exit 1
 fi
 
