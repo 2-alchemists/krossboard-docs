@@ -8,18 +8,17 @@ toc = true
 +++
 
 On Amazon AWS, Krossboard works as a standalone EC2 virtual machine. 
-
-Each instance works on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, it can automatically discover and handle all your EKS clusters in that region. 
-
-To ease its deployment, Krossboard is published as public AWS images ready to use.
+Each instance discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, it can automatically discover and handle all your EKS clusters in that region. 
 
 This guide describes step-by-step how to deploy and configure Krossboard for an AWS region. 
 
 ## Before you begin
+First note that Krossboard is published as ready-to-use public AWS images. This release approach aims to make its deployment as simple than creating an AWS virtual machine.
+
 This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
-* You can have access to AWS Management Console and to AWS CLI with sufficient permissions: (1) to create and assign AWS IAM roles; (2) to create EC2 instances; and (3) to access to EKS clusters in the selected region.
+* You have an active AWS account with administrator access to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your EKS clusters.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `curl` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 > All the next steps are achieved from a terminal.
@@ -28,10 +27,9 @@ This installation guide assumes that:
 The following commands shall create and configure an instance of Krossboard.
 
 Beforehand review the following parameters and adapt them if applicable.
-  * Set the variable `KB_AWS_AMI` with a valid Krossboard image according to your region (see the [list of available images]({{< relref "/docs/releases" >}})).
-  * Set the variable `KB_AWS_KEY_PAIR` with a valid key pair in EC2. If you want to create a new key pair, you can read [this documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
-  * Set the variable `KB_AWS_REGION` with the region where your EKS are (will be) located.  Krossboard will be deployed in the same region (it defaults to  `AWS_DEFAULT_REGION` -- if set).
-  * (Optional) Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
+  * Set the variable `KB_AWS_REGION` with the region of your EKS clusters (default is `eu-central-1`). This must be a [region where Krossboard is currently available]({{< relref "/docs/releases" >}}).
+  * Set the variable `KB_AWS_KEY_PAIR` with a valid key pair in EC2. If you want to create a new key pair, read [this documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
+  * Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
 
 ```sh
 export KB_AWS_AMI='ami-0aea8e4fa412757fa'
