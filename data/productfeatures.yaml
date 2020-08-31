@@ -6,8 +6,8 @@
       <a href="/docs/deploy-for-amazon-eks/">Amazon EKS</a>,
       <a href="/docs/deploy-for-azure-aks/">Microsoft AKS</a>,
       <a href="/docs/deploy-for-google-gke/">Google GKE</a>), 
-      you can setup an instance of Krossboard in a couple of minutes.
-      Then let the instance discovers and tracks your clusters.
+      you can set up an instance of Krossboard in a couple of minutes.
+      Then let the instance discover and track your clusters.
 - Feature:
   Title: "Track usage, anticipate and master costs"
   Image: "pe-7s-graph1"
