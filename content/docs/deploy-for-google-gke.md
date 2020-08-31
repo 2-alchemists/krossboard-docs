@@ -9,7 +9,7 @@ toc = true
 
 On Google Compute Platform (GCP), Krossboard works as a standalone Compute Engine instance. Each instance discovers and handles GKE clusters on a per [GCP project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) basis. This means that, once deployed within a project, it can discover and handle all your GKE clusters belonging to that project. 
 
-This document does walk you through a step-by-step procedure to deploy and configure an instance of Krossboard for a GCP project in a couple of minutes.
+This guide shows how to setup Krossboard for a given GCP project in a couple of minutes.
 
 ## Before you begin
 First note that Krossboard is published as ready-to-use GCP images. This release approach aims to make its deployment as simple than creating a GCP virtual machine.
@@ -17,16 +17,17 @@ First note that Krossboard is published as ready-to-use GCP images. This release
 This installation guide assumes that:
 
 * You have a basic level of practice with GCP.
-* You have a GCP account with at least an editor level of access to a project. The editor role is needed to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your GKE clusters.
+* You have a GCP account with at least an editor level of access to a project. The editor role is needed to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your GKE clusters**.
 * You have access to a Linux terminal with [gcloud](https://cloud.google.com/sdk) installed and configured to get access o your GCP project. Or, alternatively, you may use [Google Cloud Shell](https://cloud.google.com/shell).
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
-> All the below steps are achieved from a terminal. Open a terminal to get ready.
-
 ## Deploy a Krossboard instance
-The set of commands below shall deploy, in a couple of minutes, an instance of Krossboard.
+The commands below shall deploy an instance of Krossboard in a couple of minutes.
 
-Before running the commands, it's important to review and set the variables starting `GCP_` to ensure that it corresponds your target environments. Note that a `g1-small` instance should be sufficient, unless you have a big number of GKE clusters along with many namespaces in the target region in the same project.
+Before launching the installation, review and set the following variables suitably:
+  * The variable `GCP_PROJECT` sets the ID of the target project (i.e. where your GKE clusters are located).
+  * The variable `GCP_ZONE` sets the deployment zone (default is `us-central1-a`). 
+  * The variable `GCP_INSTANCE_TYPE` sets the instance type (default is `g1-small` -- what should be sufficient unless the target project holds a big number of GKE clusters along with many namespaces).
 
 ```bash
 # user-provided parameters

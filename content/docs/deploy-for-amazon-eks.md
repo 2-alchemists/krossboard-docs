@@ -10,7 +10,7 @@ toc = true
 On Amazon AWS, Krossboard works as a standalone EC2 virtual machine. 
 Each instance discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, it can automatically discover and handle all your EKS clusters in that region. 
 
-This guide describes step-by-step how to deploy and configure Krossboard for an AWS region in a couple of minutes.
+This guide shows how to setup Krossboard for an AWS region in a couple of minutes.
 
 ## Before you begin
 First note that Krossboard is published as ready-to-use public AWS images. This release approach aims to make its deployment as simple than creating an AWS virtual machine.
@@ -18,13 +18,11 @@ First note that Krossboard is published as ready-to-use public AWS images. This 
 This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
-* You have an active AWS account with administrator access to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your EKS clusters.
+* You have an active AWS account with administrator access to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your EKS clusters**.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `curl` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
-> All the next steps are achieved from a terminal.
-
 ## Deploy a Krossboard instance
-The following commands shall create and configure an instance of Krossboard.
+The commands below shall deploy an instance of Krossboard in a couple of minutes.
 
 Beforehand review the following parameters and adapt them if applicable.
   * Set the variable `KB_AWS_REGION` with the region of your EKS clusters (default is `eu-central-1`). This must be a [region where Krossboard is currently available]({{< relref "/docs/releases" >}}).
