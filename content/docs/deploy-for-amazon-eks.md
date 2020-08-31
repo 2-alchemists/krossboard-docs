@@ -8,7 +8,7 @@ toc = true
 +++
 
 On Amazon AWS, Krossboard works as a standalone EC2 virtual machine. 
-Each instance discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, it can automatically discover and handle all your EKS clusters in that region. 
+Each instance discovers and handles EKS clusters on a per [AWS region](https://docs.aws.amazon.com/en_us/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) basis. This means that, once installed and properly configured in a region, the instance does automatically discover and handle all your EKS clusters in that region. 
 
 This guide shows how to setup Krossboard for an AWS region in a couple of minutes.
 
@@ -19,6 +19,7 @@ This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
 * You have an active AWS account with administrator access to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your EKS clusters**.
+
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `curl` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 ## Deploy a Krossboard instance
@@ -30,7 +31,6 @@ Beforehand review the following parameters and adapt them if applicable.
   * Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
 
 ```sh
-export KB_AWS_AMI='ami-0aea8e4fa412757fa'
 export KB_AWS_KEY_PAIR='MyKeyPair'
 export KB_AWS_REGION='eu-central-1'
 export KB_AWS_INSTANCE_TYPE='t2.small'

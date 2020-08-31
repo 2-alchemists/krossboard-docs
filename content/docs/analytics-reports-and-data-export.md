@@ -12,7 +12,7 @@ toc = true
 
 ![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
 
-Krossboard currently features the following analytics and reports. They are introduced in details in the next sections.
+Krossboard currently features the following analytics and reports. They are introduced in detail in the next sections.
 
 * Overview of the recent consolidated usage.
 * Per-cluster Usage Trends & Accounting.
@@ -22,7 +22,7 @@ Krossboard currently features the following analytics and reports. They are intr
 
 
 ## Overview of Recent Consolidated Usage
-For each cluster discovered and handled by Krossboard, this page displays piecharts showing the latest consolidated CPU and memory usage. Those reports -- updated every 5 minutes, highlight shares of resources, used, available and non-allocatable.
+For each cluster discovered and handled by Krossboard, this page displays pie charts showing the latest consolidated CPU and memory usage. Updated every 5 minutes, these reports highlight shares of used, available, and non-allocatable resources.
 
 ![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
 
@@ -34,7 +34,7 @@ To export the backing data in CSV, click the related link next to the selected c
 ![](/images/docs/screenshorts/krossboard-cluster-usage-trends.png)
  
 ## Global Usage Trends & History
-This page provides a comprehensive usage reports covering all clusters for a user-defined period of time. The intend of those reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time.
+This page provides comprehensive usage reports covering all clusters for a user-defined period of time. The intent of these reports is to provide an at-a-glance visualization to compare the usage of different clusters for any period of time.
 
 To export the backing data in CSV, click the export link next to the selected period.
 
