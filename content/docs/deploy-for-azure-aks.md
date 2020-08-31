@@ -10,7 +10,7 @@ toc = true
 On Microsoft Azure, Krossboard works as a standalone virtual machine. 
 Each instance discovers and handles AKS clusters on a per [resource group](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) basis. This means that, once deployed within a resource group, it can discover and handle all your AKS clusters belonging to that group.
 
-This guide describes step-by-step how to deploy and configure a Krossboard instance for an Azure resource group in a couple of minutes.
+This guide shows how to setup Krossboard for an Azure resource group in a couple of minutes.
 
 
 ## Before you begin
@@ -19,7 +19,7 @@ It's important to note that Krossboard is published through an [Azure Shared Ima
 This installation guide assumes that:
 
 * You have at least a basic level of practice with Azure concepts.
-* You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance. Krossboard itself requires only read-only access to your AKS clusters.
+* You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance.   **Krossboard itself needs _read-only access_ to your AKS clusters**.
 * You have access to a Linux terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI.
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
@@ -42,7 +42,9 @@ Open a web browser and point it to the following URL. Change `$AZURE_TENANT_ID` 
 
 
 ## Deploy a Krossboard instance
-Before running the commands to deploy your instance of Krossboard, it's important to review the following:
+The commands below shall deploy an instance of Krossboard in a couple of minutes.
+
+Before running the commands, review and set the following variables suitably:
   * The variable `AZURE_GROUP` sets the name of the resource group in which your AKS clusters are located.
   * The variable `KB_AZURE_VM_NAME` sets the name of the instance (default is automatically generated).
   * The variable `KB_AZURE_LOCATION` sets the deployment location (default is `centralus` -- see the [list of regions with available images]({{< relref "/docs/releases" >}})).
