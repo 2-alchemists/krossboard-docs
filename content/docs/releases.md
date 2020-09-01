@@ -45,10 +45,15 @@ During the [installation]({{< relref "/docs/deploy-for-google-gke" >}}), you can
 | krossboard-v20200901t1598988567-c99157f    | Global                   | c99157f          |
 
 ### Microsoft Azure images
-On Microsoft Azure, Krossboard is released though a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries). 
-The path of the image is: `/subscriptions/89cdfb38-415e-4612-9260-6d095914713d/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard`.
+On Microsoft Azure, Krossboard is released though a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries).
 
-The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) always deploys the latest version of the image. The location of the instance, set via the variable `KB_AZURE_LOCATION`, must match one of availability locations listed in the following table.
+The path of the image is: 
+
+```
+/subscriptions/89cdfb38-415e-4612-9260-6d095914713d/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard
+```
+
+The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always deploy the latest version of the image. The location of the instance, set via the variable `KB_AZURE_LOCATION`, must match one of availability locations listed in the following table.
 
 
 | Image Version    | Replication regions      | Build ID         |
