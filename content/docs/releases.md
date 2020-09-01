@@ -51,6 +51,14 @@ The path of the image is: `/subscriptions/89cdfb38-415e-4612-9260-6d095914713d/r
 The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) always deploys the latest version of the image. The location of the instance, set via the variable `KB_AZURE_LOCATION`, must match one of availability locations listed in the following table.
 
 
-| Image Version    | Availability locations   | Build ID         |
+| Image Version    | Replication regions      | Build ID         |
 | -----------------|:------------------------:| ----------------:|
-| /version/latest  | Global                   | c99157f          |
+| /version/latest  | Brazil South             | c99157f          |
+| /version/latest  | Canada Central           | c99157f          |
+| /version/latest  | Central India            | c99157f          |
+| /version/latest  | Central US               | c99157f          |
+| /version/latest  | East US                  | c99157f          |
+| /version/latest  | Germany West Central     | c99157f          |
+| /version/latest  | Korea Central            | c99157f          |
+| /version/latest  | UK West                  | c99157f          |
+| /version/latest  | West US                  | c99157f          |
