@@ -14,6 +14,13 @@
 
 set -e
 
+echo "==> Checking prerequisites..."
+
+if ! command -v gcloud &> /dev/null; then
+  echo "\e[31m[ERROR] gcloud sdk could not be found, please install it => https://cloud.google.com/sdk\e[0m"
+  exit 1
+fi
+
 echo "==> Checking deployment parameters..."
 curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
   source /tmp/krossboard_default.sh
