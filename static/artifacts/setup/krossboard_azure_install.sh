@@ -65,9 +65,9 @@ az login --service-principal -t"$AZURE_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID" -p"$
 
 echo "==> Starting a Krossboard instance..."
 az vm create -g $AZURE_GROUP \
-  -n $KB_AZURE_VM_NAME \
+  -n "$KB_AZURE_VM_NAME" \
   --size $KB_AZURE_VM_SIZE \
-  --image "/subscriptions/$KB_AZURE_PROVIDER_SUB/resourceGroups/krossboard-release/providers/Microsoft.Compute/galleries/KrossboardRelease/images/Krossboard" \
+  --image "$KB_AZURE_IMAGE" \
   --location $KB_AZURE_LOCATION \
   --admin-username azureuser \
   --generate-ssh-keys
