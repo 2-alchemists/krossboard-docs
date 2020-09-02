@@ -18,7 +18,7 @@ Krossboard currently features the following analytics and reports. They are intr
 * Per-cluster Usage Trends & Accounting.
 * Global Usage Trends & History.
   
-> **Data Export.** The data backing each of report can be exported in CSV format. Doing so, Krossboard adds freedom to users to unlock additional analytics capabilities using your favorite data analysis tools ([Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few).
+> **Data Export.** The data backing each report can be exported in CSV format. Doing so, Krossboard adds freedom to users to unlock additional analytics capabilities using your favorite data analysis tools ([Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few).
 
 
 ## Overview of Recent Consolidated Usage
