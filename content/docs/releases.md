@@ -51,12 +51,12 @@ The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always depl
 
 | Replication regions   | Krossboard version   | Build ID         |
 | ----------------------|:--------------------:| ----------------:|
-| Brazil South          | v1.0.0               | c99157f          |
-| Canada Central        | v1.0.0               | c99157f          |
-| Central India         | v1.0.0               | c99157f          |
-| Central US            | v1.0.0               | c99157f          |
-| East US               | v1.0.0               | c99157f          |
-| Germany West Central  | v1.0.0               | c99157f          |
-| Korea Central         | v1.0.0               | c99157f          |
-| UK West               | v1.0.0               | c99157f          |
-| West US               | v1.0.0               | c99157f          |
+| brazilsouth           | v1.0.0               | c99157f          |
+| canadacentral         | v1.0.0               | c99157f          |
+| centralindia          | v1.0.0               | c99157f          |
+| centralus             | v1.0.0               | c99157f          |
+| eastus                | v1.0.0               | c99157f          |
+| germanywestcentral    | v1.0.0               | c99157f          |
+| koreacentral          | v1.0.0               | c99157f          |
+| ukwest                | v1.0.0               | c99157f          |
+| westus                | v1.0.0               | c99157f          |
