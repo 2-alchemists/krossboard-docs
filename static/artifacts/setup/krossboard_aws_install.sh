@@ -15,6 +15,12 @@
 set -e
 
 echo "==> Checking prerequisites..."
+
+if ! command -v aws &> /dev/null; then
+  echo "\e[31m[ERROR] aws tool could not be found, please install it => https://aws.amazon.com/cli/\e[0m"
+  exit 1
+fi
+
 if ! command -v kubectl &> /dev/null; then
   echo "\e[31m[ERROR] kubectl could not be found, please install it => https://kubernetes.io/docs/tasks/tools/install-kubectl/\e[0m"
   exit 1
