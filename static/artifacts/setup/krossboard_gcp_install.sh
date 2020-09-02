@@ -39,7 +39,7 @@ if [ -z "$GCP_INSTANCE_TYPE" ]; then
 fi
 
 if [ "$KB_INSTANCE_NAME" == "" ]; then
-  KB_INSTANCE_NAME="krossboard-`date +%F-%s`"
+  KB_INSTANCE_NAME="$KB_GCP_IMAGE-`date +%F-%s`"
 fi
 
 echo -e "\e[32m==> Installation settings:\e[0m"
@@ -61,24 +61,38 @@ done
 
 # now only accept bound variables
 set -u
-
+GCLOUD_CMD="gcloud --project=$GCP_PROJECT"
 echo "==> Configuring IAM permissions for Krossboard..."
 KB_SA_NAME='krossboard-sa'
-KB_SA_EMAIL=$(gcloud iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
-if [ "$KB_SA_EMAIL" == "" ]; then
-  echo -e "\e[35mCreating a GCP service account ${KB_SA_NAME}...\e[0m"
-  gcloud iam service-accounts create $KB_SA_NAME --display-name $KB_SA_NAME
-  KB_SA_EMAIL=$(gcloud iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
-  echo "KB_SA_EMAIL => $KB_SA_EMAIL"
-  gcloud projects add-iam-policy-binding "$GCP_PROJECT" --member="serviceAccount:$KB_SA_EMAIL" --role='roles/container.viewer'
+KB_SA_EMAIL=$($GCLOUD_CMD iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
+if [ "$KB_SA_EMAIL" != "" ]; then
+  echo -e "\e[35mUsing service account ${KB_SA_NAME} => $KB_SA_EMAIL\e[0m"
 else
-  echo -e "\e[35mUsing service account ${KB_SA_NAME} ==> $KB_SA_EMAIL\e[0m"
+  echo -e "\e[35mCreating a GCP service account ${KB_SA_NAME}...\e[0m"
+  $GCLOUD_CMD iam service-accounts create $KB_SA_NAME --display-name $KB_SA_NAME
+  retry=0
+  until [ "$retry" -ge 15 ]; do
+    KB_SA_EMAIL=$($GCLOUD_CMD iam service-accounts list --filter="name:$KB_SA_NAME@$GCP_PROJECT" --format="value(EMAIL)")
+    if [ -z "$KB_SA_EMAIL" ]; then
+      echo -e "\e[35mWaiting the service account to become ready...\e[0m"
+      sleep 1
+    else
+      echo -e "\e[35mService account email => $KB_SA_EMAIL\e[0m"
+      $GCLOUD_CMD projects add-iam-policy-binding "$GCP_PROJECT" --member="serviceAccount:$KB_SA_EMAIL" --role='roles/container.viewer'
+      break
+    fi
+    sleep 1
+    retry=$((retry+1)) 
+  done
+  if [ -z "$KB_SA_EMAIL" ]; then
+    echo -e "\e[31m[ERROR] Failed getting created service account\e[0m"
+    exit 1
+  fi
 fi
 
 echo "==> Starting a Krossboard instance..."
-gcloud compute instances create "$KB_INSTANCE_NAME" \
+$GCLOUD_CMD compute instances create "$KB_INSTANCE_NAME" \
       --scopes=https://www.googleapis.com/auth/cloud-platform \
-      --project="$GCP_PROJECT" \
       --zone="$GCP_ZONE" \
       --machine-type="$GCP_INSTANCE_TYPE" \
       --service-account="$KB_SA_EMAIL" \
@@ -86,12 +100,11 @@ gcloud compute instances create "$KB_INSTANCE_NAME" \
       --image-project=krossboard-factory \
       --tags=krossboard-server
 
-echo "==> Enable HTTP access to the Krossboard UI (HTTP, port 80)..."
+echo "==> Enable access to Krossboard UI (HTTP, port 80)..."
 KB_FW_RULE='krossboard-allow-http'
-KB_FW_RULE_FOUND=$(gcloud compute firewall-rules list --filter="name:$KB_FW_RULE"  --format="value(Name)")
+KB_FW_RULE_FOUND=$($GCLOUD_CMD compute firewall-rules list --filter="name:$KB_FW_RULE"  --format="value(Name)")
 if [ "$KB_FW_RULE_FOUND" != "$KB_FW_RULE" ]; then
-  gcloud compute firewall-rules create krossboard-allow-http \
-      --project=${GCP_PROJECT} \
+  $GCLOUD_CMD compute firewall-rules create krossboard-allow-http \
       --direction=INGRESS \
       --priority=1000 --network=default \
       --action=ALLOW \
@@ -100,7 +113,7 @@ if [ "$KB_FW_RULE_FOUND" != "$KB_FW_RULE" ]; then
       --target-tags=krossboard-server
 fi
 
-KB_IP=$(gcloud compute instances list --filter="name:$KB_INSTANCE_NAME" --format="value(EXTERNAL_IP)")
+KB_IP=$($GCLOUD_CMD compute instances list --filter="name:$KB_INSTANCE_NAME" --format="value(EXTERNAL_IP)")
 
 echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
 echo -e "Instance Name => $KB_INSTANCE_NAME"

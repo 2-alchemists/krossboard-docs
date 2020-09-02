@@ -39,7 +39,13 @@ curl -so krossboard_gcp_install.sh \
     bash ./krossboard_gcp_install.sh
 ```
 
-> if prompted, answer `y`es to enable Compute Engine API.
+> If you have the following prompt:
+> ```
+> API [compute.googleapis.com] not enabled on project [1062262466175]. 
+> Would you like to enable and retry (this will take a few minutes)? 
+> (y/N)?
+> ```
+>  Answer `y`es to enable Compute Engine API.
 
 On success a summary of the installation shall be displayed as below:
 ```
