@@ -37,8 +37,7 @@ This table lists AWS regions where official Krossboard AMIs are currently releas
 | us-west-1       | v1.0.0                   | c99157f          |
 
 ### Google GCP images
-This table lists the currently supported GCP images for Krossboard.
-During the [installation]({{< relref "/docs/deploy-for-google-gke" >}}), you can set a specific image listed in this table by setting the variable `KB_GCP_IMAGE`.
+This table lists the current Krossboard images available on GCP.
 
 | Region    | Krossboard version   | Build ID         |
 | ----------|:--------------------:| ----------------:|
@@ -47,7 +46,7 @@ During the [installation]({{< relref "/docs/deploy-for-google-gke" >}}), you can
 ### Microsoft Azure images
 On Microsoft Azure, Krossboard is released through a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries).
 
-The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always deploy the latest version of the image. The location of the instance, set via the variable `KB_AZURE_LOCATION`, must match one of availability locations listed in the following table.
+The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always deploy the latest version of the image. You just have to define the location via the variable `KB_AZURE_LOCATION`. See the list of locations below.
 
 
 | Replication regions   | Krossboard version   | Build ID         |
