@@ -21,7 +21,7 @@ This installation guide assumes that:
 * You have at least a basic level of practice with Azure concepts.
 * You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance.   **Krossboard itself needs _read-only access_ to your AKS clusters**.
 * You have access to a Linux terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI.
-* You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
+* You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
 ### Sign in to Azure
 Open a terminal and perform the following commands to sign in to Azure and export variables required during the installation.
@@ -30,7 +30,8 @@ Open a terminal and perform the following commands to sign in to Azure and expor
 az login
 export AZURE_TENANT_ID=$(az account show --query "tenantId" | cut -d'"' -f2)
 export AZURE_SUBSCRIPTION_ID=$(az account show --query id | cut -d'"' -f2)
-echo -e "AZURE_TENANT_ID: $AZURE_TENANT_ID\nAZURE_SUBSCRIPTION_ID: $AZURE_SUBSCRIPTION_ID"
+echo "AZURE_TENANT_ID => $AZURE_TENANT_ID"
+echo "AZURE_SUBSCRIPTION_ID => $AZURE_SUBSCRIPTION_ID"
 ```
 
 ### Consent to use Krossboard Image Gallery
@@ -40,6 +41,7 @@ Open a web browser and point it to the following URL. Change `$AZURE_TENANT_ID` 
 
 > https://login.microsoftonline.com/**$AZURE_TENANT_ID**/oauth2/authorize?client_id=72dd7144-7fb7-4f5c-ac6f-8cf276d2a0b0&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F
 
+Verify that the application is `krossboard-gallery-app`, then check `Consent on behalf of your organization` and click **Accept**. 
 
 ## Deploy a Krossboard instance
 The commands below shall deploy an instance of Krossboard in a couple of minutes.

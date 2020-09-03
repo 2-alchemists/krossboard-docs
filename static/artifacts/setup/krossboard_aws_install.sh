@@ -14,6 +14,18 @@
 
 set -e
 
+echo "==> Checking prerequisites..."
+
+if ! command -v aws &> /dev/null; then
+  echo "\e[31m[ERROR] aws tool could not be found, please install it => https://aws.amazon.com/cli/\e[0m"
+  exit 1
+fi
+
+if ! command -v kubectl &> /dev/null; then
+  echo "\e[31m[ERROR] kubectl could not be found, please install it => https://kubernetes.io/docs/tasks/tools/install-kubectl/\e[0m"
+  exit 1
+fi
+
 echo "==> Checking deployment parameters..."
 curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
   source /tmp/krossboard_default.sh
@@ -59,58 +71,57 @@ done
 
 # now only accept bound variables
 set -u
-
+AWS_CMD="aws --region $KB_AWS_REGION"
 echo "==> Configure IAM permissions for the Krossboard instance..."
 KB_TIMESTAMP=`date +%F-%s`
 
 KB_ROLE_NAME="krossboard-role"
 KB_ROLE_ARN="UNDEFINED"
-KB_ROLE_PROFILE_FOUND=$(aws iam get-instance-profile --instance-profile-name "$KB_ROLE_NAME" || echo "KB_ROLE_PROFILE_NOT_FOUND")
+KB_ROLE_PROFILE_FOUND=$($AWS_CMD iam get-instance-profile --instance-profile-name "$KB_ROLE_NAME" || echo "KB_ROLE_PROFILE_NOT_FOUND")
 if [ "$KB_ROLE_PROFILE_FOUND" == "KB_ROLE_PROFILE_NOT_FOUND" ]; then
   echo -e "\e[35mRole of ${KB_ROLE_NAME} does not exist, creating it...\e[0m"
   wget -O /tmp/${KB_ROLE_NAME}-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-policy.json
   wget -O /tmp/${KB_ROLE_NAME}-trust-policy.json https://krossboard.app/artifacts/setup/aws/krossboard-role-trust-policy.json
-  KB_ROLE_ARN=$(aws iam create-role --role-name "$KB_ROLE_NAME" --assume-role-policy-document file:///tmp/${KB_ROLE_NAME}-trust-policy.json -query "Role.Arn" --output=text)
-  aws iam put-role-policy --role-name "$KB_ROLE_NAME" --policy-name "${KB_ROLE_NAME}-policy" --policy-document file:///tmp/${KB_ROLE_NAME}-policy.json
-  KB_ROLE_PROFILE=$(aws iam create-instance-profile --instance-profile-name "${KB_ROLE_NAME}")
-  aws iam add-role-to-instance-profile --role-name "$KB_ROLE_NAME" --instance-profile-name "${KB_ROLE_NAME}"
+  KB_ROLE_ARN=$($AWS_CMD iam create-role --role-name "$KB_ROLE_NAME" --assume-role-policy-document file:///tmp/${KB_ROLE_NAME}-trust-policy.json --query "Role.Arn" --output=text)
+  $AWS_CMD iam put-role-policy --role-name "$KB_ROLE_NAME" --policy-name "${KB_ROLE_NAME}-policy" --policy-document file:///tmp/${KB_ROLE_NAME}-policy.json
+  KB_ROLE_PROFILE=$($AWS_CMD iam create-instance-profile --instance-profile-name "${KB_ROLE_NAME}")
+  $AWS_CMD iam add-role-to-instance-profile --role-name "$KB_ROLE_NAME" --instance-profile-name "${KB_ROLE_NAME}"
 else
-  KB_ROLE_ARN=$(aws iam get-role --role-name "$KB_ROLE_NAME" --query="Role.Arn" --output=text)
+  KB_ROLE_ARN=$($AWS_CMD iam get-role --role-name "$KB_ROLE_NAME" --query="Role.Arn" --output=text)
   echo -e "\e[35mUsing role ${KB_ROLE_NAME} ==> $KB_ROLE_ARN\e[0m"
 fi
 
 echo "==> Creating security group with HTTP ingress enabled..."
 KB_SG_NAME="krossboard-sg"
-KB_SG_ID=$(aws ec2 describe-security-groups --group-names "$KB_SG_NAME" --query "SecurityGroups[*].GroupId" --output=text || echo "KB_SG_NOT_FOUND")
+KB_SG_ID=$($AWS_CMD ec2 describe-security-groups --group-names "$KB_SG_NAME" --query "SecurityGroups[*].GroupId" --output=text || echo "KB_SG_NOT_FOUND")
 if [ "$KB_SG_ID" == "KB_SG_NOT_FOUND" ]; then
-  KB_SG_ID=$(aws ec2 create-security-group --group-name "$KB_SG_NAME" --description "SG for Krossboard instances" --query "GroupId" --output=text)
-  aws ec2 authorize-security-group-ingress --group-name $KB_SG_NAME --protocol tcp --port 80 --cidr '0.0.0.0/0'
+  KB_SG_ID=$($AWS_CMD ec2 create-security-group --group-name "$KB_SG_NAME" --description "SG for Krossboard instances" --query "GroupId" --output=text)
+  $AWS_CMD ec2 authorize-security-group-ingress --group-name $KB_SG_NAME --protocol tcp --port 80 --cidr '0.0.0.0/0'
 fi
 
 echo "==> Starting a Krossboard instance..."
 KB_INSTANCE_NAME="krossboard-$KB_TIMESTAMP"
 
-KB_INSTANCES_INFO=$(aws ec2 run-instances \
-   --region "$KB_AWS_REGION" \
+KB_INSTANCE_ID=$($AWS_CMD ec2 run-instances \
    --image-id "$KB_AWS_AMI" \
    --instance-type "$KB_AWS_INSTANCE_TYPE" \
    --key-name "$KB_AWS_KEY_PAIR" \
    --security-group-ids "$KB_SG_ID" \
-   --count 1)
-KB_INSTANCE_ID=$(echo $KB_INSTANCES_INFO | jq -r '.Instances[0].InstanceId')
+   --count 1 \
+   --query 'Instances[0].InstanceId'\
+   --output text)
 
 # The role profile or the instance may not be ready immediately.
 # That's why the next command that assigned the profile to the instance
 # is retried a couple of times.
-n=0
-until [ "$n" -ge 15 ]
-do
-   KB_ASSOCIATED_PROFILE=$(aws ec2 associate-iam-instance-profile \
-    --instance-id $KB_INSTANCE_ID \
-    --iam-instance-profile Name=${KB_ROLE_NAME}) && break
-   n=$((n+1))
+retry=0
+until [ "$retry" -ge 15 ]; do
+   KB_ASSOCIATED_PROFILE=$($AWS_CMD ec2 associate-iam-instance-profile \
+                          --instance-id $KB_INSTANCE_ID \
+                          --iam-instance-profile Name=${KB_ROLE_NAME}) && break
    echo -e "\e[35mRetrying to associate role profile...\e[0m"
    sleep 1
+   retry=$((retry+1)) 
 done
 
 echo "==> Configuring required RBAC permissions to retrieve EKS metrics..."
@@ -118,10 +129,10 @@ curl -so krossboard_aws_configure_new_clusters.sh https://krossboard.app/artifac
   source ./krossboard_aws_configure_new_clusters.sh "$KB_ROLE_ARN" "$KB_AWS_REGION"
 
 echo "==> Tagging the instance..."
-aws ec2 create-tags --resources "$KB_INSTANCE_ID" --tags Key=Name,Value="$KB_INSTANCE_NAME" --region "$KB_AWS_REGION"
+$AWS_CMD ec2 create-tags --resources "$KB_INSTANCE_ID" --tags Key=Name,Value="$KB_INSTANCE_NAME"
 
 echo "==> Retrieving instance public IP..."
-KB_IP=$(aws ec2 describe-instances --instance-ids $KB_INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
+KB_IP=$($AWS_CMD ec2 describe-instances --instance-ids $KB_INSTANCE_ID --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
 
 echo -e "\e[1m\e[32m=== Summary the Krossboard instance ==="
 echo -e "Instance Name => $KB_INSTANCE_NAME"

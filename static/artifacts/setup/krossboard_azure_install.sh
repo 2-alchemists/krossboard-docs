@@ -14,6 +14,12 @@
 
 set -e
 
+echo "==> Checking prerequisites..."
+if ! command -v kubectl &> /dev/null; then
+  echo "\e[31m[ERROR] kubectl could not be found, please install it => https://kubernetes.io/docs/tasks/tools/install-kubectl/\e[0m"
+  exit 1
+fi
+
 echo "==> Checking deployment parameters..."
 curl -so /tmp/krossboard_default.sh https://krossboard.app/artifacts/setup/krossboard_default.sh && \
   source /tmp/krossboard_default.sh
@@ -59,7 +65,8 @@ set -u
 echo "==> Activating permissions to connect to Krossboard Image gallery on Azure..."
 az role assignment create -g $AZURE_GROUP --assignee $KB_AZURE_CONSUMER_ID --role "Contributor"
 # first backing off the main session before changing the logged user
-mkdir -p /tmp/kb/.azure && cp -pr $HOME/.azure/* /tmp/kb/.azure/
+AZ_CRED_BKP_DIR="$HOME/.azure-kb-backup-`date +%F-%s`"
+mkdir -p ${AZ_CRED_BKP_DIR} && cp -pr $HOME/.azure/* ${AZ_CRED_BKP_DIR}/
 az login --service-principal -t"$KB_AZURE_PROVIDER_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID" -p"$KB_AZURE_CONSUMER_PASS"
 az login --service-principal -t"$AZURE_TENANT_ID" -u"$KB_AZURE_CONSUMER_ID" -p"$KB_AZURE_CONSUMER_PASS"
 
@@ -75,7 +82,7 @@ az vm create -g $AZURE_GROUP \
 
 echo "==> Configure IAM permissions for the instance..."
 # restore the main session before continuing
-cp -pr /tmp/kb/.azure/* $HOME/.azure/ && rm -rf /tmp/kb/.azure/
+cp -pr ${AZ_CRED_BKP_DIR}/* $HOME/.azure/ && rm -rf ${AZ_CRED_BKP_DIR}/
 az vm identity assign -n $KB_AZURE_VM_NAME -g $AZURE_GROUP --scope /subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$AZURE_GROUP
 KB_PRINCIPAL_ID=$(az vm show -g $AZURE_GROUP -n $KB_AZURE_VM_NAME --query "identity.principalId" -otsv)
 az role assignment create -g $AZURE_GROUP --assignee $KB_PRINCIPAL_ID --role "Managed Applications Reader" 
@@ -110,5 +117,6 @@ echo $KB_IP
 echo -e "\e[1m\e[32m=== Summary the installation ==="
 echo -e "Instance Name => $KB_AZURE_VM_NAME"
 echo -e "Resource Group => $AZURE_GROUP"
+echo -e "Location => $KB_AZURE_LOCATION"
 echo -e "Krossboard UI => http://$KB_IP/"
 echo -e "\e[0m"
