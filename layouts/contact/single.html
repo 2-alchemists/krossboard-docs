@@ -4,11 +4,11 @@
 
   {{ partial "article.html" . }}
 
-  <div class="container pd-lr-200 pd-t-10">
+  <div class="container pd-t-10 max-px-w600">
     <h4 id="reply-message"></h4>
     <div>
        <fieldset>
-          <legend>Please fill in the form to submit your request</legend>
+          <legend class="lh-4">Please fill in the form to submit your request</legend>
           <form action="{{.Site.Params.contactRequestApiEndpoint}}" method="post" onsubmit="return validateForm()" >
              <script src="https://www.google.com/recaptcha/api.js"></script>
              <div class="form-item">
@@ -40,7 +40,7 @@
              </div>
              {{ end }}
              <div class="g-recaptcha" data-sitekey="{{.Site.Params.reCaptchaSiteKey}}"  data-callback="recaptchaCallback"></div>
-             <input  class="btn btn-color3 bold-n solid auto"  type="submit" value="Submit" id="btnSubmit" disabled>
+             <input  class="btn btn-color3 bold-n solid auto mr-t-10 float-right"  type="submit" value="Submit" id="btnSubmit" disabled>
           </form>
        </fieldset>
     </div>
