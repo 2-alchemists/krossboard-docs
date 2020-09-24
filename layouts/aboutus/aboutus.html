@@ -51,11 +51,34 @@
 			</div>			
 		</div>
 	</section>
-	
-	<section class="pd-tb-small pos-rel bg-gray1" data-rgen-sm="pd-tb-small">
+
+	<section class="pos-rel pd-tb-small bg-gray2" data-rgen-sm="pd-tb-small">
+		<div class="container pos-rel w75">
+			<div class="w-50 mr-b-70 align-c">
+				<h2 class="title txt-upper" data-rgen-sm="medium">{{ .Site.Data.aboutus.History.Title | safeHTML }}</h2>	
+				<p class="title-sub" data-rgen-sm="small">{{ .Site.Data.aboutus.History.Subtitle }}</p>	
+			</div>
+			<div class="flex-row gt100 mb20">
+				<div class="flex-col-md-8 flex-col-sm-offset-3" data-rgen-sm="pd-lr-0">
+					<div class="content timeline">
+					<ul>
+					{{ range .Site.Data.aboutus.History.Events }}
+					<li class="event" data-date="{{ .Date }}">
+						<h3>{{ .Title | markdownify }}</h3>
+						<p>{{ .Description | markdownify }}</p>
+					</li>
+					{{ end }}	
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+
+	<section class="pd-tb-small pos-rel" data-rgen-sm="pd-tb-small">
 		<div class="container pos-rel z2">
 			<div class="w-50 mr-b-70 align-c">
-				<h2 class="title txt-upper" data-rgen-sm="medium">Legal Information</h2>
+				<h2 class="title txt-upper" data-rgen-sm="medium">Legal <span class="txt-color1">Information</span></h2>
 			</div>
 			<div class="flex-row gt100 mb20">
 				<div class="flex-col-md-6 flex-col-sm-offset-3">
