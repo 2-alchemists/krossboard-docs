@@ -43,6 +43,13 @@ History:
       Title: Our <span class="txt-color1">History</span>
       Subtitle: 
       Events:
+        - Date: 2019-01-12
+          Title: |
+            🤜🔥🤛 Launch of [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) project
+          Description: |
+            [Rodrigue](https://www.linkedin.com/in/rodriguechakode/) creates [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics),
+            a Kubernetes cost allocation and capacity planning opensource tool to help organizations to track the resources being consumed by their Kubernetes
+            clusters to prevent overpaying.
 
 Legal: |
       2Alchemists SAS is a French company registered in Toulouse.
