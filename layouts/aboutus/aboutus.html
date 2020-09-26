@@ -65,7 +65,9 @@
 					{{ range .Site.Data.aboutus.History.Events }}
 					<li class="event" data-date="{{ .Date }}">
 						<h3>{{ .Title | markdownify }}</h3>
-						<p>{{ .Description | markdownify }}</p>
+						{{ with .Description }}
+						<p>{{ . | markdownify }}</p>
+						{{ end }}
 					</li>
 					{{ end }}	
 					</ul>
