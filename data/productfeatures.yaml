@@ -16,12 +16,12 @@
     and on various accounting periods (hour/day/month/year). 
     Doing so it makes cost allocation and capacity planning decisions easier than ever.
 - Feature:
-  Title: "Original concepts, built in robust tool"
+  Title: "Proven open source core"
   Image: "pe-7s-medal"
   Description: |
-    We have long and strong experience deploying and operating Kubernetes. 
-    Krossboard is designed leveraging lessons learned concerning the needs of 
-    organizations to understand and master their Kubernetes spends.
+    Leveraging <a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a> 
+    at its core (open source with 130k+ image pulls), Krossboard is designed upon established concepts 
+    and a solid code base and adds advanced features for multi-Kubernetes environments.
 - Feature:
   Title: "User-extensible analytics"
   Image: "pe-7s-cloud-download"
