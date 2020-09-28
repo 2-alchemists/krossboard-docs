@@ -26,6 +26,9 @@
 	<link href="/css/form.css" rel="stylesheet">
 	{{if or (eq .Type "docs") (eq .Type "legal") (eq .Type "contact")}}
 	<link href="/css/article.css" rel="stylesheet">
+	{{end}}
+	{{if or (eq .Type "aboutus")}}
+	<link href="/css/timeline.css" rel="stylesheet">
     {{end}}
 
 	<!-- Favicons -->
