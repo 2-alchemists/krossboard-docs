@@ -18,6 +18,12 @@ In addition to that, it's deployed against managed Kubernetes (e.g. GKE, EKS, AK
 
 However, when you deploy it, notably on clouds (e.g. GCP, AWS, Azure), you would likely need according to your cloud provider some  administrations permissions to deploy and configure the instance.
 
+## What are requirements to run Krossboard
+* Ubuntu Server 18.04
+* Docker 19.03 or higher
+* 2 vCPU and 512MB (minimum recommended configuration). Less resources may work, to be refined according to the number of clusters and namespaces)
+
+
 ## What is the license?
 
 
