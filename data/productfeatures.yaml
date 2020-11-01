@@ -2,12 +2,13 @@
   Title: "Deploy in minutes, for multiple Kubernetes"
   Image: "pe-7s-rocket"
   Description: |
-    Provided as ready-use cloud images for popular cloud platforms (
-      <a href="/docs/deploy-for-amazon-eks/">Amazon EKS</a>,
-      <a href="/docs/deploy-for-azure-aks/">Microsoft AKS</a>,
-      <a href="/docs/deploy-for-google-gke/">Google GKE</a>), 
-      you can set up an instance of Krossboard in a couple of minutes.
-      Then let the instance discover and track your clusters.
+    Krossboard works with any Kubernetes (<a href="/docs/deploy-for-amazon-eks/">EKS</a>,
+     <a href="/docs/deploy-for-azure-aks/">AKS</a>,
+     <a href="/docs/deploy-for-google-gke/">GKE</a>,
+     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">OpenShift</a>,
+     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">Rancher</a>, ...).
+     Provided as easy-to-install packages, OVF and cloud images, it's deployable in a couple of minutes 
+     and enables auto-discovery against managed Kubernetes.
 - Feature:
   Title: "Track usage, anticipate and master costs"
   Image: "pe-7s-graph1"

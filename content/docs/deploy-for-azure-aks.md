@@ -20,7 +20,7 @@ This installation guide assumes that:
 
 * You have at least a basic level of practice with Azure concepts.
 * You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance.   **Krossboard itself needs _read-only access_ to your AKS clusters**.
-* You have access to a Linux terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI.
+* You have access to a `bash >=4` terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI. 
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
 ### Sign in to Azure

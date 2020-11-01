@@ -19,7 +19,7 @@ This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
 * You have an active AWS account with administrator access to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your EKS clusters**.
-
+* You have access to a `bash >=4` terminal.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `curl` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 ## Deploy a Krossboard instance
