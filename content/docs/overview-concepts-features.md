@@ -19,15 +19,13 @@ Without being exhaustive here are some key benefits of Krossboard:
 * **Help anticipate costs**: Krossboard features dynamic analytics reports that show how resources are being consumed over time. This helps organizations to forecast scaling up/down, hence to anticipate the related costs.
 * **Enabler for cloud-cost reduction strategy**: Krossboard helps make clusters consolidation decisions by giving factual insights that show how the clusters of your organization are utilized over time. These insights can then be used to motivate and drive consolidation decisions for clusters that are used in a non-efficient way, leading to reducing infrastructure and operations costs.
 
-## Simple integration yet robust tool
+## Simple integration, yet a robust tool
 Krossboard brings original concepts built in a *robust tool with an easy-to-integrate architecture*:
 
-* **Deploy in minutes, for multiple clusters**: 
-    Krossboard is an integrated and easily deployable tool. It's specifically tailored to run against managed Kubernetes on Amazon EKS, Google GKE and Microsoft AKS. It's currently released through cloud images for the supported cloud provider. Once installed, Krossboard automates the discovery of your Kubernetes clusters and centralizes the analytics of their usage at a single place.
-* **Consistent analytics**: 
-    For each cluster, Krossboard regularly collects instantaneous usage metrics. Those metrics are then aggregated and consolidated over time, to produce, short-term (hourly), mid-term (daily) and long-term (monthly) analytics perspectives that cover periods up to a year.
-* **Efficient Visualization at a central place**: 
-    For each and all of your clusters, Krossboard produces friendly analytics dashboards with various charts and consolidated reports that help each organization to understand which share of resources each project/application is spending. Actually, at any point or period of time during the year, your organization can leverage relevant insights for accounting, cost allocation and capacity planning.
+* **Deploy in minutes, for Multiple clusters**: Krossboard is an integrated easy-to-deploy tool. Released as ready-to-install virtual machine appliances, cloud images and  binary packages, its deployment only needs a couple of minutes. When deployed on cloud environments, it can automatically discover and handle your managed Kubernetes instances. This capability is currently supported for Amazon EKS, Google GKE and Microsoft AKS.
+* **Cross-cloud and cross-distribution, Unified analytics**: Krossboard can run against any Kubernetes distributions, all mixed together or not. This unique design enables organizations to set up a global strategy to track and understand how their Kubernetes resources are used by their different projects.
+* **Consistent Analytics**: For each cluster it handles, Krossboard regularly collects instantaneous usage metrics, then aggregated and consolidated over time, to produce, short-term (hourly), mid-term (daily) and long-term (monthly) analytics perspectives that cover periods up to a year.
+* **Efficient Visualization at a Central place**: For each and all of your clusters, Krossboard produces friendly analytics dashboards with various charts and consolidated reports that help each organization to understand which share of resources each project/application is spending. Actually, at any point or period of time during the year, your organization can leverage relevant insights for accounting, cost allocation and capacity planning.
 * **User-extensible analytics**: Aware that organizations may need specific analytics that are not natively built in Krossboard, it's designed to feature the ability to export any data its generates in CSV format; those data can then be further processed to extract additional insights.
 
 ## Established analytics paradigms
