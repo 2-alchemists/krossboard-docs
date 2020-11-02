@@ -27,6 +27,8 @@ According to the selected deployment approach, the following key points shall be
   *  [VirtualBox: Importing Virtual Machines](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/ovf.html#ovf-about).
   * [VMware vSphere: Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)
   * [VMware Workstation/Player: Import an Open Virtualization Format Virtual Machine](https://docs.vmware.com/en/VMware-Workstation-Player-for-Linux/14.0/com.vmware.player.linux.using.doc/GUID-DDCBE9C0-0EC9-4D09-8042-18436DA62F7A.html).
+  * [AWS EC2: Import VM as an Image](https://docs.aws.amazon.com/fr_fr/vm-import/latest/userguide/vmimport-image-import.html#import-vm-image).
+  * [GCP: Importing virtual appliances](https://cloud.google.com/compute/docs/import/import-ovf-files).
 * Start the imported virtual machine. 
 * Once started, connect to the virtual machine via SSH to continue with the integration with Kubernetes clusters below (see below).
   * Username: `ubuntu`
