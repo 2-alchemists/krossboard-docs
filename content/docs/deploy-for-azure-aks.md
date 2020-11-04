@@ -60,7 +60,7 @@ export KB_AZURE_VM_NAME="krossboard-`date +%F-%s`"
 export KB_AZURE_VM_SIZE='Standard_B1ms'
 export KB_AZURE_LOCATION='centralus'
 curl -so krossboard_azure_install.sh \
-    https://krossboard.app/artifacts/setup/krossboard_azure_install.sh && \
+    https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/krossboard_azure_install.sh && \
     bash ./krossboard_azure_install.sh
 ```
 
@@ -75,7 +75,7 @@ Krossboard UI => http://1.2.3.4/
 ### Handle new AKS clusters
 During the installation, the Krossboard deployment script discovers and takes over existing AKS clusters (in the same resource group). After the installation, you need apply the following change to enable RBAC access (read-only) to each new AKS cluster. 
 ```sh
-kubectl create -f https://krossboard.app/artifacts/setup/k8s/clusterrolebinding-aks.yml
+kubectl create -f https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/k8s/clusterrolebinding-aks.yml
 ```
 
 ## Get access to Krossboard UI

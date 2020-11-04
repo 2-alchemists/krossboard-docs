@@ -35,7 +35,7 @@ export GCP_PROJECT="my-gke-project"
 export GCP_ZONE="us-central1-a"
 export GCP_INSTANCE_TYPE="g1-small" 
 curl -so krossboard_gcp_install.sh \
-    https://krossboard.app/artifacts/setup/krossboard_gcp_install.sh && \
+    https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/krossboard_gcp_install.sh && \
     bash ./krossboard_gcp_install.sh
 ```
 
