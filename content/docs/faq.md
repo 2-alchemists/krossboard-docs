@@ -80,7 +80,12 @@ Connect with SSH on the instance and restart the service:
 sudo systemctl restart krossboard-ui
 ```
 
-## What is the license?
+## How to uninstall Krossboard from cloud environement (GCP, AWS, Azure)
+If your Krossboard instance has been deployed against managed Kubernetes (e.g. Google GKE, Microsoft AKS or AWS EKS), the deployment script ends up with a summary listing all the cloud resources created during the installation.
 
+If you want to completely remove Krossboard from your cloud environment, you just have to remove all those resources.
 
-## Does Krossboard is free?
+## What is the terms of use?
+The Krossboard terms of use are described in the NOTICE file available on its [Github repository](https://github.com/2-alchemists/krossboard). 
+
+These terms of use are subject to changes at any time.
