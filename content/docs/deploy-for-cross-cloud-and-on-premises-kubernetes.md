@@ -97,3 +97,4 @@ The default username and password to sign in are:
 * [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "/docs/deploy-for-amazon-eks" >}})
 * [Setup Krossboard for Azure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})
+* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

@@ -1,15 +1,21 @@
 +++
-title = "Releases Resources"
+title = "Releases Information"
 description = ""
 draft = false
 weight = 100
-toc = true 
+toc = true
 +++
 
 This page lists important features and changes about Krossboard releases.
 
+## Krossboard v1.1.0
+This second release brings the below changes.
+* Support for any Kubernetes distribution with configuration set through a KUBECONFIG file.
+* New distribution targets: a ready-to-deploy OVF appliance distribution and a setup package for Ubuntu Server LTS 18.04.
+* Read more on the release page on Github.
+
 ## Krossboard v1.0.0
-This is the first release of Krossboard bringing out the following features:
+This is the first release of Krossboard bringing out the following set of features:
 
 * **Automatic discovery and centralized usage analytics for managed Kubernetes clusters**, which currently includes [Amazon EKS](https://aws.amazon.com/eks/), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/) and [Google GKE](https://cloud.google.com/kubernetes-engine).
 * **Per cluster and cross namespace usage analytics:** provides stacked hourly, daily and monthly reports for each namespace and with the reporting period covering up to one year.
@@ -17,9 +23,8 @@ This is the first release of Krossboard bringing out the following features:
 * **Ability to export any generated reports in CSV format:** allows each enterprise or organization to leverage their favorite data analytics tools to extract additional insights.
 * **Easy deployment through public cloud images:** currently supported cloud providers are, Amazon Web Services (AWS), Google Compute Platform (GCP) and Microsoft Azure.
 
-## Available images
+## Latest Cloud Images
 This section lists images currently available for Amazon AWS, Google GCP, Microsoft Azure.
-
 
 ### Amazon AWS images
 This table lists AWS regions where official Krossboard AMIs are currently released. During the [installation]({{< relref "/docs/deploy-for-amazon-eks" >}}), you must select a region listed in this table by setting the variable `KB_AWS_REGION`.
