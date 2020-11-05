@@ -12,6 +12,8 @@ To this end, Krossboard provides an original centralized resource usage analytic
 
 When deployed on a cloud environment, Krossboard can be configured to automatically discover and handle your managed Kubernetes instances on Amazon EKS, Google GKE and Microsoft AKS.
 
+The next diagram illustrates the operating flow of Krossboard, the subsequent sections describe its key features and its benefits for organizations. 
+
 ![](/images/docs/krossboard-architecture-overview.png)
 
 ## Key features
