@@ -60,9 +60,9 @@ subjects:
   name: krossboard
 ```
 
-Any KUBECONFIG file with credentials allowing this minimum set of permissions is sufficient for a Krossboard instance.
+Any KUBECONFIG file with credentials allowing this minimum set of permissions should be sufficient.
 
-## How autodiscovery work against managed Kubernetes (GKE, AKS, EKS)
+## How does autodiscovery work with managed Kubernetes (GKE, AKS, EKS)
 When deployed to automatically discover and handle managed Kubernetes (GKE, AKS, EKS), Krossboard requires appropriate cloud IAM permissions. 
 These are read-only permissions. You can review the [setup scripts](https://github.com/2-alchemists/krossboard/tree/master/tooling-scripts/setup) to get more details.
 
@@ -81,7 +81,7 @@ sudo systemctl restart krossboard-ui
 ```
 
 ## How to uninstall Krossboard from cloud environement (GCP, AWS, Azure)
-If your Krossboard instance has been deployed against managed Kubernetes (e.g. Google GKE, Microsoft AKS or AWS EKS), the deployment script ends up with a summary listing all the cloud resources created during the installation.
+If your Krossboard instance has been deployed against managed Kubernetes (e.g. Google GKE, Microsoft AKS or AWS EKS), the deployment script ends up with a summary listing all the cloud resources created during the installation (e.g. IAM role, security group, service account, etc.).
 
 If you want to completely remove Krossboard from your cloud environment, you just have to remove all those resources.
 
