@@ -85,7 +85,7 @@ If your Krossboard instance has been deployed against managed Kubernetes (e.g. G
 
 If you want to completely remove Krossboard from your cloud environment, you just have to remove all those resources.
 
-## What is the terms of use?
+## What are the terms of use?
 The Krossboard terms of use are described in the NOTICE file available on its [Github repository](https://github.com/2-alchemists/krossboard). 
 
 These terms of use are subject to changes at any time.
