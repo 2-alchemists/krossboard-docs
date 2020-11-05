@@ -14,7 +14,7 @@ To work properly, Krossboard basically needs read-only permissions to the follow
 * /apis/metrics.k8s.io/v1beta1
 * /api/v1
 
-For a fine-grained permissions set with the required permissions, the credentials can be configured using the following ClusterRole and ClusterRoleBindding definition. definition.
+For a fine-grained permissions set with only the required permissions, the credentials can be configured using the following ClusterRole and ClusterRoleBindding definition. definition.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

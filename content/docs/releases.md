@@ -15,7 +15,7 @@ This second release brings the below changes.
 * Read more on the release page on Github.
 
 ## Krossboard v1.0.0
-This is the first release of Krossboard bringing out the following set of features:
+This is the first release of Krossboard bringing out the following set of features.
 
 * **Automatic discovery and centralized usage analytics for managed Kubernetes clusters**, which currently includes [Amazon EKS](https://aws.amazon.com/eks/), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/) and [Google GKE](https://cloud.google.com/kubernetes-engine).
 * **Per cluster and cross namespace usage analytics:** provides stacked hourly, daily and monthly reports for each namespace and with the reporting period covering up to one year.
@@ -24,7 +24,7 @@ This is the first release of Krossboard bringing out the following set of featur
 * **Easy deployment through public cloud images:** currently supported cloud providers are, Amazon Web Services (AWS), Google Compute Platform (GCP) and Microsoft Azure.
 
 ## Latest Cloud Images
-This section lists images currently available for Amazon AWS, Google GCP, Microsoft Azure.
+This section lists cloud images published for Amazon AWS, Google GCP, Microsoft Azure.
 
 ### Amazon AWS images
 This table lists AWS regions where official Krossboard AMIs are currently released. During the [installation]({{< relref "/docs/deploy-for-amazon-eks" >}}), you must select a region listed in this table by setting the variable `KB_AWS_REGION`.
