@@ -10,9 +10,10 @@ This page lists important features and changes about Krossboard releases.
 
 ## Krossboard v1.1.0
 This second release brings the below changes.
-* Support for any Kubernetes distribution with configuration set through a KUBECONFIG file.
-* New distribution targets: a ready-to-deploy OVF appliance distribution and a setup package for Ubuntu Server LTS 18.04.
-* Read more on the release page on Github.
+* Support any Kubernetes distributions with configuration set through a KUBECONFIG file.
+* New deployment distribution targets, with a ready-to-deploy OVF appliance image and a setup package for Ubuntu Server LTS 18.04.
+* Added monthly analytics for cluster-consolidated usage. 
+* Read more on the [release page on Github](https://github.com/2-alchemists/krossboard/releases).
 
 ## Krossboard v1.0.0
 This is the first release of Krossboard bringing out the following set of features.
