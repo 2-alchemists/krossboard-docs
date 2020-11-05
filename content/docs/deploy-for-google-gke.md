@@ -18,7 +18,7 @@ This installation guide assumes that:
 
 * You have a basic level of practice with GCP.
 * You have a GCP account with at least an editor level of access to a project. The editor role is needed to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your GKE clusters**.
-* You have access to a Linux terminal with [gcloud](https://cloud.google.com/sdk) installed and configured to get access o your GCP project. Or, alternatively, you may use [Google Cloud Shell](https://cloud.google.com/shell).
+* You have access to a `bash >=4` terminal with [gcloud](https://cloud.google.com/sdk) installed and configured to get access o your GCP project. Or, alternatively, you may use [Google Cloud Shell](https://cloud.google.com/shell).
 * You have [kubectl](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/) installed and accessible from your terminal.
 
 ## Deploy a Krossboard instance
@@ -35,7 +35,7 @@ export GCP_PROJECT="my-gke-project"
 export GCP_ZONE="us-central1-a"
 export GCP_INSTANCE_TYPE="g1-small" 
 curl -so krossboard_gcp_install.sh \
-    https://krossboard.app/artifacts/setup/krossboard_gcp_install.sh && \
+    https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/krossboard_gcp_install.sh && \
     bash ./krossboard_gcp_install.sh
 ```
 

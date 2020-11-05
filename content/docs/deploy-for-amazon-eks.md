@@ -19,7 +19,7 @@ This installation guide assumes that:
 
 * You have a basic level of practice with AWS concepts.
 * You have an active AWS account with administrator access to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your EKS clusters**.
-
+* You have access to a `bash >=4` terminal.
 * You have [`kubectl`](https://kubernetes.io/fr/docs/tasks/tools/install-kubectl/), `curl` and [`jq`](https://stedolan.github.io/jq/) installed and accessible from your terminal.
 
 ## Deploy a Krossboard instance
@@ -35,7 +35,7 @@ export KB_AWS_KEY_PAIR='MyKeyPair'
 export KB_AWS_REGION='eu-central-1'
 export KB_AWS_INSTANCE_TYPE='t2.small'
 curl -so krossboard_aws_install.sh \
-    https://krossboard.app/artifacts/setup/krossboard_aws_install.sh && \
+    https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/krossboard_aws_install.sh && \
     bash ./krossboard_aws_install.sh
 ```
 
@@ -54,7 +54,7 @@ Krossboard UI => http://1.2.3.4/
 ```sh
 KB_ROLE_ARN='ARN_OF_KROSSBOARD_ROLE'
 KB_AWS_REGION='YOUR_TARGET_REGION'
-curl -so krossboard_aws_configure_new_clusters.sh https://krossboard.app/artifacts/setup/krossboard_aws_configure_new_clusters.sh
+curl -so krossboard_aws_configure_new_clusters.sh https://raw.githubusercontent.com/2-alchemists/krossboard/master/tooling/setup/krossboard_aws_configure_new_clusters.sh
 bash ./krossboard_aws_configure_new_clusters.sh $KB_ROLE_ARN
 ```
  
