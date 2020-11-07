@@ -10,10 +10,11 @@ This page lists important features and changes about Krossboard releases.
 
 ## Krossboard v1.1.0
 This second release brings the below changes.
-* Support any Kubernetes distributions with configuration set through a KUBECONFIG file. It's still possible to deploy Krossboard against managed Kubernetes on GKE, EKS and AKS, thereby benefiting of its auto-discovery and management capabilities.
-* New deployment distribution targets, with a ready-to-deploy OVF appliance image and a setup package for Ubuntu Server LTS 18.04.
-* Added monthly analytics for cluster-consolidated usage. 
-* Check out the [documentation page]({{< relref "/docs/" >}}) to find resource to deploy Krossboard or to update an existing instance.
+* **Support any Kubernetes distributions** (e.g. EKS, AKS, EKS, OpenShift, Rancker RKE and vailla Kubernetes).
+* **Support on-premises deployments and cloud-cloud analytics**, thanks to a generic configuration though a KUBECONFIG file. This new configuration approach complements the existing one based on automatic discovery of against managed Kubernetes on GKE, EKS and AKS.
+* **New distribution packages** based on ready-to-deploy OVF appliance images and setup packages for Ubuntu Server 18.04 LTS.
+* **Added monthly analytics reports** for cluster-consolidated usage. 
+* Check out the [**documentation**]({{< relref "/docs/" >}}) to find resources to deploy Krossboard or to [**update an existing instance**]({{< relref "/docs/update" >}}).
 
 ## Krossboard v1.0.0
 This is the first release of Krossboard bringing out the following set of features.

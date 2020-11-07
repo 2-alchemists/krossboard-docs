@@ -68,7 +68,7 @@ The default username and password to sign in are:
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
 
-## Next Steps
+## Other Resources
 * [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "/docs/deploy-for-amazon-eks" >}})
 * [Setup Krossboard for AAzure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})

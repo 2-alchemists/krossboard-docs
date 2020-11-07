@@ -2,27 +2,27 @@
   Title: "Deploy in minutes, for multiple Kubernetes"
   Image: "pe-7s-rocket"
   Description: |
-    Krossboard works with any Kubernetes (<a href="/docs/deploy-for-amazon-eks/">EKS</a>,
+    Krossboard works with any Kubernetes (e.g. <a href="/docs/deploy-for-amazon-eks/">EKS</a>,
      <a href="/docs/deploy-for-azure-aks/">AKS</a>,
      <a href="/docs/deploy-for-google-gke/">GKE</a>,
      <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">OpenShift</a>,
-     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">Rancher</a>, ...).
-     Provided as easy-to-install packages, OVF and cloud images, it's deployable in a couple of minutes 
-     and enables auto-discovery against managed Kubernetes.
+     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">Rancher</a>).
+     Provided as setup packages, OVF and cloud images, it's deployable in a couple of minutes, and 
+     enables auto-discovery against managed Kubernetes.
 - Feature:
   Title: "Track usage, anticipate and master costs"
   Image: "pe-7s-graph1"
   Description: |
-    Krossboard provides project-scoped, cluster-scoped and cross-cluster usage insights, 
-    and on various accounting periods (hour/day/month/year). 
+    Krossboard provides per-project, cluster-scoped and cross-cluster usage insights, 
+    with various accounting perspectives (hour/day/month/year). 
     Doing so it makes cost allocation and capacity planning decisions easier than ever.
 - Feature:
   Title: "Proven open source core"
   Image: "pe-7s-medal"
   Description: |
     Leveraging <a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a> 
-    at its core (open source with 130k+ image pulls), Krossboard is designed upon established concepts 
-    and a solid code base and adds advanced features for multi-Kubernetes environments.
+    at its core (open source with 145k+ image pulls), Krossboard is designed upon established concepts 
+    and a solid code base, to which it adds advanced features for multi-Kubernetes environments.
 - Feature:
   Title: "User-extensible analytics"
   Image: "pe-7s-cloud-download"
