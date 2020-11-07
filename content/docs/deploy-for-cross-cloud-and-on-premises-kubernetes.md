@@ -1,7 +1,7 @@
 +++
 title = "Setup for Cross-Cloud and On-premises Kubernetes (OpenShift, Rancher, etc.)"
 description = ""
-weight = 20
+weight = 60
 draft = false
 bref = ""
 toc = true 
@@ -23,7 +23,7 @@ The following key points shall be considered according to the selected deploymen
 Deploy an instance of Krossboard using the following steps, then jump to the configuration section to set up the integration with your Kubernetes clusters.
 
 * Go to the [release page](https://github.com/2-alchemists/krossboard/releases) and download the latest stable OVF archive.
-* Uncompress the downloaded archive and read the NOTICE and the EULA files to learn Krossboard terms of use.
+* Uncompress the downloaded archive and review the NOTICE and the EULA files to learn Krossboard terms of use.
 * According to your virtual machine management environement (e.g. VirtualBox, VMware tools, AWS EC2, GCP, etc.), follow its official procedure to import the OVF manifest. The following links are given as indicative references (If a link is broken, please [report it here]({{< relref "/contact/support" >}})).
   * [VirtualBox: Importing Virtual Machines](https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/ovf.html#ovf-about).
   * [VMware vSphere: Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)
@@ -40,15 +40,14 @@ Deploy an instance of Krossboard using the following steps, then move to the con
 
 * Go to the [release page](https://github.com/2-alchemists/krossboard/releases) and download the latest stable setup package.
 * Copy the archive to the target installation machine.
-* Uncompress it and read the NOTICE and the EULA files to learn Krossboard terms of use.
+* Uncompress the archive and review the NOTICE and the EULA files to learn Krossboard terms of use.
   ```sh
+  tar zxf krossboard-<VERSION>.tgz
   cd krossboard-<VERSION>
-  sudo ./install
   ```
-* Use these commands to launch the installation.
+* Use this command to launch the installation.
 
   ```sh
-  cd krossboard-<VERSION>
   sudo ./install.sh
   ```
 * Once the installation completed, reboot the machine to start the services.
@@ -93,7 +92,7 @@ The default username and password to sign in are:
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
 
-## Next Steps
+## Other Resources
 * [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "/docs/deploy-for-amazon-eks" >}})
 * [Setup Krossboard for Azure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})
