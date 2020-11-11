@@ -8,7 +8,7 @@ toc = true
 
 Krossboard is meant to help organizations to tackle cost allocation and capacity planning decisions with factual and easy-to-built insights.
 
-To this end, Krossboard provides an original centralized resource usage analytics system for multiple Kubernetes. Actively tested against [Amazon EKS](https://aws.amazon.com/eks/), [Google GKE](https://cloud.google.com/kubernetes-engine), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/), [Red Hat OpenShift](https://www.openshift.com/), [Rancher RKE](https://rancher.com/products/rke/), and various vanilla Kubernetes, it's designed to work with any Kubernetes distributions.
+To this end, Krossboard provides an original centralized resource usage analytics system for multiple Kubernetes. Designed to work with any Kubernetes distributions, it's actively tested against [Amazon EKS](https://aws.amazon.com/eks/), [Google GKE](https://cloud.google.com/kubernetes-engine), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/), [Red Hat OpenShift](https://www.openshift.com/), [Rancher RKE](https://rancher.com/products/rke/), and various vanilla Kubernetes.
 
 When deployed on a cloud environment, Krossboard can be configured to automatically discover your managed Kubernetes on Amazon EKS, Google GKE and Microsoft AKS and track their usage over time.
 
