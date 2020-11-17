@@ -4,12 +4,12 @@ description = ""
 weight = 60
 draft = false
 bref = ""
-toc = true 
+toc = true
 +++
 
 For this kind of deployment, Krossboard is provided either as a ready-to-deploy OVF/VMDK virtual machine appliance, or a setup package for Ubuntu Server 18.04 LTS.
 
-Regardless of the selected deployment approach, the installation steps described hereafter shall be achieved in a couple of minutes. 
+Regardless of the selected deployment approach, the installation steps described hereafter shall be achieved in a couple of minutes.
 
 ## Before you begin
 The following key points shall be considered according to the selected deployment approach:
@@ -30,10 +30,10 @@ Deploy an instance of Krossboard using the following steps, then jump to the con
   * [VMware Workstation/Player: Import an Open Virtualization Format Virtual Machine](https://docs.vmware.com/en/VMware-Workstation-Player-for-Linux/14.0/com.vmware.player.linux.using.doc/GUID-DDCBE9C0-0EC9-4D09-8042-18436DA62F7A.html).
   * [AWS EC2: Import VM as an Image](https://docs.aws.amazon.com/fr_fr/vm-import/latest/userguide/vmimport-image-import.html#import-vm-image).
   * [GCP: Importing virtual appliances](https://cloud.google.com/compute/docs/import/import-ovf-files).
-* Start the virtual machine. 
+* Start the virtual machine.
 * Once started, connect to the virtual machine via SSH to continue with the integration with your Kubernetes clusters (see later in this page).
   * Username: `ubuntu`
-  * Default password (to be changed): `krossboard` 
+  * Default password (to be changed): `krossboard`
 
 ## Deploy Krossboard using the setup package
 Deploy an instance of Krossboard using the following steps, then move to the configuration section to set up the integration with your Kubernetes clusters.
@@ -57,29 +57,36 @@ Deploy an instance of Krossboard using the following steps, then move to the con
   In the next steps we consider that it's located at `/opt/krossboard/etc/kubeconfig`.
 
 * Make sure that the KUBECONFIG file is owned by the `krossboard` user (a read access for the `krossboard` user is also sufficient).
-  
+
   ```sh
   sudo chown krossboard:krossboard /opt/krossboard/etc/kubeconfig
   ```
 
 * Edit the Krossboard configuration file as follows.
-  
+
   ```sh
   sudo vi /opt/krossboard/etc/krossboard.env
 
   # Uncomment this line and set the KUBECONFIG variable appropriately.
   KUBECONFIG=/opt/krossboard/etc/kubeconfig
   ```
-  
+
 * The configuration shall be taken into account within the next 10 minutes. However, you can force the refresh using this command.
 
   ```sh
   sudo systemctl restart  krossboard-data-processor-collector
   ```
 
+## Install Kubernetes Metrics Server
+Krossboard relies on [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server) to retrieve certain metrics from Kubernetes. If it's not yet the case, the Kubernetes Metrics Server can be installed as follows on each cluster.
+
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
 ## Get access to Krossboard UI
 Open a browser tab and point it to the Krossboard URL (i.e. http://<machine-addr>/, changing `<machine-addr>` with the address of the instance).
- 
+
 **Note:** It may take a few seconds before the instance finishes its initialization, during this time you may experience a loading error in the browser.
 
 The default username and password to sign in are:
@@ -87,7 +94,7 @@ The default username and password to sign in are:
 * **Username:** krossboard
 * **Password (default):** Kr0sSB8qrdAdm
 
-> It's highly recommended to change this default password as soon as possible. 
+> It's highly recommended to change this default password as soon as possible.
 > ```bash
 > sudo /opt/krossboard/bin/krossboard-change-passwd
 > ```
