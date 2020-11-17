@@ -8,8 +8,9 @@ toc = true
 
 This page lists important features and changes about Krossboard releases.
 
-## Krossboard v1.1.0
-This second release brings the below changes.
+## Krossboard v1.1.x
+This major branch (current version: `v1.1.1`) brings the below changes.
+
 * **Support any Kubernetes distributions** (e.g. EKS, AKS, EKS, OpenShift, Rancker RKE and vailla Kubernetes).
 * **Support on-premises deployments and cloud-cloud analytics**, thanks to a generic configuration though a KUBECONFIG file. This new configuration approach complements the existing one based on automatic discovery of against managed Kubernetes on GKE, EKS and AKS.
 * **New distribution packages** based on ready-to-deploy OVF appliance images and setup packages for Ubuntu Server 18.04 LTS.
@@ -33,22 +34,22 @@ This table lists AWS regions where official Krossboard AMIs are currently releas
 
 | Region          | Krossboard Version       | Build ID         |
 | --------------- |:------------------------:| ----------------:|
-| ap-southeast-1  | v1.1.0                   | e0118d8          |
-| ap-southeast-2  | v1.1.0                   | e0118d8          |
-| ca-central-1    | v1.1.0                   | e0118d8          |
-| eu-central-1    | v1.1.0                   | e0118d8          |
-| eu-west-1       | v1.1.0                   | e0118d8          |
-| eu-west-2       | v1.1.0                   | e0118d8          |
-| sa-east-1       | v1.1.0                   | e0118d8          |
-| us-east-1       | v1.1.0                   | e0118d8          |
-| us-west-1       | v1.1.0                   | e0118d8          |
+| ap-southeast-1  | v1.1.1                   | 09606ec          |
+| ap-southeast-2  | v1.1.1                   | 09606ec          |
+| ca-central-1    | v1.1.1                   | 09606ec          |
+| eu-central-1    | v1.1.1                   | 09606ec          |
+| eu-west-1       | v1.1.1                   | 09606ec          |
+| eu-west-2       | v1.1.1                   | 09606ec          |
+| sa-east-1       | v1.1.1                   | 09606ec          |
+| us-east-1       | v1.1.1                   | 09606ec          |
+| us-west-1       | v1.1.1                   | 09606ec          |
 
 ### Google GCP images
 This table lists the current Krossboard images available on GCP.
 
 | Region    | Krossboard version   | Build ID         |
 | ----------|:--------------------:| ----------------:|
-| Global    | v1.1.0                | e0118d8          |
+| Global    | v1.1.1                | 09606ec          |
 
 ### Microsoft Azure images
 On Microsoft Azure, Krossboard is released through a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries).
@@ -58,12 +59,12 @@ The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always depl
 
 | Replication regions   | Krossboard version   | Build ID         |
 | ----------------------|:--------------------:| ----------------:|
-| brazilsouth           | v1.1.0               | e0118d8          |
-| canadacentral         | v1.1.0               | e0118d8          |
-| centralindia          | v1.1.0               | e0118d8          |
-| centralus             | v1.1.0               | e0118d8          |
-| eastus                | v1.1.0               | e0118d8          |
-| germanywestcentral    | v1.1.0               | e0118d8          |
-| koreacentral          | v1.1.0               | e0118d8          |
-| ukwest                | v1.1.0               | e0118d8          |
-| westus                | v1.1.0               | e0118d8          |
+| brazilsouth           | v1.1.1               | 09606ec          |
+| canadacentral         | v1.1.1               | 09606ec          |
+| centralindia          | v1.1.1               | 09606ec          |
+| centralus             | v1.1.1               | 09606ec          |
+| eastus                | v1.1.1               | 09606ec          |
+| germanywestcentral    | v1.1.1               | 09606ec          |
+| koreacentral          | v1.1.1               | 09606ec          |
+| ukwest                | v1.1.1               | 09606ec          |
+| westus                | v1.1.1               | 09606ec          |
