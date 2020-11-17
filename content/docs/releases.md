@@ -16,7 +16,7 @@ This second release brings the below changes.
 * **Added monthly analytics reports** for cluster-consolidated usage. 
 * Check out the [**documentation**]({{< relref "/docs/" >}}) to find resources to deploy Krossboard or to [**update an existing instance**]({{< relref "/docs/update" >}}).
 
-## Krossboard v1.1.0
+## Krossboard v1.0.0
 This is the first release of Krossboard bringing out the following set of features.
 
 * **Automatic discovery and centralized usage analytics for managed Kubernetes clusters**, which currently includes [Amazon EKS](https://aws.amazon.com/eks/), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/) and [Google GKE](https://cloud.google.com/kubernetes-engine).
