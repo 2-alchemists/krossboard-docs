@@ -43,13 +43,22 @@ History:
       Title: Our <span class="txt-color1">History</span>
       Subtitle: 
       Events:
-        - Date: 2019-03-10
-          Title: |
-            🤜🔥🤛 Launch of [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) project
+        - Date: 2020-09-08
+          Title: 🔥🔥 [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) reached 100k pulls and 200+ Github stars
           Description: |
-            [Rodrigue](https://www.linkedin.com/in/rodriguechakode/) creates [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics),
-            a Kubernetes cost allocation and capacity planning opensource tool to help organizations to track the resources being consumed by their Kubernetes
-            clusters to prevent overpaying.
+            Users are expecting more, notably the ability for Krossboard to support OpenShift and any vanilla Kubernetes.
+            We're on track, the best is the future. Keep posted. 
+        - Date: 2020-09-04 
+          Title: 🚀 Krossboard First public release
+          Description: |
+            After several mounth of hard work and almost a thousand commits, the first release of Krossboard is launched.
+        - Date: 2020-06-22
+          Title: |
+             🏢 Creation of 2Alchemist company    
+        - Date: 2019-09-09
+          Title: 🔥 [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) reached 50k pulls and 8+ external contributors on Github
+          Description: |
+            This milestone establishes a factual interest of the product for the Kubernetes community.
         - Date: 2019-08-21
           Title: 💭 A fruitful meeting
           Description: |
@@ -57,22 +66,13 @@ History:
             tracks the usage of multiple clusters over time and provides an efficient visualization at a central place.
 
             Krossboard was born.
-        - Date: 2019-09-09
-          Title: 🔥 [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) reached 50k pulls and 8+ external contributors on Github
-          Description: |
-            This milestone establishes a factual interest of the product for the Kubernetes community.
-        - Date: 2020-06-22
+        - Date: 2019-03-10
           Title: |
-             🏢 Creation of 2Alchemist company         
-        - Date: 2020-09-04 
-          Title: 🚀 Krossboard First public release
+            🤜🔥🤛 Launch of [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) project
           Description: |
-            After several mounth of hard work and almost a thousand commits, the first release of Krossboard is launched.
-        - Date: 2019-09-08
-          Title: 🔥🔥 [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics) reached 100k pulls and 200+ Github stars
-          Description: |
-            Users are expecting more, notably the ability for Krossboard to support OpenShift and any vanilla Kubernetes.
-            We're on track, the best is the future. Keep posted. 
+            [Rodrigue](https://www.linkedin.com/in/rodriguechakode/) creates [Kubernetes Opex Analytics](https://github.com/rchakode/kube-opex-analytics),
+            a Kubernetes cost allocation and capacity planning opensource tool to help organizations to track the resources being consumed by their Kubernetes
+            clusters to prevent overpaying.
 Legal: |
       2Alchemists SAS is a French company registered in Toulouse.
       
