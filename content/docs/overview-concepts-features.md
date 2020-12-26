@@ -6,7 +6,7 @@ weight = 1
 toc = true
 +++
 
-Krossboard is meant to help organizations to tackle cost allocation and capacity planning decisions with factual and easy-to-built insights.
+Krossboard is meant to help organizations owning many Kubernetes clusters to easily tackle usage accounting so to take cost allocation and capacity planning decisions with factual insights.
 
 To this end, Krossboard provides an original centralized resource usage analytics system for multiple Kubernetes. Designed to work with any Kubernetes distributions, it's actively tested against [Amazon EKS](https://aws.amazon.com/eks/), [Google GKE](https://cloud.google.com/kubernetes-engine), [Azure AKS](https://azure.microsoft.com/services/kubernetes-service/), [Red Hat OpenShift](https://www.openshift.com/), [Rancher RKE](https://rancher.com/products/rke/), and various vanilla Kubernetes.
 
@@ -21,13 +21,13 @@ The design of Krossboard allows it to enable the following key features.
 
 * **Cross-cloud and cross-distribution, with Visualization at a central place**: Krossboard runs against any Kubernetes providing an *unified and consistent analytics* framework. This unique design along with its friendly analytics charts and reports enable organizations to set up a global strategy to understand their Kubernetes spending by tracking how resources are used by their different projects and applications.
 * **Deploy in minutes, for multiple clusters**: Krossboard is an integrated tool easy to deploy. Released as ready-to-install virtual machine appliances, cloud images and  binary packages, its deployment only needs a couple of minutes. When deployed on a cloud environment, it can be configured to automatically discover and track the usage of your managed Kubernetes instances on Amazon EKS, Google GKE and Microsoft AKS.
-* **Consistent Analytics, for Cost allocation and Capacity planning**: Krossboard regularly collects instantaneous usage metrics, then aggregate and consolidate over time to produce short-term (hourly), mid-term (daily) and long-term (monthly) analytics covering up to a year. At any point or period of time, your organization can get relevant insights for accounting, cost allocation, and capacity planning.
+* **Consistent Accounting, for Cost allocation and Capacity planning**: Krossboard regularly collects instantaneous usage metrics, then aggregate and consolidate over time to produce short-term (hourly), mid-term (daily) and long-term (monthly) usage accouting covering up to a year. At any point or period of time, your organization can get relevant accounting insights for cost allocation and capacity planning.
 * **User-extensible analytics**: Aware that organizations may need specific analytics that are not natively built in Krossboard, it's designed to feature the ability to export any data its generates in CSV format. Those data can then be further processed to extract additional insights (e.g. using tools like [Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few).
 
 ## Unique benefits
 Thanks to its features and key concepts introduced above, Krossboard aims to enable unique benefits for organizations.
 
-* **Ease cost allocation decisions**: Krossboard provides detailed reports on resources consumed by each project/application during various accounting periods (hourly, daily, monthly), thereby helping organizations to share infrastructure and operations costs among their projects and/or business units.
+* **Ease cost allocation decisions**: Krossboard provides detailed usage accounting reports on resources consumed by each project/application during various accounting periods (hourly, daily, monthly), thereby helping organizations to share infrastructure and operations costs among their projects and/or business units.
 * **Help anticipate costs**: Thanks to its dynamic analytics reports that show how resources are being consumed over time, Krossboard helps organizations to forecast scaling up/down, and are hence able to anticipate costs.
 * **Enabler for cloud-cost reduction strategy**: By giving factual insights that show how the clusters of your organization are utilized over time, Krossboard helps make clusters consolidation decisions. Insights it provides can be used to motivate and drive consolidation decisions for clusters that are used in a non-efficient way, leading to reducing infrastructure and operations costs.
 
