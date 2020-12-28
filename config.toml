@@ -7,8 +7,8 @@ enableGitInfo = true
 
 [params]
   author = "2Alchimists SAS"
-  title = "Centralized Cross-Cloud Kubernetes Usage Analytics"
-  subtitle = "All in one single place, Krossboard tracks the usage of all your clusters over time, it helps forecast capacity scale up/down, thereby enabling you to easily anticipate and master operations costs."
+  title = "Centralized Cross-cloud Kubernetes Usage Accounting"
+  subtitle = "All in one single place, Krossboard tracks the usage of all your clusters over time. It simplifies usage accounting for cost allocation, helps forecast capacity scale up/down, thereby enabling to anticipate and master operations costs."
   description = "Kubernetes Usage Analytics for Cost and Capacity Management"
   releaseYear = "2020"
   github = "https://github.com/2-alchemists/krossboard"
