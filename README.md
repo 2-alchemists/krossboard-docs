@@ -4,7 +4,7 @@
 [![site](https://img.shields.io/badge/%F0%9F%8C%8E-site-blue?style=flat)](https://krossboard.app/)
 
 # Overview & License
-This project holds the documentation website for Krossboard.
+This project holds the documentation website for [Krossboard](https://krossboard.app/).
 
 This project is open sourced under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License (also known as CC-BY-NC-SA). See the [LICENSE](LICENSE.md) file for more details.
 
