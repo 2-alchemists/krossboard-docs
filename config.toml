@@ -1,4 +1,4 @@
-min_version = 0.74
+min_version = 0.75
 baseURL = "https://krossboard.app/"
 languageCode = "en-us"
 title = "Krossboard"
