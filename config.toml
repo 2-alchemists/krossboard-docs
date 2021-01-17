@@ -17,6 +17,6 @@ enableGitInfo = true
   logo = "/images/logo/krossboard-logo.png"
   favicon = "/images/favicon.ico"
   contactRequestApiEndpoint = "https://krossboard-mx.ey.r.appspot.com/sendmail"
-  reCaptchaSiteKey = "6Lc8J8AZAAAAAL0sB7htNmIyc9lxUZd6yJOhsihA"
-  googleAnalytics = "UA-175802326-1"
+  reCaptchaSiteKey = "HOSTING_RE_CAPTCHA_SITE_KEY"
+  googleAnalytics = "HOSTING_FTP_PASSWORD"
 

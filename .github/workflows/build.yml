@@ -19,4 +19,10 @@ jobs:
           # extended: true
 
       - name: build
-        run: hugo --minify
+        env:
+          HOSTING_RE_CAPTCHA_SITE_KEY: ${{ secrets.HOSTING_RE_CAPTCHA_SITE_KEY }}
+          HOSTING_ANALYTICS_ID: ${{ secrets.HOSTING_ANALYTICS_ID }}          
+        run: |
+          sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
+          sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
+          hugo --minify
