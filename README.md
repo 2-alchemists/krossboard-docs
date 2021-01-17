@@ -1,4 +1,4 @@
-[![CC-BY-NC-SA](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](LICENSE)
+[![CC-BY-NC-SA](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](LICENSE.md)
 ![build-site](https://github.com/2-alchemists/krossboard-docs/workflows/build%20site/badge.svg)
 ![deploy-site](https://github.com/2-alchemists/krossboard-docs/workflows/deploy%20site/badge.svg)
 [![site](https://img.shields.io/badge/%F0%9F%8C%8E-site-blue?style=flat)](https://krossboard.app/)
