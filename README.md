@@ -11,7 +11,7 @@ This project is open sourced under the terms of the Creative Commons Attribution
 # Contributions
 Contributions are welcomed for typos, misspellings, or inaccurate information in the documentation.
 
-Each contribution should be submitted through a Github pull request. By submitting a contribution, you accept that it'll be published under the same terms of CC-BY-NC-SA License. 
+Each contribution should be submitted through a Github [pull request](https://github.com/2-alchemists/krossboard-docs/pulls). By submitting a contribution, you accept that it'll be published under the same terms of CC-BY-NC-SA License. 
 
 ## Requirements
 [Hugo](https://gohugo.io/) static site generator `v0.74.x` minimum (`v0.74.2` is the version currently used by the CI).
