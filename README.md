@@ -17,7 +17,7 @@ Each contribution should be submitted through a Github [pull request](https://gi
 
 ## Requirements
 
-[Hugo](https://gohugo.io/) static site generator `v0.74.x` minimum (`v0.74.2` is the version currently used by the CI).
+[Hugo](https://gohugo.io/) static site generator `v0.75.x` minimum (`v0.75.1` is the version currently used by the CI).
 
 ```
 sudo snap install hugo --classic
