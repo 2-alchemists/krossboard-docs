@@ -1,0 +1,25 @@
+{{ $animate := resources.Get "css/animate.css" }}
+{{ $custom := resources.Get "css/custom.css" }}
+{{ $form := resources.Get "css/form.css" }}
+{{ $helper := resources.Get "css/helper.css" }}
+{{ $main := resources.Get "css/main.css" }}
+{{ $responsive := resources.Get "css/responsive.css" }}
+{{ $rgenGrids := resources.Get "css/rgen-grids.css" }}
+{{ $rgen := resources.Get "css/rgen.min.css" }}
+
+{{ $bundle :=  slice $rgen $custom $form | resources.Concat "bundle.css" | minify | fingerprint }}
+
+{{ $article := resources.Get "css/article.css" | minify | fingerprint }}
+{{ $timeline := resources.Get "css/timeline.css" | minify | fingerprint }}
+
+<link rel="stylesheet" href="{{ $bundle.RelPermalink }}">
+
+{{if or (eq .Type "docs") (eq .Type "legal") (eq .Type "contact")}}
+<link rel="stylesheet"
+      href="{{ $article.RelPermalink }}">
+{{end}}
+
+{{if or (eq .Type "aboutus")}}
+<link rel="stylesheet"
+      href="{{ $timeline.RelPermalink }}">
+{{end}}
