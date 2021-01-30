@@ -9,8 +9,15 @@
 {{ $fontVar := $code | resources.FromString "js/font-var.js" }}
 {{ $rgenLib := resources.Get "js/rgen.min.js" }}
 {{ $rgen := resources.Get "js/rgen.js" }}
+{{ $jquery := resources.Get "js/jquery.min.js" }}
+{{ $contactHandler := resources.Get "js/contact-handler.min.js" }}
 
 {{ $bundle :=  slice $fontVar $rgenLib $rgen | resources.Concat "bundle.js" | minify | fingerprint }}
+{{ $contact := slice $jquery $contactHandler | resources.Concat "contact.js" | minify | fingerprint }}
+
+{{if or (eq .Type "contact")}}
+<script src="{{ $contact.RelPermalink }}"></script>
+{{end}}
 
 <script src="{{ $bundle.RelPermalink }}"></script>
     
