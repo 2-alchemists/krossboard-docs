@@ -63,8 +63,4 @@ The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always depl
 | canadacentral         | v1.1.1               | 09606ec          |
 | centralindia          | v1.1.1               | 09606ec          |
 | centralus             | v1.1.1               | 09606ec          |
-| eastus                | v1.1.1               | 09606ec          |
 | germanywestcentral    | v1.1.1               | 09606ec          |
-| koreacentral          | v1.1.1               | 09606ec          |
-| ukwest                | v1.1.1               | 09606ec          |
-| westus                | v1.1.1               | 09606ec          |
