@@ -18,5 +18,5 @@ enableGitInfo = true
   favicon = "/images/favicon.ico"
   contactRequestApiEndpoint = "https://krossboard-mx.ey.r.appspot.com/sendmail"
   reCaptchaSiteKey = "HOSTING_RE_CAPTCHA_SITE_KEY"
-  googleAnalytics = "HOSTING_FTP_PASSWORD"
+  googleAnalytics = "HOSTING_ANALYTICS_ID"
 

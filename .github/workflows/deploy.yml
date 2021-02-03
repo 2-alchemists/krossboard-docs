@@ -23,7 +23,7 @@ jobs:
           HOSTING_ANALYTICS_ID: ${{ secrets.HOSTING_ANALYTICS_ID }}          
         run: |
           sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
-          sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
+          sed -i 's/HOSTING_ANALYTICS_ID/'$HOSTING_ANALYTICS_ID'/' config.toml
           hugo --minify
 
       - name: deploy
