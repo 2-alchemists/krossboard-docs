@@ -72,7 +72,7 @@
 	************************************************************
 	* Content section
 	************************************************************ -->
-	<section class="pos-rel pd-tb-large" data-rgen-sm="pd-tb-small align-c" id="overview">
+	<section class="pd-t-150 pd-b-10 pos-rel" data-rgen-sm="pd-t-100" id="overview">
 		<div class="container pos-rel z1">
 			<div class="align-c w75 mr-auto mr-b-70">
 				<h2 class="title" data-rgen-sm="medium">Efficient visualization at a central place</h2>
@@ -92,5 +92,65 @@
 			</div><!-- // END : row //  -->
 		</div><!-- // END : container //  -->
 	</section>
-	<!-- ************** END : Content section **************  -->			
+	<!-- ************** END : Content section **************  -->
+	
+	<hr class="mr-tb-50">
+
+	<!--
+	************************************************************
+	* Pricing section
+	************************************************************ -->
+	<section class="pos-rel pd-t-10 pd-b-100" data-rgen-sm="pd-b-50 align-c" id="pricing">
+		<div class="container pos-rel z1">
+			
+			<div class="w75 mr-auto align-c">
+				<h2 class="title">Choose Free or Unlimited</h2>
+				<p class="title-sub">
+					Lorem ipsum dolor sit amet, consetetur sadipscing elitr diam nonumy	eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+				</p>
+			</div>
+
+			<table class="price-table price-table-2 w100">
+				<thead>
+					<tr>
+						<th class="feature-hd">Features</th>
+						{{ range $.Site.Data.pricing.plans }}
+						<th class="{{ .headerStyle }}">
+							<div class="hd">
+								<small>{{ .title | markdownify }}</small>
+								<strong>{{ .price | safeHTML }}</strong>
+							</div>
+						</th>
+						{{ end }}
+					</tr>
+				</thead><!-- /.thead -->
+				<tbody>
+					{{ range $.Site.Data.pricing.features }}
+					<tr>
+						<td class="td-feature">
+							<div class="info-obj img-l g20 mini align-l mr-tb-10">
+								<div class="img"><span class="iconwrp txt-color3"><i class="{{ .image }}"></i></span></div>
+								<div class="info">
+									<h2 class="fs18 mr-0">{{ .title | safeHTML }}</h2>
+									{{ with .description }}
+									<p>{{ . | markdownify }}</p>
+									{{ end }}
+								</div>
+							</div><!-- // END : Info object //  -->
+						</td>
+						{{ range .availabilities }}
+						<td class="{{ .style }}">
+							<b class="plan-lbl">{{ .plan }}</b>
+							<h6>{{ .title | safeHTML }}</h6>
+							<p>{{ .description | markdownify }}</p>
+						</td>
+						{{ end }}
+					</tr><!-- /.price row -->
+					{{ end }}
+				</tbody><!-- /.thead -->
+			</table><!-- /.table -->
+		</div><!-- / container -->
+	</section><!-- / Content section -->
+	<!-- ************** END : Pricing section **************  -->
+
 {{- end }}
