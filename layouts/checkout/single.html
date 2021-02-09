@@ -1,7 +1,17 @@
 {{ define "main" -}}
 
-<section class="pos-rel pd-tb-medium article" data-rgen-sm="pd-tb-small">  
-   {{ .Content}}
+<section class="pos-rel pd-tb-large vh100">
+   <div class="container typo-light pos-rel z2 h100 flex-cc">
+      <div class="content align-c w75 mrt-100">
+         <div class="sq200 inline-flex txt-white flex-cc fs150 rd">
+            <i class="{{ .Params.Icon }}"></i>
+         </div>
+
+         <h1 class="title mr-0 large txt-upper" data-rgen-sm="large">{{ .Params.Head }}</h1>
+         <div class="light title-sub" data-rgen-sm="small">{{ .Content }}</div>
+      </div>
+   </div>
+   <b class="full-wh bg-dark1 op-08 z1"></b>
 </section>
 
 {{ end }}

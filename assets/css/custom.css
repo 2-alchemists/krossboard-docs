@@ -54,8 +54,13 @@
   background-color: #47506A
 }
 
+.light > p > a {
+  color: #fd9f3e !important;
+  text-decoration: underline;
+}
+
 div.container a {
-    color: #47506A;
+  color: #47506A;
 }
 
 p > img {
