@@ -130,7 +130,7 @@ features:
         plan: ENTERPRISE BASIC
         style: td-pro1
         title: 'Cloud images'
-        description: ' + Binary packages and OVF images'
+        description: '&#43; Binary packages and OVF images'
       -
         plan: ENTERPRISE ADVANCED
         style: td-free
