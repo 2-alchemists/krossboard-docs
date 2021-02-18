@@ -1,15 +1,18 @@
 .article {
   color: black;
 }
-  
-.article h1,
+
+.article h1 {
+  margin: 0 0 25px;
+  font-weight: 300
+}
+
 .article h2,
 .article h3,
 .article h4,
 .article h5,
 .article h6 {
-  margin: 0;
-  margin-bottom: 15px;
+  margin: 50px 0 25px;
   font-weight: 300
 }
 
@@ -187,9 +190,13 @@
   margin-top: 18px;
 }
 
+.article aside ul {
+  margin: 2px 0 10px 1em
+}
+
 .article aside ul > li {
-    margin-top: 18px;
-    list-style: none
+  margin: 5px;
+  list-style: none
 }
 
   
