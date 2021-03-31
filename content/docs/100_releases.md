@@ -4,9 +4,31 @@ description = ""
 draft = false
 weight = 100
 toc = true
+aliases = ["/docs/releases/"]
 +++
 
 This page lists important features and changes about Krossboard releases.
+
+## Krossboard v1.2.x
+This major branch (current version: `v1.2.0`) comes with following enhancements and fixes.
+* **Node Analytics Dashboards.**
+  
+  Two kinds of nodes dashboards are provided. 
+  
+  The first dashboard, called `Recent Node Occupation`, displays for each node the latest (5-minutes refresh interval) resource allocation to pods. Available for CPU and memory resources, it's displayed as a piechart where each pod is represented by a slice proportional to the share in percentage of resource the pod is using on the node.
+
+  The second dashboard, called `Node Usage History`, displays for each node the history of resource usage over time. Available for CPU and memory resources, it's displayed for each kind of resources as a stacked-area chart displaying the resource usage for each node over time.
+
+* **Multi-KUBECONFIG.**
+  
+  This feature means that, the Krossboard data processor backend can now produce analytics data 
+  for Kubernetes clusters declared defined in multiple KUBECONFIG files. [Learn more...]({{< 
+  relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes/" >}})
+* **UI to upload KUBECONFIG.**
+  
+  The Krossboard web interface now enables a admin page to upload KUBECONFIG that are 
+  automatically taken into account for the data processor. 
+
 
 ## Krossboard v1.1.x
 This major branch (current version: `v1.1.1`) brings the below changes.
@@ -15,7 +37,7 @@ This major branch (current version: `v1.1.1`) brings the below changes.
 * **Support on-premises deployments and cloud-cloud analytics**, thanks to a generic configuration though a KUBECONFIG file. This new configuration approach complements the existing one based on automatic discovery of against managed Kubernetes on GKE, EKS and AKS.
 * **New distribution packages** based on ready-to-deploy OVF appliance images and setup packages for Ubuntu Server 18.04 LTS.
 * **Added monthly analytics reports** for cluster-consolidated usage. 
-* Check out the [**documentation**]({{< relref "/docs/" >}}) to find resources to deploy Krossboard or to [**update an existing instance**]({{< relref "/docs/update" >}}).
+* Check out the [**documentation**]({{< relref "/docs/" >}}) to find resources to deploy Krossboard or to [**update an existing instance**]({{< relref "/docs/90_update" >}}).
 
 ## Krossboard v1.0.0
 This is the first release of Krossboard bringing out the following set of features.
@@ -30,7 +52,7 @@ This is the first release of Krossboard bringing out the following set of featur
 This section lists cloud images published for Amazon AWS, Google GCP, Microsoft Azure.
 
 ### Amazon AWS images
-This table lists AWS regions where official Krossboard AMIs are currently released. During the [installation]({{< relref "/docs/deploy-for-amazon-eks" >}}), you must select a region listed in this table by setting the variable `KB_AWS_REGION`.
+This table lists AWS regions where official Krossboard AMIs are currently released. During the [installation]({{< relref "/docs/50_deploy-for-amazon-eks" >}}), you must select a region listed in this table by setting the variable `KB_AWS_REGION`.
 
 | Region          | Krossboard Version       | Build ID         |
 | --------------- |:------------------------:| ----------------:|
@@ -54,7 +76,7 @@ This table lists the current Krossboard images available on GCP.
 ### Microsoft Azure images
 On Microsoft Azure, Krossboard is released through a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries).
 
-The [setup script]({{< relref "/docs/deploy-for-azure-aks" >}}) does always deploy the latest version of the image. You just have to define the location via the variable `KB_AZURE_LOCATION`. See the list of locations below.
+The [setup script]({{< relref "/docs/30_deploy-for-azure-aks" >}}) does always deploy the latest version of the image. You just have to define the location via the variable `KB_AZURE_LOCATION`. See the list of locations below.
 
 
 | Replication regions   | Krossboard version   | Build ID         |

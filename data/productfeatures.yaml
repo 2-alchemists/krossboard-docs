@@ -2,31 +2,19 @@
   Title: "Deploy in minutes, for multiple Kubernetes"
   Image: "pe-7s-rocket"
   Description: |
-    Krossboard works with any Kubernetes (e.g. <a href="/docs/deploy-for-amazon-eks/">EKS</a>,
-     <a href="/docs/deploy-for-azure-aks/">AKS</a>,
-     <a href="/docs/deploy-for-google-gke/">GKE</a>,
-     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">OpenShift</a>,
-     <a href="/docs/deploy-for-cross-cloud-and-on-premises-kubernetes/">Rancher</a>).
-     Provided as setup packages, OVF and cloud images, it's deployable in a couple of minutes, and 
-     enables auto-discovery against managed Kubernetes.
+    Working across any Kubernetes distributions with auto-discovery for managed <a href="/docs/deploy-for-amazon-eks/">EKS</a>, <a href="/docs/deploy-for-azure-aks/">AKS</a> and <a href="/docs/deploy-for-google-gke/">GKE</a>, Krossboard is released as setup packages, OVF appliances, and cloud images that make it deployable in a couple of minutes.
 - Feature:
   Title: "Track usage, anticipate and master costs"
   Image: "pe-7s-graph1"
   Description: |
-    Krossboard provides per-project, cluster-scoped and cross-cluster usage insights, 
-    with various accounting perspectives (hour/day/month/year). 
-    Doing so it makes cost allocation and capacity planning decisions easier than ever.
+    Get consistent usage insights across nodes, namespaces or clusters. Track accounting in hours, days, or months. Krossboard thereby makes cost allocation and capacity planning decisions easier than ever.
 - Feature:
   Title: "Proven open source core"
   Image: "pe-7s-medal"
   Description: |
-    Leveraging <a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a> 
-    at its core (open source with 145k+ image pulls), Krossboard is designed upon established concepts 
-    and a solid code base, to which it adds advanced features for multi-Kubernetes environments.
+    Leveraging <a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a> at its core (open source, with <b>100+k image pulls/year</b>), Krossboard is designed upon established concepts and a solid code base that it complements with various advanced enterprise features.
 - Feature:
   Title: "User-extensible analytics"
   Image: "pe-7s-cloud-download"
   Description: |
-    Krossboard's built-in analytics charts are designed to cover common use cases.
-    In addition to that, it enables the ability to export the underlying data in CSV. 
-    Hence, organizations with specific needs can process them for further insights.
+    Krossboard's built-in analytics charts are designed to cover fundamental use cases. In addition to that, it enables the ability to export the backing data in CSV. Organizations with specific needs can process them for further insights.

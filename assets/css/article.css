@@ -48,7 +48,8 @@
 .article a {
   text-decoration: none;
   color: #0179b5;
-  cursor: pointer
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .article a:hover {
@@ -191,6 +192,3 @@
     margin-top: 18px;
     list-style: none
 }
-
-  
-  
