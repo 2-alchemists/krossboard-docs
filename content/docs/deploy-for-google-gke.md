@@ -59,9 +59,8 @@ Krossboard UI => http://1.2.3.4/
 Open a browser tab and point it to the Krossboard URL displayed at the end of the installation script. **Note:** It may take a few seconds before the instance finishes its initialization, during this time you may experience a loading error in the browser.
 
 The default username and password to sign in are:
-
-* **Username:** krossboard
-* **Password (default):** Kr0sSB8qrdAdm
+    * **Username:** `krossboard`
+    * **Password (default):** `Kr0sSB8qrdAdm`
 
 > It's highly recommended to change this default password as soon as possible. 
 > ```bash

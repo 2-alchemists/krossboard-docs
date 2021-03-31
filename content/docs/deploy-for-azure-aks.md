@@ -84,9 +84,8 @@ Open a browser tab and point it to the Krossboard URL displayed at the end of th
 The IP address of the instance is displayed at the end of the installation script. You can also get it on the Azure portal.
 
 The default username and password to sign in are:
-
-* **Username:** krossboard
-* **Password (default):** Kr0sSB8qrdAdm
+    * **Username:** `krossboard`
+    * **Password (default):** `Kr0sSB8qrdAdm`
 
 > It's highly recommended to change this default password as soon as possible.
 > ```bash
