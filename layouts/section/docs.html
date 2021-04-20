@@ -14,7 +14,9 @@
                 </header>
                 <ul>
                     {{ range .Data.Pages.ByWeight }}
+                    {{ if .Params.Toc }}
                     <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
                     {{ end }}
                 </ul>
             </div>

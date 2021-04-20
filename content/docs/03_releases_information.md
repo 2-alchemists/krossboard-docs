@@ -2,7 +2,7 @@
 title = "Releases Information"
 description = ""
 draft = false
-weight = 100
+weight = 03
 toc = true
 aliases = ["/docs/releases/"]
 +++

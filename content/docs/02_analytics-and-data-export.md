@@ -1,5 +1,5 @@
 +++
-title = "Krossboard - Core Analytics"
+title = "Krossboard - Core Analytics Features"
 description = ""
 draft = false
 weight = 1

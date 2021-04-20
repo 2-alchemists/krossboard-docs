@@ -1,5 +1,5 @@
 +++
-title = "Setup for Google GKE clusters"
+title = "Setup for Google GKE Clusters"
 description = ""
 weight = 20
 draft = false
@@ -81,7 +81,7 @@ Alternatively, if you do have an active support contract, you can also send an e
 
 
 ## Other Resources
-* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-dashboards-and-data-export" >}})
+* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "50_deploy-for-amazon-eks" >}})
 * [Setup Krossboard for Azure AKS]({{< relref "30_deploy-for-azure-aks" >}})
 * [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

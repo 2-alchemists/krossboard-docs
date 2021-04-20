@@ -1,5 +1,5 @@
 +++
-title = "Setup for Amazon EKS clusters"
+title = "Setup for Amazon EKS Clusters"
 description = ""
 weight = 50
 draft = false
@@ -27,7 +27,7 @@ This installation guide assumes that:
 The commands below shall deploy an instance of Krossboard in a couple of minutes.
 
 Beforehand review the following parameters and adapt them if applicable.
-  * Set the variable `KB_AWS_REGION` with the region of your EKS clusters (default is `eu-central-1`). This must be a [region where Krossboard is currently available]({{< relref "/docs/100_releases" >}}).
+  * Set the variable `KB_AWS_REGION` with the region of your EKS clusters (default is `eu-central-1`). This must be a [region where Krossboard is currently available]({{< relref "/docs/03_releases_information" >}}).
   * Set the variable `KB_AWS_KEY_PAIR` with a valid key pair in EC2. If you want to create a new key pair, read [this documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
   * Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
 
@@ -84,7 +84,7 @@ If the problem you're experiencing is not listed there, open a ticket on the [Kr
 Alternatively, if you do have an active support contract, you can also send an email directly to our customer support service: `support at krossboard.app`.
 
 ## Other Resources
-* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-dashboards-and-data-export" >}})
+* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-and-data-export" >}})
 * [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
 * [Setup Krossboard for Azure AKS]({{< relref "30_deploy-for-azure-aks" >}})
 * [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

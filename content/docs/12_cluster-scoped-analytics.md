@@ -4,7 +4,7 @@ description = ""
 weight = 12
 draft = false
 bref = ""
-toc = true
+toc = false
 aliases = ["/docs/cluster-scoped-analytics-charts-and-reports/"]
 +++
 

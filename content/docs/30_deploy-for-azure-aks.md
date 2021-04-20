@@ -1,5 +1,5 @@
 +++
-title = "Setup for Azure AKS clusters"
+title = "Setup for Azure AKS Clusters"
 description = ""
 weight = 30
 draft = false
@@ -48,7 +48,7 @@ The commands below shall deploy an instance of Krossboard in a couple of minutes
 Before running the commands, review and set the following variables suitably:
   * The variable `AZURE_GROUP` sets the name of the resource group in which your AKS clusters are located.
   * The variable `KB_AZURE_VM_NAME` sets the name of the instance (default is automatically generated).
-  * The variable `KB_AZURE_LOCATION` sets the deployment location (default is `centralus` -- see the [list of regions with available images]({{< relref "/docs/100_releases" >}})).
+  * The variable `KB_AZURE_LOCATION` sets the deployment location (default is `centralus` -- see the [list of regions with available images]({{< relref "/docs/03_releases_information" >}})).
   * The variable `KB_AZURE_VM_SIZE` sets the VM size (default is `Standard_B1ms` -- what should be sufficient unless you have a big number of AKS clusters along with many namespaces in the target resource group). 
   * The installation uses the option `--generate-ssh-keys` of Azure CLI, meaning that it uses the local SSH key pair for the instance. The associated SSH username is `azureuser`.
 
@@ -102,7 +102,7 @@ kubectl create -f https://raw.githubusercontent.com/2-alchemists/krossboard/mast
 ```
 
 ## Other Resources
-* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-dashboards-and-data-export" >}})
+* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "50_deploy-for-amazon-eks" >}})
 * [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
 * [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

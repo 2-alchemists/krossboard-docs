@@ -4,7 +4,7 @@ description = ""
 weight = 11
 draft = false
 bref = ""
-toc = true
+toc = false
 aliases = ["/docs/node-scoped-analytics-charts-and-reports/"]
 +++
 

@@ -4,7 +4,7 @@ description = ""
 weight = 10
 draft = false
 bref = ""
-toc = true
+toc = false
 aliases = ["/docs/namespace-scoped-analytics-charts-and-reports/"]
 +++
 
