@@ -16,12 +16,12 @@ For each Kubernetes cluster it handles, Krossboard provides the following kinds 
 
 
 ## Recent Occupation by Pods
-TODO
-![krossboard-node-recent-occupation.png](/images/docs/screenshorts/krossboard-node-recent-occupation.png)
+TODO: add description
+![krossboard-node-recent-occupation.png](/images/docs/screenshorts/krossboard-nodes-recent-occupation-by-pods.png)
 
 ## Usage History
-TODO
-![krossboard-node-usage-history.png](/images/docs/screenshorts/krossboard-node-usage-history.png)
+TODO: add description
+![krossboard-node-usage-history.png](/images/docs/screenshorts/krossboard-nodes-usage-history.png)
 
 
 
