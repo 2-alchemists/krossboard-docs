@@ -19,14 +19,14 @@ The following key points shall be considered according to the selected deploymen
 
 * **For the OVF/VMDK distribution**, a virtual machine manager or a cloud platform supporting this format is required. This format is supported by VirtualBox, VMware Workstation/Player/vSphere, AWS, GCP, and most of modern clouds and virtual machine management systems.
 * **For the setup package**, a machine running Ubuntu Server 18.04 LTS (with `sudo` access) is required to perform the installation. The deployment script may have to install missing dependencies (e.g. Docker), hence the machine should have access to official/mirrored Ubuntu repositories.
-* [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server) is required by Krossboard to retrieve some basic metrics from Kubernetes.
-  If it's not yet the case, you need to install it on each cluster.
+* [Kubernetes Metrics Server](https://github.com/kubernetes-sigs/metrics-server) needs to be installed your Kubernetes clusters. Krossboard relies on it to retrieve some basic metrics from Kubernetes. If it's not yet the case, install it on each of the clusters. 
+  
   
   ```bash
   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
   ```
 
-* **Hardware requirements:** Krossboard itself has a very low resources footprint, the hardware resources allocated to the instance do mainly depend on the number of Kubernetes clusters and namespaces it'll manage. For example, assuming an environment with `10 clusters` we can start with `2 vCPUs` and `512 MB` of memory and then refine them later according to the actual resource utilization observed on the machine.
+* **Hardware requirements:** Krossboard has a very low resource footprint, the hardware resources allocated to the instance do mainly depend on the number of Kubernetes clusters and namespaces to handle. The only important recommendation is to use a (virtual) machine with multiple (v)CPU, as Krossboard is internally designed to take benefit of multi-core architectures. For example, an instance use `2 vCPUs` and `512 MB` of memory would be sufficient to handle 10+ Kubernetes with hundreds or thousands of namespaces. 
 
 ## Deploying Krossboard
 This section covers the installation either via the OVF virtual machine appliance or via the binary package. The both procedures are described hereafter, once the instance deployed jump to the configuration section to finish the integration with your Kubernetes clusters.
