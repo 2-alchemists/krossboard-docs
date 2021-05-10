@@ -78,10 +78,8 @@ If the problem you're experiencing is not listed there, open a ticket on the [Kr
 
 Alternatively, if you do have an active support contract, you can also send an email directly to our customer support service: `support at krossboard.app`.
 
-
-
 ## Other Resources
-* [Discover and explore Krossboard analytics and data export]({{< relref "02_analytics-and-data-export" >}})
+* [Krossboard Analytics and Data Export]({{< relref "02_analytics-and-data-export" >}})
 * [Setup Krossboard for Amazon EKS]({{< relref "50_deploy-for-amazon-eks" >}})
 * [Setup Krossboard for Azure AKS]({{< relref "30_deploy-for-azure-aks" >}})
 * [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})
