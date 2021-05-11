@@ -29,7 +29,7 @@ The commands below shall deploy an instance of Krossboard in a couple of minutes
 Beforehand review the following parameters and adapt them if applicable.
   * Set the variable `KB_AWS_REGION` with the region of your EKS clusters (default is `eu-central-1`). This must be a [region where Krossboard is currently available]({{< relref "/docs/03_releases_information" >}}).
   * Set the variable `KB_AWS_KEY_PAIR` with a valid key pair in EC2. If you want to create a new key pair, read [this documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-keypairs.html).
-  * Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small` -- what should be sufficient unless you have a big number of EKS clusters along with many namespaces in the target region).
+  * Set the variable `KB_AWS_INSTANCE_TYPE` with the instance type (default is `t2.small`).
 
 ```sh
 export KB_AWS_KEY_PAIR='MyKeyPair'

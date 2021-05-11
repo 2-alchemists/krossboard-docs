@@ -26,7 +26,7 @@ The following key points shall be considered according to the selected deploymen
   kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
   ```
 
-* **Hardware requirements:** Krossboard has a very low resource footprint, the hardware resources allocated to the instance do mainly depend on the number of Kubernetes clusters and namespaces to handle. The only important recommendation is to use a (virtual) machine with multiple (v)CPU, as Krossboard is internally designed to take benefit of multi-core architectures. For example, an instance use `2 vCPUs` and `512 MB` of memory would be sufficient to handle 10+ Kubernetes with hundreds or thousands of namespaces. 
+* **Hardware requirements:** Krossboard has a very low resource footprint, the hardware resources allocated to the instance do mainly depend on the number of Kubernetes clusters and namespaces to handle. The only important recommendation is to use a **(virtual) machine with multiple (v)CPU**. Indeed, Krossboard is designed to take benefit of multi-core architectures. We recommend to start with an instance with at least `2 vCPUs` and `512 MB` of memory . 
 
 ## Deploying Krossboard
 This section covers the installation either via the OVF virtual machine appliance or via the binary package. The both procedures are described hereafter, once the instance deployed jump to the configuration section to finish the integration with your Kubernetes clusters.

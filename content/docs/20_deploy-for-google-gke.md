@@ -28,7 +28,7 @@ The commands below shall deploy an instance of Krossboard in a couple of minutes
 Before launching the installation, review and set the following variables suitably:
   * The variable `GCP_PROJECT` sets the ID of the target project (i.e. where your GKE clusters are located).
   * The variable `GCP_ZONE` sets the deployment zone (default is `us-central1-a`). 
-  * The variable `GCP_INSTANCE_TYPE` sets the instance type (default is `g1-small` -- what should be sufficient unless the target project holds a big number of GKE clusters along with many namespaces).
+  * The variable `GCP_INSTANCE_TYPE` sets the instance type (default is `g1-small`).
 
 ```bash
 # user-provided parameters

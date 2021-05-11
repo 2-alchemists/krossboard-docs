@@ -49,7 +49,7 @@ Before running the commands, review and set the following variables suitably:
   * The variable `AZURE_GROUP` sets the name of the resource group in which your AKS clusters are located.
   * The variable `KB_AZURE_VM_NAME` sets the name of the instance (default is automatically generated).
   * The variable `KB_AZURE_LOCATION` sets the deployment location (default is `centralus` -- see the [list of regions with available images]({{< relref "/docs/03_releases_information" >}})).
-  * The variable `KB_AZURE_VM_SIZE` sets the VM size (default is `Standard_B1ms` -- what should be sufficient unless you have a big number of AKS clusters along with many namespaces in the target resource group). 
+  * The variable `KB_AZURE_VM_SIZE` sets the VM size (default is `Standard_B1ms`). 
   * The installation uses the option `--generate-ssh-keys` of Azure CLI, meaning that it uses the local SSH key pair for the instance. The associated SSH username is `azureuser`.
 
 ```sh
