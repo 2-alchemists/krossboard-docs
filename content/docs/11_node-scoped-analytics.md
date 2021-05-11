@@ -13,6 +13,8 @@ For the different Kubernetes clusters handled, this page provides node usage ana
 * Recent node occupation by pods
 * Node usage history for a user-selectable period of time.
 
+> Please note that the activation of these analytics features requires a valid license.
+
 ## Recent Node Occupation by Pods
 This section of provides for each cluster selected on-demand (1), the latest-captured resource usage by pods running on the different nodes (2).
 
