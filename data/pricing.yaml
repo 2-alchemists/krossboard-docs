@@ -7,8 +7,8 @@ plans:
   -
     name: enterprise-basic
     headerStyle: pro1 bg-color3 txt-white
-    title: ENTERPRISE BASIC
-    price: 9.99€/month
+    title: ENTERPRISE
+    price: 1,789€
   -
     name: enterprise-advanced
     headerStyle: pro1 bg-color1 txt-white
@@ -27,7 +27,7 @@ features:
         title: 'Yes'
         description:
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: 'Yes'
         description:
@@ -45,9 +45,9 @@ features:
         plan: FREE
         style: td-free
         title: '✓'
-        description: Up to __3 months__
+        description: Up to __90 days__
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: Up to __12 months__ of historical data
@@ -67,7 +67,7 @@ features:
         title: '-'
         description:
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: 'Unlimited'
@@ -86,9 +86,9 @@ features:
         plan: FREE
         style: td-free
         title: '✓'
-        description: Max __3 months__ of historical data
+        description: Up to __90 days__ of historical data
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: Up to __12 months__ of historical data
@@ -108,7 +108,7 @@ features:
         title: '3'
         description: 
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: 'Unlimited'
         description: ''
@@ -128,7 +128,7 @@ features:
         title: 'Binary packages, OVF images'
         description: 
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: 'Cloud images'
         description: '&#43; Binary packages and OVF images'
@@ -148,7 +148,7 @@ features:
         title: '-'
         description:
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: 'Unlimited'
@@ -168,7 +168,7 @@ features:
         title: '-'
         description:
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: 'Any'
         description: on-demand
@@ -188,7 +188,7 @@ features:
         title: '-'
         description: 
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: 'Unlimited'
@@ -208,7 +208,7 @@ features:
         title: '-'
         description: 
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '✓'
         description: 
@@ -229,10 +229,10 @@ features:
         title: '-'
         description:
       -
-        plan: ENTERPRISE BASIC
+        plan: ENTERPRISE
         style: td-pro1
         title: '1 year'
-        description:
+        description: Unlimited access to maintainted versions for bug and security fixes.
       -
         plan: ENTERPRISE ADVANCED
         style: td-free
