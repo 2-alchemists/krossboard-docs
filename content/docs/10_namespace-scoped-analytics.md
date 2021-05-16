@@ -15,7 +15,7 @@ For each Kubernetes cluster it handles, Krossboard provides the following kinds 
 > **Data Export.** The data backing the different charts can be exported in CSV format. This enables the ability to further process them with your favorite third-party data analytics like [Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few.
 
 ## Recent Consolidated Usage
-This section displays pie charts showing the latest consolidated CPU and memory usage. Updated every 5 minutes, these reports highlight shares of used, available, and non-allocatable resources.
+This section displays pie charts for recent consolidated CPU and memory usage. Updated every 5 minutes, these reports highlight shares of used, available, and non-allocatable resources.
 
 ![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
 
