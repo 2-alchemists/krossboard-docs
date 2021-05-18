@@ -9,11 +9,9 @@ aliases = ["/docs/cluster-scoped-analytics-charts-and-reports/"]
 +++
 
 
-Across all the Kubernetes clusters it handles, Krossboard features and displays the following analytics at the cluster level.
+Across all the Kubernetes clusters it handles, Krossboard features and displays the following cluster-level analytics:
   * Recent Consolidated Usage.
   * Usage Trends & History.
-
-> **Data Export.** The data backing the different charts can be exported in CSV format. This enables the ability to further process them with your favorite third-party data analytics like [Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few.
 
 ## Recent Consolidated Usage
 This section displays for each cluster a pie chart showing the latest consolidated CPU and memory usage. Updated every 5 minutes, the provided analytics highlight shares of used, available, and non-allocatable resources.

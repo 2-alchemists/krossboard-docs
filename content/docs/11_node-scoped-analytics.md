@@ -8,24 +8,37 @@ toc = false
 aliases = ["/docs/node-scoped-analytics-charts-and-reports/"]
 +++
 
-For the different Kubernetes clusters handled, this page provides node usage analytics with the following perspectives:
+For the different Kubernetes clusters tracked, this page provides node usage analytics with the following perspectives:
 
-* Recent node occupation by pods
-* Node usage history for a user-selectable period of time.
+* Recent nodes occupation by pods.
+* Node usage history by user-defined period of times.
 
-> Please note that the activation of these analytics features requires a valid license.
+> Please note that the activation of these features requires a valid license.
 
 ## Recent Node Occupation by Pods
-This section of provides for each cluster selected on-demand (1), the latest-captured resource usage by pods running on the different nodes (2).
+This dashboard is displayed by selecting a node (1) and the option `Nodes recent occupation` (2).
 
-For each node, the analytics is rendered as a pie-chart given for CPU and memory the ratio resources of used by every running pod, the ratio of available/free resources, and the ratio of `non-allocatable` capacity.
+For the selected node, the analytics render a piechart report for CPU and memory consumption (3).
+
+On each report piechart we have:
+
+  * The ratio of resources used by the different running pods.
+  * The ratio of available resources.
+  * The ratio of `non-allocatable` capacity.
 
 ![krossboard-node-recent-occupation.png](/images/docs/screenshorts/krossboard-nodes-recent-occupation-by-pods.png)
 
 ## Usage History
-This section of provides for each cluster selected on-demand (1), the history of consolidated resource capacity available, non-allocatable, and consumed by pods for a user-selectable period of time (the default history period being the last 24 hours). 
+This dashboard is enabled by selecting a cluster (1) and a user-defined period of time (default is the last 24 hours).
 
-For each node, the analytics is rendered as a stacked-areas chart for CPU (4) and memory (5) resources. Over time and for each resource type (CPU, memory), each chart renders, the overall resource capacity enabled by the node, the capacity used by pods, and the remaining/free capacity.
+For each node, we have a chart for CPU (4) and memory (5) resources rendered as a stacked-areas chart. 
+
+Each chart displays and helps understand the following metrics hourly-consolidated over time (i.e. as historical trends): 
+
+ * Overall capacity enabled by the node.
+ * Capacity consumed by pods.
+ * Available/free capacity. 
+ * Non-allocatable capacity. 
 
 ![krossboard-node-usage-history.png](/images/docs/screenshorts/krossboard-nodes-usage-history.png)
 

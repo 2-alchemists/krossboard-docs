@@ -8,21 +8,13 @@ toc = false
 aliases = ["/docs/namespace-scoped-analytics-charts-and-reports/"]
 +++
 
-For each Kubernetes cluster it handles, Krossboard provides the following kinds of charts and reports at the namespace level.
-  * Usage Trends & History (hourly)
-  * Usage Accounting (daily, monthly).
+For each cluster selected by the user (1), this dashboard displays:
 
-> **Data Export.** The data backing the different charts can be exported in CSV format. This enables the ability to further process them with your favorite third-party data analytics like [Google BigQuery](https://cloud.google.com/bigquery), [AWS Athena](https://aws.amazon.com/athena/), [Azure Synapse](https://azure.microsoft.com/en-us/services/synapse-analytics/), [Tableau](https://www.tableau.com/), [Microsoft Excel](https://www.microsoft.com/en-us/microsoft-365/excel#pivot-forPersonal), to list a few.
+  * The **hourly usage trends** per namespace and for the last week (2).
+  * The **daily usage accounting** per namespace and for the last 2 weeks (3).
+  * The **monthly usage accounting** per namespace and for the last 12 months (4).
 
-## Recent Consolidated Usage
-This section displays pie charts for recent consolidated CPU and memory usage. Updated every 5 minutes, these reports highlight shares of used, available, and non-allocatable resources.
-
-![](/images/docs/screenshorts/krossboard-current-usage-overview.png)
-
-## Usage Trends & Accounting
-For each cluster (that the user can select on-demand), this section displays the hourly usage trends and also the usage accounting per day and per month. While the daily accounting does cover the last two weeks, the monthly accounting does covers a period of the last 12 months (i.e. a year of usage).
-
-To export the backing data in CSV, you just have to click on the links next to the cluster list.
+The backing data can be exported in CSV by clicking the links next to the selected cluster (5).
 
 ![](/images/docs/screenshorts/krossboard-cluster-usage-trends.png)
 
