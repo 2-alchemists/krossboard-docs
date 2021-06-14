@@ -8,4 +8,4 @@ head = "Purchase canceled"
 icon = "pe-7s-close"
 +++
 
-Cancel !
+For assistance, please [contact us](/contact/support).
