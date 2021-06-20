@@ -11,20 +11,20 @@ This page lists important features and changes about Krossboard releases.
 
 ## Krossboard v1.2.x
 This major branch (current version: `v1.2.0`) comes with following enhancements and fixes.
-* **Node Analytics Dashboards.**
+* **Node Analytics Dashboards**
   
   Two kinds of nodes dashboards are provided. 
   
-  The first dashboard, called `Recent Node Occupation`, displays for each node the latest (5-minutes refresh interval) resource allocation to pods. Available for CPU and memory resources, it's displayed as a piechart where each pod is represented by a slice proportional to the share in percentage of resource the pod is using on the node.
+  The first dashboard, `Recent Node Occupation`, displays for each node the latest (5-minutes refresh interval) resource allocation to pods. Available for CPU and memory resources, it's displayed as a piechart where each pod is represented by a slice proportional to the share in percentage of resource the pod is using on the node.
 
-  The second dashboard, called `Node Usage History`, displays for each node the history of resource usage over time. Available for CPU and memory resources, it's displayed for each kind of resources as a stacked-area chart displaying the resource usage for each node over time.
+  The second dashboard, `Node Usage History`, displays for each node the history of resource usage over time. Available for CPU and memory resources, it's displayed for each kind of resources as a stacked-area chart displaying the resource usage for each node over time.
 
-* **Multi-KUBECONFIG.**
+* **Multi-KUBECONFIG files**
   
   This feature means that, the Krossboard data processor backend can now produce analytics data 
   for Kubernetes clusters declared defined in multiple KUBECONFIG files. [Learn more...]({{< 
   relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes/" >}})
-* **UI to upload KUBECONFIG.**
+* **User Interface to upload KUBECONFIG files**
   
   The Krossboard web interface now enables a admin page to upload KUBECONFIG that are 
   automatically taken into account for the data processor. 
