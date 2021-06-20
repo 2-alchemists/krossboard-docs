@@ -17,6 +17,7 @@ This guide shows how to setup Krossboard for a given GCP project. It'll take you
 ## Before you begin
 This installation guide assumes that:
 
+* You have subscribed to a [Krossboard offer](http://localhost:1313/#pricing) that includes the use of cloud images.
 * You have a basic level of practice with GCP.
 * You have a GCP account with at least an editor level of access to a project. The editor role is needed to create and configure your Krossboard instance; Krossboard by itself needs read-only access to your GKE clusters.
 * You have access to a `bash >=4` terminal with [gcloud](https://cloud.google.com/sdk) installed and configured to get access o your GCP project. Or, alternatively, you may use [Google Cloud Shell](https://cloud.google.com/shell).

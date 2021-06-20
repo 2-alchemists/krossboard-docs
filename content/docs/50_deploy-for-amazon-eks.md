@@ -18,6 +18,7 @@ This guide shows how to setup Krossboard for a given AWS region. It'll take you 
 ## Before you begin
 This installation guide assumes that:
 
+* You have subscribed to a [Krossboard offer](http://localhost:1313/#pricing) that includes the use of cloud images.
 * You have a basic level of practice with AWS concepts.
 * You have an active AWS account with administrator access to create and configure your Krossboard instance. **Krossboard itself needs _read-only access_ to your EKS clusters**.
 * You have access to a `bash >=4` terminal.

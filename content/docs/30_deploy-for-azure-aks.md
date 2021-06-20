@@ -17,6 +17,7 @@ This guide shows how to setup Krossboard for a given Azure resource group. It'll
 ## Before you begin
 This installation guide assumes that:
 
+* You have subscribed to a [Krossboard offer](http://localhost:1313/#pricing) that includes the use of cloud images.
 * You have at least a basic level of practice with Azure concepts.
 * You have an active Azure subscription with administrator permissions to create and configure your Krossboard instance.   **Krossboard itself needs _read-only access_ to your AKS clusters**.
 * You have access to a `bash >=4` terminal (or [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)) where you can use Azure CLI. 
