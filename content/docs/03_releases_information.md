@@ -48,41 +48,7 @@ This is the first release of Krossboard bringing out the following set of featur
 * **Ability to export any generated reports in CSV format:** allows each enterprise or organization to leverage their favorite data analytics tools to extract additional insights.
 * **Easy deployment through public cloud images:** currently supported cloud providers are, Amazon Web Services (AWS), Google Compute Platform (GCP) and Microsoft Azure.
 
-## Latest Cloud Images
-This section lists cloud images published for Amazon AWS, Google GCP, Microsoft Azure.
+## Cloud Images
+The use of cloud images are available for Google Cloud, Amazon AWS and Microsoft Azure, requires an [enterprise subscription](https://krossboard.app/#pricing).
 
-### Amazon AWS images
-This table lists AWS regions where official Krossboard AMIs are currently released. During the [installation]({{< relref "/docs/50_deploy-for-amazon-eks" >}}), you must select a region listed in this table by setting the variable `KB_AWS_REGION`.
-
-| Region          | Krossboard Version       | Build ID         |
-| --------------- |:------------------------:| ----------------:|
-| ap-southeast-1  | v1.1.1                   | 09606ec          |
-| ap-southeast-2  | v1.1.1                   | 09606ec          |
-| ca-central-1    | v1.1.1                   | 09606ec          |
-| eu-central-1    | v1.1.1                   | 09606ec          |
-| eu-west-1       | v1.1.1                   | 09606ec          |
-| eu-west-2       | v1.1.1                   | 09606ec          |
-| sa-east-1       | v1.1.1                   | 09606ec          |
-| us-east-1       | v1.1.1                   | 09606ec          |
-| us-west-1       | v1.1.1                   | 09606ec          |
-
-### Google GCP images
-This table lists the current Krossboard images available on GCP.
-
-| Region    | Krossboard version   | Build ID         |
-| ----------|:--------------------:| ----------------:|
-| Global    | v1.1.1                | 09606ec          |
-
-### Microsoft Azure images
-On Microsoft Azure, Krossboard is released through a [Shared Image Gallery](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/shared-image-galleries).
-
-The [setup script]({{< relref "/docs/30_deploy-for-azure-aks" >}}) does always deploy the latest version of the image. You just have to define the location via the variable `KB_AZURE_LOCATION`. See the list of locations below.
-
-
-| Replication regions   | Krossboard version   | Build ID         |
-| ----------------------|:--------------------:| ----------------:|
-| brazilsouth           | v1.1.1               | 09606ec          |
-| canadacentral         | v1.1.1               | 09606ec          |
-| centralindia          | v1.1.1               | 09606ec          |
-| centralus             | v1.1.1               | 09606ec          |
-| germanywestcentral    | v1.1.1               | 09606ec          |
+To get the identifiers of the cloud images in your target cloud regions, please send an email at `contact at krossboard.app` or submit a request via our [contact page](https://krossboard.app/contact/support/).
