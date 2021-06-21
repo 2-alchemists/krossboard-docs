@@ -1,10 +1,11 @@
 +++
-title = "Update Krossboard to a recent version"
+title = "Update/Upgrade Guide"
 description = ""
 weight = 90
 draft = false
 bref = ""
-toc = true 
+toc = true
+aliases = ["/docs/update/"]
 +++
 
 This guide describes how to update an instance of Krossboard towards a recent version.
@@ -33,8 +34,8 @@ Open a browser tab and point it to the Krossboard URL (i.e. http://<machine-addr
 Use the same username and password as on your previous version.
 
 ## Other resources
-* [Discover and explore Krossboard analytics and data export]({{< relref "/docs/analytics-reports-and-data-export" >}})
-* [Setup Krossboard for Amazon EKS]({{< relref "/docs/deploy-for-amazon-eks" >}})
-* [Setup Krossboard for Azure AKS]({{< relref "/docs/deploy-for-azure-aks" >}})
-* [Setup Krossboard for Google GKE]({{< relref "deploy-for-google-gke" >}})
-* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "deploy-for-cross-cloud-and-on-premises-kubernetes" >}})
+* [Discover and explore Krossboard analytics and data export]({{< relref "/docs/02_analytics-and-data-export" >}})
+* [Setup Krossboard for Amazon EKS]({{< relref "/docs/50_deploy-for-amazon-eks" >}})
+* [Setup Krossboard for Azure AKS]({{< relref "/docs/30_deploy-for-azure-aks" >}})
+* [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
+* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

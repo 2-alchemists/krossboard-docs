@@ -10,11 +10,13 @@
             </div>
             <div class="flex-col-md-8">
                 <header>
-                    <h1 class="title large">Documentation Resources</h1>
+                    <h1 class="title large">Documentation</h1>
                 </header>
                 <ul>
                     {{ range .Data.Pages.ByWeight }}
+                    {{ if .Params.Toc }}
                     <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
                     {{ end }}
                 </ul>
             </div>

@@ -1,12 +1,13 @@
-var stripe = Stripe('pk_test_51IBHitCNjnBMsnzg7iz0r6uhkYs2SDj3cyw0wRs3miYWW5DrRORxJnZtC2L8myDxQjI5Gvk3QUkKS4eSo2ttrZAx002eMycirh');
+const stripe = Stripe('pk_live_51IBHitCNjnBMsnzgRCsfiK4wgd8JwZGLqMnPxVAbh880ruHGRziyCyZ4AS7NoInVSXLPNBZBju3hibq7OMcrA2lg00kP6Y6qi7');
+const enterpriseBasicPriceId = 'price_1J3JztCNjnBMsnzgHyUQwSRT';
 
-function redirectToCheckout(successUrl, cancelUrl, errorUrl) {
+function redirectToCheckout(priceId, successUrl, cancelUrl, errorUrl) {
     stripe.redirectToCheckout({
         lineItems: [{
-          price: 'price_1IEw9QCNjnBMsnzgKbjfAEUL',
+          price: priceId,
           quantity: 1,
         }],
-        mode: 'payment',
+        mode: 'subscription',
         successUrl: successUrl,
         cancelUrl: cancelUrl,
       }).then(function (result) {

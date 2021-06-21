@@ -1,0 +1,240 @@
+plans: 
+  -
+    name: free
+    headerStyle: free bg-gray1 txt-dark1
+    title: ALWAYS FREE
+    price: 0.00€
+  -
+    name: enterprise-basic
+    headerStyle: pro1 bg-color3 txt-white
+    title: ENTERPRISE
+    price: 1,789€
+  -
+    name: enterprise-advanced
+    headerStyle: pro1 bg-color1 txt-white
+    title: ENTERPRISE ADVANCED
+    price: On-demand
+
+features:
+  -
+    image: pe-7s-graph3
+    title: Core analytics
+    description: Focus on pods, nodes and namespaces
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: 'Yes'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: 'Yes'
+        description:
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: 'Yes'
+        description:
+  -
+    image: pe-7s-network
+    title: Namespaces Usage Analytics
+    description: Recent-consolidated usage, historical data
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '✓'
+        description: Up to __90 days__
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: Up to __12 months__ of historical data
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: Up to __12 months__ of historical data
+  -
+    image: pe-7s-network
+    title: Nodes Usage Analytics
+    description: Recent occupation by pods, historical data
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: 'Unlimited'
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: 'Unlimited'
+
+  -
+    image: pe-7s-network
+    title: Cluster-Level Analytics
+    description: History of consolidated usage
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '✓'
+        description: Up to __90 days__ of historical data
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: Up to __12 months__ of historical data
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: Up to __12 months__ of historical data
+  -
+    image: pe-7s-timer
+    title: Max of clusters
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '3'
+        description: 
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: 'Unlimited'
+        description: ''
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: 'Unlimited'
+        description: ''
+  -
+    image: pe-7s-box2
+    title: Release packages
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: 'Binary packages, OVF images'
+        description: 
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: 'Cloud images'
+        description: '&#43; Binary packages and OVF images'
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: 'Cloud images'
+        description: '&#43; Binary packages and OVF images'
+  -
+    image: pe-7s-search
+    title: Managed cluster discovery (AKS, EKS, GKE)
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: 'Unlimited'
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: 'Unlimited'
+  -
+    image: pe-7s-global
+    title: Regions/locations for cloud images
+    description: AWS, Azure, GCP
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: 'Any'
+        description: on-demand
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: 'Any'
+        description: on-demand
+  -
+    image: pe-7s-copy-file
+    title: Multiple KUBECONFIG files
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description: 
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: 'Unlimited'
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: 'Unlimited'
+  -
+    image: pe-7s-cloud-download
+    title: CSV Data Export
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description: 
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: 
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description:
+
+  -
+    image: pe-7s-user
+    title: Support
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '1 year'
+        description: Unlimited access to maintainted versions for bug and security fixes.
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: 'Up to 3 years'
+        description: 'Specific onboarding support'

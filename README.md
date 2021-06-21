@@ -38,3 +38,29 @@ hugo --minify
 ```
 
 The will compile the content and generate the static site in the folder `./public`.
+
+## Deploy a distribution locally
+
+The site can be deployed locally using a rudimentary web server to serve files in the `public/` directory with TLS enabled.
+
+The following tools are used:
+
+- [mkcert](https://github.com/FiloSottile/mkcert) - a simple tool for making locally-trusted development certificates.
+- [ran](https://github.com/m3ng9i/ran) - a simple static web server (written in Go).
+
+Steps are following:
+
+- if not already done, generate a locally-trusted certificate:
+
+```sh
+mkcert my-machine.local
+```
+
+- start the web server:
+
+```sh
+cd public
+ran -cert=../my-machine.local.pem -key=../my-machine.local-key.pem .
+```
+
+The site is then available at: [https://my-machine.local/](https://my-machine.local)

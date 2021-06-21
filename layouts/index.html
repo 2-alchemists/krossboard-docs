@@ -72,7 +72,7 @@
 	************************************************************
 	* Content section
 	************************************************************ -->
-	<section class="pos-rel pd-tb-large" data-rgen-sm="pd-tb-small align-c" id="overview">
+	<section class="pd-t-150 pd-b-10 pos-rel" data-rgen-sm="pd-t-100" id="overview">
 		<div class="container pos-rel z1">
 			<div class="align-c w75 mr-auto mr-b-70">
 				<h2 class="title" data-rgen-sm="medium">Efficient visualization at a central place</h2>
@@ -92,5 +92,82 @@
 			</div><!-- // END : row //  -->
 		</div><!-- // END : container //  -->
 	</section>
-	<!-- ************** END : Content section **************  -->			
+	<!-- ************** END : Content section **************  -->
+	
+	<hr class="mr-tb-50">
+
+	<!--
+	************************************************************
+	* Pricing section
+	************************************************************ -->
+	<section class="pos-rel pd-t-10 pd-b-100" data-rgen-sm="pd-b-50 align-c" id="pricing">
+		<div class="container pos-rel z1">
+			
+			<div class="w75 mr-auto align-c">
+				<h2 class="title">Pickup your plan - Free or Enterprise</h2>
+				<p class="title-sub">
+					All enterprise plans include a trial period of 30 days.
+				</p>
+			</div>
+
+			<table class="price-table price-table-2 w100">
+				<thead>
+					<tr>
+						<th class="feature-hd">Features</th>
+						{{ range $.Site.Data.pricing.plans }}
+						<th class="{{ .headerStyle }}">
+							<div class="hd">
+								<small>{{ .title | markdownify }}</small>
+								<strong>{{ .price | safeHTML }}</strong>
+							</div>
+						</th>
+						{{ end }}
+					</tr>
+				</thead><!-- /.thead -->
+				<tbody>
+					{{ range $.Site.Data.pricing.features }}
+					<tr>
+						<td class="td-feature">
+							<div class="info-obj img-l g20 mini align-l mr-tb-10">
+								<div class="img"><span class="iconwrp txt-color3"><i class="{{ .image }}"></i></span></div>
+								<div class="info">
+									<h2 class="fs18 mr-0">{{ .title | safeHTML }}</h2>
+									{{ with .description }}
+									<p>{{ . | markdownify }}</p>
+									{{ end }}
+								</div>
+							</div><!-- // END : Info object //  -->
+						</td>
+						{{ range .availabilities }}
+						<td class="{{ .style }}">
+							<b class="plan-lbl">{{ .plan }}</b>
+							<h6>{{ .title | safeHTML }}</h6>
+							<p>{{ .description | markdownify }}</p>
+						</td>
+						{{ end }}
+					</tr><!-- /.price row -->
+					{{ end }}
+					<tr>
+						<td >
+						</td>
+						<td class="td-free align-c">
+						</td>
+						{{ $success := "/checkout/success" | absURL }}
+						{{ $error := "/checkout/error" | absURL }}
+						{{ $cancel := "/checkout/cancel" | absURL }}
+						<td class="td-pro1 align-c">
+							<b class="plan-lbl">ENTERPRISE</b>
+							<div><a href="#" onclick="redirectToCheckout(enterpriseBasicPriceId, {{$success}}, {{$error}}, {{$cancel}});" class="btn btn-default solid mr-tb-20">PURCHASE NOW</a></div>
+						</td>
+						<td class="td-free align-c">
+							<b class="plan-lbl">ENTERPRISE ADVANCED</b>
+							<div><a href="/contact/support/" class="btn btn-default solid mr-tb-20">CONTACT US</a></div>
+						</td>
+					</tr><!-- /.cto row -->
+				</tbody><!-- /.thead -->
+			</table><!-- /.table -->
+		</div><!-- / container -->
+	</section><!-- / Content section -->
+	<!-- ************** END : Pricing section **************  -->
+
 {{- end }}
