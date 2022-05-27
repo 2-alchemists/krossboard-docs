@@ -7,7 +7,7 @@ enableGitInfo = true
 
 [params]
   author = "2Alchimists SAS"
-  title = "Centralized Multi-Cluster Kubernetes Usage Accounting"
+  title = "Open Source Multi-Cluster Kubernetes Usage Accounting"
   subtitle = "All in one single place, Krossboard tracks the usage of all your clusters over time. It simplifies usage accounting for cost allocation, helps forecast capacity scale up/down, thereby enabling to anticipate and master operations costs."
   description = "Kubernetes Usage Analytics for Cost and Capacity Management"
   releaseYear = "2020"

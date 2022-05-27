@@ -7,7 +7,7 @@
 
 This project holds the documentation website for [Krossboard](https://krossboard.app/).
 
-This project is open sourced under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License (also known as CC-BY-NC-SA). See the [LICENSE](LICENSE.md) file for more details.
+This project is Open Sourced under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License (also known as CC-BY-NC-SA). See the [LICENSE](LICENSE.md) file for more details.
 
 # Contributions
 

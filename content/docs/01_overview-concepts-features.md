@@ -33,7 +33,7 @@ Thanks to its features and key concepts introduced above, Krossboard aims to ena
 * **Enabler for cloud-cost reduction strategy**: By giving factual insights that show how the clusters of your organization are utilized over time, Krossboard helps make clusters consolidation decisions. Insights it provides can be used to motivate and drive consolidation decisions for clusters that are used in a non-efficient way, leading to reducing infrastructure and operations costs.
 
 ## Established analytics paradigms
-With its foundation in [kube-opex-analytics](https://github.com/rchakode/kube-opex-analytics) (open source tool already adopted by an established community), Krossboard incorporates the main analytics principles of kube-opex-analytics at its core. Leveraging in addition our depth and breadth experience developing and managing applications on Kubernetes, Krossboard enables further capabilities that make it unique and effective for environments with multiple Kubernetes clusters.
+With its foundation in [kube-opex-analytics](https://github.com/rchakode/kube-opex-analytics) (Open Source tool already adopted by an established community), Krossboard incorporates the main analytics principles of kube-opex-analytics at its core. Leveraging in addition our depth and breadth experience developing and managing applications on Kubernetes, Krossboard enables further capabilities that make it unique and effective for environments with multiple Kubernetes clusters.
 
 * **Namespace-focused:**
     Means that consolidated resource usage metrics consider individual namespaces as fundamental units for resource sharing. A special care is taken to also account and highlight *non-allocatable* resources.
