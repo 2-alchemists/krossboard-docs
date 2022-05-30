@@ -1,7 +1,7 @@
 [![CC-BY-NC-SA](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](LICENSE.md)
-![build-site](https://github.com/2-alchemists/krossboard-docs/workflows/build%20site/badge.svg)
-![deploy-site](https://github.com/2-alchemists/krossboard-docs/workflows/deploy%20site/badge.svg)
-[![site](https://img.shields.io/badge/%F0%9F%8C%8E-site-blue?style=flat)](https://krossboard.app/)
+[![build-site](https://img.shields.io/github/workflow/status/2-alchemists/krossboard-docs/build%20site?label=build&style=for-the-badge)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/build.yml)
+[![deploy-site](https://img.shields.io/github/workflow/status/2-alchemists/krossboard-docs/deploy%20site?label=deploy&style=for-the-badge)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/deploy.yml)
+[![site](https://img.shields.io/badge/%F0%9F%8C%8E-site-blue?style=for-the-badge)](https://krossboard.app)
 
 # Overview & License
 
