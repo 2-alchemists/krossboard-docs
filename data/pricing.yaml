@@ -8,7 +8,7 @@ plans:
     name: enterprise-basic
     headerStyle: pro1 bg-color3 txt-white
     title: ENTERPRISE
-    price: 1,789€
+    price: On-demand
   -
     name: enterprise-advanced
     headerStyle: pro1 bg-color1 txt-white
