@@ -66,5 +66,11 @@ The below command deploys an instance of Krossboard based on the latest version.
 kubectl -n krossboard apply -f https://raw.githubusercontent.com/2-alchemists/krossboard-kubernetes-operator/main/config/releases/latest/krossboard/krossboard-deployment.yaml
 ```
 
+Once started, the instance enables access to two Kubernetes services:
+
+* `krossboard-ui.krossboard.svc` enabling access to Krossboard UI.
+* `krossboard-api.krossboard.svc` enabling access to Krossboard REST API.
+
+
 ## Day2 Operations
 * [Krossboard Analytics and Data Export]({{< relref "02_analytics-and-data-export" >}})
