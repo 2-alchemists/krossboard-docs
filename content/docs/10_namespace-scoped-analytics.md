@@ -21,7 +21,3 @@ The backing data can be exported in CSV by clicking the links next to the select
 
 ## Other Resources
 * [Krossboard Analytics and Data Export]({{< relref "02_analytics-and-data-export" >}})
-* [Setup Krossboard for Amazon EKS]({{< relref "50_deploy-for-amazon-eks" >}})
-* [Setup Krossboard for Azure AKS]({{< relref "30_deploy-for-azure-aks" >}})
-* [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
-* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})

@@ -7,7 +7,7 @@ An awesome replacement for JavaScript's alert.
 
 [See it in action!](http://t4t5.github.io/sweetalert)
 
-[Learn how to use it!](https://www.ludu.co/lesson/how-to-use-sweetalert)
+[How to use it!](https://www.ludu.co/lesson/how-to-use-sweetalert)
 
 
 Usage

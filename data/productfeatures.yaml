@@ -2,7 +2,7 @@
   Title: "Deploy in minutes, for multiple Kubernetes"
   Image: "pe-7s-rocket"
   Description: |
-    Working across any Kubernetes distributions with auto-discovery for managed <a href="/docs/deploy-for-amazon-eks/">EKS</a>, <a href="/docs/deploy-for-azure-aks/">AKS</a> and <a href="/docs/deploy-for-google-gke/">GKE</a>, Krossboard is released as setup packages, OVF appliances, and cloud images that make it deployable in a couple of minutes.
+    Krossboard concepts are intuitive, the Kubernetes clusters it manages are set through standard KUBECONFIG resources. Thanks to its *Kubernetes operator*, Krossboard is easy to setup and to operate.
 - Feature:
   Title: "Track usage, anticipate and master costs"
   Image: "pe-7s-graph1"
@@ -12,7 +12,7 @@
   Title: "Proven Open Source core"
   Image: "pe-7s-medal"
   Description: |
-    Leveraging <a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a> at its core (Open Source, with <b>100+k image pulls/year</b>), Krossboard is designed upon established concepts and a solid code base that it complements with various advanced enterprise features.
+    Leveraging <b><a href="https://github.com/rchakode/kube-opex-analytics">kube-opex-analaytics</a></b> at its core (Open Source, with <b>550+k image pulls</b>), Krossboard is designed upon established concepts and a solid code base that it complements with various advanced enterprise features.
 - Feature:
   Title: "User-extensible analytics"
   Image: "pe-7s-cloud-download"

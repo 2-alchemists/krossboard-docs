@@ -44,8 +44,3 @@ With its foundation in [kube-opex-analytics](https://github.com/rchakode/kube-op
 
 ## Getting Started
 Consider one of the following resources to deploy Krossboard for your Kubernetes clusters.
-
-* [Setup Krossboard for Amazon EKS]({{< relref "/docs/50_deploy-for-amazon-eks" >}})
-* [Setup Krossboard for Azure AKS]({{< relref "/docs/30_deploy-for-azure-aks" >}})
-* [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
-* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})
