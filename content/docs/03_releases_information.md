@@ -2,14 +2,18 @@
 title = "Releases Information"
 description = ""
 draft = false
-weight = 03
+weight = 3
 toc = true
 aliases = ["/docs/releases/"]
 +++
 
 This page lists important features and changes about Krossboard releases.
 
-## Krossboard v1.2.x
+## Krossboard v1.3.0
+Switch towards [Krossboard Kubernetes Operator](https://github.com/2-alchemists/krossboard-kubernetes-operator).
+  
+
+## Krossboard v1.2.0
 This major branch (current version: `v1.2.0`) comes with following enhancements and fixes.
 * **Node Analytics Dashboards**
   
@@ -21,10 +25,7 @@ This major branch (current version: `v1.2.0`) comes with following enhancements 
 
 * **Multi-KUBECONFIG files**
   
-  This feature means that, the Krossboard data processor backend can now produce analytics data 
-  for Kubernetes clusters declared defined in multiple KUBECONFIG files. [Learn more...]({{< 
-  relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes/" >}})
-* **User Interface to upload KUBECONFIG files**
+  This feature means that, the Krossboard data processor backend can handle Kubernetes clusters declared defined in multiple KUBECONFIG files. 
   
   The Krossboard web interface now enables a admin page to upload KUBECONFIG that are 
   automatically taken into account for the data processor. 

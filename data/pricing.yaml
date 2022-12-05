@@ -45,7 +45,7 @@ features:
         plan: FREE
         style: td-free
         title: '✓'
-        description: Up to __90 days__
+        description: Up to __12 months__ of historical data
       -
         plan: ENTERPRISE
         style: td-pro1
@@ -64,8 +64,8 @@ features:
       -
         plan: FREE
         style: td-free
-        title: '-'
-        description:
+        title: '✓'
+        description: 'Unlimited'
       -
         plan: ENTERPRISE
         style: td-pro1
@@ -86,7 +86,7 @@ features:
         plan: FREE
         style: td-free
         title: '✓'
-        description: Up to __90 days__ of historical data
+        description: Up to __12 months__ of historical data
       -
         plan: ENTERPRISE
         style: td-pro1
@@ -105,7 +105,7 @@ features:
       -
         plan: FREE
         style: td-free
-        title: '3'
+        title: 'Unlimited'
         description: 
       -
         plan: ENTERPRISE
@@ -117,66 +117,6 @@ features:
         style: td-free
         title: 'Unlimited'
         description: ''
-  -
-    image: pe-7s-box2
-    title: Release packages
-    description:
-    availabilities:
-      -
-        plan: FREE
-        style: td-free
-        title: 'Binary packages, OVF images'
-        description: 
-      -
-        plan: ENTERPRISE
-        style: td-pro1
-        title: 'Cloud images'
-        description: '&#43; Binary packages and OVF images'
-      -
-        plan: ENTERPRISE ADVANCED
-        style: td-free
-        title: 'Cloud images'
-        description: '&#43; Binary packages and OVF images'
-  -
-    image: pe-7s-search
-    title: Managed cluster discovery (AKS, EKS, GKE)
-    description:
-    availabilities:
-      -
-        plan: FREE
-        style: td-free
-        title: '-'
-        description:
-      -
-        plan: ENTERPRISE
-        style: td-pro1
-        title: '✓'
-        description: 'Unlimited'
-      -
-        plan: ENTERPRISE ADVANCED
-        style: td-free
-        title: '✓'
-        description: 'Unlimited'
-  -
-    image: pe-7s-global
-    title: Regions/locations for cloud images
-    description: AWS, Azure, GCP
-    availabilities:
-      -
-        plan: FREE
-        style: td-free
-        title: '-'
-        description:
-      -
-        plan: ENTERPRISE
-        style: td-pro1
-        title: 'Any'
-        description: on-demand
-      -
-        plan: ENTERPRISE ADVANCED
-        style: td-free
-        title: 'Any'
-        description: on-demand
   -
     image: pe-7s-copy-file
     title: Multiple KUBECONFIG files
@@ -185,7 +125,7 @@ features:
       -
         plan: FREE
         style: td-free
-        title: '-'
+        title: '✓'
         description: 
       -
         plan: ENTERPRISE
@@ -205,7 +145,7 @@ features:
       -
         plan: FREE
         style: td-free
-        title: '-'
+        title: '✓'
         description: 
       -
         plan: ENTERPRISE
@@ -217,7 +157,26 @@ features:
         style: td-free
         title: '✓'
         description:
-
+  -
+    image: pe-7s-search
+    title: Discovery of Managed clusters (AKS, EKS, GKE)
+    description:
+    availabilities:
+      -
+        plan: FREE
+        style: td-free
+        title: '-'
+        description:
+      -
+        plan: ENTERPRISE
+        style: td-pro1
+        title: '✓'
+        description: 'Unlimited'
+      -
+        plan: ENTERPRISE ADVANCED
+        style: td-free
+        title: '✓'
+        description: 'Unlimited'
   -
     image: pe-7s-user
     title: Support

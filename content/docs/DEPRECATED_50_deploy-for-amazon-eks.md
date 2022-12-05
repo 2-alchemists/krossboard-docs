@@ -86,6 +86,3 @@ Alternatively, if you do have an active support contract, you can also send an e
 
 ## Other Resources
 * [Krossboard Analytics and Data Export]({{< relref "02_analytics-and-data-export" >}})
-* [Setup Krossboard for Google GKE]({{< relref "20_deploy-for-google-gke" >}})
-* [Setup Krossboard for Azure AKS]({{< relref "30_deploy-for-azure-aks" >}})
-* [Setup Krossboard for Cross-Cloud or On-premises Kubernetes]({{< relref "60_deploy-for-cross-cloud-and-on-premises-kubernetes" >}})
