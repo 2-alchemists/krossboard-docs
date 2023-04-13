@@ -1,6 +1,6 @@
 [![CC-BY-NC-SA](https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png)](LICENSE.md)
-[![build-site](https://img.shields.io/github/workflow/status/2-alchemists/krossboard-docs/build%20site?label=build&style=for-the-badge)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/build.yml)
-[![deploy-site](https://img.shields.io/github/workflow/status/2-alchemists/krossboard-docs/deploy%20site?label=deploy&style=for-the-badge)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/deploy.yml)
+[![build-site](https://img.shields.io/github/actions/workflow/status/2-alchemists/krossboard-docs/build.yml?label=BUILD&style=for-the-badge&logo=github)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/build.yml?label=Lint&style=for-the-badge&logo=github)
+[![deploy-site](https://img.shields.io/github/actions/workflow/status/2-alchemists/krossboard-docs/deploy.yml?label=DEPLOY&style=for-the-badge&logo=github)](https://github.com/2-alchemists/krossboard-docs/actions/workflows/deploy.yml)
 [![site](https://img.shields.io/badge/%F0%9F%8C%8E-site-blue?style=for-the-badge)](https://krossboard.app)
 
 # Overview & License
