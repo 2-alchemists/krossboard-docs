@@ -2,26 +2,26 @@ name: build site
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.2
- 
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.75.1'
+          hugo-version: "0.75.1"
           # extended: true
 
       - name: build
         env:
           HOSTING_RE_CAPTCHA_SITE_KEY: ${{ secrets.HOSTING_RE_CAPTCHA_SITE_KEY }}
-          HOSTING_ANALYTICS_ID: ${{ secrets.HOSTING_ANALYTICS_ID }}          
+          HOSTING_ANALYTICS_ID: ${{ secrets.HOSTING_ANALYTICS_ID }}
         run: |
           sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
           sed -i 's/HOSTING_RE_CAPTCHA_SITE_KEY/'$HOSTING_RE_CAPTCHA_SITE_KEY'/' config.toml
